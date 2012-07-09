@@ -4,6 +4,8 @@
 \usepackage{setspace} % to set line spacing
 \usepackage{parskip} % for proper paragraph spacing without indents
 \usepackage{fontspec} % for setting fonts
+\setlength{\parskip}{6pt} % set spacing between paragraphs
+\setlength{\parindent}{0cm} % set no ident between paragraphs
 \setmainfont{Palatino Linotype} % set the font
 \begin{document}
 \title{Software Development Agreement}
@@ -98,13 +100,16 @@ Customer shall reimburse Developer for the cost of any development software or c
 \section{Changes in Specifications}
 Customer may, in its sole discretion, request that changes be made to the Specifications, or other aspects of the Agreement and tasks associated with this Agreement. If Customer requests such a change, Developer will use its best efforts to implement the requested change at no additional expense to Customer and without delaying delivery of the Software. In the event that the proposed change will, in the reasonable opinion of the Developer, require a delay in the delivery of the Software or would result in additional expense to Customer, then Customer and Developer shall confer and Customer shall, in its discretion, elect either to withdraw its proposed change or require Developer to deliver the Software with the proposed change and subject to the delay and/or additional expense.
 \section{Acceptance Testing of Software}
-Customer shall have 15 days from the date of delivery of the Software in final form to inspect, test and evaluate it to determine whether the Software satisfies the functionality set forth in the Specifications.\\ \\
+Customer shall have 15 days from the date of delivery of the Software in final form to inspect, test and evaluate it to determine whether the Software satisfies the functionality set forth in the Specifications.
+
 If the Software does not satisfy the functionality, Customer shall give Developer written notice stating why the Software is unacceptable. Developer shall have 15 days from the receipt of such notice to correct the deficiencies. Customer shall then have 15 days to inspect, test and evaluate the Software. If the Software still does not satisfy the functionality set forth, Customer shall have the option of either (1) repeating the procedure set forth above, or (2) terminating this Agreement pursuant to the section of this Agreement entitled "Termination." If Customer does not give written notice to Developer withing the initial 15-day inspection, testing and evaluation period or any extension of that period, that the Software does not satisfy the functionality, Customer shall be deemed to have accepted the Software upon expiration of such period.
 \section{Ownership of Software}
-Developer assigns to Customer its entire right, title and interest in anything created or developed by Developer for Customer under this Agreement ("Work Product") including all patents, copyrights, trade secrets and other proprietary rights. This assignment is conditioned upon full payment of the compensation due Developer under this Agreement. \\\\
+Developer assigns to Customer its entire right, title and interest in anything created or developed by Developer for Customer under this Agreement ("Work Product") including all patents, copyrights, trade secrets and other proprietary rights. This assignment is conditioned upon full payment of the compensation due Developer under this Agreement. 
+
 Customer assigns the Developer rights to make mentions of the Work Product for the purposes of marketing the Customer as the original developer of the Work Product. This includes, but is not limited to, images of the Work Product, screen shots, other media, etc.
 \section{Ownership of Background Technology}
-Customer acknowledges that Developer owns or holds a license to use and sublicense various pre-existing development tools, routines, subroutines and other programs, data and materials that Developer may include in the Software developed under this Agreement. This material shall be referred to as "Background Technology."  \\\\
+Customer acknowledges that Developer owns or holds a license to use and sublicense various pre-existing development tools, routines, subroutines and other programs, data and materials that Developer may include in the Software developed under this Agreement. This material shall be referred to as "Background Technology."  
+
 Developer retains all right, title and interest, including all copyright, patent rights and trade secret rights in the Background Technology. Subject to full payment of the consulting fees due under this Agreement, Developer grants Customer a nonexclusive, perpetual worldwide license to use the Background Technology in the Software developed for and delivered to Customer under this Agreement, and all updates and revisions thereto. However, Customer shall make no other commercial use of the Background Technology without Developer’s written consent.
 \section{Warranty}
 \begin{enumerate}
@@ -125,20 +130,26 @@ Each party shall have the right to terminate this Agreement by written notice to
 If Developer terminates this Agreement because of Customer's fault, all of the following shall apply:
 \begin{enumerate} \itemsep0pt \parskip0pt \parsep0pt
 \renewcommand{\labelenumi}{(\Alph{enumi})}
-\item Customer shall immediately cease use of the Software. \\
-\item Customer shall, within 10 days of such termination, deliver to Developer all copies and portions of the Software and related materials and documentation in its possession furnished by Developer under this Agreement. \\
-\item All amounts payable or accrued to Developer under this Agreement shall become immediately due and payable. \\
+\item Customer shall immediately cease use of the Software. 
+\item Customer shall, within 10 days of such termination, deliver to Developer all copies and portions of the Software and related materials and documentation in its possession furnished by Developer under this Agreement. 
+\item All amounts payable or accrued to Developer under this Agreement shall become immediately due and payable. 
 \item All rights and licenses granted to Customer under this Agreement shall immediately terminate. 
 \end{enumerate}
 \section{Signatures}
-Each party represents and warrants that on this date they are duly authorized to bind their respective principals by their signatures below.\\\\
-In witness whereof, the parties have executed this Agreement on the dates set forth first above, with full knowledge of its content and significance and intending to be legally bound by the terms hereof. \\\\\\
-\setlength{\tabcolsep}{30pt}
-\begin{tabular}{ll}
-CUSTOMER & DEVELOPER \\[8ex]% adds vertical space
-\makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
-Signature & Signature\\[8ex]% adds vertical space
-\makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
-Title & Title\\
-\end{tabular}
+Each party represents and warrants that on this date they are duly authorized to bind their respective principals by their signatures below.
+
+In witness whereof, the parties have executed this Agreement on the dates set forth first above, with full knowledge of its content and significance and intending to be legally bound by the terms hereof.
+
+% The signature lines and text
+\setlength{\parskip}{20pt} % set spacing between paragraphs
+\par\noindent\makebox[2.5in][l]{CUSTOMER}      \hfill\makebox[2.5in][l]{DEVELOPER}%
+\setlength{\parskip}{15pt} % set spacing between paragraphs
+\par\noindent\makebox[2.5in]{\hrulefill} \hfill\makebox[2.5in]{\hrulefill}%
+\setlength{\parskip}{0pt} % set spacing between paragraphs
+\par\noindent\makebox[2.5in][l]{Signature}      \hfill\makebox[2.5in][l]{Signature}%
+\setlength{\parskip}{15pt} % set spacing between paragraphs
+\par\noindent\makebox[2.5in]{\hrulefill} \hfill\makebox[2.5in]{\hrulefill}%
+\setlength{\parskip}{0pt} % set spacing between paragraphs
+\par\noindent\makebox[2.5in][l]{Date}      \hfill\makebox[2.5in][l]{Date}%
+
 \end{document}
