@@ -1,0 +1,27 @@
+\contentsline {section}{\numberline {1}Purpose of Agreement}{2}
+\contentsline {section}{\numberline {2}Functional Specification}{2}
+\contentsline {subsection}{\numberline {2.1}Home Page}{2}
+\contentsline {subsection}{\numberline {2.2}Search Results Page}{2}
+\contentsline {subsection}{\numberline {2.3}Related Page}{3}
+\contentsline {subsection}{\numberline {2.4}User Page}{4}
+\contentsline {subsection}{\numberline {2.5}Snop View}{4}
+\contentsline {subsection}{\numberline {2.6}Sign Up Page}{5}
+\contentsline {subsection}{\numberline {2.7}Snop Structure}{5}
+\contentsline {subsection}{\numberline {2.8}Snop Creation Page}{6}
+\contentsline {section}{\numberline {3}Non-Functional Requirements}{6}
+\contentsline {subsection}{\numberline {3.1}Languages and Internationalization}{6}
+\contentsline {subsection}{\numberline {3.2}Software Requirements}{6}
+\contentsline {section}{\numberline {4}Delivery}{7}
+\contentsline {section}{\numberline {5}Payment}{7}
+\contentsline {subsection}{\numberline {5.1}Budget}{7}
+\contentsline {subsection}{\numberline {5.2}Schedule}{7}
+\contentsline {subsection}{\numberline {5.3}Late Fees}{7}
+\contentsline {section}{\numberline {6}Payment of Developer’s Costs}{7}
+\contentsline {section}{\numberline {7}Changes in Specifications}{7}
+\contentsline {section}{\numberline {8}Acceptance Testing of Software}{7}
+\contentsline {section}{\numberline {9}Ownership of Software}{8}
+\contentsline {section}{\numberline {10}Ownership of Background Technology}{8}
+\contentsline {section}{\numberline {11}Warranty}{8}
+\contentsline {section}{\numberline {12}Term of Agreement}{9}
+\contentsline {section}{\numberline {13}Termination of Agreement}{9}
+\contentsline {section}{\numberline {14}Signatures}{9}

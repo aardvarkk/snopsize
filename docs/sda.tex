@@ -5,16 +5,22 @@
 \usepackage{setspace} % to set line spacing
 \usepackage{parskip} % for proper paragraph spacing without indents
 \usepackage{fontspec} % for setting fonts
-\setlength{\parskip}{6pt} % set spacing between paragraphs
 \setlength{\parindent}{0cm} % set no ident between paragraphs
 \setmainfont{Palatino Linotype} % set the font
+\renewcommand{\contentsname}{Table of Contents} % change default name of table of contents
+
 \begin{document}
-\title{Software Development Agreement}
-\author{Tau Labs}
-\date{\today}
-\maketitle
+\input{./tau_labs_title.tex}
+\newpage
+\tableofcontents
+\newpage
 \section*{}
+\begin{center}
+{\bf \LARGE Software Development Agreement} 
+\end{center}
+\setlength{\parskip}{24pt} % set spacing between paragraphs
 This Software Development Agreement (the "Agreement") is made and effective {\today}.
+\setlength{\parskip}{6pt} % set spacing between paragraphs
 \begin{tabbing}
 {\bf BETWEEN}:\hspace{0.2in}\={\bf Eoin Corrigan} (the "Customer") \\
 {\bf AND}:\> {\bf Tau Labs } (the "Developer") 
