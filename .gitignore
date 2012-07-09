@@ -1,4 +1,5 @@
 docs/*.aux
 docs/*.log
 docs/*.gz
+docs/*.orig
 docs/*.pdf
