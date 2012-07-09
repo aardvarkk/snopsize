@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage{graphicx}
+\graphicspath{{./images/}} % tell it where to look for graphics
 \usepackage[margin=1in]{geometry} % to set margins
 \usepackage{setspace} % to set line spacing
 \usepackage{parskip} % for proper paragraph spacing without indents
@@ -20,13 +21,27 @@ This Software Development Agreement (the "Agreement") is made and effective {\to
 \end{tabbing}
 The Customer and Developer agree as follows:
 \section{Purpose of Agreement}
-Customer desires to retain Developer as an independent contractor to develop the computer software (the "Software") described in the Functional Specifications (the "Specifications") (see section \ref{sec:functionalspec}) of this Agreement. Developer is ready, willing, and able to undertake the development of the Software and agrees to do so under the terms and conditions set forth in this Agreement.
+Customer desires to retain Developer as an independent contractor to develop the computer software (the "Software") described in the Functional Specifications (the "Specifications") (see section \ref{sec:functional_spec}) of this Agreement. Developer is ready, willing, and able to undertake the development of the Software and agrees to do so under the terms and conditions set forth in this Agreement.
 \section{Functional Specification}
-\label{sec:functionalspec}
+\label{sec:functional_spec}
 \subsection{Home Page}
-The Home Page is the page a user will first encounter upon visiting snopsize.com. A list of some "interesting" subset of snops will be shown on this page. These may consist of most recent snops, snops that have been saved frequently (popular snops), or some combination of these factors. Links will be available within each snop to navigate to all of the snops from the author of the given snop, and to all snops related to the same original URL. A user will have the ability to search for snops from this page. For more detail on search functionality, please reference section \ref{sec:searchpage}. A user may both log in (assuming he or she has an existing snopsize.com account), or sign up for the service from the home page. General navigation will be available at the bottom of the page. This functionality will be common to all pages on snopsize.com.
-\subsection{Search Page}
-\label{sec:searchpage}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{home_page.png}
+\caption{Home Page}
+\label{fig:fig_home_page}
+\end{center}
+\end{figure}
+The Home Page is the page a user will first encounter upon visiting snopsize.com. A list of some "interesting" subset of snops will be shown on this page. These may consist of most recent snops, snops that have been saved frequently (popular snops), or some combination of these factors. Links will be available within each snop to navigate to all of the snops from the author of the given snop, and to all snops related to the same original URL. A user will have the ability to search for snops from this page. For more detail on search functionality, please reference section \ref{sec:search_results_page}. A user may both log in (assuming he or she has an existing snopsize.com account), or sign up for the service from the home page. General navigation will be available at the bottom of the page. This functionality will be common to all pages on snopsize.com.
+\subsection{Search Results Page}
+\label{sec:search_results_page}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{search_results.png}
+\caption{Search Results Page}
+\label{fig:fig_search_results_page}
+\end{center}
+\end{figure}
 The Search Page allows users to search for snops. A search will simultaneously examine three distinct areas: users, URLs, and keywords.
 A search term may be seeking a particular user name. In such a case, the search results should contain user names similar to the search query.
 A search term may be seeking snops related to a particular URL. In such a case, the search results should contain URLs similar to the search query. Finally, a search term may be seeking snops related to a given keyword. In such a case, the search results should contain snops containing instances of those keywords. A search result will contain two possible links to pursue the given snop. One link will be related to the user name of the creator of the snop. Following that link will lead to a display of all of that user's snops, with the linked snop shown full size. The site user may then choose to navigate to other snops created by the same user. Alternatively, the site user may follow a link related to the URL of the snop. Note that this will only be possible if the original snop contained a URL. Following such a link, the site user will be presented with a list of snops related to the same URL as the given snop. This dual-view approach to browsing snops will be common to other areas of the site.
@@ -34,6 +49,13 @@ The intention will be to simplify the Search function by not requiring a user to
 \subsection{Related Page}
 The Related Page contains listings of snops that all reference the same URL. All of the snops should be directly related in that they are speaking about the same original article or page. URLs must match exactly to be linked in the Related Page. It may be possible to create a snop regarding the particular URL from this page. It may also be possible to sort the related snops based on popularity or how recently they were written.
 \subsection{User Page}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{user_page.png}
+\caption{User Page}
+\label{fig:fig_user_page}
+\end{center}
+\end{figure}
 The User Page contains listings of snops that were created by a single user. The listing will also contain snops favourited by the given user. The two types will be differentiated in some manner. All snops generated by a user will be made public. Snops will be uneditable once created, however they may be deleted. Inability to edit means that a user will never be surprised when a snop they favourited changes. Ability to delete allows users who do not wish to share information to remove it. Any existing links to that snop will still function, but produce a message that the given snop has been removed. It may be possible to view snops within a nested list of categories on the user page. Such functionality would also require users to be able to categorize snops of their own creation.
 \subsection{Snop View/Template}
 - Each snop should link to the “Article page”. That way if a user has favourited a snop, but wants to see other snops for an article, they can get there really quickly.
