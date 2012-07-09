@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage{graphicx}
-\usepackage[margin=0.75in]{geometry} % to set margins
+\usepackage[margin=1in]{geometry} % to set margins
 \usepackage{setspace} % to set line spacing
 \begin{document}
 \title{Software Development Agreement}
@@ -10,14 +10,98 @@
 \section*{}
 This Software Development Agreement (the “Agreement”) is made and effective {\today}.
 \begin{tabbing}
-{\bf BETWEEN}:\hspace{0.2in}\=Eoin Corrigan (the ``Customer'') \\
-{\bf AND}:\>Tau Labs (the ``Developer'') 
+{\bf BETWEEN}\=: Eoin Corrigan (the ``Customer'')\\
+{\bf AND}\>: Tau Labs (the ``Developer'')
 \end{tabbing}
 The Customer and Developer agree as follows:
 \section{Purpose of Agreement}
 Customer desires to retain Developer as an independent contractor to develop the computer software (the “Software”) described in the Functional Specifications (the “Specifications”) (see Section~\ref{sec:functionalspec}) of this Agreement. Developer is ready, willing, and able to undertake the development of the Software and agrees to do so under the terms and conditions set forth in this Agreement.
 \section{Functional Specification}
 \label{sec:functionalspec}
+\subsection{Home Page}
+The Home Page is the page a user will first encounter upon visiting snopsize.com. A list of some ``interesting'' subset of snops will be shown on this page. These may consist of most recent snops, snops that have been saved frequently (popular snops), or some combination of these factors. Links will be available within each snop to navigate to all of the snops from the author of the given snop, and to all snops related to the same original URL. A user will have the ability to search for snops from this page. For more detail on search functionality, please reference section \ref{sec:searchpage}. A user may both log in (assuming he or she has an existing snopsize.com account), or sign up for the service from the home page. General navigation will be available at the bottom of the page. This functionality will be common to all pages on snopsize.com.
+\subsection{Search Page}
+\label{sec:searchpage}
+The Search Page allows users to search for snops. A search will simultaneously examine three distinct areas: users, URLs, and keywords.
+A search term may be seeking a particular user name. In such a case, the search results should contain user names similar to the search query.
+A search term may be seeking snops related to a particular URL. In such a case, the search results should contain URLs similar to the search query. Finally, a search term may be seeking snops related to a given keyword. In such a case, the search results should contain snops containing instances of those keywords. A search result will contain two possible links to pursue the given snop. One link will be related to the user name of the creator of the snop. Following that link will lead to a display of all of that user's snops, with the linked snop shown full size. The site user may then choose to navigate to other snops created by the same user. Alternatively, the site user may follow a link related to the URL of the snop. Note that this will only be possible if the original snop contained a URL. Following such a link, the site user will be presented with a list of snops related to the same URL as the given snop. This dual-view approach to browsing snops will be common to other areas of the site.
+The intention will be to simplify the Search function by not requiring a user to enter a search type (user, keyword, or URL). We may, however, find that we require a search type to narrow down search results.
+\subsection{Article Page}
+- Page where you can view all the snops for a particular URL
+- This should be the result of a successful URL search (when 1 and only 1 match is made to the URL)
+- Allows the user to read all the snops for a particular article
+- You should be able to quickly add a snop for the article from this page
+- How about the ability to sort the snops for a particular article by: latest? most popular? etc.?
+\subsection{User Page}
+- Able to see all of the users snops
+- Look through their snops by category
+- See their favourite snops
+- On your own page you should be able to:
+- see your “private” snops
+- Create/Delete categories
+- Make snops public/private
+- Re-order snops into categories
+- Anything that appears in My Snops can be categorized in some sort of tree structure
+- You can arrange your snops in whatever nested groups you want
+- Linking to other snops for a particular URL?
+- Sorting snops based on: Latest? Most popular? etc.?
+\subsection{Snop View/Template}
+- Each snop should link to the “Article page”. That way if a user has favourited a snop, but wants to see other snops for an article, they can get there really quickly.
+- Each snop should link to the “user page” of the user that snopped it. This allows you to see other snops from that user.
+- Contains a link to the original article URL.
+- Allows users to favourite the snop and add it to my snops
+- Snops will occupy a lot of visual space -- you can only really look at one at once
+\subsubsection{Tweeting Snops? Facebook snops?}
+- If each snop box only allowed text the length of a tweet, it would be straightforward to tweet a snop as a series of tweets from start to finish of a snop... Or would you just tweet a link to a snop??? Could do that too, but people would be less likely to go to it I think. Instead, given their structured format, it would make sense to just tweet “Intro, Point 1, Point 2, Point 3, Conclusion” in sequence as tweets. We probably won’t add this functionality. Most “news” type twitter accounts will just post a title, then the link to their website/article. Feeds traffic to their website. 
+\subsection{Sign Up Page}
+- Allow a user to sign up for snopsize
+- Fields: Username, Password, Email
+- Username specified will be the username that shows up on the snops and that other user can identify you with.
+- Email needs to be provided so that if the user forgets their password they can retrieve it.
+- Password Requirements:
+	- Minimum Length: ???
+	- Character Requirements: ???
+\subsection{Create a Snop Page}
+- Original article URL (if one exists), Article Page URL(if one exists), and Username can be pre-filled
+- The rest of the space will be empty text boxes to be filled in.
+- The user should be able to cancel the creation of a snop.
+- Allow the user to make the snop private (so only they can see it)
+- Once you have finished doing the snop, it should take you to the article page and show the snop you just added.
+- If it’s being displayed from a webpage, it would be nice to display that webpage in a separate frame somehow so that text could easily be copied and pasted into the different points
+- You could also create snops from scratch
+- Not all snop portions need be mandatory. Perhaps instead of having multiple snop templates, they can become simpler by leaving sections blank. The snop will then show only non-blank portions. For instance, you could have a 2- or 3- point snop by not filling in the later points at all. It may be visualized in a simpler fashion as a result.
+\section{Non-Functional Requirements}
+\subsection{Languages and Internationalization}
+- Assume we’re only supporting American English for now in terms of the site
+- Allow Unicode for the snop content so people can write snops in any language
+\subsection{Software Requirements}
+- Run on PC/Mac/Linux
+- Run on Browsers: IE, Firefox, Chrome, Opera, etc.?
+\section{Legal and Payment}
+\subsection{Budget}
+Assuming \$80,000 per annum and 253 work days, that’s \$316 / working day
+At a \$15,000 budget, that means approximately 48 working days
+With two people, that means 24 working days or \~{}25 working days = 5 weeks
+Given the whole \$15,000 budget, we should only work approximately 5 weeks as a pair to make sure we’re earning the equivalent of around \$80,000 per annum
+\subsection{Payment}
+Should we separate into code releases and ask for portions of the total budget to be released to match? Or just say “we’ll do all of this and then you pay us everything at the end”?
+- Normally I would say lets do a payment schedule (divide it up into pieces), but for this one we might have to do everything at the end so it gives us time to incorporate and get a bank account and everything?
+\section{Brainstorming}
+\subsection{Potential ideas/tags/groupings/templates}
+- News items
+- Book summaries
+- Article summaries
+- Recipes (would have to be 4 steps?)
+- Movie reviews
+- Book reviews
+- Travel/hotel reviews
+- Concert reviews
+- If they’re templates, you would just have to fill stuff in, and the format would be constrained somehow so that you had to give a score out of 100 for a movie, for instance? … might be too limiting
+Many ideas differ from the standard snop format (book summaries, briefing templates), so we should keep in mind other formats as we continue (extensible ones?)
+I think images will be important (a la Pinterest), so we should include a spot for an image -- automatically cropped and everything to the same size
+I think it would be great to have a browsing/random section to look at new articles or posts → Would this be the home page?
+\subsection{Reporting Snops}
+- In order to try to avoid inappropriate snops, we might want to add a “report snop” link to every snop so that a user can report snops they feel are inappropriate.
 \section{Delivery}
 \section{Payment}	
 \section{Late Fees}
@@ -40,7 +124,6 @@ Developer warrants that for 6 months following acceptance of the Software by Cus
 •	Hardware failures due to defects, power problems, environmental problems or any cause other than the Software itself;
 •	Modifications of the Software operating systems or computer hardware by any party other than Developer; or
 •	Misuse, errors or negligence of Customer, its employees or agents in operating the Software. Developer shall not be obligated to cure any defect unless Customer notifies it of the existence and nature of such defect promptly upon discovery
-
 \subsection{Warranty of Compatibility}
 Developer warrants that the Software shall be compatible with the Customers hardware and software as set forth in the Specifications.
 THE WARRANTIES SET FORTH IN THIS AGREEMENT ARE THE ONLY WARRANTIES GRANTED BY DEVELOPER. DEVELOPER DISCLAIMS ALL OTHER WARRANTIES EXPRESS OR IMPLIED. INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OR MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
@@ -57,5 +140,4 @@ D.	All rights and licenses granted to Customer under this Agreement shall immedi
 Each party represents and warrants that on this date they are duly authorized to bind their respective principals by their signatures below.
 IN WITNESS WHEREOF, the parties have executed this Agreement on the dates set forth first above, with full knowledge of its content and significance and intending to be legally bound by the terms hereof.
 CUSTOMER						DEVELOPER
-
 \end{document}
