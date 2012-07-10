@@ -1,5 +1,5 @@
 - fill out delivery and payment section
-- do a once-over of the document before sending to frank
 - add a deployment section talking about how we'll supervise the initial production push
+- do a once-over of the document before sending to frank
 - send to frank to get an estimate of visual design costs
 - send document to eoin
