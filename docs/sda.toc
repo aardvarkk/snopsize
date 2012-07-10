@@ -1,13 +1,13 @@
 \contentsline {section}{\numberline {1}Purpose of Agreement}{2}
 \contentsline {section}{\numberline {2}Functional Specification}{2}
 \contentsline {subsection}{\numberline {2.1}Home Page}{2}
-\contentsline {subsection}{\numberline {2.2}Search Results Page}{2}
-\contentsline {subsection}{\numberline {2.3}Related Page}{3}
-\contentsline {subsection}{\numberline {2.4}User Page}{4}
-\contentsline {subsection}{\numberline {2.5}Snop View}{4}
-\contentsline {subsection}{\numberline {2.6}Sign Up Page}{5}
-\contentsline {subsection}{\numberline {2.7}Snop Structure}{5}
-\contentsline {subsection}{\numberline {2.8}Snop Creation Page}{6}
+\contentsline {subsection}{\numberline {2.2}Sign Up Page}{2}
+\contentsline {subsection}{\numberline {2.3}Snop View}{3}
+\contentsline {subsubsection}{\numberline {2.3.1}Snop Structure}{4}
+\contentsline {subsection}{\numberline {2.4}Search Results Page}{4}
+\contentsline {subsection}{\numberline {2.5}Related Page}{5}
+\contentsline {subsection}{\numberline {2.6}User Page}{5}
+\contentsline {subsection}{\numberline {2.7}Snop Creation Page}{5}
 \contentsline {section}{\numberline {3}Non-Functional Requirements}{6}
 \contentsline {subsection}{\numberline {3.1}Languages and Internationalization}{6}
 \contentsline {subsection}{\numberline {3.2}Software Requirements}{6}
