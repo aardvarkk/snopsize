@@ -1,7 +1,0 @@
-I - add an initial "motivation" section talking about the general idea of the site
-B - watch video again and make sure our direction aligns with his approach
-D - fill out delivery and payment section
-D - add a deployment section talking about how we'll supervise the initial production push
-I - do a once-over of the document before sending to frank
-I - send to frank to get an estimate of visual design costs
-I - send document to eoin
