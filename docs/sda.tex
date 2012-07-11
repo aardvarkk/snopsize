@@ -25,7 +25,7 @@ This Software Development Agreement (the "Agreement") is made and effective {\to
 {\bf BETWEEN}:\hspace{0.2in}\={\bf Eoin Corrigan} (the "Customer") \\
 \> \\
 {\bf AND}:\> {\bf Tau Labs } (the "Developer"), a partnership organized and existing under the laws \\
-\>of the Province of Ontario, with it's head office located at: \\
+\>of the Province of Ontario, with its head office located at: \\
 \> \\
 \>212-51 Saddlecreek Dr. \\
 \> Markham, Ontario,  L3T 7Z1 \\
@@ -37,10 +37,9 @@ snopsize.com is envisioned as a web application to assist in the creation and sh
 Customer desires to retain Developer as an independent contractor to develop the computer software (the "Software") described in the Functional Specifications (the "Specifications") (see section \ref{sec:functional_spec}) of this Agreement. Developer is ready, willing, and able to undertake the development of the Software and agrees to do so under the terms and conditions set forth in this Agreement.
 \section{Functional Specification}
 \label{sec:functional_spec}
-The functionality of the Software is defined below.
 \subsection{Snop Definition and Structure}
 \label{sec:snop_structure}
-A "snop" is a self-contained collection of facts and points drawn or deduced from a particular source. This source may be a news article or a book, but the concept of a snop itself is not limited to any particular media. Central to the approach of snopsize.com is a common template for all snops. A snop will consist of the following fields:
+A "snop" is a self-contained collection of facts or points drawn or deduced from a particular source. This source may be a news article or a book, but the concept of a snop itself is not limited to any particular media. Central to the approach of snopsize.com is a common template for all snops. A snop will consist of the following fields:
 \begin{enumerate}
 \item User (Mandatory)
 \item Title (Mandatory)
@@ -50,7 +49,7 @@ A "snop" is a self-contained collection of facts and points drawn or deduced fro
 \item Point 3 (Optional)
 \item Summary (Optional)
 \end{enumerate}
-Any fields marked as optional may be left empty during the creation of a new snop. This allows for some flexibility when summarizing more simplistic sources, but limits the upper complexity of a snop to a manageable chunk. The snop structure consists of 3 main points. This forms an essay-style structure in which there is a title, 3 points, and a summary.
+Any fields marked as optional may be left empty during the creation of a new snop. This allows for some flexibility when summarizing more simplistic sources, but limits the upper complexity of a snop to a manageable chunk. The snop structure consists of three main points. This forms an essay-style structure in which there is a title, three points, and a summary.
 \subsection{Home Page}
 \begin{figure}[htb]
 \begin{center}
@@ -61,21 +60,21 @@ Any fields marked as optional may be left empty during the creation of a new sno
 \end{figure}
 The Home Page is the page a user will first encounter upon visiting snopsize.com. A list of "top" snops will appear on this page. These will be the most recent snops, snops that have been saved frequently (popular snops), or a combination of both.
 
-Links will be available within each snop to navigate to all of the snops from the author of the given snop, and to all snops related to the same original URL.
+Links will be available within each snop to navigate to all of the snops from the author of the given snop, and also to all snops related to the same source URL.
 
 A user will have the ability to search for snops from this page. For more detail on search functionality, please reference section \ref{sec:search_results_page}. 
 
-If a user is not logged in, they will have the option to log in (assuming he or she has an existing snopsize.com account), or sign up for the service if they don't have an account. If the user has forgotten their password they will have the ability to request an email with their password.
+If users are not logged in, they will have the option to either log in with their existing account, or to create an account if they do not have oneI. If users have forgotten their password they will have the ability to request an email with their password.
 
-If the user is already logged in they will have the ability to log out, as well as access their User Page. 
+If the user is already logged in they will have the ability to log out, as well as access their User Page (see section \ref{sec:user_page}). 
 
 General site navigation will be available at the bottom of the page and will be common to all pages on snopsize.com.
 \subsection{Sign Up Page}
-This is a page that is shown to a new user who wishes to sign up. It should be directly accessible from most areas of the site. Many features of the site will operate properly without a user being signed up. However, saving snops from other users and creating new snops will both require a user account. A single user name should be linked to a specific email address. No more than one user name should be allowable per email address. Sign up should also require a certain password strengths. Forgotten passwords and login credentials may be overcome with password reset emails to reset the login credentials.
+This is the page that is shown to a new user who wishes to sign up. It should be directly accessible from most areas of the site. Many features of the site will operate properly without a user being signed up. However, saving snops from other users and creating new snops will both require a user account. A single user name should be linked to a specific email address. No more than one user name should be allowable per email address. Sign up should also require a certain password strength. Forgotten login credentials may be dealt with using password reset emails.
 \subsection{Snop View}
-Snops must be viewable in multiple ways. A Search Result containing snops can't display them in their entirety. As such, snops will need a short summary view which contains an overview or snapshot of the snop content. A full snop view is also necessary for a user to see the entirety of the snop at once. This view will be used on the User Page and the Related Page to show the snop contents. 
+Snops must be viewable in multiple perspectives. A Search Result (see section \ref{sec:search_results_page}) containing snops can't visually display them in their entirety. As such, snops will need a short line item view which contains an overview or snapshot of the snop content. A full snop view is also necessary for a user to see the entirety of a snop at once. This view will be used on the Related Page (see section \ref{sec:related_page}) and the User Page (see section \ref{sec:user_page}) to show the snop contents. 
 
-Both the full snop view and the line item snop view should have user and URL based links. From a snop, a user should be able to quickly navigate to Related snops or to other snops written by the same user. The full snop view should also have the ability to be saved to a user's snops if the snop was not written by that user. This feature may also be possible directly from the line item view. It is presumed that at full size, only one snop is likely to be able to be shown at any given time on a given device.
+Both the full snop view and the line item snop view should have user- and URL-based links. From a snop, a user should be able to quickly navigate to Related snops or to other snops written by the same user. The full snop view should also have the ability to save a snop to a user's snops if the snop was not written by that user. This feature will also be possible directly from the line item view. It is presumed that at full size, only one snop is likely to be able to be shown at any given time on a given device.
 \subsection{Search Results Page}
 \label{sec:search_results_page}
 \begin{figure}[htb]
@@ -85,20 +84,24 @@ Both the full snop view and the line item snop view should have user and URL bas
 \label{fig:fig_search_results_page}
 \end{center}
 \end{figure}
-The Search Page allows users to search for snops. A search will simultaneously examine three distinct areas: users, URLs, and keywords.
+The Search Page allows users to search for snops. A search will simultaneously examine three distinct areas: users, source URLs, and keywords.
 
-A search term may be seeking a particular user name. In such a case, the search results should contain user names similar to the search query. The site user would then be able to follow a link to the User Page.
+A search term may be seeking a particular user name. In such a case, the search results should contain user names similar to the search query. The user would then be able to follow a link to the relevant User Page (see section \ref{sec:user_page}).
 
-A search term may be seeking snops related to a particular URL. If a direct match is made on the URL, the search result will take you directly to the Related Page for that URL. If no direct match is found, the site user will be told that the URL is not found and will be given an option to create the first snop for that particular URL.
+A search term may be seeking snops related to a particular source URL. If a direct match is made on the source URL, the search result will take you directly to the Related Page (see section \ref{sec:related_page}) for the given source URL. If no direct match is found, the site user will be told that the source URL is not found and will be given an option to create the first snop for that particular source URL.
 
 Finally, a search term may be seeking snops related to a given keyword. In such a case, the search results should contain snops containing instances of those keywords. The snops would show up in a summary view so that the site user can quickly look through them.
 
-A search result will contain two possible links to pursue the given snop. One link will be related to the user name of the creator of the snop. Following that link will lead to a display of all of that user's snops, with the linked snop shown full size. The site user may then choose to navigate to other snops created by the same user. Alternatively, the site user may follow a link related to the URL of the snop. Note that this will only be possible if the original snop contained a URL. Following such a link, the site user will be presented with a list of snops related to the same URL as the given snop. This dual-view approach to browsing snops will be common to other areas of the site.
+A search result will contain two possible links to pursue the given snop. One link will be related to the user name of the creator of the snop. Following that link will lead to a display of all of that user's snops, with the linked snop shown full size. The site user may then choose to navigate to other snops created by the same user.
 
-The intention will be to simplify the Search function by not requiring a user to enter a search type (user, keyword, or URL). We may, however, find that we require a search type to narrow down search results.
+Alternatively, the site user may follow a link related to the source URL of the snop. Note that this will only be possible if the original snop contained a source URL. Following such a link, the site user will be presented with a list of snops related to the same source URL as the given snop. This dual-view approach to browsing snops will be common to other areas of the site.
+
+The intention will be to simplify the Search function by not requiring a user to enter a search type (user, keyword, or URL). Developer may, however, find that a search type is required to narrow down search results.
 \subsection{Related Page}
-The Related Page contains listings of snops that all reference the same URL. All of the snops should be directly related in that they are speaking about the same original article or page. URLs must match exactly to be linked in the Related Page. It will be possible to create a snop regarding the particular URL from this page. 
+\label{sec:related_page}
+The Related Page contains listings of snops that all reference the same source URL. All of the snops should be directly related in that they were written about the same original article or web page. Source URLs must match exactly to be linked in the Related Page. It will be possible to create a new snop regarding the particular source URL from this page. 
 \subsection{User Page}
+\label{sec:user_page}
 \begin{figure}[htb]
 \begin{center}
 \includegraphics[width=0.9\textwidth]{user_page.png}
@@ -106,15 +109,15 @@ The Related Page contains listings of snops that all reference the same URL. All
 \label{fig:fig_user_page}
 \end{center}
 \end{figure}
-The User Page contains listings of snops that were created by a single user. The listing will also contain snops favourited by the given user. The two types will be differentiated. 
+The User Page contains listings of snops that were created by a single user. The listing will also contain snops from other authors saved by the given user. The two types will be differentiated. 
 
-All snops generated by a user will be made public. Snops will be uneditable once created, however they may be deleted. Inability to edit means that a user will never be surprised when a snop they favourited changes. Ability to delete allows users who do not wish to share information to remove it. Any existing links to that snop will still function, but produce a message that the given snop has been removed. 
+All snops generated by a user will be made public. Snops will be uneditable once created. They may, however, be deleted. Inability to edit means that a user will never be surprised when a snop they saved changes. Ability to delete allows users who do not wish to share certain information to remove it. Any existing links to that snop will still function, but will produce a message that the given snop has been removed. 
 
-If the user is on their own user page, they will also be able to create a new snop.
+If users are viewing their own User Page, they will also be able to create a new snop.
 \subsection{Snop Creation Page}
-The act of creating a snop will require its own interface. Users may enter information in any of the snop fields. The user can indicate completion through a "Snop" button. Only some snop fields will be considered mandatory (see section \ref{sec:snop_structure}). A snop should have a title and a user name. The user name will be guaranteed to be valid, since only users who have signed up for the service will be able to create snops. 
+The act of creating a snop will require its own interface. Users may enter information in any of the snop fields. The user can indicate completion through a "Snop" button. Only some snop fields will be considered mandatory (see section \ref{sec:snop_structure}). A snop must have a title and a user name. The user name will be guaranteed to be valid, since only users who have signed up for the service will be able to create snops. Snop titles are not required to be unique.
 
-Initially, the snop boxes will all be shown but are blank. The user may move through the boxes in any order to complete the desired information before completing the snop. The snop creation process may be cancelled at any point during the creation. 
+Initially, the snop boxes will all be shown but are blank. The user may move through the boxes in any order to insert the desired text before completing the snop. The snop creation process may be cancelled at any point during the creation. 
 
 Behaviour upon completion of the snop should be context-sensitive. If the user initially created the snop from a Related Page, the user should be returned to that page and have their snop displayed. Likewise, if the user created the snop from their own User Page, they should be returned to that page and have their snop displayed.
 \section{Non-Functional Requirements}
@@ -130,68 +133,69 @@ The web service will run correctly on the three top platforms (PC, Mac, and Linu
 \end{enumerate}
 Although every effort will be made to support legacy browsers, identical appearance and performance cannot be guaranteed in outdated versions of the browsers named above.
 \subsection{Visual Design}
-Visual design of the web application will be outsourced to a third party. The costs incurred as a result of visual design will be the responsibility of the Developer.
+Visual design of the web application will be outsourced to a third party. Developer will require express approval from Customer regarding visual design of the web application. The costs incurred as a result of visual design will be the responsibility of the Developer.
 \subsection{Web Hosting}
-Customer will be responsible for hosting the web application and paying any related costs to web hosting. Depending on the technology chosen to develop the web application, the Developer may request the Customer to change their hosting provider. This will ensure that the web application can be run properly. Any costs for switching the hosting arrangements will be handled by the Customer.
+Customer will be responsible for hosting Software and paying any costs related to web hosting. Depending upon the technology chosen to develop Software, Developer may request Customer to switch hosting provider. This will ensure that Software executes properly and performs as expected. Any costs related to switching hosting arrangements will be paid for by Customer.
 \subsection{Deployment}
-Developer will be responsible for supervising the initial Software deployment. The Customer may be required to provide assistance or information pertaining to the deployment. The Customer's assistance or information includes, but is not limited, to:
+Developer will be responsible for supervising initial Software deployment. Customer may be required to provide assistance or information pertaining to the deployment. Customer's assistance or information includes, but is not limited to:
 \begin{enumerate}
 \item Login information required to access the production server
-\item Providing hardware to deploy the Software
+\item Providing hardware to deploy Software
 \item Any additional hardware or software requirements 
 \end{enumerate}
 \section{Delivery}
 \subsection{Deliverables}
-The Developer will deliver all of the Software which includes, but is not limited to:
+Developer will deliver Software which includes, but is not limited to:
 \begin{enumerate}
 \item Source code
 \item Visual design assets 
 \item Documentation
 \end{enumerate}
 \subsection{Schedule}
-The Developer will deliver to the Customer the final product within 8 weeks of the signing of this Agreement. 
+Developer will deliver Software to Customer within 8 weeks of the signing of this Agreement. 
 
-Each week the Developer will provide the Customer with an intermediate deliverable that shows the functionality of the Software at that point in time. The intermediate deliverable may implement a subset of the Deliverables specified above. 
+Each week, Developer will provide Customer with an intermediate deliverable that shows the functionality of Software at that point in time. The intermediate deliverable may implement a subset of the deliverables specified above. 
 \subsubsection{Delay}
-Developer shall use all reasonable efforts to deliver the Software on schedule. However, at its discretion, Developer can extend the due date for any Deliverable by giving written notice to Customer. The total of all such extensions shall not exceed 15 days. 
+Developer shall use all reasonable efforts to deliver Software on schedule. However, at its discretion, Developer can extend the due date for any deliverable by giving written notice to Customer. The total of all such extensions shall not exceed 15 days. 
 \section{Payment}	
-The Customer will pay Developer a total of \$15,000 for the development of the Software. \$5000 shall be paid within one week of the acceptance of this agreement, and \$10,000 shall be paid upon completion and delivery of the Software.
+Customer will pay Developer a total of \$15,000 CAD for the development of the Software. \$5000 CAD shall be paid within one week of the acceptance of this agreement, and \$10,000 CAD shall be paid upon completion and delivery of Software.
 \section{Payment of Developer’s Costs}
-Customer shall reimburse Developer for the cost of any development software or commercial software libraries the developer deems necessary to complete this project, subject to approval by Customer.
+Customer shall reimburse Developer for the cost of any development software or commercial software libraries the developer deems necessary to complete Software, subject to approval by Customer.
 \section{Changes in Specifications}
-Customer may, in its sole discretion, request that changes be made to the Specifications, or other aspects of the Agreement and tasks associated with this Agreement. If Customer requests such a change, Developer will use its best efforts to implement the requested change at no additional expense to Customer and without delaying delivery of the Software. In the event that the proposed change will, in the reasonable opinion of the Developer, require a delay in the delivery of the Software or would result in additional expense to Customer, then Customer and Developer shall confer and Customer shall, in its discretion, elect either to withdraw its proposed change or require Developer to deliver the Software with the proposed change and subject to the delay and/or additional expense.
+Customer may, in its sole discretion, request that changes be made to the Specifications, or other aspects of the Agreement and tasks associated with this Agreement. If Customer requests such a change, Developer will use its best efforts to implement the requested change at no additional expense to Customer and without delaying delivery of Software. In the event that the proposed change will, in the reasonable opinion of Developer, require a delay in the delivery of Software or would result in additional expense to Customer, then Customer and Developer shall confer and Customer shall, in its discretion, elect either to withdraw its proposed change or require Developer to deliver the Software with the proposed change and subject to the delay and/or additional expense.
 \section{Acceptance Testing of Software}
-Customer shall have 15 days from the date of delivery of the Software in final form to inspect, test and evaluate it to determine whether the Software satisfies the functionality set forth in the Specifications.
+Customer shall have 15 days from the date of delivery of Software in final form to inspect, test and evaluate it to determine whether Software satisfies the functionality set forth in the Specifications.
 
-If the Software does not satisfy the functionality, Customer shall give Developer written notice stating why the Software is unacceptable. Developer shall have 15 days from the receipt of such notice to correct the deficiencies. Customer shall then have 15 days to inspect, test and evaluate the Software. If the Software still does not satisfy the functionality set forth, Customer shall have the option of either (1) repeating the procedure set forth above, or (2) terminating this Agreement pursuant to the section of this Agreement entitled "Termination." If Customer does not give written notice to Developer withing the initial 15-day inspection, testing and evaluation period or any extension of that period, that the Software does not satisfy the functionality, Customer shall be deemed to have accepted the Software upon expiration of such period.
+If Software does not satisfy said functionality, Customer shall give Developer written notice stating why Software is unacceptable. Developer shall have 15 days from the receipt of such notice to correct the deficiencies. Customer shall then have 15 days to inspect, test and evaluate Software. If Software still does not satisfy the functionality set forth, Customer shall have the option of either (1) repeating the procedure set forth above, or (2) terminating this Agreement pursuant to section \ref{sec:termination}. If Customer does not give written notice to Developer within the initial 15 day inspection, testing and evaluation period or any extension of that period that Software does not satisfy the functionality, Customer shall be deemed to have accepted the Software upon expiration of such period.
 \section{Ownership of Software}
-Developer assigns to Customer its entire right, title and interest in anything created or developed by Developer for Customer under this Agreement ("Work Product") including all patents, copyrights, trade secrets and other proprietary rights. This assignment is conditioned upon full payment of the compensation due Developer under this Agreement. 
+Developer assigns to Customer its entire right, title and interest in anything created or developed by Developer for Customer under this Agreement ("Work Product") including all patents, copyrights, trade secrets and other proprietary rights. This assignment is conditioned upon full payment of the compensation due to Developer under this Agreement. 
 
-Customer assigns the Developer rights to make mentions of the Work Product for the purposes of marketing the Customer as the original developer of the Work Product. This includes, but is not limited to, images of the Work Product, screen shots, other media, etc.
+Customer assigns Developer rights to make mention of Work Product for the purposes of marketing. This includes, but is not limited to, images of the Work Product, screenshots, and other media.
 \section{Ownership of Background Technology}
 Customer acknowledges that Developer owns or holds a license to use and sublicense various pre-existing development tools, routines, subroutines and other programs, data and materials that Developer may include in the Software developed under this Agreement. This material shall be referred to as "Background Technology."  
 
-Developer retains all right, title and interest, including all copyright, patent rights and trade secret rights in the Background Technology. Subject to full payment of the consulting fees due under this Agreement, Developer grants Customer a nonexclusive, perpetual worldwide license to use the Background Technology in the Software developed for and delivered to Customer under this Agreement, and all updates and revisions thereto. However, Customer shall make no other commercial use of the Background Technology without Developer’s written consent.
+Developer retains all right, title and interest, including all copyright, patent rights and trade secret rights in the Background Technology. Subject to full payment of the consulting fees due under this Agreement, Developer grants Customer a nonexclusive, perpetual worldwide license to use Background Technology in Software developed for and delivered to Customer under this Agreement, and all updates and revisions thereto. However, Customer shall make no other commercial use of the Background Technology without Developer’s written consent.
 \section{Warranty}
 \begin{enumerate}
 \renewcommand{\labelenumi}{(\Alph{enumi})}
-\item {\bf Warranty of Software Performance}: Developer warrants that for 6 months following acceptance of the Software by Customer, the Software will be free from material reproducible programming errors and defects in workmanship, and will substantially conform to the Specifications when operated in accordance with Specifications. If material reproducible programming errors are discovered during the warranty period, Developer shall promptly remedy them at no additional expense to Customer. This warranty to Customer shall be null and void if Customer is in default under this Agreement or if the non-conformance is due to:
+\item {\bf Warranty of Software Performance}: Developer warrants that for 6 months following acceptance of the Software by Customer, Software will be free from reproducible programming errors and defects in workmanship, and will substantially conform to the Specifications when operated in accordance with Specifications. If reproducible programming errors are discovered during the warranty period, Developer shall promptly remedy them at no additional expense to Customer. This warranty to Customer shall be null and void if Customer is in default under this Agreement or if the non-conformance is due to:
 \begin{itemize}
-\item Hardware failures due to defects, power problems, environmental problems or any cause other than the Software itself;
-\item Modifications of the Software operating systems or computer hardware by any party other than Developer; or
-\item Misuse, errors or negligence of Customer, its employees or agents in operating the Software. Developer shall not be obligated to cure any defect unless Customer notifies it of the existence and nature of such defect promptly upon discovery
+\item Hardware failures due to defects, power problems, environmental problems or any cause other than Software itself;
+\item Modifications of Software operating systems or computer hardware by any party other than Developer; or
+\item Misuse, errors or negligence of Customer, its employees or agents in operating Software. Developer shall not be obligated to cure any defect unless Customer notifies it of the existence and nature of such defect promptly upon discovery
 \end{itemize}
-\item {\bf  Warranty of Compatibility}: Developer warrants that the Software shall be compatible with the Customers hardware and software as set forth in the Specifications. 
+\item {\bf  Warranty of Compatibility}: Developer warrants that Software shall be compatible with Customer's hardware and software as set forth in the Specifications. 
 \end{enumerate}
-The warranties set forth in this agreement are the only warranties granted by Developer. Developer disclaims all other warranties express or implied. Including, but not limited to, any implied warranties or merchantability or fitness for a particular purpose.
+The warranties set forth in this agreement are the only warranties granted by Developer. Developer disclaims all other warranties express or implied. This includes, but is not limited to, any implied warranties or merchantability or fitness for a particular purpose.
 \section{Term of Agreement}
 This Agreement shall commence upon today’s date and continue until all of the obligations of the parties have been performed or until earlier terminated as provided herein.
 \section{Termination of Agreement}
+\label{sec:termination}
 Each party shall have the right to terminate this Agreement by written notice to the other if a party has materially breached any obligation herein and such breach remains uncured for a period of 30 days after written notice of such breach is sent to the other party.
 If Developer terminates this Agreement because of Customer's fault, all of the following shall apply:
 \begin{enumerate} \itemsep0pt \parskip0pt \parsep0pt
 \renewcommand{\labelenumi}{(\Alph{enumi})}
-\item Customer shall immediately cease use of the Software. 
+\item Customer shall immediately cease use of Software. 
 \item Customer shall, within 10 days of such termination, deliver to Developer all copies and portions of the Software and related materials and documentation in its possession furnished by Developer under this Agreement. 
 \item All amounts payable or accrued to Developer under this Agreement shall become immediately due and payable. 
 \item All rights and licenses granted to Customer under this Agreement shall immediately terminate. 
