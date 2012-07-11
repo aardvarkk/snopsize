@@ -8,7 +8,6 @@
 \setlength{\parindent}{0cm} % set no ident between paragraphs
 \setmainfont{Palatino Linotype} % set the font
 \renewcommand{\contentsname}{Table of Contents} % change default name of table of contents
-
 \begin{document}
 \input{./tau_labs_title.tex}
 \newpage
@@ -37,6 +36,8 @@ snopsize.com is envisioned as a web application to assist in the creation and sh
 Customer desires to retain Developer as an independent contractor to develop the computer software (the "Software") described in the Functional Specifications (the "Specifications") (see section \ref{sec:functional_spec}) of this Agreement. Developer is ready, willing, and able to undertake the development of the Software and agrees to do so under the terms and conditions set forth in this Agreement.
 \section{Functional Specification}
 \label{sec:functional_spec}
+\subsection{Introduction}
+Four operations are seen as being critical to the foundation of snopsize.com: Create, Search, Save, and Browse. The Create operation is the ability to create a new snop. All registered users will have this ability. Search is the ability to sift through all submitted snops to locate ones of interest. Search may be based on keyword, user name, or source URL. Save implies the ability to mark other users' snops as being of particular interest. Saved snops will remain available to a user. Browse is the ability to peruse sets of related snops. Snops may be related because they were written by the same user, related to the same source URL, or related in some other fashion entirely.
 \subsection{Snop Definition and Structure}
 \label{sec:snop_structure}
 A "snop" is a self-contained collection of facts or points drawn or deduced from a particular source. This source may be a news article or a book, but the concept of a snop itself is not limited to any particular media. Central to the approach of snopsize.com is a common template for all snops. A snop will consist of the following fields:
@@ -64,17 +65,17 @@ Links will be available within each snop to navigate to all of the snops from th
 
 A user will have the ability to search for snops from this page. For more detail on search functionality, please reference section \ref{sec:search_results_page}. 
 
-If users are not logged in, they will have the option to either log in with their existing account, or to create an account if they do not have oneI. If users have forgotten their password they will have the ability to request an email with their password.
+If users are not logged in, they will have the option to either log in with their existing account, or to create an account if they do not have one. If users have forgotten their password they will have the ability to reset their password via an email link.
 
 If the user is already logged in they will have the ability to log out, as well as access their User Page (see section \ref{sec:user_page}). 
 
-General site navigation will be available at the bottom of the page and will be common to all pages on snopsize.com.
+General site navigation will be available at the bottom of the page and will be common to all pages on snopsize.com. This area may include links such as "About", "Contact", and "Site Map".
 \subsection{Sign Up Page}
 This is the page that is shown to a new user who wishes to sign up. It should be directly accessible from most areas of the site. Many features of the site will operate properly without a user being signed up. However, saving snops from other users and creating new snops will both require a user account. A single user name should be linked to a specific email address. No more than one user name should be allowable per email address. Sign up should also require a certain password strength. Forgotten login credentials may be dealt with using password reset emails.
 \subsection{Snop View}
 Snops must be viewable in multiple perspectives. A Search Result (see section \ref{sec:search_results_page}) containing snops can't visually display them in their entirety. As such, snops will need a short line item view which contains an overview or snapshot of the snop content. A full snop view is also necessary for a user to see the entirety of a snop at once. This view will be used on the Related Page (see section \ref{sec:related_page}) and the User Page (see section \ref{sec:user_page}) to show the snop contents. 
 
-Both the full snop view and the line item snop view should have user- and URL-based links. From a snop, a user should be able to quickly navigate to Related snops or to other snops written by the same user. The full snop view should also have the ability to save a snop to a user's snops if the snop was not written by that user. This feature will also be possible directly from the line item view. It is presumed that at full size, only one snop is likely to be able to be shown at any given time on a given device.
+Both the full snop view and the line item snop view should have user- and URL-based links. From a snop, a user should be able to quickly navigate to related snops or to other snops written by the same user. The full snop view should also have the ability to save a snop to a user's snops if the snop was not written by that user. This feature will also be possible directly from the line item view. It is presumed that at full size, only one snop is likely to be able to be shown at any given time on a given device.
 \subsection{Search Results Page}
 \label{sec:search_results_page}
 \begin{figure}[htb]
