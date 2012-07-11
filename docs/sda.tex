@@ -31,13 +31,26 @@ This Software Development Agreement (the "Agreement") is made and effective {\to
 \> Markham, Ontario,  L3T 7Z1 \\
 \end{tabbing}
 The Customer and Developer agree as follows:
+\section{Motivation}
+snopsize.com is envisioned as a web application to assist in the creation and sharing of succinct, structured information. It asks its users to distill disparate sources of data to their fundamental essence. The larger community may then examine and share this information, not only for the purpose of discovering new facts and ideas, but also to help commit existing ones to memory. Users will be drawn to snopsize.com for the ease with which it allows them to summarize various media into a standard, digestible template suitable for sharing with others.
 \section{Purpose of Agreement}
 Customer desires to retain Developer as an independent contractor to develop the computer software (the "Software") described in the Functional Specifications (the "Specifications") (see section \ref{sec:functional_spec}) of this Agreement. Developer is ready, willing, and able to undertake the development of the Software and agrees to do so under the terms and conditions set forth in this Agreement.
-\section{Motivation}
-snopsize.com is envisioned as a web service to assist in the creation and sharing of succinct, structured information. It asks its users to distill disparate sources of data to their fundamental essence. The larger community may then examine and share this information, not only for the purpose of discovering new facts and ideas, but also to help commit existing ones to memory. Users will be drawn to snopsize.com for the ease with which it allows them to summarize various media into a standard, digestible template suitable for sharing with others.
 \section{Functional Specification}
 \label{sec:functional_spec}
-The full functionality of the Software is defined in the following web page descriptions.
+The functionality of the Software is defined below.
+\subsection{Snop Definition and Structure}
+\label{sec:snop_structure}
+A "snop" is a self-contained collection of facts and points drawn or deduced from a particular source. This source may be a news article or a book, but the concept of a snop itself is not limited to any particular media. Central to the approach of snopsize.com is a common template for all snops. A snop will consist of the following fields:
+\begin{enumerate}
+\item User (Mandatory)
+\item Title (Mandatory)
+\item Source URL (Optional)
+\item Point 1 (Optional)
+\item Point 2 (Optional)
+\item Point 3 (Optional)
+\item Summary (Optional)
+\end{enumerate}
+Any fields marked as optional may be left empty during the creation of a new snop. This allows for some flexibility when summarizing more simplistic sources, but limits the upper complexity of a snop to a manageable chunk. The snop structure consists of 3 main points. This forms an essay-style structure in which there is a title, 3 points, and a summary.
 \subsection{Home Page}
 \begin{figure}[htb]
 \begin{center}
@@ -63,19 +76,6 @@ This is a page that is shown to a new user who wishes to sign up. It should be d
 Snops must be viewable in multiple ways. A Search Result containing snops can't display them in their entirety. As such, snops will need a short summary view which contains an overview or snapshot of the snop content. A full snop view is also necessary for a user to see the entirety of the snop at once. This view will be used on the User Page and the Related Page to show the snop contents. 
 
 Both the full snop view and the line item snop view should have user and URL based links. From a snop, a user should be able to quickly navigate to Related snops or to other snops written by the same user. The full snop view should also have the ability to be saved to a user's snops if the snop was not written by that user. This feature may also be possible directly from the line item view. It is presumed that at full size, only one snop is likely to be able to be shown at any given time on a given device.
-\subsubsection{Snop Structure}
-\label{sec:snop_structure}
-A snop will consist of the following fields:
-\begin{enumerate}
-\item User (Mandatory)
-\item Title (Mandatory)
-\item Source URL (Optional)
-\item Point 1 (Optional)
-\item Point 2 (Optional)
-\item Point 3 (Optional)
-\item Summary (Optional)
-\end{enumerate}
-Any fields marked as optional may be left empty during the creation of a new snop. The snop structure consists of 3 main points, this forms an "essay" style structure where you have a title, 3 points, followed by a summary.
 \subsection{Search Results Page}
 \label{sec:search_results_page}
 \begin{figure}[htb]
@@ -136,9 +136,9 @@ Customer will be responsible for hosting the web application and paying any rela
 \subsection{Deployment}
 Developer will be responsible for supervising the initial Software deployment. The Customer may be required to provide assistance or information pertaining to the deployment. The Customer's assistance or information includes, but is not limited, to:
 \begin{enumerate}
-\item Login information to production server
+\item Login information required to access the production server
 \item Providing hardware to deploy the Software
-\item Any other special hardware or software requirements 
+\item Any additional hardware or software requirements 
 \end{enumerate}
 \section{Delivery}
 \subsection{Deliverables}
@@ -149,11 +149,11 @@ The Developer will deliver all of the Software which includes, but is not limite
 \item Documentation
 \end{enumerate}
 \subsection{Schedule}
-The Developer will deliver the final product within 8 weeks of the signing of this Agreement. 
+The Developer will deliver to the Customer the final product within 8 weeks of the signing of this Agreement. 
 
-Each week the Developer will provide the Customer with an intermediate deliverable that shows the functionality of the Software at that point in time. The intermediate deliverable may be a subset of the Deliverables specified above. 
+Each week the Developer will provide the Customer with an intermediate deliverable that shows the functionality of the Software at that point in time. The intermediate deliverable may implement a subset of the Deliverables specified above. 
 \subsubsection{Delay}
-Developer shall use all reasonable efforts to deliver the Software on schedule. However, at its opinion, Developer can extend the due date for any Deliverable by giving written notice to Customer. The total of all such extensions shall not exceed 15 days. 
+Developer shall use all reasonable efforts to deliver the Software on schedule. However, at its discretion, Developer can extend the due date for any Deliverable by giving written notice to Customer. The total of all such extensions shall not exceed 15 days. 
 \section{Payment}	
 The Customer will pay Developer a total of \$15,000 for the development of the Software. \$5000 shall be paid within one week of the acceptance of this agreement, and \$10,000 shall be paid upon completion and delivery of the Software.
 \section{Payment of Developer’s Costs}
