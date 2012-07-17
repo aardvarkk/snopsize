@@ -13,3 +13,13 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore documentation
+docs/*.aux
+docs/*.log
+docs/*.gz
+docs/*.orig
+docs/*.pdf
+
+# Ignore project files
+._redcar
