@@ -3,3 +3,4 @@ docs/*.log
 docs/*.gz
 docs/*.orig
 docs/*.pdf
+._redcar
