@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  source: MyString
+  title: MyString
+  point1: MyString
+  point2: MyString
+  point3: MyString
+  summary: MyString
+
+two:
+  user_id: 1
+  source: MyString
+  title: MyString
+  point1: MyString
+  point2: MyString
+  point3: MyString
+  summary: MyString
