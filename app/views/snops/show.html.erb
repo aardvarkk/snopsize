@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @snop.user_id %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%= @snop.source %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @snop.title %>
+</p>
+
+<p>
+  <b>Point1:</b>
+  <%= @snop.point1 %>
+</p>
+
+<p>
+  <b>Point2:</b>
+  <%= @snop.point2 %>
+</p>
+
+<p>
+  <b>Point3:</b>
+  <%= @snop.point3 %>
+</p>
+
+<p>
+  <b>Summary:</b>
+  <%= @snop.summary %>
+</p>
+
+
+<%= link_to 'Edit', edit_snop_path(@snop) %> |
+<%= link_to 'Back', snops_path %>

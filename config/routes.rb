@@ -1,4 +1,6 @@
 Snopsize::Application.routes.draw do
+  resources :snops
+
   get "home/index"
 
   devise_for :users
