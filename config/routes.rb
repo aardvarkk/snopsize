@@ -1,7 +1,14 @@
 Snopsize::Application.routes.draw do
+
+  get "search/search"
+
+  # for searching snops
+  match '/search' => 'search#search'
+
+  # all of the snop resources
   resources :snops
 
-  get "home/index"
+  get 'home/index'
 
   devise_for :users, :skip => [:sessions]
   as :user do

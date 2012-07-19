@@ -7,7 +7,6 @@ gem 'rails', '3.2.6'
 
 gem 'sqlite3'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -39,3 +38,7 @@ gem 'devise'
 
 # To use debugger
 # gem 'debugger'
+
+# For fulltext searching
+gem 'sunspot_rails'
+gem 'sunspot_solr'
