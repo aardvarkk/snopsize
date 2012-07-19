@@ -1,8 +1,17 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <b>User:</b>
-  <%= @snop.user_id %>
+  <%= @user.email %>
 </p>
 
 <p>
@@ -35,6 +44,12 @@
   <%= @snop.summary %>
 </p>
 
+<div class="fb-like" data-send="true" data-width="450" data-show-faces="true" data-font="arial"></div> 
+<br>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<br>
 
 <%= link_to 'Edit', edit_snop_path(@snop) %> |
 <%= link_to 'Back', snops_path %>

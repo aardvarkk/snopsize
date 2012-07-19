@@ -1,4 +1,6 @@
 class SnopsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]	
+	
   # GET /snops
   # GET /snops.json
   def index
@@ -14,6 +16,7 @@ class SnopsController < ApplicationController
   # GET /snops/1.json
   def show
     @snop = Snop.find(params[:id])
+    @user = User.find(@snop.user_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,6 +44,11 @@ class SnopsController < ApplicationController
   # POST /snops.json
   def create
     @snop = Snop.new(params[:snop])
+            
+    # Set the user_id to the logged in user, since
+    # only logged in users can create snops
+    @user = current_user
+    @snop.user_id = current_user.id 
 
     respond_to do |format|
       if @snop.save
