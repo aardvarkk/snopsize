@@ -17,7 +17,7 @@
 <% @snops.each do |snop| %>
   <tr>
   	<% user = User.find(snop.user_id)%>
-    <td><%= user.email %></td>
+    <td><%= user.username %></td>
     <td><%= snop.source %></td>
     <td><%= snop.title %></td>
     <td><%= snop.point1 %></td>
