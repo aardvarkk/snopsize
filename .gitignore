@@ -15,11 +15,11 @@
 /tmp
 
 # Ignore documentation
-docs/*.aux
-docs/*.log
-docs/*.gz
-docs/*.orig
-docs/*.pdf
+doc/*.aux
+doc/*.log
+doc/*.gz
+doc/*.orig
+doc/*.pdf
 
 # Ignore project files
 ._redcar
