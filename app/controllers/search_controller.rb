@@ -8,9 +8,9 @@ class SearchController < ApplicationController
   	return unless (params[:q])
 
   	# perform the search using the full text
-  	Snop.search do
+  	@results = Snop.search do
   		fulltext params[:q]
-  	end
+  	end.results
 
   end
 end

@@ -23,3 +23,7 @@ docs/*.pdf
 
 # Ignore project files
 ._redcar
+
+# Ignore Solr database stuff
+log/*
+solr/data/*

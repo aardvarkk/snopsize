@@ -12,7 +12,14 @@
 <%# show any results... %>
 <% if @results %>
 	<% @results.each do |result| %>
-	<%= result %>
+		<div>
+			<%= result.title %><br/>
+			<%= result.point1 %><br/>
+			<%= result.point2 %><br/>
+			<%= result.point3 %><br/>
+			<%= result.summary %><br/>
+			<hr/>
+		</div>
 	<% end %>
 <% end %>
 
