@@ -44,7 +44,8 @@ A "snop" is a self-contained collection of facts or points drawn or deduced from
 \begin{enumerate}
 \item User (Mandatory)
 \item Title (Mandatory)
-\item Source URL (Optional)
+\item Source Domain (Optional)
+\item Source Resource (Optional)
 \item Point 1 (Optional)
 \item Point 2 (Optional)
 \item Point 3 (Optional)
@@ -73,11 +74,13 @@ General site navigation will be available at the bottom of the page and will be 
 \subsection{Sign Up Page}
 This is the page that is shown to a new user who wishes to sign up. It should be directly accessible from most areas of the site. Many features of the site will operate properly without a user being signed up. However, saving snops from other users and creating new snops will both require a user account. A single user name should be linked to a specific email address. No more than one user name should be allowable per email address. Sign up should also require a certain password strength. Forgotten login credentials may be dealt with using password reset emails.
 \subsection{Snop View}
-Snops must be viewable in multiple perspectives. A Search Result (see section \ref{sec:search_results_page}) containing snops can't visually display them in their entirety. As such, snops will need a short line item view which contains an overview or snapshot of the snop content. A full snop view is also necessary for a user to see the entirety of a snop at once. This view will be used on the Related Page (see section \ref{sec:related_page}) and the User Page (see section \ref{sec:user_page}) to show the snop contents. 
+Snops must be viewable in multiple perspectives. A Search Result (see section \ref{sec:search_results_page}) containing snops can't visually display them in their entirety. As such, snops will need a short line item view which contains an overview or snapshot of the snop content. A full snop view is also necessary for a user to see the entirety of a snop at once. This view will be used on the Resource Page (see section \ref{sec:resource_page}) and the User Page (see section \ref{sec:user_page}) to show the snop contents. 
+
+A snop should also be viewable as a single entity. This will allow a user to externally link to a snop separate from any context. Such a view must also present a user with the ability to see other snops from the same user, domain, or resource.
 
 Both the full snop view and the line item snop view should have user- and URL-based links. From a snop, a user should be able to quickly navigate to related snops or to other snops written by the same user. The full snop view should also have the ability to save a snop to a user's snops if the snop was not written by that user. This feature will also be possible directly from the line item view. It is presumed that at full size, only one snop is likely to be able to be shown at any given time on a given device.
 
-From the full snop view, the user will also be able to tweet the snop and "Like" the snop on facebook. These features will be integrated into the site. 
+From the full snop view, the user will also be able to "Tweet" the snop and "Like" the snop on facebook. These features will be integrated into the site. 
 \subsection{Search Results Page}
 \label{sec:search_results_page}
 \begin{figure}[htb]
@@ -91,18 +94,25 @@ The Search Page allows users to search for snops. A search will simultaneously e
 
 A search term may be seeking a particular user name. In such a case, the search results should contain user names similar to the search query. The user would then be able to follow a link to the relevant User Page (see section \ref{sec:user_page}).
 
-A search term may be seeking snops related to a particular source URL. If a direct match is made on the source URL, the search result will take you directly to the Related Page (see section \ref{sec:related_page}) for the given source URL. If no direct match is found, the site user will be told that the source URL is not found and will be given an option to create the first snop for that particular source URL.
+A search term may be seeking snops related to a particular source URL. A URL will be considered as an amalgamation of two parts: the domain and resource. As an example, consider the site 
+
+\begin{verbatim}http://www.example.org/article\end{verbatim}
+
+In this case, the domain would be \texttt{http://www.example.org} and the resource would be \texttt{article}. If a direct match is made on the domain and the resource, the search result will take you directly to the Resource Page (see section \ref{sec:resource_page}) for the given source URL. If no direct match is found, the site user will be told that the source URL is not found and will be given an option to create the first snop for that particular source URL. Also, any other resources in the same domain will be shown as results.
 
 Finally, a search term may be seeking snops related to a given keyword. In such a case, the search results should contain snops containing instances of those keywords. The snops would show up in a summary view so that the site user can quickly look through them.
 
 A search result will contain two possible links to pursue the given snop. One link will be related to the user name of the creator of the snop. Following that link will lead to a display of all of that user's snops, with the linked snop shown full size. The site user may then choose to navigate to other snops created by the same user.
 
-Alternatively, the site user may follow a link related to the source URL of the snop. Note that this will only be possible if the original snop contained a source URL. Following such a link, the site user will be presented with a list of snops related to the same source URL as the given snop. This dual-view approach to browsing snops will be common to other areas of the site.
+Alternatively, the site user may follow a link related to the domain or resource of the source URL of the snop. Note that this will only be possible if the original snop contained a source URL. Following the domain link, the site user will be presented with a list of resources related to that domain. Following the resource link, the site user will be presented with a list of snops related to that specific resource.
 
 The intention will be to simplify the Search function by not requiring a user to enter a search type (user, keyword, or URL). Developer may, however, find that a search type is required to narrow down search results.
-\subsection{Related Page}
-\label{sec:related_page}
-The Related Page contains listings of snops that all reference the same source URL. All of the snops should be directly related in that they were written about the same original article or web page. Source URLs must match exactly to be linked in the Related Page. It will be possible to create a new snop regarding the particular source URL from this page. 
+\subsection{Domain Page}
+\label{sec:domain_page}
+The Domain Page contains links to all Resources falling under the same domain. For instance, any snops related to \texttt{www.economist.com} will be shown here. A chronological sort will likely be the sorting method used, with resources with newer snops appearing at the top.
+\subsection{Resource Page}
+\label{sec:resource_page}
+The Resource Page contains listings of snops that all reference the same source URL. All of the snops should be directly related in that they were written about the same original article or web page. Source URLs must match exactly to be linked in the Resource Page. It will be possible to create a new snop regarding the particular source URL from this page. 
 \subsection{User Page}
 \label{sec:user_page}
 \begin{figure}[htb]
@@ -117,6 +127,8 @@ The User Page contains listings of snops that were created by a single user. The
 All snops generated by a user will be made public. Snops will be uneditable once created. They may, however, be deleted. Inability to edit means that a user will never be surprised when a snop they saved changes. Ability to delete allows users who do not wish to share certain information to remove it. Any existing links to that snop will still function, but will produce a message that the given snop has been removed. 
 
 If users are viewing their own User Page, they will be able to create a new snop. They will be also be allowed to create categories for the snops and reorder the snops into any hierarchal category structure. This will allow users to group their own snops in logical ways such that they can quickly look through the groupings they are interested in.
+
+Visiting users will be able to browse another user's snops by category. When following a snop link via a user context, navigation will be limited to those snops in the same category as the one originally linked to. The visiting user may click on other categories to examine other groupings of snops from a user.
 \subsection{Snop Creation Page}
 The act of creating a snop will require its own interface. Users may enter information in any of the snop fields. The user can indicate completion through a "Snop" button. Only some snop fields will be considered mandatory (see section \ref{sec:snop_structure}). A snop must have a title and a user name. The user name will be guaranteed to be valid, since only users who have signed up for the service will be able to create snops. Snop titles are not required to be unique.
 
@@ -124,6 +136,12 @@ Initially, the snop boxes will all be shown but are blank. The user may move thr
 
 Behaviour upon completion of the snop should be context-sensitive. If the user initially created the snop from a Related Page, the user should be returned to that page and have their snop displayed. Likewise, if the user created the snop from their own User Page, they should be returned to that page and have their snop displayed.
 \section{Non-Functional Requirements}
+\subsection{Advertising}
+Advertising is seen as an important potential component of the web application. For instance, users viewing resources related to \texttt{www.economist.com} may be presented with an advertisement allowing them to subscribe to {\it The Economist} at a discounted price. Ads may also appear during browsing at some predefined interval, and may either be context-sensitive or context-free. 
+
+Importantly, the ads are themselves snops -- the architecture of the platform extends naturally to support this behaviour.
+
+Given the complexity of implementing full advertising support throughout the web application, Sofware will contain only a demonstration of a potential advertisement. An advertising subsystem may be discussed in further negotiations after the completion of Software described in Agreement.
 \subsection{Languages and Internationalization}
 American English will be the only supported language in which to view the site. Snops themselves may be written in any language, but the site itself will not be translated into multiple languages.
 \subsection{Software Requirements}
@@ -161,7 +179,7 @@ Each week, Developer will provide Customer with an intermediate deliverable that
 \subsubsection{Delay}
 Developer shall use all reasonable efforts to deliver Software on schedule. However, at its discretion, Developer can extend the due date for any deliverable by giving written notice to Customer. The total of all such extensions shall not exceed 15 days. 
 \section{Payment}	
-Customer will pay Developer a total of \$15,000 CAD for the development of the Software. \$5000 CAD shall be paid within one week of the acceptance of this agreement, and \$10,000 CAD shall be paid upon completion and delivery of Software. All aforementioned costs are inclusive of taxes.
+Customer will pay Developer a total of \$15,000 CAD for the development of the Software. \$5000 CAD shall be paid within one week of the acceptance of this agreement, and \$10,000 CAD shall be paid upon completion and delivery of Software. All aforementioned costs are inclusive of taxes. Costs are also inclusive of visual design.
 \section{Payment of Developer's Costs}
 Customer shall reimburse Developer for the cost of any development software or commercial software libraries the developer deems necessary to complete Software, subject to approval by Customer.
 \section{Changes in Specifications}
