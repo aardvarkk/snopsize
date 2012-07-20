@@ -52,10 +52,12 @@
 <br>
 
 <div id="fave">
-  <% if @fave_snop.nil? %>
-  	<%= render 'fave_snops/favourite' %>
-  <% else %>
-    <%= render 'fave_snops/unfavourite' %>
+  <% if user_signed_in? %>
+  	<% if @fave_snop.nil? %>
+  	  <%= render 'fave_snops/favourite' %>
+  	<% else %>
+      <%= render 'fave_snops/unfavourite' %>
+    <% end %>
   <% end %>
 </div>
 
