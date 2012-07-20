@@ -1,5 +1,9 @@
 Snopsize::Application.routes.draw do
 
+  post "fave_snops/favourite"
+
+  post "fave_snops/unfavourite"
+
   get "search/search"
 
   # for searching snops

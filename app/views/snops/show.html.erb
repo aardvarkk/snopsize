@@ -51,4 +51,12 @@
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 <br>
 
+<div id="fave">
+  <% if @fave_snop.nil? %>
+  	<%= button_to 'Favourite', fave_snops_favourite_path(snop: @snop), remote: true %>
+  <% else %>
+    <%= button_to 'Unfavourite', fave_snops_unfavourite_path(snop: @snop), remote: true %>
+  <% end %>
+</div>
+
 <%= link_to 'Back', snops_path %>
