@@ -1,10 +1,15 @@
 Snopsize::Application.routes.draw do
 
+  get "users/show"
+
   post "fave_snops/favourite"
 
   post "fave_snops/unfavourite"
 
   get "search/search"
+
+  # for user pages
+  match 'users/:id' => 'users#show'
 
   # for searching snops
   match '/search' => 'search#search'

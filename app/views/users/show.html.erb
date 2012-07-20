@@ -1,0 +1,32 @@
+<h1>User: <%=@user.username%> </h1>
+
+<h2>Fave Snops</h2>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Source</th>
+    <th>Title</th>
+    <th>Point1</th>
+    <th>Point2</th>
+    <th>Point3</th>
+    <th>Summary</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @snops.each do |snop| %>
+  <tr>
+  	<% user = User.find(snop.user_id)%>
+    <td><%= user.username %></td>
+    <td><%= snop.source %></td>
+    <td><%= snop.title %></td>
+    <td><%= snop.point1 %></td>
+    <td><%= snop.point2 %></td>
+    <td><%= snop.point3 %></td>
+    <td><%= snop.summary %></td>
+    <td><%= link_to 'Show', snop %></td>
+  </tr>
+<% end %>
+</table>
