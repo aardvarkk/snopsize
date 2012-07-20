@@ -1,5 +1,37 @@
 <h1>User: <%=@user.username%> </h1>
 
+<h2>Created Snops</h2>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Domain</th>
+    <th>Resource</th>
+    <th>Title</th>
+    <th>Point1</th>
+    <th>Point2</th>
+    <th>Point3</th>
+    <th>Summary</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @usersnops.each do |snop| %>
+  <tr>
+    <td><%= @user.username %></td>
+    <td><%= snop.domain %></td>
+    <td><%= snop.resource %></td>
+    <td><%= snop.title %></td>
+    <td><%= snop.point1 %></td>
+    <td><%= snop.point2 %></td>
+    <td><%= snop.point3 %></td>
+    <td><%= snop.summary %></td>
+    <td><%= link_to 'Show', snop %></td>
+  </tr>
+<% end %>
+</table>
+
 <h2>Fave Snops</h2>
 
 <table>
