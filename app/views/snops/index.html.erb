@@ -3,7 +3,8 @@
 <table>
   <tr>
     <th>User</th>
-    <th>Source</th>
+    <th>Domain</th>
+    <th>Resource</th>
     <th>Title</th>
     <th>Point1</th>
     <th>Point2</th>
@@ -18,7 +19,8 @@
   <tr>
   	<% user = User.find(snop.user_id)%>
     <td><%= user.username %></td>
-    <td><%= snop.source %></td>
+    <td><%= snop.domain %></td>
+    <td><%= snop.resource %></td>
     <td><%= snop.title %></td>
     <td><%= snop.point1 %></td>
     <td><%= snop.point2 %></td>
