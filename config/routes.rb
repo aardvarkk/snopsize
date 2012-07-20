@@ -6,7 +6,7 @@ Snopsize::Application.routes.draw do
   match '/search' => 'search#search'
 
   # all of the snop resources
-  resources :snops
+  resources :snops, :except => :edit
 
   get 'home/index'
 
