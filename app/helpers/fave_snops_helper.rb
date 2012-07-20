@@ -1,0 +1,2 @@
+module FaveSnopsHelper
+end

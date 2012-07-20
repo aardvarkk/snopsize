@@ -1,12 +1,16 @@
 Snopsize::Application.routes.draw do
 
+  post "fave_snops/favourite"
+
+  post "fave_snops/unfavourite"
+
   get "search/search"
 
   # for searching snops
   match '/search' => 'search#search'
 
   # all of the snop resources
-  resources :snops
+  resources :snops, :except => :edit
 
   get 'home/index'
 

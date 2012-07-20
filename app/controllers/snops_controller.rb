@@ -17,6 +17,9 @@ class SnopsController < ApplicationController
   def show
     @snop = Snop.find(params[:id])
     @user = User.find(@snop.user_id)
+    
+    #has the user already faved this snop?
+    @fave_snop = FaveSnops.where(["user_id = ? AND snop_id = ?", @user.id, @snop.id]).first
 
     respond_to do |format|
       format.html # show.html.erb

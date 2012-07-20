@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :snop
+  has_many :fave_snops
 	
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
