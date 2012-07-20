@@ -5,10 +5,10 @@ class FaveSnopsController < ApplicationController
   def favourite
   	# Add a new fave snop entry
   	user = current_user
-  	snop = Snop.find(params[:snop])
+  	@snop = Snop.find(params[:snop])
   	fave_snop = FaveSnops.new
   	fave_snop.user_id = user.id
-  	fave_snop.snop_id = snop.id
+  	fave_snop.snop_id = @snop.id
   	fave_snop.save
   	
     respond_to do |format|
@@ -20,8 +20,8 @@ class FaveSnopsController < ApplicationController
   def unfavourite
   	# Find the fave snop entry and delete it
   	user = current_user
-  	snop = Snop.find(params[:snop])
-  	fave_snop = FaveSnops.where(["user_id = ? AND snop_id = ?", user.id, snop.id]).first
+  	@snop = Snop.find(params[:snop])
+  	fave_snop = FaveSnops.where(["user_id = ? AND snop_id = ?", user.id, @snop.id]).first
   	fave_snop.destroy unless fave_snop.nil?
   	
   	respond_to do |format|

@@ -53,9 +53,9 @@
 
 <div id="fave">
   <% if @fave_snop.nil? %>
-  	<%= button_to 'Favourite', fave_snops_favourite_path(snop: @snop), remote: true %>
+  	<%= render 'fave_snops/favourite' %>
   <% else %>
-    <%= button_to 'Unfavourite', fave_snops_unfavourite_path(snop: @snop), remote: true %>
+    <%= render 'fave_snops/unfavourite' %>
   <% end %>
 </div>
 
