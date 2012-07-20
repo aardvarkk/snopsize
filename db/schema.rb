@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120719013018) do
+ActiveRecord::Schema.define(:version => 20120720010504) do
+
+  create_table "fave_snops", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "snop_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "snops", :force => true do |t|
     t.integer  "user_id"
