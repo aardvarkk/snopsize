@@ -8,16 +8,7 @@
 
 <%# show any results... %>
 <% if @results %>
-	<% @results.each do |result| %>
-		<div>
-			<%= result.title %><br/>
-			<%= result.point1 %><br/>
-			<%= result.point2 %><br/>
-			<%= result.point3 %><br/>
-			<%= result.summary %><br/>
-			<hr/>
-		</div>
-	<% end %>
+	<%= render :partial => 'shared/snopquick', :collection => @results %>
 <% end %>
 
 <%#= debug params %>
