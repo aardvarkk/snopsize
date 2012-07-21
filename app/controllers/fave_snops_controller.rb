@@ -19,7 +19,7 @@ class FaveSnopsController < ApplicationController
   def unfavourite
   	# Find the fave snop entry and delete it
   	@snop = Snop.find(params[:snop])
-  	fave_snop = FaveSnops.where(["user_id = ? AND snop_id = ?", current_user.id, @snop.id]).first
+  	fave_snop = FaveSnop.where(["user_id = ? AND snop_id = ?", current_user.id, @snop.id]).first
   	fave_snop.destroy unless fave_snop.nil?
   	
   	respond_to do |format|
