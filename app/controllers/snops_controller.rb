@@ -16,10 +16,10 @@ class SnopsController < ApplicationController
   # GET /snops/1.json
   def show
     @snop = Snop.find(params[:id])
-    @user = User.find(@snop.user_id)
+    @snop_creator = @snop.user
     
-    #has the user already faved this snop?
-    @fave_snop = FaveSnops.where(["user_id = ? AND snop_id = ?", @user.id, @snop.id]).first
+    #has the logged in user already faved this snop?
+    @fave_snop = FaveSnop.where(["user_id = ? AND snop_id = ?", current_user.id, @snop.id]).first
 
     respond_to do |format|
       format.html # show.html.erb
@@ -51,7 +51,7 @@ class SnopsController < ApplicationController
     # Set the user_id to the logged in user, since
     # only logged in users can create snops
     @user = current_user
-    @snop.user_id = current_user.id 
+    @snop.user = @user
 
     respond_to do |format|
       if @snop.save
