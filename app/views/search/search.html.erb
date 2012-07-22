@@ -4,10 +4,11 @@
   <%= text_field_tag(:q) %>
   <%# set the name to 'nil' to avoid the commit = Search parameter from being passed %>
   <%= submit_tag("Search", :name => nil) %>
-<% end %>
+<% end %></br>
 
 <%# show any results... %>
 <% if @results %>
+	<%= @results.size %> Results found</br></br>
 	<%= render :partial => 'shared/snopquick', :collection => @results %>
 <% end %>
 

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= link_to @snop.user.username, users_show_path(id: @snop.user.id) %>
+</p>
+
+<p>
+  <b>Domain:</b>
+  <%= @snop.domain %>
+</p>
+
+<p>
+  <b>Resource:</b>
+  <%= @snop.resource %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @snop.title %>
+</p>
+
+<p>
+  <b>Point1:</b>
+  <%= @snop.point1 %>
+</p>
+
+<p>
+  <b>Point2:</b>
+  <%= @snop.point2 %>
+</p>
+
+<p>
+  <b>Point3:</b>
+  <%= @snop.point3 %>
+</p>
+
+<p>
+  <b>Summary:</b>
+  <%= @snop.summary %>
+</p>

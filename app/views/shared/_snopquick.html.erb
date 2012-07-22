@@ -1,10 +1,12 @@
 <div>
-	<%= snopquick.title %><br/>
+	<%= link_to snopquick.user.username, users_show_path(id: snopquick.user.id) %> <br/>
+	<%= link_to snopquick.title, snopquick %><br/>
+	<%= link_to snopquick.domain, snopquick.domain %><br/>
+	<% link = snopquick.domain + snopquick.resource %>
+	<%= link_to snopquick.resource, link %><br />
 	<%= snopquick.point1 %><br/>
 	<%= snopquick.point2 %><br/>
 	<%= snopquick.point3 %><br/>
 	<%= snopquick.summary %><br/>
-	<% link = snopquick.domain + snopquick.resource %>
-	<%= link_to link, link %><br/>
 	<hr/>
 </div>

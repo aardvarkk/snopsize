@@ -16,7 +16,6 @@ class SnopsController < ApplicationController
   # GET /snops/1.json
   def show
     @snop = Snop.find(params[:id])
-    @snop_creator = @snop.user
     
     #has the logged in user already faved this snop?
     @fave_snop = current_user.favourites.find_by_id(@snop.id)

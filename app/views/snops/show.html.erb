@@ -7,47 +7,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>User:</b>
-  <%= @snop_creator.username %>
-</p>
-
-<p>
-  <b>Domain:</b>
-  <%= @snop.domain %>
-</p>
-
-<p>
-  <b>Resource:</b>
-  <%= @snop.resource %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @snop.title %>
-</p>
-
-<p>
-  <b>Point1:</b>
-  <%= @snop.point1 %>
-</p>
-
-<p>
-  <b>Point2:</b>
-  <%= @snop.point2 %>
-</p>
-
-<p>
-  <b>Point3:</b>
-  <%= @snop.point3 %>
-</p>
-
-<p>
-  <b>Summary:</b>
-  <%= @snop.summary %>
-</p>
+<%= render :partial => "shared/snopfull" %>
 
 <div class="fb-like" data-send="true" data-width="450" data-show-faces="true" data-font="arial"></div> 
 <br>
@@ -65,5 +25,3 @@
     <% end %>
   <% end %>
 </div>
-
-<%= link_to 'Back', snops_path %>

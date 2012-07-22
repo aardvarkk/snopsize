@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @snops = Snop.all
+    @snops = Snop.order("created_at DESC")
   end
 end
