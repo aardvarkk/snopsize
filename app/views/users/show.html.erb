@@ -18,8 +18,8 @@
 
 <% @user_snops.each do |snop| %>
   <tr>
-    <td><%= snop.domain %></td>
-    <td><%= snop.resource %></td>
+    <td><%= snop.domain.uri %></td>
+    <td><%= snop.resource.uri %></td>
     <td><%= snop.title %></td>
     <td><%= snop.point1 %></td>
     <td><%= snop.point2 %></td>
