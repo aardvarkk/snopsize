@@ -13,9 +13,9 @@ User.create(:username => 'fred', :email => 'fred@fredtastic.com', :password => '
 Domain.create(:uri => 'http://www.theglobeandmail.com')
 Domain.create(:uri => 'http://www.economist.com')
 
-Resource.create(:uri => '/news/world/12-dead-after-masked-gunman-opens-fire-at-batman-premiere/article4429306')
-Resource.create(:uri => '/news/politics/ottawa-stalls-khadr-repatriation-with-new-roadblock/article4430435')
-Resource.create(:uri => '/node/21559367')
+Resource.create(:domain_id => 1, :uri => '/news/world/12-dead-after-masked-gunman-opens-fire-at-batman-premiere/article4429306')
+Resource.create(:domain_id => 1, :uri => '/news/politics/ottawa-stalls-khadr-repatriation-with-new-roadblock/article4430435')
+Resource.create(:domain_id => 2, :uri => '/node/21559367')
 
 Snop.create(
 	:user_id => 1, 
@@ -48,6 +48,18 @@ Snop.create(
 	:point2 => 'Point 2',
 	:point3 => 'Point 3',
 	:summary => 'My summary'
+	)
+
+# Another snop about the same resource by a different user
+Snop.create(
+	:user_id => 1, 
+	:domain_id => 2,
+	:resource_id => 3,
+	:title => "The regime won't last long!",
+	:point1 => 'Point 1',
+	:point2 => 'Point 2',
+	:point3 => 'Point 3',
+	:summary => 'My summary is different!'
 	)
 
 # Required to index the snops we've created

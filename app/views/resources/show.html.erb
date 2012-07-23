@@ -1,0 +1,7 @@
+<h1>Resources#show</h1>
+<p>Find me in app/views/resources/show.html.erb</p>
+
+<%# get all snops for this domain and resource combination %>
+<% if @snops %>
+	<%= render :partial => 'shared/snopquick', :collection => @snops %>
+<% end %>

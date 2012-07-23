@@ -1,0 +1,10 @@
+<h1>Domains#show</h1>
+<p>Find me in app/views/domains/show.html.erb</p>
+
+<h2>Resources for domain <%= @domain.uri %></h2>
+
+<ul>
+<% @resources.each do |resource| %>
+<li><%= link_to resource.uri, resources_show_path(@domain, resource) %></li>
+<% end %>
+</ul>

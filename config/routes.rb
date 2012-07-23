@@ -1,18 +1,20 @@
 Snopsize::Application.routes.draw do
 
-  get "users/show"
-
   post "fave_snops/favourite"
 
   post "fave_snops/unfavourite"
 
-  get "search/search"
-
   # for user pages
-  match 'users/:id' => 'users#show'
+  match 'users/:id' => 'users#show', :as => 'users_show', :via => :get
 
   # for searching snops
-  match '/search' => 'search#search'
+  match 'search' => 'search#search', :as => 'search', :via => :get
+
+  # for showing all resources from a given domain
+  match 'domains/:domain_id' => 'domains#show', :as => 'domains_show', :via => :get
+
+  # for showing all snops from a given resource
+  match 'domains/:domain_id/resources/:resource_id' => 'resources#show', :as => 'resources_show', :via => :get
 
   # all of the snop resources
   resources :snops, :except => :edit
