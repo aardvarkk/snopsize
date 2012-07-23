@@ -18,7 +18,9 @@ class SnopsController < ApplicationController
     @snop = Snop.find(params[:id])
     
     #has the logged in user already faved this snop?
-    @fave_snop = current_user.favourites.find_by_id(@snop.id)
+    if (user_signed_in?)
+      @fave_snop = current_user.favourites.find_by_id(@snop.id)
+    end
 
     respond_to do |format|
       format.html # show.html.erb
