@@ -1,9 +1,9 @@
 <div>
 	<%= link_to snopquick.user.username, users_show_path(id: snopquick.user.id) %> <br/>
 	<%= link_to snopquick.title, snopquick %><br/>
-	<%= link_to snopquick.domain, snopquick.domain %><br/>
-	<% link = snopquick.domain + snopquick.resource %>
-	<%= link_to snopquick.resource, link %><br />
+	<%= link_to snopquick.domain.uri, snopquick.domain.uri %><br/>
+	<% link = snopquick.domain.uri + snopquick.resource.uri %>
+	<%= link_to snopquick.resource.uri, link %><br />
 	<%= snopquick.point1 %><br/>
 	<%= snopquick.point2 %><br/>
 	<%= snopquick.point3 %><br/>
