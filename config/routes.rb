@@ -21,7 +21,10 @@ Snopsize::Application.routes.draw do
 
   # all of our user categories
   resources :user_categories, :except => [:show]
+	get "user_categories/add_snop"
+	post "user_categories/set_snop"
 
+  # home page
   get 'home/index'
 
   devise_for :users, :skip => [:sessions]

@@ -17,14 +17,14 @@ class UsersController < ApplicationController
     # Get the snops for those ids
     all_snops = Snop.find(all_snop_ids)
     
-    # Get all categorized snops
-	categorized_snops = @user.categorized_snops
-	
-	# Get all uncategorized snops, and make sure we only
-	# get unique ones.
-	@uncategorized_snops = all_snops - categorized_snops
-	
-	# Find a set of "root" categories
-	@root_categories = @user.user_categories.where("parent_id IS ?", nil)
-  end
+	  # Get all categorized snops
+		categorized_snops = @user.categorized_snops
+		
+		# Get all uncategorized snops, and make sure we only
+		# get unique ones.
+		@uncategorized_snops = all_snops - categorized_snops
+		
+		# Find a set of "root" categories
+		@root_categories = @user.user_categories.where("parent_id IS ?", nil)
+	  end
 end

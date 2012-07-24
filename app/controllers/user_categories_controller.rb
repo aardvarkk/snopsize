@@ -72,4 +72,30 @@ class UserCategoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # GET /user_categories/add_snop
+  def add_snop
+  	@snop = Snop.find(params[:snop])
+  	@user_category = UserCategory.new #dummy category
+  	@user_categories = current_user.user_categories
+  	   
+  	respond_to do |format|
+      format.html # add_snop.html.erb
+      format.json { render json: @user_category }
+    end
+  end
+  
+  # POST /user_categories/add_snop
+  def set_snop
+  	@snop = Snop.find(params[:snop])
+  	@user_category = UserCategory.find(params[:user_category][:id])
+  	
+  	# add the snop to the category
+  	@user_category.snops << @snop
+  	
+  	respond_to do |format|
+      format.html { redirect_to users_show_path(current_user) }
+      format.json { head :no_content }
+    end
+  end
 end
