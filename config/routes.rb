@@ -17,7 +17,10 @@ Snopsize::Application.routes.draw do
   match 'domains/:domain_id/resources/:resource_id' => 'resources#show', :as => 'resources_show', :via => :get
 
   # all of the snop resources
-  resources :snops, :except => :edit
+  resources :snops, :except => [:edit, :update]
+
+  # all of our user categories
+  resources :user_categories, :except => [:show]
 
   get 'home/index'
 

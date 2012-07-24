@@ -32,6 +32,10 @@
 </table>
 
 <h2>Fave Snops</h2>
-
 <%= render :partial => "shared/snopquick", :collection => @fave_snops %>
-</table>
+
+<h2>Categories</h2>
+<div id="editing">
+  <%= link_to 'Add Category', new_user_category_path %>
+  <%= link_to 'View Categories', user_categories_path %>
+</div>
