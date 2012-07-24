@@ -2,6 +2,7 @@ class Snop < ActiveRecord::Base
   belongs_to :user
   belongs_to :domain
   belongs_to :resource
+  has_and_belongs_to_many :user_categories
 	
   attr_accessible :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary 
 

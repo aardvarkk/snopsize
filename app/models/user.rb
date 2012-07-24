@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :fave_snops
   has_many :favourites, :through => :fave_snops, :source => :snop
   has_many :user_categories
+  has_many :categorized_snops, :through => :user_categories, :source => :snops
 	
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
