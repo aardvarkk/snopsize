@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723195249) do
+ActiveRecord::Schema.define(:version => 20120724141739) do
 
   create_table "domains", :force => true do |t|
     t.string   "uri"
@@ -46,11 +46,22 @@ ActiveRecord::Schema.define(:version => 20120723195249) do
     t.integer  "resource_id"
   end
 
+  create_table "snops_user_categories", :id => false, :force => true do |t|
+    t.integer "snop_id"
+    t.integer "user_category_id"
+  end
+
   create_table "user_categories", :force => true do |t|
+    t.string   "name"
     t.integer  "user_id"
-    t.string   "path"
+    t.integer  "parent_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_categories_snops", :id => false, :force => true do |t|
+    t.integer "user_category_id"
+    t.integer "snop_id"
   end
 
   create_table "users", :force => true do |t|

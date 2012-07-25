@@ -1,37 +1,25 @@
 <h1>User: <%=@user.username%> </h1>
 
-<h2>Created Snops</h2>
+<h2>Categories</h2>
+<div id="editing">
+  <%= link_to 'Add Category', new_user_category_path %> | 
+  <%= link_to 'View Categories', user_categories_path %>
+</div>
 
-<table>
-  <tr>
-    <th>Domain</th>
-    <th>Resource</th>
-    <th>Title</th>
-    <th>Point1</th>
-    <th>Point2</th>
-    <th>Point3</th>
-    <th>Summary</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @user_snops.each do |snop| %>
-  <tr>
-    <td><%= snop.domain.uri %></td>
-    <td><%= snop.resource.uri %></td>
-    <td><%= snop.title %></td>
-    <td><%= snop.point1 %></td>
-    <td><%= snop.point2 %></td>
-    <td><%= snop.point3 %></td>
-    <td><%= snop.summary %></td>
-    <td><%= link_to 'Show', snop %></td>
-    <td><%= link_to 'Delete', snop, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<h3>Uncategorized Snops</h3>
+<% @uncategorized_snops.each do |snop| %>
+	<%= render :partial => "shared/snopquick", :locals => {:snopquick => snop} %>
+	<%= link_to "Categorize", user_categories_add_snop_path(snop: snop) %>
+	<hr/>
 <% end %>
-</table>
+<br/>
 
-<h2>Fave Snops</h2>
-
-<%= render :partial => "shared/snopquick", :collection => @fave_snops %>
-</table>
+<h3>Categorized Snops</h3>
+<% recurse_categorized_snops(@root_categories) do |snops, title| %>
+  <h4><%= title %></h4>
+  <% snops.each do |snop| %>
+  	<%= render :partial => "shared/snopquick", :locals => {:snopquick => snop} %>
+	<%= link_to "Change Category", user_categories_add_snop_path(snop: snop) %>
+  	<hr/>
+  <% end %>
+<% end %>
