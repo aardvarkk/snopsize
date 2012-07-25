@@ -17,5 +17,9 @@
 <h3>Categorized Snops</h3>
 <% recurse_categorized_snops(@root_categories) do |snops, title| %>
   <h4><%= title %></h4>
-  <%= render :partial => "shared/snopquick", :collection => snops %>
+  <% snops.each do |snop| %>
+  	<%= render :partial => "shared/snopquick", :locals => {:snopquick => snop} %>
+	<%= link_to "Change Category", user_categories_add_snop_path(snop: snop) %>
+  	<hr/>
+  <% end %>
 <% end %>

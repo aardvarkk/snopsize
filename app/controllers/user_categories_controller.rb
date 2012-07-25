@@ -90,7 +90,16 @@ class UserCategoriesController < ApplicationController
   	@snop = Snop.find(params[:snop])
   	@user_category = UserCategory.find(params[:user_category][:id])
   	
-  	# add the snop to the category
+    # First we have to check if the snop we selected already
+    # has a category for the current user
+    old_category = @snop.user_categories.where('user_id = ?', current_user.id).first
+
+    # if old category exists, remove snop from old category
+    if (!old_category.nil?)
+      old_category.snops.destroy(@snop)
+    end
+
+  	# add the snop to the new category
   	@user_category.snops << @snop
   	
   	respond_to do |format|
