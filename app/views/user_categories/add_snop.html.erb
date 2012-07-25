@@ -3,7 +3,7 @@
 <%= render :partial => "shared/snopquick", :locals => {:snopquick => @snop}%>
 
 <h2>Category:</h2>
-<%= form_for @user_category, :url => user_categories_set_snop_path(:snop => @snop, @user_category), :method => :post  do |f| %>
+<%= form_for @user_category, :url => user_categories_set_snop_path(snop: @snop, user_category: @user_category), :method => :post  do |f| %>
   <div class="field">
     <%= f.collection_select :id, current_user.user_categories, :id, :name, :include_blank => true %>
   </div>
