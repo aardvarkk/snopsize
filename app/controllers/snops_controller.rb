@@ -1,6 +1,6 @@
 class SnopsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]	
-	
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   # GET /snops
   # GET /snops.json
   def index
@@ -16,7 +16,7 @@ class SnopsController < ApplicationController
   # GET /snops/1.json
   def show
     @snop = Snop.find(params[:id])
-    
+
     #has the logged in user already faved this snop?
     if (user_signed_in?)
       @fave_snop = current_user.favourites.find_by_id(@snop.id)
@@ -48,7 +48,7 @@ class SnopsController < ApplicationController
   # POST /snops.json
   def create
     @snop = Snop.new(params[:snop])
-            
+
     # Set the user_id to the logged in user, since
     # only logged in users can create snops
     @user = current_user

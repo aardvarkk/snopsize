@@ -5,6 +5,7 @@
     <th>User</th>
     <th>Domain</th>
     <th>Resource</th>
+    <th>Link</th>
     <th>Title</th>
     <th>Point1</th>
     <th>Point2</th>
@@ -19,8 +20,9 @@
   <tr>
   	<% user = User.find(snop.user_id)%>
     <td><%= user.username %></td>
-    <td><%= snop.domain %></td>
-    <td><%= snop.resource %></td>
+    <td><%= snop.domain.uri %></td>
+    <td><%= snop.resource.uri %></td>
+    <td><%= link_to snop.domain.uri + snop.resource.uri, snop.domain.uri + snop.resource.uri %></td>
     <td><%= snop.title %></td>
     <td><%= snop.point1 %></td>
     <td><%= snop.point2 %></td>

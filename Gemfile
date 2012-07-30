@@ -42,3 +42,7 @@ gem 'devise'
 # For fulltext searching
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+
+# For URI parsing
+gem 'addressable'
+gem 'public_suffix'

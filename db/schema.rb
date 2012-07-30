@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120724141739) do
+ActiveRecord::Schema.define(:version => 20120726202123) do
 
   create_table "domains", :force => true do |t|
     t.string   "uri"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20120724141739) do
     t.datetime "updated_at",  :null => false
     t.integer  "domain_id"
     t.integer  "resource_id"
+    t.string   "uri"
   end
 
   create_table "snops_user_categories", :id => false, :force => true do |t|
