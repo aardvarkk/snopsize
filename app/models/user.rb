@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Various associations
   has_many :snops
-  has_many :fave_snops
+  has_many :fave_snops # so we can do a :through
   has_many :favourites, :through => :fave_snops, :source => :snop
   has_many :user_categories
   has_many :categorized_snops, :through => :user_categories, :source => :snops
