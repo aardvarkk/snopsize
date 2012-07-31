@@ -3,26 +3,37 @@ require 'addressable/uri'
 require 'public_suffix'
 
 class Snop < ActiveRecord::Base
-
   OpenTimeout = 2
   ReadTimeout = 2
 
   # include HttpUtils
 
+  # Associations
   belongs_to :user
   belongs_to :domain
   belongs_to :resource
   has_and_belongs_to_many :user_categories
 
+  # Validations
+  # Make sure these values exist!
+  validates_presence_of :user_id, :title
+  # Make sure that the user_id foreign key is valid (i.e. The user object is itself present)
+  validates_presence_of :user
+	
+  # We can't edit a snop, or any of its fields,
+  # therefore all of the attributes are readonly.
+  # We leave them as accessible as well so that we can
+  # do a mass assign when we create.
+  attr_accessible :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary, :uri
+  attr_readonly :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary, :uri
+
   # validate using the custom URIValidator
-  before_validation :canonicalize
-  validate :valid_url
+  before_validation :canonicalize, :unless => "uri.nil?"
+  validate :valid_url, :unless => "uri.nil?"
 
   # set the domain and resource before saving based
   # on the URI
-  before_save :set_domain_and_resource
-
-  attr_accessible :user_id, :uri, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary
+  before_save :set_domain_and_resource, :unless => "uri.nil?"
 
   # make the entire text of the snop searchable
   searchable do

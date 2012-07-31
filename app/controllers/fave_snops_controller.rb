@@ -6,8 +6,8 @@ class FaveSnopsController < ApplicationController
   	# Add a new fave snop entry
   	@snop = Snop.find(params[:snop])
   	fave_snop = FaveSnop.new
-  	fave_snop.user_id = current_user.id
-  	fave_snop.snop_id = @snop.id
+  	fave_snop.user = current_user
+  	fave_snop.snop = @snop
   	fave_snop.save
   	
     respond_to do |format|

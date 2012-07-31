@@ -1,7 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  uri: MyString
-
-two:
-  uri: MyString
+  uri: http://www.testuri.com

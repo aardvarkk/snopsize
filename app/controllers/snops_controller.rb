@@ -39,11 +39,6 @@ class SnopsController < ApplicationController
     end
   end
 
-  # GET /snops/1/edit
-  def edit
-    @snop = Snop.find(params[:id])
-  end
-
   # POST /snops
   # POST /snops.json
   def create
@@ -51,8 +46,7 @@ class SnopsController < ApplicationController
 
     # Set the user_id to the logged in user, since
     # only logged in users can create snops
-    @user = current_user
-    @snop.user = @user
+    @snop.user = current_user
 
     respond_to do |format|
       if @snop.save
@@ -60,22 +54,6 @@ class SnopsController < ApplicationController
         format.json { render json: @snop, status: :created, location: @snop }
       else
         format.html { render action: "new" }
-        format.json { render json: @snop.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /snops/1
-  # PUT /snops/1.json
-  def update
-    @snop = Snop.find(params[:id])
-
-    respond_to do |format|
-      if @snop.update_attributes(params[:snop])
-        format.html { redirect_to @snop, notice: 'Snop was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
         format.json { render json: @snop.errors, status: :unprocessable_entity }
       end
     end
