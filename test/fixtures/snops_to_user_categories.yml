@@ -1,9 +1,2 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  user: one
-  name: CategoryB
-
-two:
-  user: one
-  name: CategoryC

@@ -14,7 +14,8 @@ class Snop < ActiveRecord::Base
   belongs_to :resource
   has_many :fave_snops # So we can do a :through
   has_many :users_that_faved, :through => :fave_snops, :source => :user
-  has_and_belongs_to_many :user_categories
+  has_many :snops_to_user_categories, :class_name => "SnopToUserCategory"
+  has_many :user_categories, :through => :snops_to_user_categories
 
   # Validations
   # Make sure these values exist!

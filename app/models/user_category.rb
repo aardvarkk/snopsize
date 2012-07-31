@@ -1,7 +1,8 @@
 class UserCategory < ActiveRecord::Base
   # Associations
   belongs_to :user
-  has_and_belongs_to_many :snops
+  has_many :snops_to_user_categories, :class_name => "SnopToUserCategory"
+  has_many :snops, :through => :snops_to_user_categories
   has_many :children, :class_name => "UserCategory", :foreign_key => "parent_id", :dependent => :destroy
   belongs_to :parent, :class_name => "UserCategory" 
 
