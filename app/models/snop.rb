@@ -1,7 +1,3 @@
-require 'net/http'
-require 'addressable/uri'
-require 'public_suffix'
-
 class Snop < ActiveRecord::Base
   include UriHelper
 
@@ -30,7 +26,7 @@ class Snop < ActiveRecord::Base
   attr_readonly :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary, :uri
 
   # validate using the custom URIValidator
-  before_validation :canonicalize, :unless => "uri.nil?"
+  before_validation :canonicalize_url, :unless => "uri.nil?"
   validates :uri, :uri => true, :unless => "uri.nil?"
 
   # set the domain and resource before saving based
@@ -42,51 +38,8 @@ class Snop < ActiveRecord::Base
     text :title, :point1, :point2, :point3, :summary
   end
 
-  def canonicalize
-
-    # parse a URI from the attribute name
-    uri = Addressable::URI.parse(self.uri)
-
-    # force to http
-    uri.scheme = 'http'
-
-    # if the host is nil, use the path as the host
-    if uri.host.nil?
-
-      # take the path into the host to start
-      # and partition on slashes
-      deslashed = uri.path.partition('/');
-
-      # remake based on the host + path
-      uri.path = deslashed[1..2].join
-      uri.host = deslashed[0]
-
-    end
-
-    # check with public suffix if this is even valid
-    # if not, save ourselves some work!
-    return unless PublicSuffix.valid?(uri.host)
-
-    # make a uri just out of the host to make sure we get the http and www stuff right
-    # then try it out and redirect if necessary
-    uri_host_only = uri.dup
-    uri_host_only.path = '/'
-    r = get_response(uri_host_only)
-    # take a single redirect if necessary and get the new response
-    if r.class < Net::HTTPRedirection
-      uri_host_only = get_redirect(r)
-    end
-
-    # now copy that corrected host back into the original
-    uri.host = uri_host_only.host
-    r = get_response(uri)
-    if r.class < Net::HTTPRedirection
-      uri = get_redirect(r)
-    end
-
-    # valid, overwrite our uri
-    self.uri = uri.to_s
-
+  def canonicalize_url
+    canonicalize(self.uri)
   end
 
   def set_domain_and_resource
