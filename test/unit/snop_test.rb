@@ -84,6 +84,41 @@ class SnopTest < ActiveSupport::TestCase
     assert !invalid_snop.save, "Saved with invalid user!"
   end 
 
+  # We want to make sure that the URI is valid
+  test "valid uri" do
+    # Try something that's not even a URI
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :uri => "I'm not even a uri!"
+      )
+    assert !snop.save, "Saved with something that's not even a URI."
+
+    # Try something that's a non existing URI
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :uri => "http://www.fakeuri.uri.com"
+      )
+    assert !snop.save, "Saved with something that's not a valid URI."
+
+    # Try something that doesn't have domain and resource
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :uri => "www.globeandmail.com"
+      )
+    assert !snop.save, "Saved with that doesn't have domain and resource"
+
+    # Now let's pass in a valid URI
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :uri => "http://www.theglobeandmail.com/sports/olympics/canadian-team-advances-after-badminton-players-expelled-from-olympics-for-match-throwing/article4453784/"
+      )
+    assert snop.save, "Unable to save snop with valid URI"
+  end
+
   # Make sure all the text based snop fields are of the proper length
   # I.e. not longer than 256 chars
   test "field lengths" do
