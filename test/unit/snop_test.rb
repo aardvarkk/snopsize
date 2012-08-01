@@ -84,4 +84,54 @@ class SnopTest < ActiveSupport::TestCase
     assert !invalid_snop.save, "Saved with invalid user!"
   end 
 
+  # Make sure all the text based snop fields are of the proper length
+  # I.e. not longer than 256 chars
+  test "field lengths" do
+    # Make sure title is not too long
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!" * 100
+      )
+    assert !snop.save, "Saved with title longer than 256 chars"
+
+    # Make sure point1 is not too long
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :point1 => "Point1!!" * 32
+      )
+    assert snop.save, "Unable to save with exactly 256 chars"
+
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :point1 => "Point1!!" * 33
+      )
+    assert !snop.save, "Saved with point1 longer than 256 chars"
+
+    # Make sure point2 is not too long
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :point2 => "Point2!!" * 45
+      )
+    assert !snop.save, "Saved with point2 longer than 256 chars"
+
+    # Make sure point3 is not too long
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :point3 => "Point3!!" * 89
+      )
+    assert !snop.save, "Saved with point3 longer than 256 chars"
+
+    # Make sure summary is not too long
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :summary => "Summary!!" * 133
+      )
+    assert !snop.save, "Saved with summary longer than 256 chars"
+  end
+
 end

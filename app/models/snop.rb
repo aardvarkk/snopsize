@@ -17,7 +17,13 @@ class Snop < ActiveRecord::Base
   validates_presence_of :user_id, :title
   # Make sure that the user_id foreign key is valid (i.e. The user object is itself present)
   validates_presence_of :user
-	
+
+  # validate using the custom UriValidator
+  validates :uri, :uri => true, :unless => "uri.nil?"
+
+  # Fields can only be a max of 256 chars for the snop
+  validates :title, :point1, :point2, :point3, :summary, :length => { :maximum => 256 }
+
   # We can't edit a snop, or any of its fields,
   # therefore all of the attributes are readonly.
   # We leave them as accessible as well so that we can
@@ -25,9 +31,9 @@ class Snop < ActiveRecord::Base
   attr_accessible :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary, :uri
   attr_readonly :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary, :uri
 
-  # validate using the custom URIValidator
+  # Callbacks
+  # Canonicalize the URI before we check if it's valid
   before_validation :canonicalize_url, :unless => "uri.nil?"
-  validates :uri, :uri => true, :unless => "uri.nil?"
 
   # set the domain and resource before saving based
   # on the URI
