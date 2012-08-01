@@ -2,3 +2,6 @@
 
 one:
   uri: http://www.testuri.com
+
+two:
+  uri: http://www.testuri2.com

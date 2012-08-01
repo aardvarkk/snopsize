@@ -4,8 +4,8 @@ class Domain < ActiveRecord::Base
 	has_many :snops
 
 	# Validations
-	# must have a uri (can't be null)
-	validates_presence_of :uri
+	# must have a uri (can't be null), and must be unique
+	validates :uri, :presence => true, :uniqueness => true
 
   attr_accessible :uri
 end

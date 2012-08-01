@@ -12,4 +12,12 @@ class DomainTest < ActiveSupport::TestCase
       )
     assert domain.save, "Can't save domain!"
   end
+
+  test "domain uniqueness" do
+    # Shouldn't be allowed to add a domain with the same URI
+    domain = Domain.new(
+      :uri => domains(:one).uri
+      )
+    assert !domain.save, "Saved a Domain with same URI!"
+  end
 end
