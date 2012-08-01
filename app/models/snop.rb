@@ -31,7 +31,7 @@ class Snop < ActiveRecord::Base
 
   # validate using the custom URIValidator
   before_validation :canonicalize, :unless => "uri.nil?"
-  validate :valid_url, :unless => "uri.nil?"
+  validates :uri, :uri => true, :unless => "uri.nil?"
 
   # set the domain and resource before saving based
   # on the URI
@@ -87,11 +87,6 @@ class Snop < ActiveRecord::Base
     # valid, overwrite our uri
     self.uri = uri.to_s
 
-  end
-
-  # for validation
-  def valid_url
-    errors.add(:uri, "Invalid URL") unless get_response(Addressable::URI.parse(self.uri)).class <= Net::HTTPSuccess
   end
 
   def set_domain_and_resource
