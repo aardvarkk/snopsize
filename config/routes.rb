@@ -11,10 +11,10 @@ Snopsize::Application.routes.draw do
   match 'search' => 'search#search', :as => 'search', :via => :get
 
   # for showing all resources from a given domain
-  match 'domains/:domain_id' => 'domains#show', :as => 'domains_show', :via => :get
+  match 'domains/:id' => 'domains#show', :as => 'domain', :via => :get
 
   # for showing all snops from a given resource
-  match 'domains/:domain_id/resources/:resource_id' => 'resources#show', :as => 'resources_show', :via => :get
+  match 'domains/:domain_id/resources/:id' => 'resources#show', :as => 'resource', :via => :get
 
   # all of the snop resources
   resources :snops, :except => [:index, :edit, :update]
