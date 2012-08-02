@@ -8,18 +8,10 @@
 	"buffers":
 	[
 		{
-			"file": "/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/http_url_validation_improved-1.3.1/lib/http_url_validation_improved.rb",
+			"file": "config/routes.rb",
 			"settings":
 			{
-				"buffer_size": 7310,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "lib/uri_validator.rb",
-			"settings":
-			{
-				"buffer_size": 1634,
+				"buffer_size": 2916,
 				"line_ending": "Windows"
 			}
 		}
@@ -52,24 +44,39 @@
 	},
 	"file_history":
 	[
+		"/C/Sites/snopsize/config/boot.rb",
+		"/C/Sites/snopsize/config/environment.rb",
+		"/C/Sites/snopsize/app/models/snop.rb",
+		"/C/Users/clarkson/.ssh/known_hosts",
+		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Pristine Packages/Rails.sublime-package",
+		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Packages/Ruby/Ruby.sublime-build",
+		"/C/Sites/snopsize/app/controllers/domains_controller.rb",
+		"/C/Sites/snopsize/Gemfile",
+		"/C/Sites/snopsize/app/controllers/snops_controller.rb",
+		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/public_suffix-1.1.1/lib/public_suffix.rb",
+		"/C/Sites/snopsize/lib/http_utils.rb",
+		"/C/Sites/snopsize/config/application.rb",
+		"/C/Sites/snopsize/config/initializers/uri_validator.rb",
+		"/C/Sites/snopsize/app/models/uri.rb",
+		"/C/Sites/snopsize/lib/test_uri_validator.rb",
+		"/C/Sites/snopsize/lib/uri_validator.rb",
+		"/C/Sites/snopsize/lib/head_test.rb",
+		"/C/Sites/snopsize/lib/head_test",
+		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/http_url_validation_improved-1.3.1/lib/http_url_validation_improved.rb",
+		"/C/Sites/snopsize/lib/uri_verify.rb",
 		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Packages/BeautifyRuby/BeautifyRuby.sublime-settings",
 		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/http_url_validation_improved-1.3.1/README",
-		"/C/Sites/snopsize/lib/uri_verify.rb",
-		"/C/Sites/snopsize/app/models/snop.rb",
-		"/C/Sites/snopsize/app/controllers/domains_controller.rb",
 		"/C/Sites/snopsize/app/views/domains/show.html.erb",
 		"/C/Sites/snopsize/db/seeds.rb",
 		"/C/Sites/snopsize/app/views/snops/index.html.erb",
 		"/C/Sites/snopsize/app/views/shared/_snopfull.html.erb",
-		"/C/Sites/snopsize/app/controllers/snops_controller.rb",
 		"/C/Sites/snopsize/app/views/snops/_form.html.erb",
-		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/http_url_validation_improved-1.3.1/lib/http_url_validation_improved.rb",
 		"/C/Sites/snopsize/db/migrate/20120726202123_add_uri_to_snop.rb",
 		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/addressable-2.3.1/lib/addressable/idna/pure.rb",
 		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/addressable-2.3.1/lib/addressable/uri.rb",
 		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/addressable-2.3.1/lib/addressable/idna.rb",
 		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/addressable-2.3.1/lib/addressable/idna/native.rb",
-		"/C/Sites/snopsize/Gemfile",
 		"/C/Sites/snopsize/app/controllers/resources_controller.rb",
 		"/C/Sites/snopsize/app/views/resources/show.html.erb",
 		"/C/Sites/snopsize/config/routes.rb",
@@ -82,7 +89,6 @@
 		"/C/Sites/snopsize/app/views/search/search.html.erb",
 		"/C/Sites/snopsize/app/models/user.rb",
 		"/C/Sites/snopsize/tmp/tmp.rb",
-		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Sites/snopsize/app/views/snops/show.html.erb",
 		"/C/Sites/snopsize/db/migrate/20120720192552_replace_source_with_domain_and_resource.rb"
 	],
@@ -130,57 +136,30 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/http_url_validation_improved-1.3.1/lib/http_url_validation_improved.rb",
+					"file": "config/routes.rb",
 					"settings":
 					{
-						"buffer_size": 7310,
+						"buffer_size": 2916,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								865,
-								865
+								191,
+								191
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"syntax": "Packages/Rails/Ruby on Rails.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "lib/uri_validator.rb",
-					"settings":
-					{
-						"buffer_size": 1634,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								230,
-								230
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -251,6 +230,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 289.0,
+	"side_bar_width": 213.0,
 	"status_bar_visible": true
 }
