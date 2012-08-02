@@ -5,7 +5,7 @@ Snopsize::Application.routes.draw do
   post "fave_snops/unfavourite"
 
   # for user pages
-  match 'users/:id' => 'users#show', :as => 'users_show', :via => :get
+  match 'users/:id' => 'users#show', :as => 'user', :via => :get
 
   # for searching snops
   match 'search' => 'search#search', :as => 'search', :via => :get

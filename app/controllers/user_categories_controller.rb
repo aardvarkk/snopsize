@@ -25,7 +25,7 @@ class UserCategoriesController < ApplicationController
 
     respond_to do |format|
       if @user_category.save
-        format.html { redirect_to users_show_path(current_user), notice: 'User category was successfully created.' }
+        format.html { redirect_to current_user, notice: 'User category was successfully created.' }
         format.json { render json: @user_category, status: :created, location: @user_category }
       else
         format.html { render action: "new" }
@@ -41,7 +41,7 @@ class UserCategoriesController < ApplicationController
 
     respond_to do |format|
       if @user_category.update_attributes(params[:user_category])
-        format.html { redirect_to users_show_path(current_user), notice: 'User category was successfully updated.' }
+        format.html { redirect_to current_user, notice: 'User category was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -57,7 +57,7 @@ class UserCategoriesController < ApplicationController
     @user_category.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_show_path(current_user) }
+      format.html { redirect_to current_user }
       format.json { head :no_content }
     end
   end
@@ -92,7 +92,7 @@ class UserCategoriesController < ApplicationController
   	@user_category.snops << @snop
   	
   	respond_to do |format|
-      format.html { redirect_to users_show_path(current_user) }
+      format.html { redirect_to current_user }
       format.json { head :no_content }
     end
   end
