@@ -5,17 +5,6 @@ class UserCategoriesControllerTest < ActionController::TestCase
     @user_category = user_categories(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:user_categories)
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
   test "should create user_category" do
     assert_difference('UserCategory.count') do
       post :create, user_category: { name: @user_category.name, parent_id: @user_category.parent_id, user_id: @user_category.user_id }
@@ -44,6 +33,6 @@ class UserCategoriesControllerTest < ActionController::TestCase
       delete :destroy, id: @user_category
     end
 
-    assert_redirected_to user_categories_path
+    assert_redirected_to user_show_page
   end
 end

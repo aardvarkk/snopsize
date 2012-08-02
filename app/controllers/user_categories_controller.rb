@@ -1,17 +1,6 @@
 class UserCategoriesController < ApplicationController
   before_filter :authenticate_user!
 
-  # GET /user_categories
-  # GET /user_categories.json
-  def index
-    @user_categories = current_user.user_categories
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @user_categories }
-    end
-  end
-
   # GET /user_categories/new
   # GET /user_categories/new.json
   def new

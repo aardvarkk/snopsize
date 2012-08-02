@@ -1,17 +1,6 @@
 class SnopsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
 
-  # GET /snops
-  # GET /snops.json
-  def index
-    @snops = Snop.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @snops }
-    end
-  end
-
   # GET /snops/1
   # GET /snops/1.json
   def show

@@ -3,7 +3,7 @@
 <h2>Categories</h2>
 <div id="editing">
   <%= link_to 'Add Category', new_user_category_path %> | 
-  <%= link_to 'View Categories', user_categories_path %>
+  <%= link_to 'New Snop', new_snop_path %>
 </div>
 
 <h3>Uncategorized Snops</h3>
@@ -15,8 +15,8 @@
 <br/>
 
 <h3>Categorized Snops</h3>
-<% recurse_categorized_snops(@root_categories) do |snops, title| %>
-  <h4><%= title %></h4>
+<% recurse_categorized_snops(@root_categories) do |snops, category| %>
+  <h4><%= link_to category.name, edit_user_category_path(category) %></h4>
   <% snops.each do |snop| %>
   	<%= render :partial => "shared/snopquick", :locals => {:snopquick => snop} %>
 	<%= link_to "Change Category", user_categories_add_snop_path(snop: snop) %>

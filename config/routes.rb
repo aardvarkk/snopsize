@@ -17,16 +17,14 @@ Snopsize::Application.routes.draw do
   match 'domains/:domain_id/resources/:resource_id' => 'resources#show', :as => 'resources_show', :via => :get
 
   # all of the snop resources
-  resources :snops, :except => [:edit, :update]
+  resources :snops, :except => [:index, :edit, :update]
 
   # all of our user categories
-  resources :user_categories, :except => [:show]
+  resources :user_categories, :except => [:index, :show]
 	get "user_categories/add_snop"
 	post "user_categories/set_snop"
 
-  # home page
-  get 'home/index'
-
+  # Devise user routes
   devise_for :users, :skip => [:sessions]
   as :user do
     get 'signin' => 'devise/sessions#new', :as => :new_user_session
