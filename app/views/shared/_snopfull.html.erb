@@ -7,12 +7,16 @@
 
 <p>
   <b>Domain:</b>
-  <%= link_to "Other posts from " + @snop.domain.uri, @snop.domain %>
+  <% unless @snop.domain.nil? %>
+    <%= link_to "Other posts from " + @snop.domain.uri, @snop.domain %>
+  <% end %>
 </p>
 
 <p>
   <b>Resource:</b>
-  <%= link_to "See all snops from " + @snop.domain.uri + @snop.resource.uri, @snop.resource %>
+  <% unless @snop.domain.nil? %>
+    <%= link_to "See all snops from " + @snop.domain.uri + @snop.resource.uri, @snop.resource %>
+  <% end %>
 </p>
 
 <p>

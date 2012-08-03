@@ -1,21 +1,24 @@
 require 'test_helper'
 
 class UserCategoriesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
+    @user = users(:one)
+    sign_in @user
     @user_category = user_categories(:one)
+  end
+
+  teardown do
+    sign_out @user
   end
 
   test "should create user_category" do
     assert_difference('UserCategory.count') do
-      post :create, user_category: { name: @user_category.name, parent_id: @user_category.parent_id, user_id: @user_category.user_id }
+      post :create, user_category: { name: @user_category.name + "A", parent_id: @user_category.parent_id, user_id: @user_category.user_id }
     end
 
-    assert_redirected_to user_category_path(assigns(:user_category))
-  end
-
-  test "should show user_category" do
-    get :show, id: @user_category
-    assert_response :success
+    assert_redirected_to @user
   end
 
   test "should get edit" do
@@ -25,7 +28,7 @@ class UserCategoriesControllerTest < ActionController::TestCase
 
   test "should update user_category" do
     put :update, id: @user_category, user_category: { name: @user_category.name, parent_id: @user_category.parent_id, user_id: @user_category.user_id }
-    assert_redirected_to user_category_path(assigns(:user_category))
+    assert_redirected_to @user
   end
 
   test "should destroy user_category" do
@@ -33,6 +36,12 @@ class UserCategoriesControllerTest < ActionController::TestCase
       delete :destroy, id: @user_category
     end
 
-    assert_redirected_to user_show_page
+    assert_redirected_to @user
+  end
+
+  test "should add snop user_category" do
+  end
+
+  test "should set snop user_category" do
   end
 end

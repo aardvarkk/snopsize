@@ -1,5 +1,5 @@
 class SnopsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show]
 
   # GET /snops/1
   # GET /snops/1.json
