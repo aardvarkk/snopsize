@@ -1,13 +1,16 @@
+set :user, 				'sysadmin'
 set :application, 'snopsize'
 set :repository,  'git@github.com:aardvarkk/snopsize.git'
+set :deploy_to,   '/home/sysadmin/snopsize'
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, '184.106.240.177'                          # Your HTTP server, Apache/etc
-role :app, '184.106.240.177'                          # This may be the same as your `Web` server
-role :db,  '184.106.240.177', :primary => true # This is where Rails migrations will run
-role :db,  '184.106.240.177'
+# Seems to fix error about 'no tty present and no askpass program specified'
+default_run_options[:pty] = true
+
+# Your HTTP server, Apache/etc
+server '184.106.240.177:8285', :app, :web, :db
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
