@@ -48,6 +48,6 @@ gem 'addressable'
 gem 'public_suffix'
 
 # Use MySQL database in the production environment
-#group :production do
+group :production do
   gem 'mysql2'
-#end
+end
