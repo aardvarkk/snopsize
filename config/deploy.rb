@@ -1,3 +1,6 @@
+# This should automatically run bundle install on the server side
+require "bundler/capistrano"
+
 set :user, 				'sysadmin'
 set :application, 'snopsize'
 set :repository,  'git@github.com:aardvarkk/snopsize.git'
@@ -13,6 +16,9 @@ default_run_options[:pty] = true
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"
 set :rvm_type, :user
+
+# This lets us NOT have a Gemfile.lock
+set :bundle_flags, "--quiet"
 
 # Your HTTP server, Apache/etc
 server '184.106.240.177:8285', :app, :web, :db
