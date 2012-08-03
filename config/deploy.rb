@@ -9,6 +9,12 @@ set :scm, :git
 # Seems to fix error about 'no tty present and no askpass program specified'
 default_run_options[:pty] = true
 
+# adjust if you are using RVM, remove if you are not
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+require "rvm/capistrano"
+set :rvm_ruby_string, '1.9.3'
+set :rvm_type, :user
+
 # Your HTTP server, Apache/etc
 server '184.106.240.177:8285', :app, :web, :db
 
