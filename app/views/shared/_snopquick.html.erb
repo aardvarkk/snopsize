@@ -1,9 +1,11 @@
 <div>
 	<%= link_to snopquick.user.username, snopquick.user %> <br/>
 	<%= link_to snopquick.title, snopquick %><br/>
-	<%= link_to snopquick.domain.uri, snopquick.domain.uri %><br/>
-	<% link = snopquick.domain.uri + snopquick.resource.uri %>
-	<%= link_to link, link %><br />
+	<% unless snopquick.domain.nil? %>
+		<%= link_to snopquick.domain.uri, snopquick.domain.uri %><br/>
+		<% link = snopquick.domain.uri + snopquick.resource.uri %>
+		<%= link_to link, link %><br />
+	<% end %>
 	<%= snopquick.point1 %><br/>
 	<%= snopquick.point2 %><br/>
 	<%= snopquick.point3 %><br/>

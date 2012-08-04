@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
+  
+  # GET /search
   def search
-
   	# assume results are nil to start with
   	@results = nil
 
@@ -11,6 +12,5 @@ class SearchController < ApplicationController
   	@results = Snop.search do
   		fulltext params[:q]
   	end.results
-
   end
 end
