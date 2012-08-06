@@ -55,7 +55,7 @@ class SnopsController < ApplicationController
     @snop.destroy
 
     respond_to do |format|
-      format.html { redirect_to snops_url }
+      format.html { redirect_to @snop.user }
       format.json { head :no_content }
     end
   end

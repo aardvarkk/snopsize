@@ -8,8 +8,14 @@ class ResourcesControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
+    # Try to show the resource and all of it's snops
     get :show, domain_id: @resource.domain.id, id: @resource
+
+    # Should get a success back.
     assert_response :success
+
+    # Make sure that we assign @snops
+    assert_not_nil assigns(:snops)
   end
 
 end
