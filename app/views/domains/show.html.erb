@@ -5,6 +5,6 @@
 
 <ul>
 <% @resources.each do |resource| %>
-<li><%= link_to resource.uri, resources_show_path(@domain, resource) %></li>
+<li><%= link_to resource.uri, resource_path(@domain, resource) %></li>
 <% end %>
 </ul>

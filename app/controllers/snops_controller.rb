@@ -1,5 +1,5 @@
 class SnopsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show]
 
   # GET /snops/1
   # GET /snops/1.json
@@ -55,7 +55,7 @@ class SnopsController < ApplicationController
     @snop.destroy
 
     respond_to do |format|
-      format.html { redirect_to snops_url }
+      format.html { redirect_to @snop.user }
       format.json { head :no_content }
     end
   end
