@@ -5,7 +5,7 @@ set :user, 				'sysadmin'
 set :application, 'snopsize'
 set :repository,  'git@github.com:aardvarkk/snopsize.git'
 set :deploy_to,   '/home/sysadmin/snopsize'
-
+set :port, 8285
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
@@ -21,7 +21,7 @@ set :rvm_type, :user
 set :bundle_flags, "--quiet"
 
 # Your HTTP server, Apache/etc
-server '184.106.240.177:8285', :app, :web, :db
+server '184.106.240.177', :app, :web, :db
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
