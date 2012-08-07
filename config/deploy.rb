@@ -21,7 +21,10 @@ set :rvm_type, :user
 set :bundle_flags, "--quiet"
 
 # Your HTTP server, Apache/etc
-server '184.106.240.177', :app, :web, :db
+'184.106.240.177'
+role :app, '184.106.240.177'
+role :web, '184.106.240.177'
+role :db, '184.106.240.177', :primary => true
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
