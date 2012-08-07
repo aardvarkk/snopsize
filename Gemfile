@@ -50,11 +50,7 @@ gem 'public_suffix'
 # Production stuff
 group :production do
 	
-	# Use MySQL database in the production environment
+  # Use MySQL database in the production environment
   gem 'mysql2'
 	
-  # These two seem to be required on the Ubuntu production side
-  gem 'execjs'
-  # gem 'therubyracer'
-
 end
