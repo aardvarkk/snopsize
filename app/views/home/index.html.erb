@@ -2,4 +2,7 @@
 <br>
 <%= render :template => 'search/search' %>
 <h2>Latest Snops</h2>
-<%= render :partial => 'shared/snopquick', :collection => @snops %>
+<%= render :partial => 'shared/snopquick', :collection => @latest_snops %>
+
+<h2>Most Popular Snops</h2>
+<%= render :partial => 'shared/snopquick', :collection => @popular_snops %>
