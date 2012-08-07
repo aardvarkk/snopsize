@@ -9,7 +9,7 @@ class ResourcesControllerTest < ActionController::TestCase
 
   test "should get show" do
     # Try to show the resource and all of it's snops
-    get :show, domain_id: @resource.domain.id, id: @resource
+    get :show, domain_id: @resource.domain.id, resource_id: @resource.id
 
     # Should get a success back.
     assert_response :success
