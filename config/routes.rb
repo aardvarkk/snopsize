@@ -14,7 +14,7 @@ Snopsize::Application.routes.draw do
   match 'domains/:id' => 'domains#show', :as => 'domain', :via => :get
 
   # for showing all snops from a given resource
-  match 'domains/:domain_id/resources/:id' => 'resources#show', :as => 'resource', :via => :get
+  match 'domains/:domain_id/resources/:resource_id' => 'resources#show', :as => 'resource', :via => :get
 
   # all of the snop resources
   resources :snops, :except => [:index, :edit, :update]

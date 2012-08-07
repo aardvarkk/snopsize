@@ -15,7 +15,7 @@
 <p>
   <b>Resource:</b>
   <% unless @snop.domain.nil? %>
-    <%= link_to "See all snops from " + @snop.domain.uri + @snop.resource.uri, @snop.resource %>
+    <%= link_to "See all snops for article " + @snop.domain.uri + @snop.resource.uri, resource_path(domain_id: @snop.domain.id, resource_id: @snop.resource.id) %>
   <% end %>
 </p>
 
