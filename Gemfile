@@ -54,7 +54,7 @@ group :production do
   gem 'mysql2'
 	
   # These two seem to be required on the Ubuntu production side
-	gem 'execjs'
-	gem 'therubyracer'
+  gem 'execjs'
+  # gem 'therubyracer'
 
 end
