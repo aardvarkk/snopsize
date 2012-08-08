@@ -5,11 +5,13 @@ class SearchController < ApplicationController
   # GET /search
   def search
   	
-    # Assume results are nil to start with
-  	@results = nil
+    # Assume results are an empty array
+    # We do this so we don't have to check if it exists in the results
+    # We can just SHOW the results
+  	@results = Array.new
 
   	# We're done if they didn't pass a search query
-  	return unless params[:q]
+  	return if params[:q].blank?
 
     # By default, perform a keyword search
     case params[:type]
