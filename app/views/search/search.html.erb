@@ -11,6 +11,7 @@
 <% if @results %>
   <% case params[:type] %>
   <% when 'url' %>
+    <%= debug @results %>
   <% when 'user' %>
     <%= @results.size %> User Results found</br></br>
     <%= render :partial => 'shared/userquick', :collection => @results %>

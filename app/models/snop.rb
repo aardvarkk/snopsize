@@ -51,7 +51,7 @@ class Snop < ActiveRecord::Base
     return if uri.blank?
 
     # Normalize it!
-    self.uri = uri.normalize
+    self.uri = uri.normalize.to_s
 
   end
 
