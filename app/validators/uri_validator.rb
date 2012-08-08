@@ -11,18 +11,18 @@ class UriValidator < ActiveModel::EachValidator
     begin
       uri = Addressable::URI.heuristic_parse(value);
     rescue
-      record.errors.add(attribute, 'Invalid URL')
+      return record.errors.add(attribute, 'Invalid URL')
     end
 
-    # Check that it's HTTP
-    if uri.scheme != 'http'
-      record.errors.add(attribute, 'URL must be HTTP')      
-    end
+    # Not acceptible to have a blank host... that's bad
+    # It would appear that a URI can be "valid" without having a host
+    return record.errors.add(attribute, 'URL appears to be missing a host') if uri.host.blank?
+
+    # Check that it's HTTP or HTTPS
+    return record.errors.add(attribute, 'URL must be HTTP or HTTPS') if (!['http', 'https'].include? uri.scheme)
 
     # Check with public suffix list
-    if !PublicSuffix.valid?(uri.host)
-      record.errors.add(attribute, 'Invalid public suffix')
-    end
+    return record.errors.add(attribute, 'Invalid public suffix') if !PublicSuffix.valid?(uri.host)
     
   end
 end

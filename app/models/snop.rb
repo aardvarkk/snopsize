@@ -16,6 +16,7 @@ class Snop < ActiveRecord::Base
   validates_presence_of :user
 
   # validate using the custom UriValidator
+  before_validation :normalize_uri
   validates :uri, :uri => true
 
   # Fields can only be a max of 256 chars for the snop
@@ -37,10 +38,30 @@ class Snop < ActiveRecord::Base
     text :title, :point1, :point2, :point3, :summary
   end
 
+  # Try to normalize the URI, so that we convert from capitals and stuff
+  def normalize_uri
+    
+    # Don't do anything on blanks
+    return if self.uri.blank?
+
+    # Try to parse, and set to nil if it fails
+    uri = Addressable::URI.heuristic_parse(self.uri) rescue nil
+
+    # Seems like it's possible to get here with a non-blank URI
+    return if uri.blank?
+
+    # Normalize it!
+    self.uri = uri.normalize
+
+  end
+
   def set_domain_and_resource
 
     # if we have a blank uri, then we don't have domain or resource
     return if self.uri.blank?
+
+    # THE REMAINING STUFF SHOULD NOT FAIL
+    # If it does, we didn't do the validation properly!
 
     # reparse our uri and set the domain and resource
     # we should already have passed validation to get here...
