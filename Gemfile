@@ -54,3 +54,11 @@ group :production do
   gem 'mysql2'
 	
 end
+
+# Testing stuff
+group :test do
+  gem 'database_cleaner'
+  # Use Capybara for testing
+  gem 'capybara'
+end
+
