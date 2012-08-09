@@ -8,15 +8,17 @@
 <% end %></br>
 
 <%# show any keyword results... %>
-<% case params[:type] %>
-<% when 'url' %>
-  <%= @results.size %> URL Results found</br></br>
-<% when 'user' %>
-  <%= @results.size %> User Results found</br></br>
-  <%= render :partial => 'shared/userquick', :collection => @results %>
-<% else %>
- 	<%= @results.size %> Keyword Results found</br></br>
-  <%= render :partial => 'shared/snopquick', :collection => @results %>
+<% if @results %>
+	<% case params[:type] %>
+	<% when 'url' %>
+	  <%= @results.size %> URL Results found</br></br>
+	<% when 'user' %>
+	  <%= @results.size %> User Results found</br></br>
+	  <%= render :partial => 'shared/userquick', :collection => @results %>
+	<% else %>
+	 	<%= @results.size %> Keyword Results found</br></br>
+	  <%= render :partial => 'shared/snopquick', :collection => @results %>
+	<% end %>
 <% end %>
 
 <%#= debug params %>
