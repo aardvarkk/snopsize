@@ -8,18 +8,34 @@
 	"buffers":
 	[
 		{
-			"file": "config/deploy.rb",
+			"file": "app/controllers/search_controller.rb",
 			"settings":
 			{
-				"buffer_size": 1358,
+				"buffer_size": 1780,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "config/database.yml",
+			"file": "app/views/search/search.html.erb",
 			"settings":
 			{
-				"buffer_size": 650,
+				"buffer_size": 856,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/snop.rb",
+			"settings":
+			{
+				"buffer_size": 2765,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/domain.rb",
+			"settings":
+			{
+				"buffer_size": 243,
 				"line_ending": "Windows"
 			}
 		}
@@ -52,6 +68,20 @@
 	},
 	"file_history":
 	[
+		"/C/Sites/snopsize/app/controllers/search_controller.rb",
+		"/C/Sites/snopsize/app/models/user.rb",
+		"/C/Sites/snopsize/app/views/search/search.html.erb",
+		"/C/Sites/snopsize/db/seeds.rb",
+		"/C/Sites/snopsize/app/views/shared/_snopquick.html.erb",
+		"/C/Sites/snopsize/app/views/shared/_userquick.html.erb",
+		"/C/Sites/snopsize/app/controllers/snops_controller.rb",
+		"/C/Sites/snopsize/app/models/snop.rb",
+		"/C/Sites/snopsize/app/validators/uri_validator.rb",
+		"/C/Sites/snopsize/test/unit/snop_test.rb",
+		"/C/Sites/snopsize/app/views/shared/_snopfull.html.erb",
+		"/C/Sites/snopsize/app/helpers/uri_helper.rb",
+		"/C/Sites/snopsize/config/database.yml",
+		"/C/Sites/snopsize/config/deploy.rb",
 		"/C/Users/clarkson/Desktop/id_rsa.pub",
 		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Sites/snopsize/Capfile",
@@ -61,11 +91,9 @@
 		"/C/Users/clarkson/.ssh/known_hosts",
 		"/C/Sites/snopsize/config/boot.rb",
 		"/C/Sites/snopsize/config/environment.rb",
-		"/C/Sites/snopsize/app/models/snop.rb",
 		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Pristine Packages/Rails.sublime-package",
 		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Packages/Ruby/Ruby.sublime-build",
 		"/C/Sites/snopsize/app/controllers/domains_controller.rb",
-		"/C/Sites/snopsize/app/controllers/snops_controller.rb",
 		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/public_suffix-1.1.1/lib/public_suffix.rb",
 		"/C/Sites/snopsize/lib/http_utils.rb",
 		"/C/Sites/snopsize/config/application.rb",
@@ -80,9 +108,7 @@
 		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Packages/BeautifyRuby/BeautifyRuby.sublime-settings",
 		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/http_url_validation_improved-1.3.1/README",
 		"/C/Sites/snopsize/app/views/domains/show.html.erb",
-		"/C/Sites/snopsize/db/seeds.rb",
 		"/C/Sites/snopsize/app/views/snops/index.html.erb",
-		"/C/Sites/snopsize/app/views/shared/_snopfull.html.erb",
 		"/C/Sites/snopsize/app/views/snops/_form.html.erb",
 		"/C/Sites/snopsize/db/migrate/20120726202123_add_uri_to_snop.rb",
 		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/addressable-2.3.1/lib/addressable/idna/pure.rb",
@@ -93,12 +119,9 @@
 		"/C/Sites/snopsize/app/views/resources/show.html.erb",
 		"/C/Sites/snopsize/app/models/resource.rb",
 		"/C/Sites/snopsize/app/models/domain.rb",
-		"/C/Sites/snopsize/app/views/shared/_snopquick.html.erb",
 		"/C/Sites/snopsize/db/migrate/20120723195249_add_domain_id_to_resources.rb",
 		"/C/Sites/snopsize/app/views/users/show.html.erb",
 		"/C/Sites/snopsize/db/migrate/20120723182003_use_domain_and_resources.rb",
-		"/C/Sites/snopsize/app/views/search/search.html.erb",
-		"/C/Sites/snopsize/app/models/user.rb",
 		"/C/Sites/snopsize/tmp/tmp.rb",
 		"/C/Sites/snopsize/app/views/snops/show.html.erb",
 		"/C/Sites/snopsize/db/migrate/20120720192552_replace_source_with_domain_and_resource.rb"
@@ -154,51 +177,107 @@
 			[
 				{
 					"buffer": 0,
-					"file": "config/deploy.rb",
+					"file": "app/controllers/search_controller.rb",
 					"settings":
 					{
-						"buffer_size": 1358,
+						"buffer_size": 1780,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								745,
-								745
+								521,
+								521
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Rails/Ruby on Rails.tmLanguage"
+							"syntax": "Packages/Rails/Ruby on Rails.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 60.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "config/database.yml",
+					"file": "app/views/search/search.html.erb",
 					"settings":
 					{
-						"buffer_size": 650,
+						"buffer_size": 856,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								632,
-								632
+								834,
+								452
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/YAML/YAML.tmLanguage",
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/models/snop.rb",
+					"settings":
+					{
+						"buffer_size": 2765,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1241,
+								1241
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/Ruby on Rails.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/models/domain.rb",
+					"settings":
+					{
+						"buffer_size": 243,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/Ruby on Rails.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

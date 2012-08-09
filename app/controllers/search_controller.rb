@@ -5,10 +5,7 @@ class SearchController < ApplicationController
   # GET /search
   def search
   	
-    # Assume results are an empty array
-    # We do this so we don't have to check if it exists in the results
-    # We can just SHOW the results
-  	@results = Array.new
+    @results = nil
 
   	# We're done if they didn't pass a search query
   	return if params[:q].blank?
