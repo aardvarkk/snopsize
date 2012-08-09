@@ -3,3 +3,5 @@
 one:
   user: one
   title: My Snop
+  domain: one
+  resource: one
