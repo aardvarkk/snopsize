@@ -11,23 +11,15 @@
 			"file": "config/deploy.rb",
 			"settings":
 			{
-				"buffer_size": 1286,
+				"buffer_size": 1358,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Capfile",
+			"file": "config/database.yml",
 			"settings":
 			{
-				"buffer_size": 263,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Gemfile",
-			"settings":
-			{
-				"buffer_size": 1143,
+				"buffer_size": 650,
 				"line_ending": "Windows"
 			}
 		}
@@ -61,10 +53,11 @@
 	"file_history":
 	[
 		"/C/Users/clarkson/Desktop/id_rsa.pub",
+		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Sites/snopsize/Capfile",
+		"/C/Sites/snopsize/Gemfile",
 		"/C/Users/clarkson/.bashrc",
 		"/C/Sites/snopsize/config/routes.rb",
-		"/C/Sites/snopsize/Gemfile",
-		"/C/Sites/snopsize/Capfile",
 		"/C/Users/clarkson/.ssh/known_hosts",
 		"/C/Sites/snopsize/config/boot.rb",
 		"/C/Sites/snopsize/config/environment.rb",
@@ -73,7 +66,6 @@
 		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Packages/Ruby/Ruby.sublime-build",
 		"/C/Sites/snopsize/app/controllers/domains_controller.rb",
 		"/C/Sites/snopsize/app/controllers/snops_controller.rb",
-		"/C/Users/clarkson/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/public_suffix-1.1.1/lib/public_suffix.rb",
 		"/C/Sites/snopsize/lib/http_utils.rb",
 		"/C/Sites/snopsize/config/application.rb",
@@ -127,6 +119,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\"tutorial.com\"",
 			"mysql",
 			"make_uri",
 			"Marshal.",
@@ -156,6 +149,7 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -163,15 +157,15 @@
 					"file": "config/deploy.rb",
 					"settings":
 					{
-						"buffer_size": 1286,
+						"buffer_size": 1358,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								65,
-								65
+								745,
+								745
 							]
 						],
 						"settings":
@@ -179,59 +173,35 @@
 							"syntax": "Packages/Rails/Ruby on Rails.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 60.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "Capfile",
+					"file": "config/database.yml",
 					"settings":
 					{
-						"buffer_size": 263,
+						"buffer_size": 650,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								632,
+								632
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+							"syntax": "Packages/YAML/YAML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Gemfile",
-					"settings":
-					{
-						"buffer_size": 1143,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1103,
-								1103
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 495.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -276,7 +246,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":

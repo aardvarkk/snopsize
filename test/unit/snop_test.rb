@@ -86,6 +86,15 @@ class SnopTest < ActiveSupport::TestCase
 
   # We want to make sure that the URI is valid
   test "valid uri" do
+    
+    # Blank URI
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :uri => nil
+      )
+    assert snop.save, "Unable to save with a blank URI."
+
     # Try something that's not even a URI
     snop = Snop.new(
       :user_id => users(:one).id, 
@@ -94,21 +103,37 @@ class SnopTest < ActiveSupport::TestCase
       )
     assert !snop.save, "Saved with something that's not even a URI."
 
-    # Try something that's a non existing URI
+    # Try something with an invalid public suffix
     snop = Snop.new(
       :user_id => users(:one).id, 
       :title => "My Title!",
-      :uri => "http://www.fakeuri.uri.com"
+      :uri => "http://www.google.aaa"
       )
-    assert !snop.save, "Saved with something that's not a valid URI."
+    assert !snop.save, "Saved with an invalid public suffix."
 
-    # Try something that doesn't have domain and resource
+    # Try something with no host
     snop = Snop.new(
       :user_id => users(:one).id, 
       :title => "My Title!",
-      :uri => "www.globeandmail.com"
+      :uri => "http://"
       )
-    assert !snop.save, "Saved with that doesn't have domain and resource"
+    assert !snop.save, "Saved with no host."
+
+    # Try something not http
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :uri => "ftp://www.google.com"
+      )
+    assert !snop.save, "Saved with an invalid scheme."
+
+    # Try something https (not currently accepted?)
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :uri => "https://www.google.com"
+      )
+    assert snop.save, "Couldn't save with an https scheme."
 
     # Now let's pass in a valid URI
     snop = Snop.new(
@@ -116,7 +141,32 @@ class SnopTest < ActiveSupport::TestCase
       :title => "My Title!",
       :uri => "http://www.theglobeandmail.com/sports/olympics/canadian-team-advances-after-badminton-players-expelled-from-olympics-for-match-throwing/article4453784/"
       )
-    assert snop.save, "Unable to save snop with valid URI"
+    assert snop.save, "Unable to save snop with valid URI."
+
+    # This is (unfortunately) a "valid" URI even though the site doesn't exist
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :uri => "http://www.fakeuri.uri.com"
+      )
+    assert snop.save, "Unable to save snop with semi-valid URI."
+
+    # Try something that doesn't have domain and resource
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :uri => "www.theglobeandmail.com"
+      )
+    assert snop.save, "Unable to save a domain-only snop missing http://."
+
+    # Try something that doesn't have domain and resource
+    snop = Snop.new(
+      :user_id => users(:one).id, 
+      :title => "My Title!",
+      :uri => "http://theglobeandmail.com"
+      )
+    assert snop.save, "Unable to save a domain-only snop missing www."
+
   end
 
   # Make sure all the text based snop fields are of the proper length

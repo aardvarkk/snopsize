@@ -1,7 +1,4 @@
 class Snop < ActiveRecord::Base
-  include UriHelper
-
-  # include HttpUtils
 
   # Associations
   belongs_to :user
@@ -19,7 +16,8 @@ class Snop < ActiveRecord::Base
   validates_presence_of :user
 
   # validate using the custom UriValidator
-  validates :uri, :uri => true, :unless => "uri.nil?"
+  before_validation :normalize_uri
+  validates :uri, :uri => true
 
   # Fields can only be a max of 256 chars for the snop
   validates :title, :point1, :point2, :point3, :summary, :length => { :maximum => 256 }
@@ -31,10 +29,6 @@ class Snop < ActiveRecord::Base
   attr_accessible :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary, :uri
   attr_readonly :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary, :uri
 
-  # Callbacks
-  # Canonicalize the URI before we check if it's valid
-  before_validation :canonicalize_url, :unless => "uri.nil?"
-
   # set the domain and resource before saving based
   # on the URI
   before_save :set_domain_and_resource, :unless => "uri.nil?"
@@ -44,16 +38,43 @@ class Snop < ActiveRecord::Base
     text :title, :point1, :point2, :point3, :summary
   end
 
-  def canonicalize_url
-    canonicalize(self.uri)
+  # Try to normalize the URI, so that we convert from capitals and stuff
+  def normalize_uri
+    
+    # Don't do anything on blanks
+    return if self.uri.blank?
+
+    # Try to parse, and set to nil if it fails
+    uri = Addressable::URI.heuristic_parse(self.uri) rescue nil
+
+    # Seems like it's possible to get here with a non-blank URI
+    return if uri.blank?
+
+    # Normalize it!
+    self.uri = uri.normalize.to_s
+
   end
 
   def set_domain_and_resource
+
+    # if we have a blank uri, then we don't have domain or resource
+    return if self.uri.blank?
+
+    # THE REMAINING STUFF SHOULD NOT FAIL
+    # If it does, we didn't do the validation properly!
+
     # reparse our uri and set the domain and resource
     # we should already have passed validation to get here...
-    valid_uri = URI.parse(self.uri)
+    valid_uri = Addressable::URI.heuristic_parse(self.uri)
+    
+    # Set the domain as the concatenation of the scheme and the host
     self.domain = Domain.find_or_create_by_uri(valid_uri.scheme + '://' + valid_uri.host)
-    self.resource = self.domain.resources.find_or_create_by_uri(valid_uri.path)
+
+    # Set the resource as the path
+    # But the path can be nil (http://example.com), so we should set the path
+    # to a forward slash in that case
+    self.resource = self.domain.resources.find_or_create_by_uri(valid_uri.path.blank? ? '/' : valid_uri.path)
+
   end
 
 end
