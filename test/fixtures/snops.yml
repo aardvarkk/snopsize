@@ -3,3 +3,7 @@
 one:
   user: one
   title: My Snop
+  uri: http://www.testuri.com/test/resource
+  domain: one
+  resource: one
+  point1: This is the first point of the snop
