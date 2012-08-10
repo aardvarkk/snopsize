@@ -3,6 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   test "mandatory fields" do
+    
     # Can't create without username/password/email
     user = User.new
     assert !user.save, "Saved user without username/email/password!"
@@ -28,13 +29,20 @@ class UserTest < ActiveSupport::TestCase
       )
     assert !user.save, "Saved user without username!"
 
-    # Need at vary least: email, username, password
     user = User.new(
       :email => "test@email.com",
       :password => "testpassword",
       :username => "Joe"
       )
-    assert user.save, "Unable to save user with mandatory fields!"
+    assert !user.save, "Able to save a username with a capital letter!"
+
+    user = User.new(
+      :email => "test@email.com",
+      :password => "testpassword",
+      :username => "joe"
+      )
+    assert user.save, "Unable to save a valid user."
+
   end
 
   test "duplicate username" do
@@ -51,6 +59,14 @@ class UserTest < ActiveSupport::TestCase
       :username => "test", 
       :password => "apassword")
     assert !user2.save, "Saved user with duplicate username!"
+
+    # Try again with different capitalization
+    user2 = User.new(
+      :email => "test2@email.com",
+      :username => "Test", 
+      :password => "apassword")
+    assert !user2.save, "Saved user with capitalization-altered username!"
+
   end
 
   test "duplicate email" do
@@ -67,6 +83,38 @@ class UserTest < ActiveSupport::TestCase
       :username => "test1", 
       :password => "apassword")
     assert !user2.save, "Saved user with duplicate email!"
+  end
+
+  test "invalid usernames" do
+
+    user = User.new(
+      :email => "test@email.com",
+      :password => "testpassword",
+      :username => "Joe "
+      )
+    assert !user.save, "Saved username with space in it"
+
+    user = User.new(
+      :email => "test@email.com",
+      :password => "testpassword",
+      :username => "Joe%"
+      )
+    assert !user.save, "Saved username with symbols in it"
+
+    user = User.new(
+      :email => "test@email.com",
+      :password => "testpassword",
+      :username => "joe_user"
+      )
+    assert user.save, "Couldn't save a username with an underscore"
+
+    user = User.new(
+      :email => "test2@email.com",
+      :password => "testpassword",
+      :username => "0joe_user0"
+      )
+    assert user.save, "Couldn't save a username with digits in it"
+
   end
 
 end

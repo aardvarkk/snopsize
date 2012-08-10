@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   # Add username validation
   validates_presence_of :username
   validates_uniqueness_of :username
+
+  # Make sure the username follows a specific regex
+  validates :username, :format => { :with => /\A[0-9a-z_]+\z/, :message => "Only lowercase letters, numbers, and underscores allowed" }
 	
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
