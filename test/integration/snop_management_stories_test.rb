@@ -46,19 +46,16 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert_equal current_path, new_snop_path
 
     # Let's fill in some fields for a user to create a snop
-    snop = Snop.create(title: "My Snop Title", point1: "My First Point", point2: "My Second Point", point3: "My Third Point" , summary: "My Summary", uri: "www.myfakeuri.com/article/2103")
-    snop.save!
-
-    fill_in('Title', with: snop.title)
-    fill_in('Uri', with: snop.uri)
-    fill_in('Point1', with: snop.point1)
-    fill_in('Point2', with: snop.point2)
-    fill_in('Point3', with: snop.point3)
-    fill_in('Summary', with: snop.summary)
+    fill_in('Title', with: "My Snop Title")
+    fill_in('Uri', with: "www.myfakeuri.com/article/2103")
+    fill_in('Point1', with: "My First Point")
+    fill_in('Point2', with: "My Second Point")
+    fill_in('Point3', with: "My Third Point")
+    fill_in('Summary', with: "My Summary")
     click_button "Create Snop"
 
     # The user should now be shown the snop they just created
-    assert_equal current_path, snop_path(snop)
+    assert_equal current_path, snop_path(user.snops.first)
   end
 
   # Story: A user has created a snop that they now think they want to
@@ -73,11 +70,144 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
   # Story: A user is browsing through snops and finds one they like, 
   # they would like to mark it as a favourite of theirs.
   test "favouriting a snop" do
+    # Switch to selenium for this test since we have JS to execute
+    Capybara.current_driver = :selenium
+
+    # Go to home page
+    visit('/')
+    assert_equal current_path, root_path
+
+    # There should be a link to sign-up
+    assert page.has_link? "Sign In", href: new_user_session_path
+
+    # Now lets follow that sign in link
+    click_link "Sign In"
+
+    # Make sure we're on the sign in page
+    assert_equal current_path, new_user_session_path
+
+    # Sign in
+    user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
+    user.save!
+
+    fill_in "Username", :with => user.username
+    fill_in "Password", :with => user.password
+    click_button "Sign in"
+
+    # We should now be back on the home page and logged in
+    assert_equal current_path, root_path
+
+    # Now the user want's to click on a snop
+    click_link(snops(:one).title)
+
+    # We should be on the snop page now
+    assert_equal current_path, snop_path(snops(:one))
+
+    # They see a favourite button there, they like the snop so they will favourite it
+    click_button("Favourite")
+
+    # We should be on the snop page still
+    assert_equal current_path, snop_path(snops(:one))
+
+    # The button should change to "Unfavourite"
+    assert page.has_button?("Unfavourite")
+
+    # Now the user goes to their home page
+    click_link(user.username)
+
+    # Give it some time to make it to the page
+    sleep 2
+
+    # Make sure we're on the user page now
+    assert_equal current_path, user_path(user)
+
+    # They should now see a link to their favourite snop in their snops
+    assert page.has_link?(snops(:one).title)
   end
 
   # Story: A user is looking through their snops and finds one that 
   # they don't think is good anymore (an old favourite). They now want
   # to remove it from their favourite list.
   test "unfavouriting a snop" do
+    # Switch to selenium for this test since we have JS to execute
+    Capybara.current_driver = :selenium
+
+    # Go to home page
+    visit('/')
+    assert_equal current_path, root_path
+
+    # There should be a link to sign-up
+    assert page.has_link? "Sign In", href: new_user_session_path
+
+    # Now lets follow that sign in link
+    click_link "Sign In"
+
+    # Make sure we're on the sign in page
+    assert_equal current_path, new_user_session_path
+
+    # Sign in
+    user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
+    user.save!
+
+    fill_in "Username", :with => user.username
+    fill_in "Password", :with => user.password
+    click_button "Sign in"
+
+    # We should now be back on the home page and logged in
+    assert_equal current_path, root_path
+
+    # Now the user want's to click on a snop
+    click_link(snops(:one).title)
+
+    # We should be on the snop page now
+    assert_equal current_path, snop_path(snops(:one))
+
+    # They see a favourite button there, they like the snop so they will favourite it
+    click_button("Favourite")
+
+    # We should be on the snop page still
+    assert_equal current_path, snop_path(snops(:one))
+
+    # The button should change to "Unfavourite"
+    assert page.has_button?("Unfavourite")
+
+    # Now the user goes to their home page
+    click_link(user.username)
+
+    # Give it some time to make it to the page
+    sleep 2
+
+    # Make sure we're on the user page now
+    assert_equal current_path, user_path(user)
+
+    # They should now see a link to their favourite snop in their snops
+    assert page.has_link?(snops(:one).title)
+
+    # But they changed their mind, now they want to unfavourite
+    click_link(snops(:one).title)
+
+    # Back to the snop page
+    assert_equal current_path, snop_path(snops(:one))
+
+    # Make sure it still says Unfavourite
+    assert page.has_button?("Unfavourite");
+
+    # click it
+    click_button("Unfavourite")
+
+    # The button should change to "Unfavourite"
+    assert page.has_button?("Favourite")
+
+    # Now let's go back to the home page   
+    click_link(user.username)
+
+    # Give it some time to make it to the page
+    sleep 2
+
+    # Make sure we're on the user page now
+    assert_equal current_path, user_path(user)
+
+    # They shouldn't have the snop in there anymore
+    assert !page.has_link?(snops(:one).title)
   end
 end
