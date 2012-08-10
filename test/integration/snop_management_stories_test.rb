@@ -116,7 +116,9 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_link(user.username)
 
     # Give it some time to make it to the page
-    sleep 2
+    wait_until(5) do
+      current_path == user_path(user)
+    end
 
     # Make sure we're on the user page now
     assert_equal current_path, user_path(user)
@@ -175,7 +177,9 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_link(user.username)
 
     # Give it some time to make it to the page
-    sleep 2
+    wait_until(5) do
+      current_path == user_path(user)
+    end
 
     # Make sure we're on the user page now
     assert_equal current_path, user_path(user)
