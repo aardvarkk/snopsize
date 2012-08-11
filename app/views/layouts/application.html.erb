@@ -16,7 +16,16 @@
     <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %>
   <% end %>
   </div>
+
+<%# Content %>
 <%= yield %>
+
+<%# General Site Navigation %>
+<center>
+  <%= link_to('Home', :controller => 'home', :action => 'index') %>
+  &nbsp;|&nbsp;
+  <%= mail_to('support@snopsize.com', 'Contact', subject: 'Support Question', encode: 'javascript') %>
+</center>
 
 </body>
 </html>
