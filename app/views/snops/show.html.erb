@@ -1,3 +1,10 @@
+<% content_for :opengraph do %>
+<meta property=\"og:title\" content=\"#{@snop.title}\" />
+<meta property=\"og:type\" content=\"article\" />
+<meta property=\"og:url\" content=\"#{request.protocol + request.host}:#{request.port.to_s + request.fullpath}\" />
+<meta property=\"og:site_name\" content=\"www.snopsize.com\" />
+<% end %>
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -12,16 +19,17 @@
 <div class="fb-like" data-send="false" data-width="450" data-show-faces="true" data-font="arial"></div> 
 <br>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize">Tweet</a>
+<%# Create a tweetable string by combining title, all points, and summary %>
+<%# For now, we'll just put a space in between them all. %>
+<% snopcontent = truncate(@snop.title + ' ' + @snop.point1 + ' ' + @snop.point2 + ' ' + @snop.point3 + ' ' + @snop.summary, :length => 140) %>
+
+<%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
+<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h snopcontent %>">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 <br>
 
-<div id="fave">
-  <% if user_signed_in? %>
-  	<% if @fave_snop.nil? %>
-  	  <%= render 'fave_snops/favourite' %>
-  	<% else %>
-      <%= render 'fave_snops/unfavourite' %>
-    <% end %>
-  <% end %>
-</div>
+<% if user_signed_in? %>
+  <div id="fave">
+  	<% @fave_snop.nil? ? render('fave_snops/favourite') : render('fave_snops/unfavourite') %>
+  </div>
+<% end %>

@@ -5,6 +5,10 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <%# Our OpenGraph tags (for Facebook LIKE, etc.) have to be inside the head %>
+  <%= yield :opengraph %>
+
 </head>
 <body>
   <div id="user_nav">
