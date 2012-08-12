@@ -12,6 +12,7 @@
 	<% case params[:type] %>
 	<% when 'url' %>
 	  <%= @results.size %> URL Results found</br></br>
+    <%= link_to "Be the first to snop about " + @uri.to_s, new_snop_path(uri: @uri) %>
 	<% when 'user' %>
 	  <%= @results.size %> User Results found</br></br>
 	  <%= render :partial => 'shared/userquick', :collection => @results %>

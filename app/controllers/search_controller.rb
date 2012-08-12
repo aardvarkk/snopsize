@@ -19,26 +19,27 @@ class SearchController < ApplicationController
       # After that, we'll look for an EXACT match on resource, and if found, redirect there
       # Otherwise, we'll look for an EXACT match on domain, and if found, redirect there
       # Otherwise, do nothing and the search page will take care of saying it didn't find anything
-      uri = Addressable::URI.heuristic_parse(params[:q]) rescue nil
+      @uri = Addressable::URI.heuristic_parse(params[:q]) rescue nil
 
       # Can't do anything with a bad uri
-      return if uri.nil?
+      return if @uri.nil?
 
       # Resource match -- redirect if we find anything
-      r = Snop.where('uri = ?', uri.normalize.to_s).limit(1)
+      r = Snop.where('uri = ?', @uri.normalize.to_s).limit(1)
       if r[0]
         redirect_to resource_path(domain_id: r[0].domain_id, resource_id: r[0].resource.id) 
         return
       end
 
       # Domain match -- redirect if we find anything
-      d = Domain.where('uri = ?', uri.scheme + '://' + uri.host).limit(1)
+      d = Domain.where('uri = ?', @uri.scheme + '://' + @uri.host).limit(1)
       if d[0]
         redirect_to domain_path(d[0]) 
         return
       end
 
-      # We couldn't find anything, so @results will be nil
+      # We couldn't find anything, return empty results
+      @results = Array.new
 
     when 'user'
 

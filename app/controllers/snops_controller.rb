@@ -39,6 +39,11 @@ class SnopsController < ApplicationController
   def new
     @snop = Snop.new
 
+    # Check if we should pre-fill with URI value
+    if (params.has_key? :uri)
+      @default_uri = params[:uri]
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @snop }
