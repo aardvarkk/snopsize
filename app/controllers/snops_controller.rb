@@ -6,7 +6,24 @@ class SnopsController < ApplicationController
   def show
     @snop = Snop.find(params[:id])
 
-    #has the logged in user already faved this snop?
+    # Create a tweetable string by combining title, all points, and summary
+    # For now, we'll just put a space in between them all.
+    @snopcontent = @snop.title
+    if @snop.point1
+      @snopcontent += ' ' + @snop.point1
+    end
+    if @snop.point2
+      @snopcontent += ' ' + @snop.point2
+    end
+    if @snop.point3
+      @snopcontent += ' ' + @snop.point3
+    end
+    if @snop.summary
+      @snopcontent += ' ' + @snop.summary
+    end
+    @snopcontent.truncate(140)
+
+    # has the logged in user already faved this snop?
     if (user_signed_in?)
       @fave_snop = current_user.favourites.find_by_id(@snop.id)
     end
