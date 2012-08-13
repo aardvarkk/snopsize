@@ -22,7 +22,10 @@ class SearchController < ApplicationController
       @uri = Addressable::URI.heuristic_parse(params[:q]) rescue nil
 
       # Can't do anything with a bad uri
-      return if @uri.nil?
+      return if @uri.nil? || @uri.host.nil?
+
+      # Assume an http scheme if none is given
+      @uri.scheme = 'http' if @uri.scheme.nil?
 
       # Resource match -- redirect if we find anything
       r = Snop.where('uri = ?', @uri.normalize.to_s).limit(1)
