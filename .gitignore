@@ -31,3 +31,6 @@ solr/pids/*
 
 # Since we may want to deploy from Windows to Linux, we can't check in the Gemfile.lock, because that screws up when it tries to install platform-specific gems (MySQL for instance)
 Gemfile.lock
+
+# Ignore Sublime workspaces
+*.sublime-workspace
