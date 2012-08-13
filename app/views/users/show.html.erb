@@ -12,7 +12,9 @@
 <h3>Uncategorized Snops</h3>
 <% @uncategorized_snops.each do |snop| %>
 	<%= render :partial => "shared/snopquick", :locals => {:snopquick => snop} %>
-	<%= link_to "Categorize", user_categories_add_snop_path(snop: snop) %>
+  <% if user_signed_in? && @user == current_user %>
+	  <%= link_to "Categorize", user_categories_add_snop_path(snop: snop) %>
+  <% end %>
 	<hr/>
 <% end %>
 <br/>
@@ -22,7 +24,9 @@
   <h4><%= link_to category.name, edit_user_category_path(category) %></h4>
   <% snops.each do |snop| %>
   	<%= render :partial => "shared/snopquick", :locals => {:snopquick => snop} %>
-	  <%= link_to "Change Category", user_categories_add_snop_path(snop: snop) %>
+    <% if user_signed_in? && @user == current_user %>
+	    <%= link_to "Change Category", user_categories_add_snop_path(snop: snop) %>
+    <% end %>
   	<hr/>
   <% end %>
 <% end %>
