@@ -61,16 +61,18 @@ class SnopsControllerTest < ActionController::TestCase
   end
 
   test "should destroy snop" do
-    # Try to delete a snop
-    assert_difference('Snop.count', -1) do
-      delete :destroy, id: @snop
-    end
+    
+    # Delete the snop
+    delete :destroy, id: @snop
+
+    # Check that it's marked as deleted
+    assert_equal true, assigns(:snop).deleted
 
     # make sure we are redirected properly to the
     # user page.
-    assert_redirected_to @snop.user
+    assert_redirected_to assigns(:snop).user
 
-    # User category will be assigned
+    # Snop will be assigned
     assert_not_nil assigns(:snop)
   end
 end

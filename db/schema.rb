@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731133540) do
+ActiveRecord::Schema.define(:version => 20120814003548) do
 
   create_table "domains", :force => true do |t|
     t.string   "uri",        :null => false
@@ -34,17 +34,18 @@ ActiveRecord::Schema.define(:version => 20120731133540) do
   end
 
   create_table "snops", :force => true do |t|
-    t.integer  "user_id",     :null => false
-    t.string   "title",       :null => false
+    t.integer  "user_id",                        :null => false
+    t.string   "title",                          :null => false
     t.string   "point1"
     t.string   "point2"
     t.string   "point3"
     t.string   "summary"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "domain_id"
     t.integer  "resource_id"
     t.string   "uri"
+    t.boolean  "deleted",     :default => false, :null => false
   end
 
   create_table "snops_to_user_categories", :force => true do |t|

@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% if @snop.deleted %>
+This snop has been deleted
+<% else %>
+
 <p>
   <b>User:</b>
   <%= link_to @snop.user.username, @snop.user %>
@@ -43,3 +47,5 @@
   <b>Summary:</b>
   <%= @snop.summary %>
 </p>
+
+<% end %>

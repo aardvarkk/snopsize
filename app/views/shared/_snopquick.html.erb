@@ -1,3 +1,6 @@
+<% if snopquick.deleted %>
+This snop has been deleted
+<% else %>
 <div>
 	<%= link_to snopquick.user.username, snopquick.user %> <br/>
 	<%= link_to snopquick.title, snopquick %><br/>
@@ -10,5 +13,6 @@
 	<%= snopquick.point2 %><br/>
 	<%= snopquick.point3 %><br/>
 	<%= snopquick.summary %><br/>
-	<hr/>
 </div>
+<% end %>
+<hr/>

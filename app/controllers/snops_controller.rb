@@ -73,12 +73,16 @@ class SnopsController < ApplicationController
   # DELETE /snops/1
   # DELETE /snops/1.json
   def destroy
+
     @snop = Snop.find(params[:id])
-    @snop.destroy
+
+    # Don't actually destroy it, just mark it as deleted!
+    @snop.update_attribute(:deleted, 1)
 
     respond_to do |format|
       format.html { redirect_to @snop.user }
       format.json { head :no_content }
     end
+
   end
 end
