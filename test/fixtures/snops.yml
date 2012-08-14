@@ -7,3 +7,7 @@ one:
   domain: one
   resource: one
   point1: This is the first point of the snop
+
+two:
+  user: two
+  title: This is crazy!

@@ -1,5 +1,6 @@
-<h1>Resources#show</h1>
-<p>Find me in app/views/resources/show.html.erb</p>
+<h2>Viewing snops for <%= @url %></h2>
+
+<%= link_to "Snop about " + @url, new_snop_path(uri: @url)%></br></br>
 
 <%# get all snops for this domain and resource combination %>
 <% if @snops %>

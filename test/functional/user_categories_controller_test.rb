@@ -93,6 +93,18 @@ class UserCategoriesControllerTest < ActionController::TestCase
     assert_equal snop.id, assigns(:snop).id
   end
 
+  test "should not add snop user_category" do
+    # Get the first snop of another user
+    snop = users(:two).snops.first
+
+    # Try to add a category for that users snop, this
+    # should fail and redirect us to the user page
+    get :add_snop, snop: snop
+
+    # We should be on the user page
+    assert_redirected_to @user
+  end
+
   test "should set snop user_category" do
     snop = @user.snops.first
 
