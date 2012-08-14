@@ -51,7 +51,7 @@ class FaveSnopsControllerTest < ActionController::TestCase
     # Make sure @snop is created
     assert_not_nil assigns(:snop)
 
-    # TODO: Test that the jquery was executed and that the button
+    # Test that the jquery was executed and that the button
     # says "favourite" now
     assert_select_jquery :html, '#fave' do
       assert_select "input", value: "Favourite"

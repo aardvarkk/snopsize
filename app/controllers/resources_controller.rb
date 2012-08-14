@@ -12,20 +12,14 @@ class ResourcesController < ApplicationController
     # as the one to show
     @snop = snops.find(params[:snop]) if @snops.exists?(params[:snop])
 
-    logger.debug "Snop: " + @snop.to_s if @snop
-
     # Now we'll set the next and previous
     snop_index = @snops.all.index(@snop)
 
     # Set the previous
     @prev = @snops.all[snop_index - 1] if snop_index > 0
 
-    logger.debug "Prev: " + @prev.to_s if @prev
-
     # Set the next
     @next = @snops.all[snop_index + 1] if snop_index < @snops.size - 1
-
-    logger.debug "Next: " + @next.to_s if @next
   end
 
   # POST /domains/:domain_id/resource/:resource_id?snop=
@@ -34,10 +28,14 @@ class ResourcesController < ApplicationController
     @resource = Resource.find(params[:resource_id])
     @snops = @resource.snops.order("created_at DESC")
 
+    # Make sure the snop requested is part of the snops!
+    unless @snops.exists?(params[:snop])
+      redirect_to resource_path(domain_id: params[:domain_id], resource_id: params[:resource_id])
+      return
+    end
+
     # Get the snop that's passed in
     @snop = @snops.find(params[:snop])
-
-    logger.debug "Snop: " + @snop.to_s if @snop
 
     # Now we'll set the next and previous
     snop_index = @snops.all.index(@snop)
@@ -45,12 +43,8 @@ class ResourcesController < ApplicationController
     # Set the previous
     @prev = @snops.all[snop_index - 1] if snop_index > 0
 
-    logger.debug "Prev: " + @prev.to_s if @prev
-
     # Set the next
     @next = @snops.all[snop_index + 1] if snop_index < @snops.size - 1
-
-    logger.debug "Next: " + @next.to_s if @next
 
     # Respond with the javascript call
     respond_to do |format|
