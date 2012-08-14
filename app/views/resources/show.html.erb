@@ -4,5 +4,15 @@
 
 <%# get all snops for this domain and resource combination %>
 <% if @snops %>
-	<%= render :partial => 'shared/snopquick', :collection => @snops %>
+  <div id="buttons">
+    <div id="prev_button">
+      <%= button_to "<", resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @prev), remote: true, disabled: @prev.nil? %>
+    </div>
+    <div id="next_button">
+      <%= button_to ">", resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @next), remote: true, disabled: @next.nil? %>
+    </div>
+  </div>
+  <div id="snop">
+	  <%= render :partial => "shared/snopfull" %>
+  </div>
 <% end %>

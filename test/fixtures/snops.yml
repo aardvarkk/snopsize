@@ -16,3 +16,10 @@ three:
   user: two
   title: I regret this snop.
   deleted: true
+
+four: 
+  user: two
+  title: Another snop about same URL
+  uri: http://www.testuri.com/test/resource
+  domain: one
+  resource: one
