@@ -14,7 +14,10 @@
 	<%= render :partial => 'shared/snopquick', :locals => {:snopquick => snop} %>
   <% if user_signed_in? && @user == current_user %>
 	  <%= link_to 'Categorize', user_categories_add_snop_path(snop: snop) %>
-    <%= link_to 'Delete', snop, confirm: 'Are you sure?', method: :delete %>
+
+    <%# Only let us delete our own snops %>
+    <%= link_to 'Delete', snop, confirm: 'Are you sure?', method: :delete if @user == snop.user %>
+
     <hr/>
   <% end %>
 <% end %>
@@ -27,7 +30,10 @@
   	<%= render :partial => 'shared/snopquick', :locals => {:snopquick => snop} %>
     <% if user_signed_in? && @user == current_user %>
 	    <%= link_to 'Change Category', user_categories_add_snop_path(snop: snop) %>
-      <%= link_to 'Delete', snop, confirm: 'Are you sure?', method: :delete %>
+  
+      <%# Only let us delete our own snops %>
+      <%= link_to 'Delete', snop, confirm: 'Are you sure?', method: :delete if @user == snop.user %>
+      
       <hr/>
     <% end %>
   <% end %>
