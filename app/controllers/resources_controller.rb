@@ -2,7 +2,7 @@ class ResourcesController < ApplicationController
   # GET /domains/:domain_id/resources/:resource_id
   def show
     @resource = Resource.find(params[:resource_id])
-    @snops = @resource.snops.order("created_at DESC")
+    @snops = @resource.snops.where(deleted: false).order("created_at DESC")
     @url = @resource.domain.uri + @resource.uri
 
     # Set the snop to show just to the first
@@ -26,7 +26,8 @@ class ResourcesController < ApplicationController
   def show_snop
     # Get the resrouce and all the snops for it
     @resource = Resource.find(params[:resource_id])
-    @snops = @resource.snops.order("created_at DESC")
+    @snops = @resource.snops.where(deleted: false).order("created_at DESC")
+    @direction = params[:direction].to_s
 
     # Make sure the snop requested is part of the snops!
     unless @snops.exists?(params[:snop])
