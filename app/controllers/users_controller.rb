@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     
     # Get a list of all the users created snop ids
     # (i.e. snops created by the user)
-    user_snops = @user.snops.where(:deleted => false)
+    user_snops = @user.snops.where(deleted: false)
 
     # Get the list of favourte snop ids
     fave_snops = @user.favourites
