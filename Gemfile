@@ -61,4 +61,3 @@ group :test do
   # Use Capybara for testing
   gem 'capybara'
 end
-

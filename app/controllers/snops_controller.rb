@@ -1,5 +1,10 @@
 class SnopsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
+  before_filter :verify_snop_owner, :only => [:destroy]
+
+  def verify_snop_owner
+    redirect_to current_user if Snop.find(params[:id]).user != current_user
+  end
 
   # GET /snops/1
   # GET /snops/1.json
@@ -9,24 +14,14 @@ class SnopsController < ApplicationController
     # Create a tweetable string by combining title, all points, and summary
     # For now, we'll just put a space in between them all.
     @snopcontent = @snop.title
-    if @snop.point1
-      @snopcontent += ' ' + @snop.point1
-    end
-    if @snop.point2
-      @snopcontent += ' ' + @snop.point2
-    end
-    if @snop.point3
-      @snopcontent += ' ' + @snop.point3
-    end
-    if @snop.summary
-      @snopcontent += ' ' + @snop.summary
-    end
+    @snopcontent += ' ' + @snop.point1 if @snop.point1
+    @snopcontent += ' ' + @snop.point2 if @snop.point2
+    @snopcontent += ' ' + @snop.point3 if @snop.point3
+    @snopcontent += ' ' + @snop.summary if @snop.summary
     @snopcontent.truncate(140)
 
     # has the logged in user already faved this snop?
-    if (user_signed_in?)
-      @fave_snop = current_user.favourites.find_by_id(@snop.id)
-    end
+    @fave_snop = current_user.favourites.find_by_id(@snop.id) if user_signed_in?
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,9 +35,7 @@ class SnopsController < ApplicationController
     @snop = Snop.new
 
     # Check if we should pre-fill with URI value
-    if (params.has_key? :uri)
-      @default_uri = params[:uri]
-    end
+    @default_uri = params[:uri] if params.has_key? :uri
 
     respond_to do |format|
       format.html # new.html.erb

@@ -92,9 +92,7 @@ class UserCategoriesController < ApplicationController
     old_category = @snop.user_categories.where('user_id = ?', current_user.id).first
 
     # if old category exists, remove snop from old category
-    if (!old_category.nil?)
-      old_category.snops.destroy(@snop)
-    end
+    old_category.snops.destroy(@snop) unless old_category.nil?
 
   	# add the snop to the new category
   	@user_category.snops << @snop
