@@ -6,16 +6,13 @@ class UsersController < ApplicationController
     
     # Get a list of all the users created snop ids
     # (i.e. snops created by the user)
-    user_snop_ids = @user.snop_ids
+    user_snops = @user.snops.where(:deleted => false)
 
     # Get the list of favourte snop ids
-    fave_snop_ids = @user.favourite_ids
+    fave_snops = @user.favourites
     
     # Combine them
-    all_snop_ids = user_snop_ids + fave_snop_ids
-    
-    # Get the snops for those ids
-    all_snops = Snop.find(all_snop_ids)
+    all_snops = user_snops + fave_snops
     
     # Get all categorized snops
     categorized_snops = @user.categorized_snops
