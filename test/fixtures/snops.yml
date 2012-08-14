@@ -11,3 +11,8 @@ one:
 two:
   user: two
   title: This is crazy!
+
+three:
+  user: two
+  title: I regret this snop.
+  deleted: true

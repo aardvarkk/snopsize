@@ -75,4 +75,31 @@ class SnopsControllerTest < ActionController::TestCase
     # Snop will be assigned
     assert_not_nil assigns(:snop)
   end
+
+  test "can't destroy somebody else's snop" do
+
+    # Try to delete it
+    delete :destroy, id: snops(:two)
+
+    # Make sure it's not deleted
+    assert_equal false, snops(:two).deleted
+
+    # Make sure we get redirected to our user page
+    assert_redirected_to @snop.user
+
+  end
+
+  test "can destroy own snop" do
+
+    # Try to delete it
+    delete :destroy, id: snops(:one)
+
+    # Make sure it's deleted
+    assert_equal true, assigns(:snop).deleted
+
+    # Make sure we get redirected to our user page
+    assert_redirected_to assigns(:snop).user
+
+  end
+
 end
