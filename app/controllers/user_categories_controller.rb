@@ -65,6 +65,14 @@ class UserCategoriesController < ApplicationController
   # GET /user_categories/add_snop
   def add_snop
   	@snop = Snop.find(params[:snop])
+
+    # The snop that is specified has to be one that is either
+    # created by the current_user or favourited
+    unless current_user.snops.exists?(params[:snop]) || current_user.favourites.exists?(params[:snop])
+      redirect_to current_user
+      return
+    end
+
   	@user_category = UserCategory.new #dummy category
   	@user_categories = current_user.user_categories
   	   

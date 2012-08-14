@@ -93,7 +93,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert_equal current_path, snop_path(snops(:one))
 
     # Click to see all the other snops for that resource
-    url = url
+    url = snops(:one).domain.uri + snops(:one).resource.uri
     click_link("See all snops for article " + url)
 
     # We should now be on a resource page
@@ -102,8 +102,8 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     # Click to snop about that URL
     click_link("Snop about " + url)
 
-    # We should now be on a new snop page
-    assert_equal current_path, new_snop(url: url)
+    # The URI field should be filled in with
+    assert_equal find_field('Uri').value, url
 
     # Let's fill in some fields for a user to create a snop
     fill_in('Title', with: "My Snop Title")

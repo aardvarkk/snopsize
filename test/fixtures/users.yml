@@ -4,3 +4,8 @@ one:
   username: dude
   encrypted_password: password
   email: fake@email.com
+
+two:
+  username: anotheruser
+  encrypted_password: mypassword
+  email: anotheruser@email.com
