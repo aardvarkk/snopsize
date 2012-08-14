@@ -30,4 +30,13 @@ class UsersControllerTest < ActionController::TestCase
 
   end
 
+  test "shouldn't show the same snop twice" do
+
+    get :show, id: users(:two)
+
+    # Make sure there are no duplicates in the snops
+    assert_equal assigns(:all_snops).length, assigns(:all_snops).uniq.length
+
+  end
+
 end
