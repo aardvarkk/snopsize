@@ -58,6 +58,65 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert_equal current_path, snop_path(user.snops.first)
   end
 
+  test "create a snop from a resource page" do
+    # Go to home page
+    visit('/')
+    assert_equal current_path, root_path
+
+    # There should be a link to sign-up
+    assert page.has_link? "Sign In", href: new_user_session_path
+
+    # Now lets follow that sign in link
+    click_link "Sign In"
+
+    # Make sure we're on the sign in page
+    assert_equal current_path, new_user_session_path
+
+    # Sign in
+    user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
+    user.save!
+
+    fill_in "Username", :with => user.username
+    fill_in "Password", :with => user.password
+    click_button "Sign in"
+
+    # We should now be back on the home page and logged in
+    assert_equal current_path, root_path
+
+    # The snop should be there
+    assert has_link?(snops(:one).title)
+
+    # Click on the snop
+    click_link(snops(:one).title)
+
+    # We should now be on snop page
+    assert_equal current_path, snop_path(snops(:one))
+
+    # Click to see all the other snops for that resource
+    url = url
+    click_link("See all snops for article " + url)
+
+    # We should now be on a resource page
+    assert_equal current_path, resource_path(domain_id: snops(:one).domain.id, resource_id: snops(:one).resource.id)
+
+    # Click to snop about that URL
+    click_link("Snop about " + url)
+
+    # We should now be on a new snop page
+    assert_equal current_path, new_snop(url: url)
+
+    # Let's fill in some fields for a user to create a snop
+    fill_in('Title', with: "My Snop Title")
+    fill_in('Point1', with: "My First Point")
+    fill_in('Point2', with: "My Second Point")
+    fill_in('Point3', with: "My Third Point")
+    fill_in('Summary', with: "My Summary")
+    click_button "Create Snop"
+
+    # The user should now be shown the snop they just created
+    assert_equal current_path, snop_path(user.snops.first)
+  end
+
   # Story: A user has created a snop that they now think they want to
   # delete. 
   test "delete a snop" do
