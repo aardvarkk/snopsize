@@ -5,7 +5,7 @@ $('#snop').html("<%=j render 'shared/snopfull' %>");
 <% if @direction == "next" %>
   $('#snop').css({'margin-left':'100%'}).animate({'margin-left':'0'});
 <% elsif @direction == "prev" %>
-  $('#snop').css({'margin-left':'-100%'}).animate({'margin-left':'0'});
+  $('#snop').css({'margin-left':'-50%'}).animate({'margin-left':'0'});
 <% end %>
 
 // Here we basically just want to change the button links so they point to the correct next and prev

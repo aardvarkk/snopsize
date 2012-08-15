@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+ #bottom_nav
+ {
+   border-top: thin solid #000000;
+ }

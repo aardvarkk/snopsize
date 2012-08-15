@@ -25,11 +25,15 @@
 <%= yield %>
 
 <%# General Site Navigation %>
-<center>
-  <%= link_to "Home", root_path %>
-  &nbsp;|&nbsp;
-  <%= mail_to('support@snopsize.com', 'Contact', subject: 'Support Question', encode: 'javascript') %>
-</center>
+</br>
+<div id="bottom_nav">
+</br>
+  <center>
+    <%= link_to "Home", root_path %>
+    &nbsp;|&nbsp;
+    <%= mail_to('support@snopsize.com', 'Contact', subject: 'Support Question', encode: 'javascript') %>
+  </center>
+</div>
 
 </body>
 </html>
