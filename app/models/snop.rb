@@ -26,8 +26,8 @@ class Snop < ActiveRecord::Base
   # therefore all of the attributes are readonly.
   # We leave them as accessible as well so that we can
   # do a mass assign when we create.
-  attr_accessible :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary, :uri, :deleted
-  attr_readonly :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary, :uri
+  attr_accessible :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary, :uri, :is_ad, :deleted
+  attr_readonly :user_id, :domain_id, :resource_id, :title, :point1, :point2, :point3, :summary, :uri, :is_ad
 
   # set the domain and resource before saving based
   # on the URI

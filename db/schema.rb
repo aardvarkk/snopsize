@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120814003548) do
+ActiveRecord::Schema.define(:version => 20120815193240) do
 
   create_table "domains", :force => true do |t|
     t.string   "uri",        :null => false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20120814003548) do
     t.integer  "resource_id"
     t.string   "uri"
     t.boolean  "deleted",     :default => false, :null => false
+    t.boolean  "is_ad",       :default => false, :null => false
   end
 
   create_table "snops_to_user_categories", :force => true do |t|
