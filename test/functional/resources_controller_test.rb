@@ -20,7 +20,7 @@ class ResourcesControllerTest < ActionController::TestCase
 
   test "should get snop show" do
     # Do an AJAX post
-    xhr :post, :show_snop, domain_id: @resource.domain.id, resource_id: @resource.id, snop: @resource.snops.first
+    xhr :post, :show_snop, domain_id: @resource.domain.id, resource_id: @resource.id, snop: @resource.snops.first, direction: "next"
 
     # Should get a success back.
     assert_response :success
@@ -31,7 +31,7 @@ class ResourcesControllerTest < ActionController::TestCase
 
   test "shouldn't get snop show" do
     # They requested a snop that's no part of the resource... shouldn't work!
-    xhr :post, :show_snop, domain_id: @resource.domain.id, resource_id: @resource.id, snop: snops(:two)
+    xhr :post, :show_snop, domain_id: @resource.domain.id, resource_id: @resource.id, snop: snops(:two), direction: "next"
 
     # Should be redirected to resource page
     assert_redirected_to resource_path(domain_id: @resource.domain.id, resource_id: @resource.id)

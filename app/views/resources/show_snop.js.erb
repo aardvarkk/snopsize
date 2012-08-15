@@ -1,3 +1,13 @@
+// Here we change which snop is being displayed
 $('#snop').html("<%=j render 'shared/snopfull' %>");
-$('#prev_button').html("<%=j button_to '<', resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @prev), remote: true, disabled: @prev.nil? %>");
-$('#next_button').html("<%=j button_to '>', resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @next), remote: true, disabled: @next.nil? %>");
+
+// Let's do a little animation
+<% if @direction == "next" %>
+  $('#snop').css({'margin-left':'100%'}).animate({'margin-left':'0'});
+<% elsif @direction == "prev" %>
+  $('#snop').css({'margin-left':'-100%'}).animate({'margin-left':'0'});
+<% end %>
+
+// Here we basically just want to change the button links so they point to the correct next and prev
+$('#prev_button').html("<%=j button_to '<', resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @prev, direction: 'prev'), remote: true, disabled: @prev.nil? %>");
+$('#next_button').html("<%=j button_to '>', resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @next, direction: 'next'), remote: true, disabled: @next.nil? %>");
