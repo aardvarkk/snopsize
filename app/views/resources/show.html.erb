@@ -4,15 +4,25 @@
 
 <%# get all snops for this domain and resource combination %>
 <% if @snops %>
-  <div id="buttons">
-    <div id="prev_button">
-      <%= button_to "<", resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @prev, direction: "prev"), remote: true, disabled: @prev.nil? %>
-    </div>
-    <div id="next_button">
-      <%= button_to ">", resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @next, direction: "next"), remote: true, disabled: @next.nil? %>
-    </div>
+  <%# A list of snops is shown in the left column %>
+  <div id="left_column">
+    <% @snops.each do |snop| %>
+      <%= link_to snop.title, resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop), remote: true, method: :post %></br>
+    <% end %>
   </div>
-  <div id="snop">
-	  <%= render :partial => "shared/snopfull" %>
+  
+  <%# A single snop is shown in the right column %>
+  <div id="right_column">
+    <div id="buttons">
+      <div id="prev_button">
+        <%= button_to "<", resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @prev, direction: "prev"), remote: true, disabled: @prev.nil? %>
+      </div>
+      <div id="next_button">
+        <%= button_to ">", resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @next, direction: "next"), remote: true, disabled: @next.nil? %>
+      </div>
+    </div>
+    <div id="snop">
+  	  <%= render :partial => "shared/snopfull" %>
+    </div>
   </div>
 <% end %>

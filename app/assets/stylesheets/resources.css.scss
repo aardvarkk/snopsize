@@ -2,6 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#left_column
+{
+  width: 20%;
+  float: left;
+}
+
+#right_column
+{
+  width: 80%;
+  margin-left: 20%;
+  border-left: thin solid #000000;
+}
+
 #buttons
 {
   width: 60px;
@@ -12,6 +25,7 @@
 {
   white-space: nowrap;
   text-align: center;
+  margin-left: 0;
 }
 
 #prev_button
