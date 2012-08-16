@@ -7,7 +7,7 @@
   <%# A list of snops is shown in the left column %>
   <div id="left_column">
     <% @snops.each do |snop| %>
-      <%= link_to snop.title, resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop), remote: true, method: :post %></br>
+      <%= link_to snop.title, resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop), remote: true %></br>
     <% end %>
   </div>
   
@@ -15,10 +15,10 @@
   <div id="right_column">
     <div id="buttons">
       <div id="prev_button">
-        <%= button_to "<", resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @prev, direction: "prev"), remote: true, disabled: @prev.nil? %>
+        <%= button_to "<", resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @prev, direction: "prev"), remote: true, disabled: @prev.nil?, method: :get %>
       </div>
       <div id="next_button">
-        <%= button_to ">", resource_show_snop_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @next, direction: "next"), remote: true, disabled: @next.nil? %>
+        <%= button_to ">", resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @next, direction: "next"), remote: true, disabled: @next.nil?, method: :get %>
       </div>
     </div>
     <div id="snop">
