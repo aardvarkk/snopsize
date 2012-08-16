@@ -76,11 +76,11 @@ This snop has been deleted
 
 <%# Twitter Button %>
 <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
-<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h @snopcontent %>">Tweet</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h get_snop_content(@snop) %>">Tweet</a>
 
 <%# Fave/Unfave Button %>
 <% if user_signed_in? %>
   <div id="fave">
-    <%= @fave_snop.nil? ? render('fave_snops/favourite') : render('fave_snops/unfavourite') %>
+    <%= has_user_faved_snop?(@snop) ? render('fave_snops/favourite') : render('fave_snops/unfavourite') %>
   </div>
 <% end %>

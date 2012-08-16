@@ -21,8 +21,10 @@
         <%= button_to ">", resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @next, direction: "next"), remote: true, disabled: @next.nil?, method: :get %>
       </div>
     </div>
-    <div id="snop">
-  	  <%= render :partial => "shared/snopfull" %>
+    <div id="snop_container">
+      <div id="snop">
+    	  <%= render :partial => "shared/snopfull" %>
+      </div>
     </div>
   </div>
 <% end %>

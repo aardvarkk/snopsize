@@ -12,7 +12,43 @@
  *= require_tree .
  */
 
- #bottom_nav
- {
-   border-top: thin solid #000000;
- }
+#bottom_nav
+{
+  border-top: thin solid #000000;
+}
+
+#left_column
+{
+  width: 20%;
+  float: left;
+}
+
+#right_column
+{
+  width: 80%;
+  margin-left: 20%;
+  border-left: thin solid #000000;
+}
+
+#buttons
+{
+  width: 60px;
+  margin: 0 auto;
+}
+
+#snop_container
+{
+  text-align: center
+}
+
+#snop
+{
+  display: inline-block;
+  white-space: nowrap;
+  text-align: center;
+}
+
+#prev_button
+{
+  float: left;
+}
