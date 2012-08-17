@@ -1,1 +1,6 @@
 $('#fave').html("<%=j render 'fave_snops/favourite' %>");
+
+// IF we are on the CURRENT USER page, we have to update some partials
+<% if URI(request.referrer).path == user_path(current_user) %>
+  $('#left_column').html("<%=j render partial: 'users/categories_view', locals: {user: current_user} %>");
+<% end %>

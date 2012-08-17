@@ -1,6 +1,6 @@
 <h3>Uncategorized Snops</h3>
 <% get_uncategorized_snops_for_user(user).each do |snop| %>
-  <%= link_to snop.title, user_path(user: user, snop: snop), remote: true %></br>
+  <%= link_to snop.title, user_path(id: user.id, snop: snop), remote: true %></br>
   <% if user_signed_in? && user == current_user %>
     <%= link_to 'Categorize', user_categories_add_snop_path(snop: snop) %>
 
@@ -15,7 +15,7 @@
 <% recurse_categorized_snops(get_root_categories_for_user(user)) do |snops, category| %>
   <h4><%= link_to category.name, edit_user_category_path(category) %></h4>
   <% snops.each do |snop| %>
-    <%= link_to snop.title, user_path(user: user, snop: snop), remote: true %></br>
+    <%= link_to snop.title, user_path(id: user.id, snop: snop), remote: true %></br>
     <% if user_signed_in? && user == current_user %>
       <%= link_to 'Change Category', user_categories_add_snop_path(snop: snop) %>
     
