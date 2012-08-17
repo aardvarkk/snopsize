@@ -66,7 +66,7 @@ class SnopsControllerTest < ActionController::TestCase
     delete :destroy, id: @snop
 
     # Check that it's marked as deleted
-    assert_equal true, assigns(:snop).deleted
+    assert_equal true, assigns(:snop).deleted?
 
     # make sure we are redirected properly to the
     # user page.
@@ -82,7 +82,7 @@ class SnopsControllerTest < ActionController::TestCase
     delete :destroy, id: snops(:two)
 
     # Make sure it's not deleted
-    assert_equal false, snops(:two).deleted
+    assert_equal false, snops(:two).deleted?
 
     # Make sure we get redirected to our user page
     assert_redirected_to @snop.user
@@ -95,7 +95,7 @@ class SnopsControllerTest < ActionController::TestCase
     delete :destroy, id: snops(:one)
 
     # Make sure it's deleted
-    assert_equal true, assigns(:snop).deleted
+    assert_equal true, assigns(:snop).deleted?
 
     # Make sure we get redirected to our user page
     assert_redirected_to assigns(:snop).user

@@ -70,7 +70,7 @@ class SnopsController < ApplicationController
     @snop = Snop.find(params[:id])
 
     # Don't actually destroy it, just mark it as deleted!
-    @snop.update_attribute(:deleted, 1)
+    @snop.update_attribute(:deleted, true)
 
     respond_to do |format|
       format.html { redirect_to @snop.user }
