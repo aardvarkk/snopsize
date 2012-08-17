@@ -12,15 +12,11 @@
  *= require_tree .
  */
 
-#bottom_nav
-{
-  border-top: thin solid #000000;
-}
-
 #left_column
 {
   width: 20%;
   float: left;
+  border-right: thin solid #000000;
 }
 
 #right_column
@@ -28,6 +24,7 @@
   width: 80%;
   margin-left: 20%;
   border-left: thin solid #000000;
+  text-align: center;
 }
 
 #buttons
@@ -51,4 +48,10 @@
 #prev_button
 {
   float: left;
+}
+
+#bottom_nav
+{
+  border-top: thin solid #000000;
+  clear: both;
 }
