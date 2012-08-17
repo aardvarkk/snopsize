@@ -11,18 +11,6 @@ class SnopsController < ApplicationController
   def show
     @snop = Snop.find(params[:id])
 
-    # Create a tweetable string by combining title, all points, and summary
-    # For now, we'll just put a space in between them all.
-    @snopcontent = @snop.title
-    @snopcontent += ' ' + @snop.point1 if @snop.point1
-    @snopcontent += ' ' + @snop.point2 if @snop.point2
-    @snopcontent += ' ' + @snop.point3 if @snop.point3
-    @snopcontent += ' ' + @snop.summary if @snop.summary
-    @snopcontent.truncate(140)
-
-    # has the logged in user already faved this snop?
-    @fave_snop = current_user.favourites.find_by_id(@snop.id) if user_signed_in?
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @snop }
@@ -66,7 +54,6 @@ class SnopsController < ApplicationController
   # DELETE /snops/1
   # DELETE /snops/1.json
   def destroy
-
     @snop = Snop.find(params[:id])
 
     # Don't actually destroy it, just mark it as deleted!

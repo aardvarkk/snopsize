@@ -1,6 +1,8 @@
+<%# A snop full partial contains A snop view, as well as social media and the favourite button %>
+
 <%# Scripts for Facebook Button %>
 <% content_for :opengraph do %>
-<meta property=\"og:title\" content=\"#{@snop.title}\" />
+<meta property=\"og:title\" content=\"#{snop.title}\" />
 <meta property=\"og:type\" content=\"article\" />
 <meta property=\"og:url\" content=\"#{request.protocol + request.host}:#{request.port.to_s + request.fullpath}\" />
 <meta property=\"og:site_name\" content=\"www.snopsize.com\" />
@@ -21,52 +23,52 @@
 
 <p id="notice"><%= notice %></p>
 
-<% if @snop.deleted %>
+<% if snop.deleted %>
 This snop has been deleted
 <% else %>
 
 <p>
   <b>User:</b>
-  <%= link_to @snop.user.username, @snop.user %>
+  <%= link_to snop.user.username, snop.user %>
 </p>
 
 <p>
   <b>Domain:</b>
-  <% unless @snop.domain.nil? %>
-    <%= link_to "Other posts from " + @snop.domain.uri, @snop.domain %>
+  <% unless snop.domain.nil? %>
+    <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
   <% end %>
 </p>
 
 <p>
   <b>Resource:</b>
-  <% unless @snop.domain.nil? %>
-    <%= link_to "See all snops for article " + @snop.domain.uri + @snop.resource.uri, resource_path(domain_id: @snop.domain.id, resource_id: @snop.resource.id) %>
+  <% unless snop.domain.nil? %>
+    <%= link_to "See all snops for article " + snop.domain.uri + snop.resource.uri, resource_path(domain_id: snop.domain.id, resource_id: snop.resource.id) %>
   <% end %>
 </p>
 
 <p>
   <b>Title:</b>
-  <%= @snop.title %>
+  <%= snop.title %>
 </p>
 
 <p>
   <b>Point1:</b>
-  <%= @snop.point1 %>
+  <%= snop.point1 %>
 </p>
 
 <p>
   <b>Point2:</b>
-  <%= @snop.point2 %>
+  <%= snop.point2 %>
 </p>
 
 <p>
   <b>Point3:</b>
-  <%= @snop.point3 %>
+  <%= snop.point3 %>
 </p>
 
 <p>
   <b>Summary:</b>
-  <%= @snop.summary %>
+  <%= snop.summary %>
 </p>
 
 <% end %>
@@ -76,11 +78,11 @@ This snop has been deleted
 
 <%# Twitter Button %>
 <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
-<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h get_snop_content(@snop) %>">Tweet</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h get_snop_content(snop) %>">Tweet</a>
 
 <%# Fave/Unfave Button %>
 <% if user_signed_in? %>
   <div id="fave">
-    <%= has_user_faved_snop?(@snop) ? render('fave_snops/favourite') : render('fave_snops/unfavourite') %>
+    <%= has_user_faved_snop?(snop) ? render('fave_snops/favourite') : render('fave_snops/unfavourite') %>
   </div>
 <% end %>

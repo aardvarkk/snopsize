@@ -16,14 +16,8 @@ class ResourcesController < ApplicationController
     # as the one to show
     @snop = @snops.find(params[:snop]) if @snops.exists?(params[:snop])
 
-    # Now we'll set the next and previous
-    snop_index = @snops.all.index(@snop)
-
-    # Set the previous
-    @prev = @snops.all[snop_index - 1] if snop_index > 0
-
-    # Set the next
-    @next = @snops.all[snop_index + 1] if snop_index < @snops.size - 1
+    # Convert snops to an array
+    @snops = @snops.to_a
 
     # Respond with the appropriate data
     respond_to do |format|

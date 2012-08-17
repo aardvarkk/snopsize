@@ -1,5 +1,5 @@
 // Here we change which snop is being displayed
-$('#snop').html("<%=j render 'shared/snopfull' %>");
+$('#right_column').html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop, snop_list: @snops, prev_button_path: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop_get_prev_in_list(@snop, @snops), direction: 'prev'), next_button_path: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop_get_next_in_list(@snop, @snops), direction: 'next')} %>")
 
 // Let's do a little animation
 <% if @direction == "next" %>
@@ -8,9 +8,7 @@ $('#snop').html("<%=j render 'shared/snopfull' %>");
   $('#snop').css({'margin-left':'-50%'}).animate({'margin-left':'0'});
 <% end %>
 
-// Here we basically just want to change the button links so they point to the correct next and prev
-$('#prev_button').html("<%=j button_to '<', resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @prev, direction: 'prev'), remote: true, disabled: @prev.nil?, method: :get %>");
-$('#next_button').html("<%=j button_to '>', resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @next, direction: 'next'), remote: true, disabled: @next.nil?, method: :get %>");
+// TODO: Highlight the selected item in the left_column
 
 // Reload the facebook button (http://developers.facebook.com/docs/reference/javascript/FB.XFBML.parse/)
 FB.XFBML.parse();

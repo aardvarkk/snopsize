@@ -1,0 +1,18 @@
+<%# A snop browse view shows a full snop view along with buttons to switch between them %>
+<%# current_snop = The snop to show %>
+<%# snop_list = The snops to switch between %>
+<div id="buttons">
+  <div id="prev_button">
+    <%= button_to "<", prev_button_path, remote: true, disabled: !snop_has_prev_in_list?(current_snop, snop_list), method: :get %>
+  </div>
+  
+  <div id="next_button">
+    <%= button_to ">", next_button_path, remote: true, disabled: !snop_has_next_in_list?(current_snop, snop_list), method: :get %>
+  </div>  
+</div>
+
+<div id="snop_container">
+  <div id="snop">
+    <%= render :partial => "shared/snopfull", locals: {snop: current_snop} %>
+  </div>
+</div>

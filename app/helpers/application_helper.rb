@@ -14,7 +14,45 @@ module ApplicationHelper
   # Has the current user favourited the passed in snop?
   def has_user_faved_snop?(snop)
     # has the logged in user already faved this snop?
-    fave_snop = current_user.favourites.find_by_id(@snop.id) if user_signed_in?
+    fave_snop = current_user.favourites.find_by_id(snop.id) if user_signed_in?
     fave_snop.nil?
+  end
+
+  def snop_has_next_in_list?(snop, snop_list)
+    # get index of snop inside list   
+    snop_index = snop_list.index(snop)
+
+    if snop_index < snop_list.size - 1
+      return true
+    else
+      return false
+    end
+  end
+
+  def snop_has_prev_in_list?(snop, snop_list)
+    # get index of snop inside list   
+    snop_index = snop_list.index(snop)
+
+    if snop_index > 0
+      return true
+    else
+      return false
+    end
+  end
+
+  def snop_get_next_in_list(snop, snop_list)
+    # get index of snop inside list   
+    snop_index = snop_list.index(snop)
+
+    # Get the next snop
+    snop_list[snop_index + 1] if snop_has_next_in_list?(snop, snop_list)
+  end
+
+  def snop_get_prev_in_list(snop, snop_list)
+    # get index of snop inside list   
+    snop_index = snop_list.index(snop)
+
+    # Get the previous snop
+    snop_list[snop_index - 1] if snop_has_prev_in_list?(snop, snop_list)
   end
 end
