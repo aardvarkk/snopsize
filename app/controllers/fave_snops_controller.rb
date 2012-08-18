@@ -23,13 +23,10 @@ class FaveSnopsController < ApplicationController
     # Let's try to move to the next snop since we've unfaved this one,
     # in case we want to display it.
     all_snops = get_all_snops_for_user(current_user)
-    logger.debug all_snops
     if (snop_has_next_in_list?(@snop, all_snops))
       @snop_to_show = snop_get_next_in_list(@snop, all_snops)
-    logger.debug "Next Snop: " + @snop_to_show.to_s
     elsif (snop_has_prev_in_list?(@snop, all_snops))
       @snop_to_show = snop_get_prev_in_list(@snop, all_snops)
-    logger.debug "Prev Snop: " + @snop_to_show.to_s
     end
 
     # In the case of the user unfavouriting one of his own
@@ -37,7 +34,6 @@ class FaveSnopsController < ApplicationController
     # anyway since he created it!
     if current_user.snops.exists?(@snop)
       @snop_to_show = @snop
-      logger.debug "Current SNop:" + @snop_to_show.to_s
     end
 
     # Finally... delete the entry
