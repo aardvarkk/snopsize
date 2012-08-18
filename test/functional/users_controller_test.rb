@@ -25,7 +25,7 @@ class UsersControllerTest < ActionController::TestCase
 
     # Iterate through each of the all_snops and make sure none of them is deleted
     assigns(:uncategorized_snops).each do |snop|
-      assert_equal false, snop.deleted
+      assert_equal false, snop.deleted?
     end
 
   end
