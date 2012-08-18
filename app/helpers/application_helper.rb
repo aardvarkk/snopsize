@@ -19,8 +19,12 @@ module ApplicationHelper
   end
 
   def snop_has_next_in_list?(snop, snop_list)
+    # Can't have a next if stuff is nil
+    return false if snop.nil? || snop_list.nil? || snop_list.empty?
+
     # get index of snop inside list   
     snop_index = snop_list.index(snop)
+    return false if snop_index.nil?
 
     if snop_index < snop_list.size - 1
       return true
@@ -30,8 +34,12 @@ module ApplicationHelper
   end
 
   def snop_has_prev_in_list?(snop, snop_list)
+    # Can't have a next if stuff is nil
+    return false if snop.nil? || snop_list.nil? || snop_list.empty?
+
     # get index of snop inside list   
     snop_index = snop_list.index(snop)
+    return false if snop_index.nil?
 
     if snop_index > 0
       return true
