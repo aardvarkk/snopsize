@@ -10,7 +10,7 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
 
   # Story: A user has found a snop that they think is particularily 
   # good, and they want to share it on twitter.
-  test "tweet a snop" do
+  test "tweet a snop from snop page" do
     # Go to home page
     visit('/')
     assert_equal current_path, root_path
@@ -46,8 +46,8 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
   end
 
   # Story: A user has found a snop that they think is particularily
-  # good, and they want to "Like" the snop on Facebook.
-  test "facebook like a snop" do
+  # good, and they want to "Like" the snop on Facebook from the snop page
+  test "facebook like a snop from snop page" do
     # Go to home page
     visit('/')
     assert_equal current_path, root_path
@@ -80,5 +80,25 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
 
     # TODO: Capybara can't seem to find the like button
     # Can't figure out how to do this...
+  end
+
+  # Story: A user is browsing snops on the user page and sees
+  # one that they want to like on facebook
+  test "facebook like a snop from user page" do
+  end
+
+  # Story: A user is browsing snops on the user page and sees
+  # one that they want to tweet
+  test "tweet a snop from user page" do
+  end
+
+  # Story: A user is browsing snops on the resource page and sees
+  # one that they want to like on facebook
+  test "facebook like a snop from resource page" do
+  end
+
+  # Story: A user is browsing snops on the resource page and sees
+  # one that they want to tweet
+  test "tweet a snop from resource page" do
   end
 end

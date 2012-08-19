@@ -247,30 +247,22 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert page.has_link?(snops(:one).title)
 
     # But they changed their mind, now they want to unfavourite
+    # So they click the snop to bring it up in the snop column
     click_link(snops(:one).title)
 
-    # Back to the snop page
-    assert_equal current_path, snop_path(snops(:one))
+    # Make sure it's displayed
+    assert page.has_content?(snops(:one).title)
 
-    # Make sure it still says Unfavourite
-    assert page.has_button?("Unfavourite");
+    # Make sure the button says unfavourite
+    assert page.has_button?("Unfavourite")
 
     # click it
     click_button("Unfavourite")
 
-    # The button should change to "Unfavourite"
-    assert page.has_button?("Favourite")
-
-    # Now let's go back to the home page   
-    click_link(user.username)
-
-    # Give it some time to make it to the page
-    sleep 2
-
-    # Make sure we're on the user page now
-    assert_equal current_path, user_path(user)
-
-    # They shouldn't have the snop in there anymore
+    # The page should no longer have a link to the snop
     assert !page.has_link?(snops(:one).title)
+
+    # And the snop should no longer be showing
+    assert !page.has_content?(snops(:one).title)
   end
 end
