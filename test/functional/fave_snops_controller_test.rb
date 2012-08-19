@@ -32,6 +32,8 @@ class FaveSnopsControllerTest < ActionController::TestCase
   end
 
   test "should get unfavourite" do
+    @request.env['HTTP_REFERER'] = "www.snopsize.com/" + user_path(users(:one))
+
     # Need to fave before we can unfave
     assert_difference('FaveSnop.count') do
       xhr :post, :favourite, snop: @snop
