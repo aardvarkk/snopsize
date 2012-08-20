@@ -14,3 +14,24 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
+
+function reloadSocialMediaButtons()
+{
+  // For why we have to reload see: http://stackoverflow.com/questions/8565801/how-can-i-get-twitter-facebook-google-buttons-to-show-up-after-loading-page
+  
+  // Reload the facebook button (http://developers.facebook.com/docs/reference/javascript/FB.XFBML.parse/)
+  FB.XFBML.parse();
+
+  // Reload the twitter button (https://dev.twitter.com/discussions/890)
+  twttr.widgets.load();
+}
+
+function animateSlideInFromRight(element)
+{
+  $(element).css({'margin-left':'100%'}).animate({'margin-left':'0'});
+}
+
+function animateSlideInFromLeft(element)
+{
+  $(element).css({'margin-left':'-50%'}).animate({'margin-left':'0'});
+}

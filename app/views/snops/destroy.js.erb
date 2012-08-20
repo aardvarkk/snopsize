@@ -8,8 +8,5 @@ $('#left_column').html("<%=j render partial: 'users/categories_view', locals: {u
   $('#right_column').html("You don't have any snops yet!");    
 <% end %>
 
-// Reload the facebook button (http://developers.facebook.com/docs/reference/javascript/FB.XFBML.parse/)
-FB.XFBML.parse();
-
-// Reload the twitter button (https://dev.twitter.com/discussions/890)
-twttr.widgets.load();
+// Reload the social media buttons
+reloadSocialMediaButtons();
