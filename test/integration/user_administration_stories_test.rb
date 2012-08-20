@@ -26,6 +26,19 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
     fill_in('Password confirmation', with: 'tester')
     click_button "Sign up"
 
+    # Lets confirm that an email was actually sent!
+    assert !ActionMailer::Base.deliveries.empty?
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal ["tester@tester.com"], mail.to
+    assert_equal "Confirmation instructions", mail.subject
+
+    # Let's open up that email
+    open_email('tester@tester.com')
+
+    # Click the confirmation link in the email
+    assert current_email.has_link? "Confirm my account"
+    current_email.click_link "Confirm my account"
+
     # We should now be back on the home page and logged in
     assert_equal current_path, root_path
 
@@ -73,14 +86,15 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
     assert_equal [user.email], mail.to
     assert_equal "Reset password instructions", mail.subject
 
-    # We're going to set the reset_password_token here for testing purposes
-    user.reset_password_token = "testtoken"
-    user.reset_password_sent_at = Time.now
-    assert user.save
+    # The user opens up that email they just received and clicks on the link
+    open_email(user.email)
+
+    # Click the reset link in the email
+    assert current_email.has_link? "Change my password"
+    current_email.click_link "Change my password"
 
     # Now let's actually go the page where the email would send us to
     # reset our password
-    visit(edit_auth_password_path + "?reset_password_token=" + user.reset_password_token)
     assert_equal edit_auth_password_path, current_path
 
     # Let's fill in with a new password

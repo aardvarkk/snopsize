@@ -60,4 +60,5 @@ group :test do
   gem 'database_cleaner'
   # Use Capybara for testing
   gem 'capybara'
+  gem 'capybara-email'
 end

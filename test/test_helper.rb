@@ -21,6 +21,8 @@ DatabaseCleaner.strategy = :truncation
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
+  # Make the Capybara Email DSL available in all integration tests
+  include Capybara::Email::DSL
 
   # Stop ActiveRecord from wrapping tests in transactions
   self.use_transactional_fixtures = false

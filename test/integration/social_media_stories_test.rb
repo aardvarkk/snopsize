@@ -26,6 +26,7 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
+    user.confirm!
     user.save!
 
     fill_in "Username", :with => user.username
@@ -63,6 +64,7 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
+    user.confirm!
     user.save!
 
     fill_in "Username", :with => user.username

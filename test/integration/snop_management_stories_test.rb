@@ -21,6 +21,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
+    user.confirm!
     user.save!
 
     fill_in "Username", :with => user.username
@@ -74,6 +75,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
+    user.confirm!
     user.save!
 
     fill_in "Username", :with => user.username
@@ -147,6 +149,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
+    user.confirm!
     user.save!
 
     fill_in "Username", :with => user.username
@@ -208,6 +211,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
+    user.confirm!
     user.save!
 
     fill_in "Username", :with => user.username
@@ -260,9 +264,13 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_button("Unfavourite")
 
     # The page should no longer have a link to the snop
-    assert !page.has_link?(snops(:one).title)
+    wait_until(5) do
+      !page.has_link?(snops(:one).title)
+    end
 
-    # And the snop should no longer be showing
-    assert !page.has_content?(snops(:one).title)
+    # And the snop should no longer be showing    
+    wait_until(5) do
+      !page.has_content?(snops(:one).title)
+    end
   end
 end
