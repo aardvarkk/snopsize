@@ -25,13 +25,12 @@ Snopsize::Application.routes.draw do
 	post "user_categories/set_snop"
 
   # Devise user routes
-  devise_for :users, :skip => [:sessions]
-  as :user do
-    get 'signin' => 'devise/sessions#new', :as => :new_user_session
-    post 'signin' => 'devise/sessions#create', :as => :user_session
-    delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
-    get 'signup' => 'devise/registrations#new', :as => :new_user_registration
-  end
+  # Generates a bunch of routes for devise
+  # Using devise_for 'auth' in order to remap
+  # As long as we specify the class name, it should use the correct class but put
+  # all of the routes under /auth so that we don't have interference with routes
+  # generated for the Users controller.
+  devise_for :auth, :class_name => 'User'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

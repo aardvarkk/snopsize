@@ -81,7 +81,7 @@ This snop has been deleted
 <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h get_snop_content(snop) %>">Tweet</a>
 
 <%# Fave/Unfave Button %>
-<% if user_signed_in? %>
+<% if auth_signed_in? %>
   <div id="fave">
     <%= has_user_faved_snop?(snop) ? render('fave_snops/favourite') : render('fave_snops/unfavourite') %>
   </div>

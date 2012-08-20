@@ -1,9 +1,9 @@
 class SnopsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_auth!, :except => [:show]
   before_filter :verify_snop_owner, :only => [:destroy]
 
   def verify_snop_owner
-    redirect_to current_user if Snop.find(params[:id]).user != current_user
+    redirect_to current_auth if Snop.find(params[:id]).user != current_auth
   end
 
   # GET /snops/1
@@ -38,7 +38,7 @@ class SnopsController < ApplicationController
 
     # Set the user_id to the logged in user, since
     # only logged in users can create snops
-    @snop.user = current_user
+    @snop.user = current_auth
 
     respond_to do |format|
       if @snop.save

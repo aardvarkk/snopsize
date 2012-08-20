@@ -4,8 +4,10 @@ one:
   username: dude
   encrypted_password: password
   email: fake@email.com
+  confirmed_at: <%= Time.now.utc %>
 
 two:
   username: anotheruser
   encrypted_password: mypassword
   email: anotheruser@email.com
+  confirmed_at: <%= Time.now.utc %>

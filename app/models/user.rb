@@ -14,10 +14,9 @@ class User < ActiveRecord::Base
   validates :username, :format => { :with => /\A[0-9a-z_]+\z/, :message => "Only lowercase letters, numbers, and underscores allowed" }
 	
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
+  # :token_authenticatable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me

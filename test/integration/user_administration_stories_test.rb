@@ -11,13 +11,13 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
     assert_equal current_path, root_path
 
     # There should be a link to sign-up
-    assert page.has_link? "Sign Up", href: new_user_registration_path
+    assert page.has_link? "Sign Up", href: new_auth_registration_path
 
     # Now lets follow that sign in link
     click_link "Sign Up"
 
     # Make sure we're on the sign up page
-    assert_equal current_path, new_user_registration_path
+    assert_equal current_path, new_auth_registration_path
 
     # Fill out the sign up form
     fill_in('Username', with: 'tester')
@@ -43,29 +43,29 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
     assert_equal current_path, root_path
 
     # There should be a link to sign-in
-    assert page.has_link? "Sign In", href: new_user_session_path
+    assert page.has_link? "Sign In", href: new_auth_session_path
 
     # Now lets follow that sign in link
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    assert_equal current_path, new_user_session_path
+    assert_equal current_path, new_auth_session_path
 
     # Make sure there is a forgot password link
-    assert page.has_link? "Forgot your password?", href: new_user_password_path
+    assert page.has_link? "Forgot your password?", href: new_auth_password_path
 
     # Click on the forgot password link
     click_link "Forgot your password?"
 
     # Make sure we're on the forgot password page
-    assert_equal current_path, new_user_password_path
+    assert_equal current_path, new_auth_password_path
 
     # Fill in the email field
     fill_in('Email', with: user.email)
     click_button "Send me reset password instructions"
 
     # We are now taken back to the sign in page
-    assert_equal current_path, new_user_session_path
+    assert_equal current_path, new_auth_session_path
 
     # Lets confirm that an email was actually sent!
     assert !ActionMailer::Base.deliveries.empty?

@@ -11,12 +11,24 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(username: 'user', email: 'user@name.com', password: 'password', password_confirmation: 'password')
-User.create(username: 'joe', email: 'joe@theplumber.com', password: 'joeplumber', password_confirmation: 'joeplumber')
-User.create(username: 'fred', email: 'fred@fredtastic.com', password: 'freddy', password_confirmation: 'freddy')
-User.create(username: 'ford', email: 'ads@ford.com', password: 'fordautos', password_confirmation: 'fordautos')
-User.create(username: 'samsung', email: 'ads@samsung.com', password: 'samsungs', password_confirmation: 'samsungs')
-User.create(username: 'adviewer', email: 'ads@viewer.com', password: 'adviewer', password_confirmation: 'adviewer')
+# Create a bunch of users, confirming them along the way
+u = User.create(username: 'user', email: 'user@name.com', password: 'password', password_confirmation: 'password')
+u.confirm!
+
+u = User.create(username: 'joe', email: 'joe@theplumber.com', password: 'joeplumber', password_confirmation: 'joeplumber')
+u.confirm!
+
+u = User.create(username: 'fred', email: 'fred@fredtastic.com', password: 'freddy', password_confirmation: 'freddy')
+u.confirm!
+
+u = User.create(username: 'ford', email: 'ads@ford.com', password: 'fordautos', password_confirmation: 'fordautos')
+u.confirm!
+
+u = User.create(username: 'samsung', email: 'ads@samsung.com', password: 'samsungs', password_confirmation: 'samsungs')
+u.confirm!
+
+u = User.create(username: 'adviewer', email: 'ads@viewer.com', password: 'adviewer', password_confirmation: 'adviewer')
+u.confirm!
 
 Snop.create(
 	user_id: 1, 
