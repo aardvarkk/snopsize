@@ -18,6 +18,9 @@ class UsersController < ApplicationController
     # If one was passed in we'll use that one
     @snop = Snop.find(params[:snop]) if params[:snop] && Snop.exists?(params[:snop])
 
+    # Set the showing snop in the session
+    session[:showing_snop_id] = @snop.id unless @snop.nil?
+
     # Respond with the appropriate data
     respond_to do |format|
       format.html #show.html.erb

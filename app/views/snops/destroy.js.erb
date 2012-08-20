@@ -1,0 +1,15 @@
+// Update the left column 
+$('#left_column').html("<%=j render partial: 'users/categories_view', locals: {user: current_user} %>");
+
+// If we unfaved someone elses snop, we should switch to showing another snop.
+<% unless @snop_to_show.nil? %>
+  $('#right_column').html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop_to_show, snop_list: get_all_snops_for_user(current_user), prev_button_path: user_path(id: current_user.id, snop: snop_get_prev_in_list(@snop_to_show, get_all_snops_for_user(current_user)), direction: 'prev'), next_button_path: user_path(id: current_user.id, snop: snop_get_next_in_list(@snop_to_show, get_all_snops_for_user(current_user)), direction: 'next')} %>");
+<% else %>
+  $('#right_column').html("You don't have any snops yet!");    
+<% end %>
+
+// Reload the facebook button (http://developers.facebook.com/docs/reference/javascript/FB.XFBML.parse/)
+FB.XFBML.parse();
+
+// Reload the twitter button (https://dev.twitter.com/discussions/890)
+twttr.widgets.load();
