@@ -36,6 +36,14 @@ class FaveSnopsController < ApplicationController
       @snop_to_show = @snop
     end
 
+    # Set the showing snop in the session, or delete it if we
+    # just unfaved the last snop.
+    if (@snop_to_show)
+      session[:showing_snop_id] = @snop_to_show.id
+    else
+      session.delete :showing_snop_id
+    end
+
     # Finally... delete the entry
     current_auth.favourites.destroy(@snop)
   	

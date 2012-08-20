@@ -80,8 +80,8 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
 
     # Now let's actually go the page where the email would send us to
     # reset our password
-    visit(edit_user_password_path + "?reset_password_token=" + user.reset_password_token)
-    assert_equal edit_user_password_path, current_path
+    visit(edit_auth_password_path + "?reset_password_token=" + user.reset_password_token)
+    assert_equal edit_auth_password_path, current_path
 
     # Let's fill in with a new password
     fill_in('New password', with: "anotherpassword")
