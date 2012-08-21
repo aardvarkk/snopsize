@@ -17,6 +17,11 @@
   width: 20%;
   float: left;
   border-right: thin solid #000000;
+
+  /* set z-index so it appears above the snop when it's animating */
+  background-color: white;
+  position: relative;
+  z-index: 2;
 }
 
 #right_column
@@ -43,6 +48,10 @@
   display: inline-block;
   white-space: nowrap;
   text-align: center;
+
+  /* z-index so it appears below the left-column */
+  position: relative;
+  z-index: 1;
 }
 
 #prev_button

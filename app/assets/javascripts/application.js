@@ -33,5 +33,5 @@ function animateSlideInFromRight(element)
 
 function animateSlideInFromLeft(element)
 {
-  $(element).css({'margin-left':'-50%'}).animate({'margin-left':'0'});
+  $(element).css({'margin-left':'-300%'}).animate({'margin-left':'0'});
 }
