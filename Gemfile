@@ -18,9 +18,15 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 
+  # jQuery DataTables gem for Rails, includes all JS and CSS for dataTables widget
   gem 'jquery-datatables-rails'
+
+  # jQuery UI library, includes JS AND CSS
+  gem 'jquery-ui-rails'
 end
 
+# note that while this includes jquery-ui library, it doesn't include the CSS files, so
+# built in dialogs and other widgets aren't rendered properly.
 gem 'jquery-rails'
 
 #To use devise authentication

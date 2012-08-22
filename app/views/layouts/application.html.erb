@@ -11,6 +11,11 @@
 
 </head>
 <body>
+  <%# The main modal dialog div %>
+  <div id="dialog-modal" >
+  </div>
+
+  <%# user navigation at the top of the page %>
   <div id="user_nav">
   <%=link_to "Home", root_path %> | 
   <% if auth_signed_in? %>
@@ -21,19 +26,19 @@
   <% end %>
   </div>
 
-<%# Content %>
-<%= yield %>
+  <%# Content %>
+  <%= yield %>
 
-<%# General Site Navigation %>
-</br>
-<div id="bottom_nav">
-</br>
-  <center>
-    <%= link_to "Home", root_path %>
-    &nbsp;|&nbsp;
-    <%= mail_to('support@snopsize.com', 'Contact', subject: 'Support Question', encode: 'javascript') %>
-  </center>
-</div>
+  <%# General Site Navigation %>
+  </br>
+  <div id="bottom_nav">
+  </br>
+    <center>
+      <%= link_to "Home", root_path %>
+      &nbsp;|&nbsp;
+      <%= mail_to('support@snopsize.com', 'Contact', subject: 'Support Question', encode: 'javascript') %>
+    </center>
+  </div>
 
 </body>
 </html>

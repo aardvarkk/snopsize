@@ -9,7 +9,7 @@
   <tbody>
     <% snops.each do |snop| %>
       <tr>
-        <td><%= snop.title %></td>
+        <td><%= link_to snop.title, root_path(snop: snop), remote: true %></td>
         <td><%= link_to snop.domain.uri, snop.domain %></td>
         <td><%= snop.created_at %></td>
       </tr>

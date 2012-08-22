@@ -1,0 +1,24 @@
+// a workaround for a flaw in the demo system (http://dev.jqueryui.com/ticket/4375), ignore!
+$( "#dialog:ui-dialog" ).dialog( "destroy" );
+  
+$( "#dialog-modal" ).dialog({
+  modal: true,
+  resizable: false,
+  draggable: false,
+  width: "auto",
+  position: "top"
+  });
+
+<% unless @snop.nil? %>
+  $('#dialog-modal').html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop, snop_list: @snops, prev_button_path: root_path(snop: snop_get_prev_in_list(@snop, @snops), direction: 'prev'), next_button_path: root_path(snop: snop_get_next_in_list(@snop, @snops), direction: 'next')} %>");
+<% end %>
+
+// Let's do a little animation
+<% if @direction == "next" %>
+  animateSlideInFromRight('#snop')
+<% elsif @direction == "prev" %>
+  animateSlideInFromLeft('#snop')
+<% end %>
+
+// Reload the social media buttons
+reloadSocialMediaButtons();
