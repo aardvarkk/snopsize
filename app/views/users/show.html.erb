@@ -8,14 +8,9 @@
     <%= link_to 'New Snop', new_snop_path %>
   </div>
 <% end %>
-
-<%# A list of categories is shown in the left column %>
-<div id="left_column">
-  <%= render partial: "users/categories_view", locals: {user: @user} %>
-</div>
   
 <%# A single snop is shown in the right column, with the ability to browse %>
-<div id="right_column">
+<div id="snops_view">
   <% if @snop %>
     <%= render partial: "shared/snop_browse", locals: {current_snop: @snop, snop_list: @all_snops, prev_button_path: user_path(id: @user.id, snop: snop_get_prev_in_list(@snop, @all_snops), direction: "prev"), next_button_path: user_path(id: @user.id, snop: snop_get_next_in_list(@snop, @all_snops), direction: "next")} %>
   <% else %>

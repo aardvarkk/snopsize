@@ -4,15 +4,7 @@
 
 <%# get all snops for this domain and resource combination %>
 <% if @snops %>
-  <%# A list of snops is shown in the left column %>
-  <div id="left_column">
-    <% @snops.each do |snop| %>
-      <%= link_to snop.title, resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop), remote: true %></br>
-    <% end %>
-  </div>
-  
-  <%# A single snop is shown in the right column %>
-  <div id="right_column">
+  <div id="snops_view">
     <%= render partial: "shared/snop_browse", locals: {current_snop: @snop, snop_list: @snops, prev_button_path: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop_get_prev_in_list(@snop, @snops), direction: "prev"), next_button_path: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop_get_next_in_list(@snop, @snops), direction: "next")} %>
   </div>
 <% end %>

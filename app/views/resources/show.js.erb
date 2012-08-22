@@ -1,5 +1,5 @@
 // Here we change which snop is being displayed
-$('#right_column').html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop, snop_list: @snops, prev_button_path: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop_get_prev_in_list(@snop, @snops), direction: 'prev'), next_button_path: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop_get_next_in_list(@snop, @snops), direction: 'next')} %>")
+$('#snops_view').html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop, snop_list: @snops, prev_button_path: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop_get_prev_in_list(@snop, @snops), direction: 'prev'), next_button_path: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: snop_get_next_in_list(@snop, @snops), direction: 'next')} %>")
 
 // Let's do a little animation
 <% if @direction == "next" %>
@@ -7,8 +7,6 @@ $('#right_column').html("<%=j render partial: 'shared/snop_browse', locals: {cur
 <% elsif @direction == "prev" %>
   animateSlideInFromLeft('#snop')
 <% end %>
-
-// TODO: Highlight the selected item in the left_column
 
 // Reload the social media buttons
 reloadSocialMediaButtons();

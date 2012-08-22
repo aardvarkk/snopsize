@@ -11,6 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
+//= require jquery_ujs
 //= require dataTables/jquery.dataTables
 //= require_tree .
 
@@ -32,5 +34,5 @@ function animateSlideInFromRight(element)
 
 function animateSlideInFromLeft(element)
 {
-  $(element).css({'margin-left':'-300%'}).animate({'margin-left':'0'});
+  $(element).css({'margin-left':'-200%'}).animate({'margin-left':'0'});
 }

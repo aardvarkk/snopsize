@@ -10,7 +10,7 @@
     <% snops.each do |snop| %>
       <tr>
         <td><%= snop.title %></td>
-        <td><%= snop.domain.uri %></td>
+        <td><%= link_to snop.domain.uri, snop.domain %></td>
         <td><%= snop.created_at %></td>
       </tr>
     <% end %>

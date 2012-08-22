@@ -13,46 +13,16 @@
  *= require_tree .
  */
 
-#left_column
-{
-  width: 20%;
-  float: left;
-  border-right: thin solid #000000;
-
-  /* set z-index so it appears above the snop when it's animating */
-  background-color: white;
-  position: relative;
-  z-index: 2;
-}
-
-#right_column
-{
-  width: 80%;
-  margin-left: 20%;
-  border-left: thin solid #000000;
-  text-align: center;
-}
-
 #buttons
 {
   width: 60px;
   margin: 0 auto;
 }
 
-#snop_container
-{
-  text-align: center
-}
-
 #snop
 {
-  display: inline-block;
   white-space: nowrap;
   text-align: center;
-
-  /* z-index so it appears below the left-column */
-  position: relative;
-  z-index: 1;
 }
 
 #prev_button
