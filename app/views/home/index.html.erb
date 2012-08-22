@@ -1,8 +1,7 @@
 <h1>Snopsize</h1>
 <br>
-<%= render :template => 'search/search' %>
-<h2>Latest Snops</h2>
-<%= render :partial => 'shared/snopquick', :collection => @latest_snops %>
-
-<h2>Most Popular Snops</h2>
-<%= render :partial => 'shared/snopquick', :collection => @popular_snops %>
+<%= render template: 'search/search' %>
+<h2>Popular Snops</h2>
+<div id="snop_view">
+  <%= render partial: 'shared/snop_list_view', locals: {snops: @snops} %>
+</div>
