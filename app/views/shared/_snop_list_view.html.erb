@@ -16,7 +16,7 @@
         <td><%= link_to snop.domain.uri, snop.domain %></td>
         <td><%= snop.created_at %></td>
         <% if show_category == true %>
-        <td><%= snop.user_categories.where("user_id = ?", @user.id).first %></td>
+        <td>Some Category</td>
         <% end %>
       </tr>
     <% end %>

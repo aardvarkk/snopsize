@@ -1,15 +1,15 @@
 <%# A snop browse view shows a full snop view along with buttons to switch between them %>
 <%# current_snop = The snop to show %>
 <%# snop_list = The snops to switch between %>
-<%= link_to "Close", return_path, remote: true, method: :post %>
+<%= link_to "Close", get_snops_path(snops: snop_list, snop_view: false, show_category: show_category), remote: true, method: :post %>
 
 <div id="buttons">
   <div id="prev_button">
-    <%= button_to "<", prev_button_path, remote: true, disabled: !snop_has_prev_in_list?(current_snop, snop_list) %>
+    <%= button_to "<", get_snops_path(snops: snop_list, snop: snop_get_prev_in_list(current_snop, snop_list), direction: 'prev', snop_view: true), remote: true, disabled: !snop_has_prev_in_list?(current_snop, snop_list) %>
   </div>
   
   <div id="next_button">
-    <%= button_to ">", next_button_path, remote: true, disabled: !snop_has_next_in_list?(current_snop, snop_list) %>
+    <%= button_to ">", get_snops_path(snops: snop_list, snop: snop_get_next_in_list(current_snop, snop_list), direction: 'next', snop_view: true), remote: true, disabled: !snop_has_next_in_list?(current_snop, snop_list) %>
   </div>  
 </div>
 

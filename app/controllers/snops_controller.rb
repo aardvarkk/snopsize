@@ -23,14 +23,8 @@ class SnopsController < ApplicationController
     # Check if the category is showing
     @show_category = params[:show_category] == "true" if params.has_key?(:show_category)
 
-    logger.debug @show_category
-
     # Check if a snop has been passed in
     @snop = Snop.find(params[:snop]) if (params.has_key?(:snop))
-
-    respond_to do |format| 
-      format.js
-    end
   end
 
   # GET /snops/1
