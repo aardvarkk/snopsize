@@ -9,10 +9,31 @@ class SnopsController < ApplicationController
     redirect_to current_auth if Snop.find(params[:id]).user != current_auth
   end
 
-  # POST /get_snops
+  # GET /get_snops
   def get_snops
-    @snops = Snop.find(params[:snops]) if params.has_key?(:snops)
-    @snops = @snops.to_a
+    # unless they've provided a list of snops that they want to use
+    if params.has_key?(:snops)
+      @snops = Snop.where("snops.id IN (?)", params[:snops]) 
+    else
+      @snops = Snop.all
+    end
+
+    # Lets see if they passed in an ordering
+    if params.has_key?(:iSortCol_0) && params.has_key?(:sSortDir_0)
+      # Sort by domains
+      if (sort_column == "domain")
+        @snops = @snops.joins(:domain).order("domain_id IS NULL, domains.uri #{sort_direction}")
+      # Sory by category
+      elsif (sort_column == "category")
+        @snops = @snops.joins(:user).order("users.name #{sort_direction}")
+      # order by title or date, this is straight forward
+      else 
+        @snops = @snops.order("#{sort_column} #{sort_direction}") 
+      end
+    end
+
+    # Handle pagination next
+    @snops = @snops.page(page).per_page(per_page) if params.has_key?(:iDisplayStart) && params.has_key?(:iDisplayLength)
 
     # Check if a direction is passed in (For JS animation)
     @direction = params[:direction].to_s if params.has_key?(:direction)
@@ -23,8 +44,17 @@ class SnopsController < ApplicationController
     # Check if the category is showing
     @show_category = params[:show_category] == "true" if params.has_key?(:show_category)
 
-    # Check if a snop has been passed in
+    # Check if a single snop has been passed in to display
     @snop = Snop.find(params[:snop]) if (params.has_key?(:snop))
+
+    # Convert snops to an array (so it can be passed to controllers easier)
+    @snops = @snops.to_a
+
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { render json: SnopsTable.new(view_context, params[:snops], @snops, @show_category) }
+      format.js 
+    end
   end
 
   # GET /snops/1
@@ -114,5 +144,25 @@ class SnopsController < ApplicationController
       format.js
     end
 
+  end
+
+  # Helper functions
+  private
+
+  def page
+    params[:iDisplayStart].to_i/per_page + 1
+  end
+
+  def per_page
+    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
+  end
+
+  def sort_column
+    columns = %w[title domain created_at category]
+    columns[params[:iSortCol_0].to_i]
+  end
+
+  def sort_direction
+    params[:sSortDir_0] == "desc" ? "desc" : "asc"
   end
 end

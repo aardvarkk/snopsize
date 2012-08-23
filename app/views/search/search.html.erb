@@ -25,8 +25,12 @@
     function reloadSnopsTable()
     {
       $('#snops').dataTable( {
+        "bFilter": false, 
         "bJQueryUI": true,
-        "aaSorting": []
+        "aaSorting": [],
+        "bProcessing": true,
+        "bServerSide": true,
+        "sAjaxSource": $("#snops").data("source")
         });
     }
     </script>

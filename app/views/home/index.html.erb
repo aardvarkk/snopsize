@@ -9,7 +9,10 @@ function reloadSnopsTable()
     "bLengthChange": false,
     "bPaginate": false,
     "bInfo": false,
-    "bSort": false
+    "bSort": false,
+    "bProcessing": true,
+    "bServerSide": true,
+    "sAjaxSource": $("#snops").data("source")
     });
 }
 </script>

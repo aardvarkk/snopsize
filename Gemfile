@@ -25,6 +25,8 @@ group :assets do
   gem 'jquery-ui-rails'
 end
 
+gem 'will_paginate'
+
 # note that while this includes jquery-ui library, it doesn't include the CSS files, so
 # built in dialogs and other widgets aren't rendered properly.
 gem 'jquery-rails'
