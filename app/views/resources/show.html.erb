@@ -1,3 +1,14 @@
+<script>
+$(document).ready(reloadSnopsTable)
+
+function reloadSnopsTable()
+{
+  $('#snops').dataTable( {
+    "aaSorting": []
+    });
+}
+</script>
+
 <h2>Viewing snops for <%= @url %></h2>
 
 <%= link_to "Snop about " + @url, new_snop_path(uri: @url)%></br></br>

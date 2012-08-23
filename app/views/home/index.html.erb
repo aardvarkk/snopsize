@@ -1,3 +1,18 @@
+<script>
+$(document).ready(reloadSnopsTable)
+
+function reloadSnopsTable()
+{
+  $('#snops').dataTable( {
+    "bFilter": false, 
+    "bLengthChange": false,
+    "bPaginate": false,
+    "bInfo": false,
+    "aaSorting": []
+    });
+}
+</script>
+
 <h1>Snopsize</h1>
 <br>
 <%= render template: 'search/search' %>

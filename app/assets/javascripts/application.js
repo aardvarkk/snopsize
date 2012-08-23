@@ -16,19 +16,6 @@
 //= require dataTables/jquery.dataTables
 //= require_tree .
 
-$(document).ready(reloadSnopsTable)
-
-function reloadSnopsTable()
-{
-  $('#snops').dataTable( {
-    "bFilter": false, 
-    "bLengthChange": false,
-    "bPaginate": false,
-    "bInfo": false,
-    "aaSorting": []
-    });
-}
-
 function reloadSocialMediaButtons()
 {
   // For why we have to reload see: http://stackoverflow.com/questions/8565801/how-can-i-get-twitter-facebook-google-buttons-to-show-up-after-loading-page

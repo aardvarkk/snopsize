@@ -1,3 +1,14 @@
+<script>
+$(document).ready(reloadSnopsTable)
+
+function reloadSnopsTable()
+{
+  $('#snops').dataTable( {
+    "aaSorting": []
+    });
+}
+</script>
+
 <h1>User: <%=@user.username%> </h1>
 
 <!-- We're only going to show these buttons if the user 
