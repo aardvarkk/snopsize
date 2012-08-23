@@ -18,11 +18,5 @@ class ResourcesController < ApplicationController
 
     # Convert snops to an array
     @snops = @snops.to_a
-
-    # Respond with the appropriate data
-    respond_to do |format|
-      format.html #show.html.erb
-      format.js   #show.js.erb
-    end
   end
 end

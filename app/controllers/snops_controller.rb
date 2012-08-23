@@ -9,6 +9,27 @@ class SnopsController < ApplicationController
     redirect_to current_auth if Snop.find(params[:id]).user != current_auth
   end
 
+  # POST /get_snops
+  def get_snops
+    @snops = Snop.find(params[:snops]) if params.has_key?(:snops)
+    @snops = @snops.to_a
+
+    # Check if a direction is passed in (For JS animation)
+    @direction = params[:direction].to_s if params.has_key?(:direction)
+
+    # Check if we are using snop_view
+    @snop_view = params[:snop_view] if params.has_key?(:snop_view)
+
+    logger.debug @snop_view.class
+
+    # Check if a snop has been passed in
+    @snop = Snop.find(params[:snop]) if (params.has_key?(:snop))
+
+    respond_to do |format| 
+      format.js
+    end
+  end
+
   # GET /snops/1
   # GET /snops/1.json
   def show

@@ -18,6 +18,7 @@ Snopsize::Application.routes.draw do
 
   # all of the snop resources
   resources :snops, :except => [:index, :edit, :update]
+  match 'get_snops' => 'snops#get_snops', :as => 'get_snops', :via => :post
 
   # all of our user categories
   resources :user_categories, :except => [:index, :show]

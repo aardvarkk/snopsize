@@ -49,8 +49,6 @@ module ApplicationHelper
   end
 
   def snop_get_next_in_list(snop, snop_list)
-    Rails.logger.debug "Snop List class" + snop_list.class.to_s
-
     # get index of snop inside list   
     snop_index = snop_list.index(snop)
 
@@ -59,7 +57,6 @@ module ApplicationHelper
   end
 
   def snop_get_prev_in_list(snop, snop_list)
-    Rails.logger.debug "Snop List class" + snop_list.class.to_s
     # get index of snop inside list   
     snop_index = snop_list.index(snop)
 
