@@ -35,8 +35,11 @@
     }
     </script>
 
-    <div id="snops_view">
+    <div id="snops_list_view">
       <%= render partial: 'shared/snop_list_view', locals: {snops: @results, show_category: false} %>
+    </div>
+    <div id="snops_browse_view">
+      <%= render partial: 'shared/snop_browse', locals: {current_snop: @results.first, snop_list: @results, show_category: false} %>
     </div>
 	<% end %>
 <% end %>

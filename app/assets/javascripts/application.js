@@ -16,6 +16,11 @@
 //= require dataTables/jquery.dataTables
 //= require_tree .
 
+// Hide the browse view until the user request it.
+$(document).ready(function () {
+  $("#snops_browse_view").hide();
+});
+
 function reloadSocialMediaButtons()
 {
   // For why we have to reload see: http://stackoverflow.com/questions/8565801/how-can-i-get-twitter-facebook-google-buttons-to-show-up-after-loading-page

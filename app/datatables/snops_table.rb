@@ -24,7 +24,7 @@ private
   def data
     @filtered_snops.map do |snop|
       domain_link = link_to snop.domain.uri, snop.domain unless snop.domain.nil?
-      title_link = link_to snop.title, get_snops_path(snop: snop, snops: @all_snops, snop_view: true, show_category: @show_category), remote: true
+      title_link = link_to snop.title, get_snops_path(snop: snop, snops: @all_snops, snop_view: true, show_category: @show_category, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0]), remote: true
       if (@show_category)
         [
           title_link,

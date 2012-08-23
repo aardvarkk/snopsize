@@ -21,6 +21,9 @@ function reloadSnopsTable()
 <br>
 <%= render template: 'search/search' %>
 <h2>Popular Snops</h2>
-<div id="snops_view">
+<div id="snops_list_view">
   <%= render partial: 'shared/snop_list_view', locals: {snops: @snops, show_category: false} %>
+</div>
+<div id="snops_browse_view">
+  <%= render partial: 'shared/snop_browse', locals: {current_snop: @snops.first, snop_list: @snops, show_category: false} %>
 </div>
