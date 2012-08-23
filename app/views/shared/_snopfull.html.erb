@@ -23,66 +23,70 @@
 
 <p id="notice"><%= notice %></p>
 
-<% if snop.deleted? %>
-This snop has been deleted
-<% else %>
+<% unless snop.nil? %>
 
-<p>
-  <b>User:</b>
-  <%= link_to snop.user.username, snop.user %>
-</p>
+  <% if snop.deleted? %>
+  This snop has been deleted
+  <% else %>
 
-<p>
-  <b>Domain:</b>
-  <% unless snop.domain.nil? %>
-    <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
+  <p>
+    <b>User:</b>
+    <%= link_to snop.user.username, snop.user %>
+  </p>
+
+  <p>
+    <b>Domain:</b>
+    <% unless snop.domain.nil? %>
+      <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
+    <% end %>
+  </p>
+
+  <p>
+    <b>Resource:</b>
+    <% unless snop.domain.nil? %>
+      <%= link_to "See all snops for article " + snop.domain.uri + snop.resource.uri, resource_path(domain_id: snop.domain.id, resource_id: snop.resource.id) %>
+    <% end %>
+  </p>
+
+  <p>
+    <b>Title:</b>
+    <%= snop.title %>
+  </p>
+
+  <p>
+    <b>Point1:</b>
+    <%= snop.point1 %>
+  </p>
+
+  <p>
+    <b>Point2:</b>
+    <%= snop.point2 %>
+  </p>
+
+  <p>
+    <b>Point3:</b>
+    <%= snop.point3 %>
+  </p>
+
+  <p>
+    <b>Summary:</b>
+    <%= snop.summary %>
+  </p>
+
   <% end %>
-</p>
 
-<p>
-  <b>Resource:</b>
-  <% unless snop.domain.nil? %>
-    <%= link_to "See all snops for article " + snop.domain.uri + snop.resource.uri, resource_path(domain_id: snop.domain.id, resource_id: snop.resource.id) %>
+  <%# Facebook Button %>
+  <div class="fb-like" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div> 
+
+  <%# Twitter Button %>
+  <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h get_snop_content(snop) %>">Tweet</a>
+
+  <%# Fave/Unfave Button %>
+  <% if auth_signed_in? %>
+    <div id="fave">
+      <%= has_user_faved_snop?(snop) ? render('fave_snops/favourite') : render('fave_snops/unfavourite') %>
+    </div>
   <% end %>
-</p>
 
-<p>
-  <b>Title:</b>
-  <%= snop.title %>
-</p>
-
-<p>
-  <b>Point1:</b>
-  <%= snop.point1 %>
-</p>
-
-<p>
-  <b>Point2:</b>
-  <%= snop.point2 %>
-</p>
-
-<p>
-  <b>Point3:</b>
-  <%= snop.point3 %>
-</p>
-
-<p>
-  <b>Summary:</b>
-  <%= snop.summary %>
-</p>
-
-<% end %>
-
-<%# Facebook Button %>
-<div class="fb-like" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div> 
-
-<%# Twitter Button %>
-<%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
-<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h get_snop_content(snop) %>">Tweet</a>
-
-<%# Fave/Unfave Button %>
-<% if auth_signed_in? %>
-  <div id="fave">
-    <%= has_user_faved_snop?(snop) ? render('fave_snops/favourite') : render('fave_snops/unfavourite') %>
-  </div>
 <% end %>

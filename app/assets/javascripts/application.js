@@ -14,12 +14,6 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
-//= require_tree .
-
-// Hide the browse view until the user request it.
-$(document).ready(function () {
-  $("#snops_browse_view").hide();
-});
 
 function reloadSocialMediaButtons()
 {

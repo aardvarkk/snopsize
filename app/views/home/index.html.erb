@@ -1,22 +1,3 @@
-<script>
-$(document).ready(reloadSnopsTable)
-
-function reloadSnopsTable()
-{
-  $('#snops').dataTable( {
-    "bJQueryUI": true,
-    "bFilter": false, 
-    "bLengthChange": false,
-    "bPaginate": false,
-    "bInfo": false,
-    "bSort": false,
-    "bProcessing": true,
-    "bServerSide": true,
-    "sAjaxSource": $("#snops").data("source")
-    });
-}
-</script>
-
 <h1>Snopsize</h1>
 <br>
 <%= render template: 'search/search' %>
