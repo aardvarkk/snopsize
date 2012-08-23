@@ -20,8 +20,6 @@ class SnopsController < ApplicationController
     # Check if we are using snop_view
     @snop_view = params[:snop_view] if params.has_key?(:snop_view)
 
-    logger.debug @snop_view.class
-
     # Check if a snop has been passed in
     @snop = Snop.find(params[:snop]) if (params.has_key?(:snop))
 

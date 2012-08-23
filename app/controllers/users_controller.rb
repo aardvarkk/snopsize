@@ -10,7 +10,8 @@ class UsersController < ApplicationController
     @direction = params[:direction].to_s if params[:direction]
 
     # Get all the snops for our user
-    @all_snops = get_all_snops_for_user(@user)
+    @snops = get_all_snops_for_user(@user)
+    @snops.to_a
 
     # Default to the first snop
     @snop = @all_snops.first if @all_snops
@@ -20,11 +21,5 @@ class UsersController < ApplicationController
 
     # Set the showing snop in the session
     session[:showing_snop_id] = @snop.id unless @snop.nil?
-
-    # Respond with the appropriate data
-    respond_to do |format|
-      format.html #show.html.erb
-      format.js   #show.js.erb
-    end
   end
 end

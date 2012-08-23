@@ -6,7 +6,8 @@ $('#fave').html("<%=j render 'fave_snops/favourite' %>");
   <% unless @snop_to_show.nil? %>
     $('#snops_view').html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop_to_show, snop_list: get_all_snops_for_user(current_auth), prev_button_path: user_path(id: current_auth.id, snop: snop_get_prev_in_list(@snop_to_show, get_all_snops_for_user(current_auth)), direction: 'prev'), next_button_path: user_path(id: current_auth.id, snop: snop_get_next_in_list(@snop_to_show, get_all_snops_for_user(current_auth)), direction: 'next')} %>");
   <% else %>
-    $('#snops_view').html("You don't have any snops yet!");    
+    $('#snops_view').html("<%=j render partial: 'shared/snop_list_view', locals: {snops: get_all_snops_for_user(current_auth)} %>");    
+    reloadSnopsTable();
   <% end %>
 <% end %>
 
