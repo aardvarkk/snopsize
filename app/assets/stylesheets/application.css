@@ -24,6 +24,7 @@
 {
   white-space: nowrap;
   text-align: center;
+  clear: both;
 }
 
 #prev_button
@@ -34,5 +35,4 @@
 #bottom_nav
 {
   border-top: thin solid #000000;
-  clear: both;
 }
