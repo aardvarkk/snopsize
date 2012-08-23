@@ -1,8 +1,13 @@
 Snopsize::Application.routes.draw do
 
+  get "about/show"
+
   post "fave_snops/favourite"
 
   post "fave_snops/unfavourite"
+
+  # for about page
+  match 'about' => 'about#show', :as => 'about', :via => :get
 
   # for user pages
   match 'users/:id' => 'users#show', :as => 'user', :via => :get
