@@ -4,14 +4,20 @@
       <th>Title</th>
       <th>Domain</th>
       <th>Created</th>
+      <% if show_category == true %>
+      <th>Category</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
     <% snops.each do |snop| %>
       <tr>
-        <td><%= link_to snop.title, get_snops_path(snop: snop, snops: snops, snop_view: true), remote: true, method: :post %></td>
+        <td><%= link_to snop.title, get_snops_path(snop: snop, snops: snops, snop_view: true, show_category: show_category), remote: true, method: :post %></td>
         <td><%= link_to snop.domain.uri, snop.domain %></td>
         <td><%= snop.created_at %></td>
+        <% if show_category == true %>
+        <td><%= snop.user_categories.where("user_id = ?", @user.id).first %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

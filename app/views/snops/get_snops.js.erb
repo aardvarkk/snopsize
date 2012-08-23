@@ -1,5 +1,5 @@
-<% if @snop_view == "true" %>
-  $("#snops_view").html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop, snop_list: @snops, return_path: get_snops_path(snops: @snops, snop_view: false), prev_button_path: get_snops_path(snops: @snops, snop: snop_get_prev_in_list(@snop, @snops), direction: 'prev', snop_view: true), next_button_path: get_snops_path(snops: @snops, snop: snop_get_next_in_list(@snop, @snops), direction: 'next', snop_view: true)} %>");
+<% if @snop_view %>
+  $("#snops_view").html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop, snop_list: @snops, return_path: get_snops_path(snops: @snops, snop_view: false, show_category: @show_category), prev_button_path: get_snops_path(snops: @snops, snop: snop_get_prev_in_list(@snop, @snops), direction: 'prev', snop_view: true), next_button_path: get_snops_path(snops: @snops, snop: snop_get_next_in_list(@snop, @snops), direction: 'next', snop_view: true)} %>");
   
   // Let's do a little animation
   <% if @direction == "next" %>
@@ -11,6 +11,6 @@
   // Reload the social media buttons
   reloadSocialMediaButtons();  
 <% else %>
-  $("#snops_view").html("<%=j render partial: 'shared/snop_list_view', locals: {snops: @snops} %>");
+  $("#snops_view").html("<%=j render partial: 'shared/snop_list_view', locals: {snops: @snops, show_category: @show_category} %>");
   reloadSnopsTable();
 <% end %>

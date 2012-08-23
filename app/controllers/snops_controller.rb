@@ -18,7 +18,12 @@ class SnopsController < ApplicationController
     @direction = params[:direction].to_s if params.has_key?(:direction)
 
     # Check if we are using snop_view
-    @snop_view = params[:snop_view] if params.has_key?(:snop_view)
+    @snop_view = params[:snop_view] == "true" if params.has_key?(:snop_view)
+
+    # Check if the category is showing
+    @show_category = params[:show_category] == "true" if params.has_key?(:show_category)
+
+    logger.debug @show_category
 
     # Check if a snop has been passed in
     @snop = Snop.find(params[:snop]) if (params.has_key?(:snop))

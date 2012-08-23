@@ -16,6 +16,6 @@ function reloadSnopsTable()
 <%# get all snops for this domain and resource combination %>
 <% if @snops %>
   <div id="snops_view">
-    <%= render partial: 'shared/snop_list_view', locals: {snops: @snops} %>
+    <%= render partial: 'shared/snop_list_view', locals: {snops: @snops, show_category: false} %>
   </div>
 <% end %>

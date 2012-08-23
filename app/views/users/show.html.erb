@@ -23,6 +23,6 @@ function reloadSnopsTable()
 <%# A single snop is shown in the right column, with the ability to browse %>
 <% if @snops %>
   <div id="snops_view">
-    <%= render partial: 'shared/snop_list_view', locals: {snops: @snops} %>
+    <%= render partial: 'shared/snop_list_view', locals: {snops: @snops, show_category: true} %>
   </div>
 <% end %>
