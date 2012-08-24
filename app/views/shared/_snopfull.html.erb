@@ -1,26 +1,5 @@
 <%# A snop full partial contains A snop view, as well as social media and the favourite button %>
 
-<%# Scripts for Facebook Button %>
-<% content_for :opengraph do %>
-<meta property=\"og:title\" content=\"#{snop.title}\" />
-<meta property=\"og:type\" content=\"article\" />
-<meta property=\"og:url\" content=\"#{request.protocol + request.host}:#{request.port.to_s + request.fullpath}\" />
-<meta property=\"og:site_name\" content=\"www.snopsize.com\" />
-<% end %>
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<%# Scripts for Twitter Button %>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<br>
-
 <p id="notice"><%= notice %></p>
 
 <% unless snop.nil? %>
@@ -74,13 +53,6 @@
   </p>
 
   <% end %>
-
-  <%# Facebook Button %>
-  <div class="fb-like" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div> 
-
-  <%# Twitter Button %>
-  <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
-  <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h get_snop_content(snop) %>">Tweet</a>
 
   <%# Fave/Unfave Button %>
   <% if auth_signed_in? %>
