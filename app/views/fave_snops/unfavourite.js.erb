@@ -1,8 +1,6 @@
-$('#fave').html("<%=j render 'fave_snops/favourite' %>");
+var fave_id = "<%= '#fave_' + @snop.id.to_s %>";
+$(fave_id).html("<%=j render partial: 'fave_snops/favourite', locals: {snop: @snop} %>");
 
 // We want to update the datatable
 var datatable = $("#snops").dataTable();
 datatable.fnDraw();
-
-// Reload the social media buttons
-reloadSocialMediaButtons();

@@ -41,13 +41,26 @@
 
     <div id="<%= "snop_"+snop.id.to_s %>" class="<%= @class %>">
       <%= render :partial => "shared/snopfull", locals: {snop: snop} %>
-      
+
       <%# Facebook Button %>
       <div class="fb-like" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div> 
 
       <%# Twitter Button %>
       <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
       <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h get_snop_content(snop) %>">Tweet</a>
+
+      <%# Fave/Unfave Button %>
+      <% if auth_signed_in? %>
+        <% @fave_btn_id = "fave_" + snop.id.to_s %>
+        <div id="<%= @fave_btn_id %>">
+          <% if has_user_faved_snop?(snop) %>
+            <%= render partial: 'fave_snops/favourite', locals: {snop: snop} %>
+          <% else %>
+            <%= render partial: 'fave_snops/unfavourite', locals: {snop: snop} %>
+          <% end %>
+        </div>
+      <% end %>
+
     </div>
   <% end %>
 </div>
