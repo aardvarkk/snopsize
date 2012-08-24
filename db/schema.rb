@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120820134332) do
+ActiveRecord::Schema.define(:version => 20120824152214) do
 
   create_table "domains", :force => true do |t|
     t.string   "uri",        :null => false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20120820134332) do
     t.string   "uri"
     t.boolean  "deleted",     :default => false, :null => false
     t.boolean  "is_ad",       :default => false, :null => false
+    t.decimal  "popularity",  :default => 0.0,   :null => false
   end
 
   create_table "snops_to_user_categories", :force => true do |t|

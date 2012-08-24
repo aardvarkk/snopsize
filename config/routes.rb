@@ -22,7 +22,7 @@ Snopsize::Application.routes.draw do
   match 'domains/:domain_id/resources/:resource_id' => 'resources#show', :as => 'resource', :via => :get
 
   # all of the snop resources
-  resources :snops, :except => [:index, :edit, :update]
+  resources :snops, :except => [:index, :edit, :show, :update]
 
   # all of our user categories
   resources :user_categories, :except => [:index, :show]

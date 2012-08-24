@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
-    # Get a list of the "trending" snops to show (for now just the last 5)
-    @snops = Snop.where(deleted: false).order("title DESC").limit(5)
+    # Get a list of the most popular snops
+    @snops = Snop.where(deleted: false).order("popularity DESC").limit(5)
     @snops = @snops.to_a
 
     # Check if a direction is passed in (For JS animation)
