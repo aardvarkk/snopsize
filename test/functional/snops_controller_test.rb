@@ -48,17 +48,18 @@ class SnopsControllerTest < ActionController::TestCase
     assert_equal snop.user_id, assigns(:snop).user_id
   end
 
-  test "should show snop" do
-    # HTTP GET /snop/:id
-    get :show, id: @snop
+  # Should we test that you actually CAN'T show a snop anymore?
+  # test "should show snop" do
+  #   # HTTP GET /snop/:id
+  #   get :show, id: @snop
 
-    # Make sure the page is proper
-    assert_response :success
+  #   # Make sure the page is proper
+  #   assert_response :success
 
-    # make sure that it assigned @snop, and @fave_snop
-    assert_not_nil assigns(:snop)
-    assert_nil assigns(:fave_snop)
-  end
+  #   # make sure that it assigned @snop, and @fave_snop
+  #   assert_not_nil assigns(:snop)
+  #   assert_nil assigns(:fave_snop)
+  # end
 
   test "should destroy snop" do
     
