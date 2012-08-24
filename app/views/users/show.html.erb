@@ -12,9 +12,9 @@
 <%# A single snop is shown in the right column, with the ability to browse %>
 <% if @snops %>
   <div id="snops_list_view">
-    <%= render partial: 'shared/snop_list_view', locals: {snops: @snops, show_category: true} %>
+    <%= render partial: 'shared/snop_list_view', locals: {data_source: user_path(format: "json")} %>
   </div>
   <div id="snops_browse_view">
-    <%= render partial: 'shared/snop_browse', locals: {current_snop: @snops.first, snop_list: @snops, show_category: true} %>
+    <%= render partial: 'shared/snop_browse', locals: {current_snop: @snops.first, snop_list: @snops, next_path: user_path(snops: @snops, snop: snop_get_next_in_list(@snops.first, @snops), direction: 'next', browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0]), prev_path: user_path(snops: @snops, snop: snop_get_prev_in_list(@snops.first, @snops), direction: 'prev', browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0]), close_path: user_path} %>
   </div>
 <% end %>

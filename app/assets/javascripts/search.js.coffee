@@ -13,5 +13,12 @@ jQuery ->
     "aaSorting": [],
     "bProcessing": true,
     "bServerSide": true,
-    "sAjaxSource": $("#snops").data("source")
+    "sAjaxSource": $("#snops").data("source"),
+    "aoColumns": [
+        null,
+        null,
+        null,
+        null,
+        {"bVisible": false}
+        ]
     });

@@ -13,6 +13,5 @@ jQuery ->
     "aaSorting": [],
     "bProcessing": true,
     "bServerSide": true,
-    "sAjaxSource": $("#snops").data("source"),
-    "sPaginationType": "full_numbers"
+    "sAjaxSource": $("#snops").data("source")
     });
