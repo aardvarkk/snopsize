@@ -1,14 +1,19 @@
 class FaveSnopsController < ApplicationController
   include ApplicationHelper
+  include FaveSnopsHelper
   include UserHelper
 
   before_filter :authenticate_auth!
 	
   #POST /fave_snops/favourite
   def favourite
-  	# Add a new fave snop entry
+  	
+    # Add a new fave snop entry
   	@snop = Snop.find(params[:snop])
     current_auth.favourites << @snop
+
+    # Recalculate the snop popularity
+    recalc_popularity(@snop, 1)
   	
     respond_to do |format|
       format.js
@@ -17,6 +22,7 @@ class FaveSnopsController < ApplicationController
 
   #POST /fave_snops/unfavourite
   def unfavourite
+    
     # Find the fave snop
     @snop = Snop.find(params[:snop])
 
@@ -47,6 +53,12 @@ class FaveSnopsController < ApplicationController
     # Finally... delete the entry
     current_auth.favourites.destroy(@snop)
   	
+    # Recalculate the snop popularity
+    # In this case, we'll just decay it. This means that favouriting something 
+    # isn't exactly a reversible process, because once you unfavourite it, it 
+    # decays instead of "removing" the popularity you just added
+    recalc_popularity(@snop, 0)
+    
   	respond_to do |format|
       format.js
     end
