@@ -1,7 +1,7 @@
 module FaveSnopsHelper
 
   def get_decayed_popularity(snop)
-    return snop.popularity * Math.exp(-(Time.now - snop.updated_at)/(Time.now - 7.days.ago))
+    return snop.popularity * Math.exp(-(Time.now - snop.updated_at) / 7.days)
   end
 
   # Takes a delta to add after decaying the popularity
