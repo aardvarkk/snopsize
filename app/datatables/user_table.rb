@@ -1,7 +1,7 @@
 class UserTable
   include Rails.application.routes.url_helpers
 
-  delegate :params, :link_to, to: :@view
+  delegate :params, :link_to, :button_to, :current_auth, to: :@view
 
   def initialize(view, all_snops, user)
     @view = view
@@ -27,13 +27,25 @@ private
       # The title will call the same path, but just the JS version, allowing us to
       # switch to the browse view
       title_link = link_to snop.title, user_path(id: @user.id, snop: snop, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0]), remote: true
-      [
-        user_link,
-        title_link,
-        domain_link,
-        snop.created_at.to_s,
-        ""
-      ]
+
+      # Now lets create the delete button if the user is on their own page
+      if (current_auth.snops.exists?(snop) && @user == current_auth)
+        delete_btn = button_to 'Delete', snop, :data => { :confirm => 'Are you sure?' }, remote: true, method: :delete
+      end
+
+      # Lets give the row an id
+      row_id = "row_" + snop.id.to_s
+
+      {
+        "DT_RowId" => row_id,
+        "DT_RowClass" => "rowClass",
+        "0" => user_link,
+        "1" => title_link,
+        "2" => domain_link,
+        "3" => snop.created_at.to_s,
+        "4" => "",
+        "5" => delete_btn
+      }
     end
   end
 end

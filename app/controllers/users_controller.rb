@@ -42,9 +42,6 @@ class UsersController < ApplicationController
     # Convert snops to an array
     @snops = @snops.to_a
 
-    # Set the showing snop in the session
-    session[:showing_snop_id] = @snop.id unless @snop.nil?
-
     respond_to do |format|
       format.html
       format.json { render json: UserTable.new(view_context, @snops, @user) }

@@ -33,6 +33,7 @@ private
         title_link,
         domain_link,
         snop.created_at.to_s,
+        "",
         ""
       ]
     end

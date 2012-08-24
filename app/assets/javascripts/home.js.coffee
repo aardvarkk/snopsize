@@ -22,6 +22,7 @@ jQuery ->
         null,
         null,
         null,
+        {"bVisible": false},
         {"bVisible": false}
         ]
     });
