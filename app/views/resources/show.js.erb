@@ -1,18 +1,10 @@
 <% if @browse_view %>
-  $("#snops_browse_view").html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop, snop_list: @snops, next_path: resource_path(snops: @snops, snop: snop_get_next_in_list(@snop, @snops), direction: 'next', browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0]), prev_path: resource_path(snops: @snops, snop: snop_get_prev_in_list(@snop, @snops), direction: 'prev', browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0]), close_path: resource_path} %>");
-  $("#snops_list_view").hide();
-  $("#snops_browse_view").show();
-
-  // Let's do a little animation
-  <% if @direction == "next" %>
-    animateSlideInFromRight('#snop')
-  <% elsif @direction == "prev" %>
-    animateSlideInFromLeft('#snop')
-  <% end %>
+  $("#snops_browse_view").html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop, snop_list: @snops, close_path: resouce_path} %>");
+  changeToBrowseView();
+  reloadClickHandlers();
 
   // Reload the social media buttons
   reloadSocialMediaButtons();  
 <% else %>
-  $("#snops_list_view").show();
-  $("#snops_browse_view").hide();
+  changeToListView();
 <% end %>

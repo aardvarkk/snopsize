@@ -6,5 +6,5 @@
   <%= render partial: 'shared/snop_list_view', locals: {data_source: root_path(format: "json")} %>
 </div>
 <div id="snops_browse_view">
-  <%= render partial: 'shared/snop_browse', locals: {current_snop: @snops.first, snop_list: @snops, next_path: root_path(snops: @snops, snop: snop_get_next_in_list(@snops.first, @snops), direction: 'next', browse_view: true), prev_path: root_path(snops: @snops, snop: snop_get_prev_in_list(@snops.first, @snops), direction: 'prev', browse_view: true), close_path: root_path} %>
+  <%= render partial: 'shared/snop_browse', locals: {current_snop: @snops.first, snop_list: @snops, close_path: root_path} %>
 </div>

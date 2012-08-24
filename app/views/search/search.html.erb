@@ -24,7 +24,7 @@
         <%= render partial: 'shared/snop_list_view', locals: {data_source: search_path(q: params[:q], format: "json")} %>
       </div>
       <div id="snops_browse_view">
-        <%= render partial: 'shared/snop_browse', locals: {current_snop: @results.first, snop_list: @results, next_path: search_path(q: params[:q], type: params[:type], snops: @results, snop: snop_get_next_in_list(@results.first, @results), direction: 'next', browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0]), prev_path: search_path(q: params[:q], type: params[:type], snops: @results, snop: snop_get_prev_in_list(@results.first, @results), direction: 'prev', browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0]), close_path: search_path} %>
+        <%= render partial: 'shared/snop_browse', locals: {current_snop: @results.first, snop_list: @results, close_path: search_path} %>
       </div>
     <% end %>
 	<% end %>

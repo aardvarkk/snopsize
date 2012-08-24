@@ -26,12 +26,62 @@ function reloadSocialMediaButtons()
   twttr.widgets.load();
 }
 
-function animateSlideInFromRight(element)
+function enableButtons(element)
 {
-  $(element).css({'margin-left':'100%'}).animate({'margin-left':'0'});
+  var next = element.next();
+  var prev = element.prev();
+
+  $('#next').attr("disabled", next.attr("id") === undefined);
+  $('#prev').attr("disabled", prev.attr("id") === undefined);
 }
 
-function animateSlideInFromLeft(element)
+function changeToListView()
 {
-  $(element).css({'margin-left':'-200%'}).animate({'margin-left':'0'});
+  $("#snops_list_view").show();
+  $("#snops_browse_view").hide();
 }
+
+function changeToBrowseView()
+{
+  $("#snops_list_view").hide();
+  $("#snops_browse_view").show();
+}
+
+function reloadClickHandlers()
+{
+  $("#prev").click(function() {
+
+    var prev_snop = $(".current_snop").prev();
+    if (prev_snop.attr("id"))
+    {
+      var current_snop = $(".current_snop");
+      current_snop.removeClass("current_snop");
+      current_snop.addClass("hidden_snops");
+      prev_snop.removeClass("hidden_snops");
+      prev_snop.addClass("current_snop");
+      $(prev_snop).css({'margin-left':'-200%'}).animate({'margin-left':'0'});
+      reloadSocialMediaButtons();  
+    }
+  });
+
+  $("#next").click(function() {
+    var next_snop = $(".current_snop").next();
+
+    if (next_snop.attr("id"))
+    {
+      var current_snop = $(".current_snop");
+      current_snop.removeClass("current_snop");
+      current_snop.addClass("hidden_snops");
+      next_snop.removeClass("hidden_snops");
+      next_snop.addClass("current_snop");
+      $(next_snop).css({'margin-left':'100%'}).animate({'margin-left':'0'});  
+      reloadSocialMediaButtons();  
+    }
+  });
+}
+
+$(document).ready(function() 
+{
+  reloadClickHandlers();
+} );
+

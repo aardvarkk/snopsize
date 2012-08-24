@@ -5,14 +5,21 @@
 
 <div id="buttons">
   <div id="prev_button">
-    <%= button_to "<", prev_path, remote: true, disabled: !snop_has_prev_in_list?(current_snop, snop_list), method: :get %>
+    <button id="prev" type="button">&lt</button>
   </div>
   
   <div id="next_button">
-    <%= button_to ">", next_path, remote: true, disabled: !snop_has_next_in_list?(current_snop, snop_list), method: :get %>
+    <button id="next" type="button">&gt</button>
   </div>  
 </div>
 
-<div id="snop">
-  <%= render :partial => "shared/snopfull", locals: {snop: current_snop} %>
+<div id="snop_container">
+  <% snop_list.each do |snop| %>
+    <% @class = "hidden_snops" %>
+    <% @class = "current_snop" if snop == current_snop %>
+
+    <div id="<%= "snop_"+snop.id.to_s %>" class="<%= @class %>">
+      <%= render :partial => "shared/snopfull", locals: {snop: snop} %>
+    </div>
+  <% end %>
 </div>
