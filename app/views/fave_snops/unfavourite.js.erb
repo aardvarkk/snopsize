@@ -1,6 +1,35 @@
+// udate the fave button first
 var fave_id = "<%= '#fave_' + @snop.id.to_s %>";
 $(fave_id).html("<%=j render partial: 'fave_snops/favourite', locals: {snop: @snop} %>");
 
 // We want to update the datatable
 var datatable = $("#snops").dataTable();
 datatable.fnDraw();
+
+// If we're on the curren't users page, and we're not looking 
+// at the current users snop, then we might have to do some UI stuff
+<% if @current_users_page && !@current_users_snop %>
+  // if the next button isn't disabled, let's press it!
+  if (!$("#next").attr("disabled"))
+  {
+    $("#next").click();
+  }
+  // if the prev button isn't disabled, let's press it!
+  else if (!$("#prev").attr("disabled"))
+  {
+    $("#prev").click();
+  }
+  // both buttons are disabled, it means this is the last snop,
+  // lets return to the list view
+  else
+  {
+    changeToListView();
+  }
+
+  // delete the div
+  var div_to_delete = "<%= '#snop_' + @snop.id.to_s %>"
+  $(div_to_delete).remove();
+
+  // lets update the buttons again since we deleted the div
+  enableButtons();
+<% end %>

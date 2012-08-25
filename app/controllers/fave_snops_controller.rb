@@ -25,6 +25,10 @@ class FaveSnopsController < ApplicationController
     # Find the fave snop
     @snop = Snop.find(params[:snop])
 
+    # Is the snop the current users snop?
+    @current_users_snop = current_auth.snops.exists?(@snop)
+    @current_users_page = URI(request.referrer).path == user_path(current_auth)
+
     # Finally... delete the entry
     current_auth.favourites.destroy(@snop)
   	
