@@ -1,7 +1,7 @@
 class UserTable
   include Rails.application.routes.url_helpers
 
-  delegate :params, :link_to, :button_to, :current_auth, to: :@view
+  delegate :params, :link_to, :button_to, :current_auth, :auth_signed_in?, to: :@view
 
   def initialize(view, all_snops, user)
     @view = view
@@ -29,11 +29,11 @@ private
       title_link = link_to snop.title, user_path(id: @user.id, snop: snop, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0]), remote: true
 
       # Now lets create the delete button if the user is on their own page
-      if (current_auth.snops.exists?(snop) && @user == current_auth)
+      if (auth_signed_in? && current_auth.snops.exists?(snop) && @user == current_auth)
         delete_btn = button_to 'Delete', snop, :data => { :confirm => 'Are you sure?' }, remote: true, method: :delete
       end
 
-      # Lets give the row an id
+      # Lets give the row an id so that we can find it later (for JS in this instance)
       row_id = "row_" + snop.id.to_s
 
       {
