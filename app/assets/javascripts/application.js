@@ -26,10 +26,10 @@ function reloadSocialMediaButtons()
   twttr.widgets.load();
 }
 
-function enableButtons(element)
+function enableButtons()
 {
-  var next = element.next();
-  var prev = element.prev();
+  var next = $(".current_snop").next();
+  var prev = $(".current_snop").prev();
 
   $('#next').attr("disabled", next.attr("id") === undefined);
   $('#prev').attr("disabled", prev.attr("id") === undefined);
@@ -49,39 +49,37 @@ function changeToBrowseView()
 
 function reloadClickHandlers()
 {
-  $("#prev").click(function() {
+  enableButtons();
 
+  // Click handler for the previous button in browse view
+  $("#prev").click(function() 
+  {
     var prev_snop = $(".current_snop").prev();
-    if (prev_snop.attr("id"))
-    {
-      var current_snop = $(".current_snop");
-      current_snop.removeClass("current_snop");
-      current_snop.addClass("hidden_snops");
-      prev_snop.removeClass("hidden_snops");
-      prev_snop.addClass("current_snop");
-      $(prev_snop).css({'margin-left':'-200%'}).animate({'margin-left':'0'});
-      reloadSocialMediaButtons();  
-    }
+    var current_snop = $(".current_snop");
+    current_snop.removeClass("current_snop");
+    current_snop.addClass("hidden_snops");
+    prev_snop.removeClass("hidden_snops");
+    prev_snop.addClass("current_snop");
+    $(prev_snop).css({'margin-left':'-200%'}).animate({'margin-left':'0'});
+    reloadSocialMediaButtons();  
+    enableButtons();
   });
 
+  // Click handler for the next button in browse view
   $("#next").click(function() {
     var next_snop = $(".current_snop").next();
-
-    if (next_snop.attr("id"))
-    {
-      var current_snop = $(".current_snop");
-      current_snop.removeClass("current_snop");
-      current_snop.addClass("hidden_snops");
-      next_snop.removeClass("hidden_snops");
-      next_snop.addClass("current_snop");
-      $(next_snop).css({'margin-left':'100%'}).animate({'margin-left':'0'});  
-      reloadSocialMediaButtons();  
-    }
+    var current_snop = $(".current_snop");
+    current_snop.removeClass("current_snop");
+    current_snop.addClass("hidden_snops");
+    next_snop.removeClass("hidden_snops");
+    next_snop.addClass("current_snop");
+    $(next_snop).css({'margin-left':'100%'}).animate({'margin-left':'0'});  
+    reloadSocialMediaButtons();  
+    enableButtons();
   });
 }
 
 $(document).ready(function() 
 {
   reloadClickHandlers();
-} );
-
+});
