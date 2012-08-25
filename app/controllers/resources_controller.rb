@@ -25,8 +25,6 @@ class ResourcesController < ApplicationController
     # Handle pagination next
     @snops = @snops.page(page).per_page(per_page) if params.has_key?(:iDisplayStart) && params.has_key?(:iDisplayLength)
 
-    # Check if a direction is passed in (For JS animation)
-    @direction = params[:direction].to_s if params.has_key?(:direction)
     # Check if we are in browse view
     @browse_view = params[:browse_view] == "true" if params.has_key?(:browse_view)
     # Check if a single snop has been passed in to display in browse view
