@@ -9,17 +9,6 @@ class SnopsController < ApplicationController
     redirect_to current_auth if Snop.find(params[:id]).user != current_auth
   end
 
-  # GET /snops/1
-  # GET /snops/1.json
-  def show
-    @snop = Snop.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @snop }
-    end
-  end
-
   # GET /snops/new
   # GET /snops/new.json
   def new

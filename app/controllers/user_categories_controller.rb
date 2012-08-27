@@ -62,44 +62,25 @@ class UserCategoriesController < ApplicationController
     end
   end
   
-  # GET /user_categories/add_snop
-  def add_snop
-  	@snop = Snop.find(params[:snop])
-
-    # The snop that is specified has to be one that is either
-    # created by the current_auth or favourited
-    unless current_auth.snops.exists?(params[:snop]) || current_auth.favourites.exists?(params[:snop])
-      redirect_to current_auth
-      return
-    end
-
-  	@user_category = UserCategory.new #dummy category
-  	@user_categories = current_auth.user_categories
-  	   
-  	respond_to do |format|
-      format.html # add_snop.html.erb
-      format.json { render json: @user_category }
-    end
-  end
-  
-  # POST /user_categories/add_snop
+  # POST /user_categories/set_snop
   def set_snop
-  	@snop = Snop.find(params[:snop])
-  	@user_category = UserCategory.find(params[:user_category][:id])
-  	
-    # First we have to check if the snop we selected already
+  	snop = Snop.find(params[:snop])
+
+  	# First we have to check if the snop we selected already
     # has a category for the current user
-    old_category = @snop.user_categories.where('user_id = ?', current_auth.id).first
+    old_category = snop.user_categories.where('user_id = ?', current_auth.id).first
 
     # if old category exists, remove snop from old category
-    old_category.snops.destroy(@snop) unless old_category.nil?
+    old_category.snops.destroy(snop) unless old_category.nil?
 
-  	# add the snop to the new category
-  	@user_category.snops << @snop
-  	
-  	respond_to do |format|
-      format.html { redirect_to current_auth }
-      format.json { head :no_content }
+    if (UserCategory.exists?(params[:user_category][:id]))
+      user_category = UserCategory.find(params[:user_category][:id])
+        
+  	  # add the snop to the new category
+  	  user_category.snops << snop
     end
+
+    # nothing to render
+    render nothing: true
   end
 end

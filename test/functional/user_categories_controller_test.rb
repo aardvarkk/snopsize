@@ -15,7 +15,7 @@ class UserCategoriesControllerTest < ActionController::TestCase
 
   test "should create user_category" do
     assert_difference('UserCategory.count') do
-      post :create, user_category: { name: @user_category.name + "A", parent_id: @user_category.parent_id, user_id: @user_category.user_id }
+      post :create, user_category: { name: @user_category.name + "A", user_id: @user_category.user_id }
     end
 
     # Should go back to User page
@@ -26,7 +26,6 @@ class UserCategoriesControllerTest < ActionController::TestCase
 
     # Make sure the variables are the same that we requested
     assert_equal @user_category.name + "A", assigns(:user_category).name
-    assert_equal @user_category.parent_id, assigns(:user_category).parent_id
     assert_equal @user_category.user_id, assigns(:user_category).user_id
   end
 
@@ -42,13 +41,12 @@ class UserCategoriesControllerTest < ActionController::TestCase
 
     # Make sure the user category is the one we requested
     assert_equal user_categories(:one).name, assigns(:user_category).name
-    assert_equal user_categories(:one).parent_id, assigns(:user_category).parent_id
     assert_equal user_categories(:one).user_id, assigns(:user_category).user_id
   end
 
   test "should update user_category" do
     # Try to update the user_cateogyr
-    put :update, id: @user_category, user_category: { name: @user_category.name + "C", parent_id: @user_category.parent_id, user_id: @user_category.user_id }
+    put :update, id: @user_category, user_category: { name: @user_category.name + "C", user_id: @user_category.user_id }
 
     # Should go back to user page
     assert_redirected_to @user
@@ -58,7 +56,6 @@ class UserCategoriesControllerTest < ActionController::TestCase
 
     # Make sure the user category is the one we requested
     assert_equal @user_category.name + "C", assigns(:user_category).name
-    assert_equal @user_category.parent_id, assigns(:user_category).parent_id
     assert_equal @user_category.user_id, assigns(:user_category).user_id
   end
 
@@ -75,36 +72,6 @@ class UserCategoriesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:user_category)
   end
 
-  test "should add snop user_category" do
-    snop = @user.snops.first
-
-    # Try to get the "add_snop" page
-    get :add_snop, snop: snop
-
-    # make sure it's gotten
-    assert_response :success
-
-    # @user_category should be assigned
-    assert_not_nil assigns(:user_category)
-    assert_not_nil assigns(:snop)
-    assert_not_nil assigns(:user_categories)
-
-    # Make sure the snop is the one we requested
-    assert_equal snop.id, assigns(:snop).id
-  end
-
-  test "should not add snop user_category" do
-    # Get the first snop of another user
-    snop = users(:two).snops.first
-
-    # Try to add a category for that users snop, this
-    # should fail and redirect us to the user page
-    get :add_snop, snop: snop
-
-    # We should be on the user page
-    assert_redirected_to @user
-  end
-
   test "should set snop user_category" do
     snop = @user.snops.first
 
@@ -113,7 +80,7 @@ class UserCategoriesControllerTest < ActionController::TestCase
       post :set_snop, {snop: snop, user_category: {id: @user_category.id}}
     end
 
-    # Should go back to User page
-    assert_redirected_to @user
+    # Should return OK and keep us on same page
+    assert :success
   end
 end
