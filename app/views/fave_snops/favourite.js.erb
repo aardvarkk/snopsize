@@ -1,2 +1,1 @@
-var fave_id = "<%= '#fave_' + @snop.id.to_s %>";
-$(fave_id).html("<%=j render partial: 'fave_snops/unfavourite', locals: {snop: @snop} %>");
+$("<%= '#fave_' + @snop.id.to_s %>").html("<%=j render partial: 'fave_snops/unfavourite', locals: {snop: @snop} %>");

@@ -26,7 +26,7 @@ class FaveSnopsControllerTest < ActionController::TestCase
 
     # Test that the jquery was executed and that the button
     # says "Unfavourite" now
-    assert_select_jquery :html, '#fave' do
+    assert_select_jquery :html, "#fave_#{@snop.id}" do
       assert_select "input", value: "Unfavourite"
     end
   end
@@ -55,7 +55,7 @@ class FaveSnopsControllerTest < ActionController::TestCase
 
     # Test that the jquery was executed and that the button
     # says "favourite" now
-    assert_select_jquery :html, '#fave' do
+    assert_select_jquery :html, "#fave_#{@snop.id}" do
       assert_select "input", value: "Favourite"
     end
   end
