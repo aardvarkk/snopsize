@@ -11,8 +11,7 @@ class HomeControllerTest < ActionController::TestCase
     assert_response :success
 
     # Load some snops that we want to show
-    assert_not_nil assigns(:latest_snops)
-    assert_not_nil assigns(:popular_snops)
+    assert_not_nil assigns(:snops)
   end
 
 end

@@ -20,7 +20,7 @@ class ResourcesControllerTest < ActionController::TestCase
 
   test "should get show ajax" do
     # Do an AJAX post
-    xhr :post, :show, domain_id: @resource.domain.id, resource_id: @resource.id, snop: @resource.snops.first, direction: "next"
+    xhr :get, :show, domain_id: @resource.domain.id, resource_id: @resource.id, snop: @resource.snops.first, direction: "next"
 
     # Should get a success back.
     assert_response :success
