@@ -24,7 +24,7 @@ class UsersControllerTest < ActionController::TestCase
     get :show, id: users(:two)
 
     # Iterate through each of the all_snops and make sure none of them is deleted
-    assigns(:all_snops).each do |snop|
+    assigns(:snops).each do |snop|
       assert_equal false, snop.deleted?
     end
 
@@ -35,7 +35,7 @@ class UsersControllerTest < ActionController::TestCase
     get :show, id: users(:two)
 
     # Make sure there are no duplicates in the snops
-    assert_equal assigns(:all_snops).length, assigns(:all_snops).uniq.length
+    assert_equal assigns(:snops).length, assigns(:snops).uniq.length
 
   end
 
