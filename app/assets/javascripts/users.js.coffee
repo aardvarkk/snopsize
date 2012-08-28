@@ -19,7 +19,7 @@ jQuery ->
         null,
         null,
         null,
-        {"bSortable": false},
+        null,
         {"bSortable": false}
         ]
     });

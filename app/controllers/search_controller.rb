@@ -66,7 +66,7 @@ class SearchController < ApplicationController
       if params.has_key?(:iSortCol_0) && params.has_key?(:sSortDir_0)
         # Sort by domains
         if (sort_column == "domain")
-          @snops = @snops.joins(:domain).order("domain_id IS NULL, domains.uri #{sort_direction}")
+          @snops = @snops.includes(:domain).order("domains.uri #{sort_direction()}")
         # order by username
         elsif (sort_column == "user")
           @snops = @snops.joins(:user).order("users.username #{sort_direction}")

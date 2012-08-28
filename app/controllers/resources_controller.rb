@@ -16,7 +16,7 @@ class ResourcesController < ApplicationController
     # Sort by domains
     case sort_column()
     when "domain"
-      @snops = @snops.joins(:domain).order("domain_id IS NULL, domains.uri #{sort_direction}")
+      @snops = @snops.includes(:domain).order("domains.uri #{sort_direction()}")
     # order by username
     when "user"
       @snops = @snops.joins(:user).order("users.username #{sort_direction}")

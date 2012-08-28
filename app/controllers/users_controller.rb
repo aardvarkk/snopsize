@@ -19,12 +19,13 @@ class UsersController < ApplicationController
     # Sort by domains
     case sort_column()
     when "domain"
-      @snops = @snops.joins("LEFT JOIN domains ON snops.domain_id = domains.id").order("domains.uri #{sort_direction()}")
+      @snops = @snops.includes(:domain).order("domains.uri #{sort_direction()}")
     # order by username
     when "user"
       @snops = @snops.joins(:user).order("users.username #{sort_direction()}")
     # order by category
     when "category"
+      @snops = @snops.includes(:user_categories).order("user_categories.name #{sort_direction}")
     # order by title or date, this is straight forward
     else 
       @snops = @snops.order("#{sort_column()} #{sort_direction()}") 
