@@ -5,7 +5,8 @@
   <%= text_field_tag(:q) %>
   <%# set the name to 'nil' to avoid the commit = Search parameter from being passed %>
   <%= submit_tag("Search", :name => nil) %>
-<% end %></br>
+<% end %>
+<br/>
 
 <%# show any keyword results... %>
 <% if @results %>

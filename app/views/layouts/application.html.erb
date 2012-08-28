@@ -6,7 +6,8 @@
   <%= javascript_include_tag controller_name %>
   <%= csrf_meta_tags %>
 
-  <%# Our OpenGraph tags (for Facebook LIKE, etc.) have to be inside the head %>
+  <%# Our OpenGraph tags (for Facebook LIKE, etc.) %>
+  <%# They have to be inside the head %>
   <%= yield :opengraph %>
 
 </head>
@@ -26,9 +27,9 @@
   <%= yield %>
 
 <%# General Site Navigation %>
-</br>
+<br/>
 <div id="bottom_nav">
-</br>
+<br/>
   <center>
     <%= link_to "Home", root_path %>
     &nbsp;|&nbsp;

@@ -27,6 +27,9 @@ class ActionDispatch::IntegrationTest
   # Stop ActiveRecord from wrapping tests in transactions
   self.use_transactional_fixtures = false
 
+  # Switch to selenium as the default driver for JS support
+  Capybara.default_driver = :selenium
+
   teardown do
     DatabaseCleaner.clean       # Truncate the database
     Capybara.reset_sessions!    # Forget the (simulated) browser state
