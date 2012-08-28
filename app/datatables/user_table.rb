@@ -1,7 +1,7 @@
 class UserTable
   include Rails.application.routes.url_helpers
 
-  delegate :params, :link_to, :button_to, :collection_select, :current_auth, :auth_signed_in?, to: :@view
+  delegate :params, :link_to, :time_ago_in_words, :button_to, :collection_select, :current_auth, :auth_signed_in?, to: :@view
 
   def initialize(view, all_snops, user)
     @view = view
@@ -50,7 +50,7 @@ private
         "0" => user_link,
         "1" => title_link,
         "2" => domain_link,
-        "3" => snop.created_at.to_s,
+        "3" => time_ago_in_words(snop.created_at) + " ago",
         "4" => category,
         "5" => delete_btn
       }

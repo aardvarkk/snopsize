@@ -1,7 +1,7 @@
 class SearchTable
   include Rails.application.routes.url_helpers
 
-  delegate :params, :link_to, to: :@view
+  delegate :params, :time_ago_in_words, :link_to, to: :@view
 
   def initialize(view, all_snops)
     @view = view
@@ -30,7 +30,7 @@ private
         user_link,
         title_link,
         domain_link,
-        snop.created_at.to_s,
+        time_ago_in_words(snop.created_at) + " ago",
         "",
         ""
       ]
