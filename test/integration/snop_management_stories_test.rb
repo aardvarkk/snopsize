@@ -56,7 +56,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_button "Create Snop"
 
     # The user should now be shown the snop they just created
-    assert_equal current_path, snop_path(user.snops.first)
+    assert_equal current_path, user_path(user)
   end
 
   test "create a snop from a resource page" do
@@ -157,19 +157,19 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_button "Sign in"
 
     # We should now be back on the home page and logged in
-    assert_equal current_path, root_path
+    assert_equal root_path, current_path
 
     # Now the user want's to click on a snop
     click_link(snops(:one).title)
 
     # We should be on the snop page now
-    assert_equal current_path, snop_path(snops(:one))
+    assert_equal root_path, current_path
 
     # They see a favourite button there, they like the snop so they will favourite it
     click_button("Favourite")
 
     # We should be on the snop page still
-    assert_equal current_path, snop_path(snops(:one))
+    assert_equal root_path, current_path
 
     # The button should change to "Unfavourite"
     assert page.has_button?("Unfavourite")
@@ -207,7 +207,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    assert_equal current_path, new_auth_session_path
+    assert_equal new_auth_session_path, current_path
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
@@ -225,13 +225,13 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_link(snops(:one).title)
 
     # We should be on the snop page now
-    assert_equal current_path, snop_path(snops(:one))
+    assert_equal root_path, current_path
 
     # They see a favourite button there, they like the snop so they will favourite it
     click_button("Favourite")
 
     # We should be on the snop page still
-    assert_equal current_path, snop_path(snops(:one))
+    assert_equal root_path, snop_path(snops(:one))
 
     # The button should change to "Unfavourite"
     assert page.has_button?("Unfavourite")
