@@ -12,10 +12,13 @@ class SnopsController < ApplicationController
   # GET /snops/new
   # GET /snops/new.json
   def new
-    @snop = Snop.new
 
-    # Check if we should pre-fill with URI value
-    @default_uri = params[:uri] if params.has_key? :uri
+    # Default parameters
+    params[:uri] ||= nil
+
+    # Set variables
+    @snop = Snop.new
+    @default_uri = params[:uri]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,7 +37,7 @@ class SnopsController < ApplicationController
 
     respond_to do |format|
       if @snop.save
-        format.html { redirect_to @snop, notice: 'Snop was successfully created.' }
+        format.html { redirect_to @snop.user, notice: 'Snop was successfully created.' }
         format.json { render json: @snop, status: :created, location: @snop }
       else
         format.html { render action: "new" }
