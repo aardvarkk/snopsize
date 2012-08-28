@@ -6,6 +6,8 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
   # Story: A user comes to snopsize.com and decides they want
   # to create a snopsize account
   test "create account and go to user page" do
+    Capybara.current_driver = :rack_test
+
     # Go to home page
     visit('/')
     assert_equal root_path, current_path
@@ -49,6 +51,8 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
   # Story: A user has forgotten their password when trying to login
   # and wants to reset their password
   test "request password retrieval" do
+    Capybara.current_driver = :rack_test
+
     user = users(:one)
 
     # Go to home page

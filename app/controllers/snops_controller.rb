@@ -2,7 +2,7 @@ class SnopsController < ApplicationController
   include ApplicationHelper
   include UserHelper
 
-  before_filter :authenticate_auth!, :except => [:show]
+  before_filter :authenticate_auth!
   before_filter :verify_snop_owner, :only => [:destroy]
 
   def verify_snop_owner
@@ -12,7 +12,9 @@ class SnopsController < ApplicationController
   # GET /snops/new
   # GET /snops/new.json
   def new
-
+    # Store where we came from!
+    session[:new_snop_referrer] = request.referrer  
+    
     # Default parameters
     params[:uri] ||= nil
 
@@ -22,7 +24,6 @@ class SnopsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @snop }
     end
   end
 
@@ -35,13 +36,15 @@ class SnopsController < ApplicationController
     # only logged in users can create snops
     @snop.user = current_auth
 
+    # Get the referrer so we can go back to that page
+    referrer = session[:new_snop_referrer]
+    session.delete(:referrer)
+
     respond_to do |format|
       if @snop.save
-        format.html { redirect_to @snop.user, notice: 'Snop was successfully created.' }
-        format.json { render json: @snop, status: :created, location: @snop }
+        format.html { redirect_to referrer, notice: 'Snop was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @snop.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +60,6 @@ class SnopsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @snop.user }
-      format.json { head :no_content }
       format.js
     end
 

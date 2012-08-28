@@ -26,6 +26,9 @@ class SnopsControllerTest < ActionController::TestCase
   test "should create snop" do
     snop = snops(:one)
 
+    # Need to set a referrer or else this wont work!
+    session[:new_snop_referrer] = user_path(snop.user)
+
     # Try to create a new snop
     assert_difference('Snop.count') do
       post :create, snop: { point1: snop.point1, point2: snop.point2, point3: snop.point3, domain_id: snop.domain_id, resource_id: snop.resource_id, summary: snop.summary, title: snop.title, user_id: snop.user_id }
