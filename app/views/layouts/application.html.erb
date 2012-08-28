@@ -12,7 +12,11 @@
 
 </head>
 <body>
-  <%# user navigation at the top of the page %>
+
+  <%# Title %>
+  <h1>Snopsize</h1>
+
+  <%# User navigation at the top of the page %>
   <div id="user_nav">
   <%=link_to "Home", root_path %> | 
   <% if auth_signed_in? %>
@@ -22,6 +26,15 @@
     <%= link_to "Sign In", new_auth_session_path %> or <%= link_to "Sign Up", new_auth_registration_path %>
   <% end %>
   </div>
+
+  <%# Search form %>
+  <%= form_tag("/search", :method => "get") do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= select_tag(:type, options_for_select([['Keyword', 'keyword'], ['URL', 'url'], ['User', 'user']], params[:type])) %>
+    <%= text_field_tag(:q) %>
+    <%# set the name to 'nil' to avoid the commit = Search parameter from being passed %>
+    <%= submit_tag("Search", :name => nil) %>
+  <% end %>
 
   <%# Content %>
   <%= yield %>
