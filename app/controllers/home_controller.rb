@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     params[:snop] ||= nil
 
     # Set variables
-    @snops = Snop.where(deleted: false).order("popularity DESC").limit(5).to_a
+    @snops = Snop.where(deleted: false, is_ad: false).order("popularity DESC").limit(5).to_a
     @snop = Snop.find(params[:snop]) if params[:snop]
 
     respond_to do |format|
