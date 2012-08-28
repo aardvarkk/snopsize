@@ -116,7 +116,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_button "Create Snop"
 
     # The user should now be shown the snop they just created
-    wait_until { current_path == snop_path(user.snops.first) }
+    wait_until { current_path == user_path(user) }
   end
 
   # Story: A user has created a snop that they now think they want to
