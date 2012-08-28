@@ -8,7 +8,6 @@ class UserCategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @user_category }
     end
   end
 
@@ -26,10 +25,8 @@ class UserCategoriesController < ApplicationController
     respond_to do |format|
       if @user_category.save
         format.html { redirect_to current_auth, notice: 'User category was successfully created.' }
-        format.json { render json: @user_category, status: :created, location: @user_category }
       else
         format.html { render action: "new" }
-        format.json { render json: @user_category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,10 +39,8 @@ class UserCategoriesController < ApplicationController
     respond_to do |format|
       if @user_category.update_attributes(params[:user_category])
         format.html { redirect_to current_auth, notice: 'User category was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @user_category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +53,6 @@ class UserCategoriesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to current_auth }
-      format.json { head :no_content }
     end
   end
   
