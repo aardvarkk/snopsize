@@ -1,5 +1,5 @@
-# This should automatically run bundle install on the server side
-require "bundler/capistrano"
+require "bundler/capistrano" # runs bundler install on the server
+require "rvm/capistrano"
 
 set :user, 				'sysadmin'
 set :application, 'snopsize'
@@ -12,18 +12,14 @@ set :scm, :git
 # Seems to fix error about 'no tty present and no askpass program specified'
 default_run_options[:pty] = true
 
-# adjust if you are using RVM, remove if you are not
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-require "rvm/capistrano"
-set :rvm_type, :user
+# Your HTTP server, Apache/etc
+role :app, 'snopsize.com'
+role :web, 'snopsize.com'
+role :db,  'snopsize.com', :primary => true
 
 # This lets us NOT have a Gemfile.lock
+# I think it fixes an error saying deployment can't find Gemfile.lock
 set :bundle_flags, "--quiet"
-
-# Your HTTP server, Apache/etc
-role :app, '184.106.240.177'
-role :web, '184.106.240.177'
-role :db, '184.106.240.177', :primary => true
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"

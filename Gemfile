@@ -65,6 +65,9 @@ group :production do
 	
 end
 
+# This is used to help install RVM and stuff on the server
+gem 'rvm-capistrano'
+
 # Testing stuff
 group :test do
   gem 'database_cleaner'
