@@ -1,5 +1,10 @@
 Snopsize::Application.routes.draw do
 
+  # Devise user routes
+  # Generates a bunch of routes for devise
+  # Put these at the top so that they're evaluated first
+  devise_for :users
+
   get "about/show"
 
   post "fave_snops/favourite"
@@ -11,7 +16,6 @@ Snopsize::Application.routes.draw do
 
   # for user pages
   match 'users/:id' => 'users#show', :as => 'user', :via => :get
-  match 'users/:id/settings' => 'users#settings', :as => 'settings', :via => :get
 
   # for searching snops
   match 'search' => 'search#search', :as => 'search', :via => :get
@@ -28,10 +32,6 @@ Snopsize::Application.routes.draw do
   # all of our user categories
   resources :user_categories, :except => :show
 	post "user_categories/set_snop"
-
-  # Devise user routes
-  # Generates a bunch of routes for devise
-  devise_for :user
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
