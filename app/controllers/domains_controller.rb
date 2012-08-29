@@ -15,6 +15,11 @@ class DomainsController < ApplicationController
       @resources = @resources.order("#{sort_column()} #{sort_direction()}") 
     end
 
+    # The user typed in a search so we'll try to find "like" resources
+    if params[:sSearch].present?
+      @resources = @resources.where("uri like :search", search: "%#{params[:sSearch]}%")
+    end
+
     # Handle pagination next
     @resources = @resources.page(page()).per_page(per_page()).to_a
 

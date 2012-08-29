@@ -25,7 +25,7 @@ private
       domain_link = link_to snop.domain.uri, snop.domain unless snop.domain.nil?
       # The title will call the same path, but just the JS version, allowing us to
       # switch to the browse view
-      title_link = link_to snop.title, search_path(q: params[:q], type: params[:type], snop: snop, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0]), remote: true
+      title_link = link_to snop.title, search_path(q: params[:q], type: params[:type], snop: snop, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]), remote: true
       [
         user_link,
         title_link,
