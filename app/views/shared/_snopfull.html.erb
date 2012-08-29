@@ -18,6 +18,8 @@
       <% unless snop.domain.nil? %>
         <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
       <% end %>
+      <%# External link %>
+      <%= link_to image_tag("Icon_External_Link.png"), snop.domain.uri + '/', target: '_blank' %>
     </p>
 
     <p>
@@ -25,6 +27,8 @@
       <% unless snop.domain.nil? %>
         <%= link_to "See all snops for article " + snop.domain.uri + snop.resource.uri, resource_path(domain_id: snop.domain.id, resource_id: snop.resource.id) %>
       <% end %>
+      <%# External link %>
+      <%= link_to image_tag("Icon_External_Link.png"), snop.domain.uri + snop.resource.uri, target: '_blank' %>
     </p>
 
     <p>
