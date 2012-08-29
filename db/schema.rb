@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120824152214) do
+ActiveRecord::Schema.define(:version => 20120829144143) do
 
   create_table "domains", :force => true do |t|
     t.string   "uri",        :null => false
@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(:version => 20120824152214) do
   create_table "user_categories", :force => true do |t|
     t.string   "name",       :null => false
     t.integer  "user_id",    :null => false
-    t.integer  "parent_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

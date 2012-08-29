@@ -52,24 +52,6 @@ class UserCategoryTest < ActiveSupport::TestCase
     assert !invalid_category.save, "Saved with invalid user!"
   end
 
-  test "parent exists" do
-    # Make sure parente exists if it's not null
-    category = UserCategory.new(
-      :user_id => users(:one).id, 
-      :name => "CategoryB",
-      :parent_id => user_categories(:one).id
-      )
-    assert category.save, "Unable to save with valid parent!"
-
-    # Try again with invalid parent this time
-    category = UserCategory.new(
-      :user_id => users(:one).id, 
-      :name => "CategoryB",
-      :parent_id => 234432
-      )
-    assert !category.save, "Saved with invalid parent!"    
-  end
-
   test "unique naming" do
     category = user_categories(:one)
 
@@ -78,10 +60,18 @@ class UserCategoryTest < ActiveSupport::TestCase
       :user_id => users(:one).id,
       :name => category.name
       )
-    assert !new_cat.save, "Saved category with same name at same level!"
+    assert !new_cat.save, "Saved category with same name!"
+  end
 
-    # Now if we first move it to another level, then we should be able to add it
-    new_cat.parent_id = user_categories(:one).id
-    assert new_cat.save, "Unable to save category with same name at different level!"
+  test "unique naming between users" do
+    category = user_categories(:one)
+
+    # Try to add a user category with the same name, but for a
+    # different user (should succeed)
+    new_cat = UserCategory.new(
+      :user_id => users(:two).id,
+      :name => category.name
+      )
+    assert new_cat.save, "Can't save category with same name for different user!"
   end
 end
