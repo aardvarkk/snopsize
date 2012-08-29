@@ -6,7 +6,7 @@
 <br/>
 <%# List all of the user categories, then have a link to delete %>
 <div>
-<% current_auth.user_categories.each do |c| %>
+<% current_user.user_categories.each do |c| %>
   <%= c.name %>
   <%= link_to 'Edit', edit_user_category_path(c) %>
   <%= button_to 'Delete', c, :data => { :confirm => 'Are you sure?' }, method: :delete %>

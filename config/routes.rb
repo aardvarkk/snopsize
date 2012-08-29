@@ -11,6 +11,7 @@ Snopsize::Application.routes.draw do
 
   # for user pages
   match 'users/:id' => 'users#show', :as => 'user', :via => :get
+  match 'users/:id/settings' => 'users#settings', :as => 'settings', :via => :get
 
   # for searching snops
   match 'search' => 'search#search', :as => 'search', :via => :get
@@ -30,11 +31,7 @@ Snopsize::Application.routes.draw do
 
   # Devise user routes
   # Generates a bunch of routes for devise
-  # Using devise_for 'auth' in order to remap
-  # As long as we specify the class name, it should use the correct class but put
-  # all of the routes under /auth so that we don't have interference with routes
-  # generated for the Users controller.
-  devise_for :auth, :class_name => 'User'
+  devise_for :user
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

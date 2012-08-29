@@ -1,7 +1,7 @@
 class UserTable
   include Rails.application.routes.url_helpers
 
-  delegate :params, :link_to, :time_ago_in_words, :button_to, :collection_select, :current_auth, :auth_signed_in?, to: :@view
+  delegate :params, :link_to, :time_ago_in_words, :button_to, :collection_select, :current_user, :user_signed_in?, to: :@view
 
   def initialize(view, all_snops, user)
     @view = view
@@ -32,13 +32,13 @@ private
       # Lets find the category for this snop and user pair
       category = snop.user_categories.where("user_id = ?", @user.id).first
       # if they're on their own page they can change categories.
-      if (@user == current_auth)
+      if (@user == current_user)
         selected = category.nil? ? nil : category.id
-        category = collection_select :user_category, :id, current_auth.user_categories, :id, :name, { include_blank: true, selected: selected}, { data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} }
+        category = collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: true, selected: selected}, { data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} }
       end
 
       # Now lets create the delete button if the user is on their own page
-      if (auth_signed_in? && current_auth.snops.exists?(snop) && @user == current_auth)
+      if (user_signed_in? && current_user.snops.exists?(snop) && @user == current_user)
         delete_btn = button_to 'Delete', snop, :data => { :confirm => 'Are you sure?' }, remote: true, method: :delete
       end
 

@@ -36,7 +36,7 @@ class SearchStoriesTest < ActionDispatch::IntegrationTest
 
     # And they are now on the user page where they can browse all the
     # users snops
-    assert_equal current_path, user_path(users(:one))
+    wait_until { current_path == user_path(users(:one)) }
   end
 
   # Story: The user has found a snop from a website that they think

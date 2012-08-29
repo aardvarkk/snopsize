@@ -11,13 +11,13 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert_equal root_path, current_path
 
     # There should be a link to sign-up
-    assert page.has_link? "Sign In", href: new_auth_session_path
+    assert page.has_link? "Sign In", href: new_user_session_path
 
     # Now lets follow that sign in link
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    wait_until { current_path == new_auth_session_path }
+    wait_until { current_path == new_user_session_path }
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
@@ -65,13 +65,13 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert_equal root_path, current_path
 
     # There should be a link to sign-up
-    assert page.has_link? "Sign In", href: new_auth_session_path
+    assert page.has_link? "Sign In", href: new_user_session_path
 
     # Now lets follow that sign in link
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    wait_until { current_path == new_auth_session_path }
+    wait_until { current_path == new_user_session_path }
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
@@ -136,13 +136,13 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert_equal current_path, root_path
 
     # There should be a link to sign-up
-    assert page.has_link? "Sign In", href: new_auth_session_path
+    assert page.has_link? "Sign In", href: new_user_session_path
 
     # Now lets follow that sign in link
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    wait_until { current_path == new_auth_session_path }
+    wait_until { current_path == new_user_session_path }
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
@@ -195,13 +195,13 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert_equal root_path, current_path
 
     # There should be a link to sign-up
-    assert page.has_link? "Sign In", href: new_auth_session_path
+    assert page.has_link? "Sign In", href: new_user_session_path
 
     # Now lets follow that sign in link
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    wait_until { current_path == new_auth_session_path }
+    wait_until { current_path == new_user_session_path }
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")

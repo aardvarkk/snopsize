@@ -2,11 +2,11 @@ class SnopsController < ApplicationController
   include ApplicationHelper
   include UserHelper
 
-  before_filter :authenticate_auth!
+  before_filter :authenticate_user!
   before_filter :verify_snop_owner, :only => [:destroy]
 
   def verify_snop_owner
-    redirect_to current_auth if Snop.find(params[:id]).user != current_auth
+    redirect_to current_user if Snop.find(params[:id]).user != current_user
   end
 
   # GET /snops/new
@@ -34,7 +34,7 @@ class SnopsController < ApplicationController
 
     # Set the user_id to the logged in user, since
     # only logged in users can create snops
-    @snop.user = current_auth
+    @snop.user = current_user
 
     # Get the referrer so we can go back to that page
     referrer = session[:new_snop_referrer]

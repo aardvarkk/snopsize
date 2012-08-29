@@ -14,7 +14,7 @@ class HomeController < ApplicationController
 
     # If we're the adviewer, plop some ads into the snops
     # They'll get shown in the browse view
-    if auth_signed_in? && current_auth.username == 'adviewer'
+    if user_signed_in? && current_user.username == 'adviewer'
       # Get all of the ad snops... limiting to some number
       # This doesn't have to work like this, but it's easy to start with
       @ads = Snop.where(deleted: false, is_ad: true).to_a

@@ -2,6 +2,13 @@ class UsersController < ApplicationController
   include UserHelper
   include DatatableHelpers
 
+  # Need to authenticate if we want to change the settings
+  before_filter :authenticate_user!, only: :settings
+
+  # GET /users/:id/settings
+  def settings
+  end
+
   # GET /users/:id
   def show
 

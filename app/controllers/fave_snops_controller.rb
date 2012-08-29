@@ -3,14 +3,14 @@ class FaveSnopsController < ApplicationController
   include FaveSnopsHelper
   include UserHelper
 
-  before_filter :authenticate_auth!
+  before_filter :authenticate_user!
 	
   #POST /fave_snops/favourite
   def favourite
   	
     # Add a new fave snop entry
   	@snop = Snop.find(params[:snop])
-    current_auth.favourites << @snop
+    current_user.favourites << @snop
 
     # Recalculate the snop popularity
     recalc_popularity(@snop, 1)
@@ -26,11 +26,11 @@ class FaveSnopsController < ApplicationController
     @snop = Snop.find(params[:snop])
 
     # Is the snop the current users snop?
-    @current_users_snop = current_auth.snops.exists?(@snop)
-    @current_users_page = URI(request.referrer).path == user_path(current_auth)
+    @current_users_snop = current_user.snops.exists?(@snop)
+    @current_users_page = URI(request.referrer).path == user_path(current_user)
 
     # Finally... delete the entry
-    current_auth.favourites.destroy(@snop)
+    current_user.favourites.destroy(@snop)
   	
     # Recalculate the snop popularity
     # In this case, we'll just decay it. This means that favouriting something 

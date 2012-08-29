@@ -14,7 +14,7 @@ module ApplicationHelper
   # Has the current user favourited the passed in snop?
   def has_user_faved_snop?(snop)
     # has the logged in user already faved this snop?
-    fave_snop = current_auth.favourites.find_by_id(snop.id) if auth_signed_in?
+    fave_snop = current_user.favourites.find_by_id(snop.id) if user_signed_in?
     fave_snop.nil?
   end
 

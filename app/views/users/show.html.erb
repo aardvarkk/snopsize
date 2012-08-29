@@ -2,10 +2,11 @@
 
 <!-- We're only going to show these buttons if the user 
      singed in and on their own page -->
-<% if auth_signed_in? && @user == current_auth %>
+<% if user_signed_in? && @user == current_user %>
   <div id='editing'>
     <%= link_to 'Categories', user_categories_path %> | 
-    <%= link_to 'New Snop', new_snop_path %>
+    <%= link_to 'New Snop', new_snop_path %> | 
+    <%= link_to 'Settings', settings_path %>
   </div>
 <% end %>
   

@@ -1,5 +1,5 @@
 class UserCategoriesController < ApplicationController
-  before_filter :authenticate_auth!
+  before_filter :authenticate_user!
 
   def index
   end
@@ -23,7 +23,7 @@ class UserCategoriesController < ApplicationController
   # POST /user_categories.json
   def create
     @user_category = UserCategory.new(params[:user_category])
-    @user_category.user_id = current_auth.id;
+    @user_category.user_id = current_user.id;
 
     respond_to do |format|
       if @user_category.save
@@ -65,7 +65,7 @@ class UserCategoriesController < ApplicationController
 
   	# First we have to check if the snop we selected already
     # has a category for the current user
-    old_category = snop.user_categories.where('user_id = ?', current_auth.id).first
+    old_category = snop.user_categories.where('user_id = ?', current_user.id).first
 
     # if old category exists, remove snop from old category
     old_category.snops.destroy(snop) unless old_category.nil?

@@ -50,7 +50,7 @@
       <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h get_snop_content(snop) %>">Tweet</a>
 
       <%# Fave/Unfave Button %>
-      <% if auth_signed_in? %>
+      <% if user_signed_in? %>
         <% @fave_btn_id = "fave_" + snop.id.to_s %>
         <div id="<%= @fave_btn_id %>">
           <% if has_user_faved_snop?(snop) %>
