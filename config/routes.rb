@@ -3,7 +3,20 @@ Snopsize::Application.routes.draw do
   # Devise user routes
   # Generates a bunch of routes for devise
   # Put these at the top so that they're evaluated first
-  devise_for :users
+  
+  # Default routes
+  # devise_for :users
+
+  # Need to switch around the registration routes so that we can't delete users
+  devise_for :users, skip: :registrations
+  devise_scope :user do
+    resource :registration,
+    only: [:new, :create, :edit, :update], 
+    path: 'users', 
+    controller: 'devise/registrations',
+    as: :user_registration
+  end
+
 
   get "about/show"
 
