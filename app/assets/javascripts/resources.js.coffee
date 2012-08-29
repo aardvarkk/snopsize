@@ -8,7 +8,8 @@
 jQuery -> 
   $("#snops_browse_view").hide();
   $('#snops').dataTable( {
-    "bFilter": false, 
+    "bFilter": true, 
+    "oLanguage": { "sSearch": "Filter:" }
     "bJQueryUI": true,
     "aaSorting": [],
     "bProcessing": true,

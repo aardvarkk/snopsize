@@ -7,7 +7,8 @@
 # Hide the browse view until the user request it.
 jQuery -> 
   $('#resources').dataTable( {
-    "bFilter": false, 
+    "bFilter": true, 
+    "oLanguage": { "sSearch": "Filter:" }
     "bJQueryUI": true,
     "aaSorting": [],
     "bProcessing": true,

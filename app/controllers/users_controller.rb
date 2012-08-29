@@ -31,6 +31,11 @@ class UsersController < ApplicationController
       @snops = @snops.order("#{sort_column()} #{sort_direction()}") 
     end
 
+    # The user typed in a search so we'll try to find "like" snops
+    if params[:sSearch].present?
+      @snops = @snops.includes(:user, :domain, :user_categories).where("users.username like :search or snops.title like :search or domains.uri like :search or user_categories.name like :search", search: "%#{params[:sSearch]}%")
+    end
+
     # Handle pagination next
     @snops = @snops.page(page()).per_page(per_page()).to_a
 
