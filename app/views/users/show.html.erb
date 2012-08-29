@@ -4,7 +4,7 @@
      singed in and on their own page -->
 <% if auth_signed_in? && @user == current_auth %>
   <div id='editing'>
-    <%= link_to 'Add Category', new_user_category_path %> | 
+    <%= link_to 'Categories', user_categories_path %> | 
     <%= link_to 'New Snop', new_snop_path %>
   </div>
 <% end %>

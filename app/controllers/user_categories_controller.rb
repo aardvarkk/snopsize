@@ -1,6 +1,9 @@
 class UserCategoriesController < ApplicationController
   before_filter :authenticate_auth!
 
+  def index
+  end
+
   # GET /user_categories/new
   # GET /user_categories/new.json
   def new
@@ -24,7 +27,7 @@ class UserCategoriesController < ApplicationController
 
     respond_to do |format|
       if @user_category.save
-        format.html { redirect_to current_auth, notice: 'User category was successfully created.' }
+        format.html { redirect_to user_categories_path, notice: 'User category was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -38,7 +41,7 @@ class UserCategoriesController < ApplicationController
 
     respond_to do |format|
       if @user_category.update_attributes(params[:user_category])
-        format.html { redirect_to current_auth, notice: 'User category was successfully updated.' }
+        format.html { redirect_to user_categories_path, notice: 'User category was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -52,7 +55,7 @@ class UserCategoriesController < ApplicationController
     @user_category.destroy
 
     respond_to do |format|
-      format.html { redirect_to current_auth }
+      format.html { redirect_to user_categories_path }
     end
   end
   

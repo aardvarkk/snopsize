@@ -18,8 +18,8 @@ class UserCategoriesControllerTest < ActionController::TestCase
       post :create, user_category: { name: @user_category.name + "A", user_id: @user_category.user_id }
     end
 
-    # Should go back to User page
-    assert_redirected_to @user
+    # Should go back to the user categories
+    assert_redirected_to user_categories_path
 
     # a user category should be assigned
     assert_not_nil assigns(:user_category)
@@ -48,8 +48,8 @@ class UserCategoriesControllerTest < ActionController::TestCase
     # Try to update the user_cateogyr
     put :update, id: @user_category, user_category: { name: @user_category.name + "C", user_id: @user_category.user_id }
 
-    # Should go back to user page
-    assert_redirected_to @user
+    # Should go back to user categories page
+    assert_redirected_to user_categories_path
 
     # @user_category should be assigned
     assert_not_nil assigns(:user_category)
@@ -65,8 +65,8 @@ class UserCategoriesControllerTest < ActionController::TestCase
       delete :destroy, id: @user_category
     end
 
-    # Make sure we go back to the user page
-    assert_redirected_to @user
+    # Make sure we go back to the user categories
+    assert_redirected_to user_categories_path
 
     # User category will be assigned
     assert_not_nil assigns(:user_category)

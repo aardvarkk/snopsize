@@ -25,7 +25,7 @@ Snopsize::Application.routes.draw do
   resources :snops, :except => [:index, :edit, :show, :update]
 
   # all of our user categories
-  resources :user_categories, :except => [:index, :show]
+  resources :user_categories, :except => :show
 	post "user_categories/set_snop"
 
   # Devise user routes
