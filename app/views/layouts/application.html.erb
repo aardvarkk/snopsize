@@ -3,7 +3,7 @@
 <head>
   <title>Snopsize</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag controller_name %>
+  <%= javascript_include_tag controller_name if Snopsize::Application.assets.find_asset("#{controller.controller_name}.js")%>
   <%= csrf_meta_tags %>
 
   <%# Our OpenGraph tags (for Facebook LIKE, etc.) %>
