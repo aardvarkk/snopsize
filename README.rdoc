@@ -8,7 +8,7 @@ Only registered users will be able to create snops. The site will therefore have
 
 In order to avoid having to write authentication from scratch we decided to use the devise gem (https://github.com/plataformatec/devise). 
 
-The devise views are located under app/views/devise and can be skinned for custom UI.
+The devise views are located under link:app/views/devise and can be skinned for custom UI.
 
 Users must be confirmed when they are created. This means that when a user signs up, they will need their email to sign-up and they will receive a confirmation email. Clicking on the confirmation email will open up the account for the user.
 
@@ -19,7 +19,7 @@ Users will be shown and identified by their username. The username will be uniqu
 In order to avoid confirmation e-mail clashes, the emails will be unique as well.
 
 === User Page
-There is only 1 way to interact with the User model, that is through the User page (app/views/users/show.html.erb). The route is users#show. The page will show a datatable (see Views section) with the users snops. The user will also be able to create a snop from the user page, manage their categories, as well as access their settings.
+There is only 1 way to interact with the User model, that is through the User page (link:app/views/users/show.html.erb). The route is users#show. The page will show a datatable (see Views section) with the users snops. The user will also be able to create a snop from the user page, manage their categories, as well as access their settings.
 
 The user page will allow the user to switch between the list view and the browse view for looking through the snops using the method of their choice. See more below for the difference between the views and how they work.
 
@@ -62,12 +62,12 @@ The validation does/checks several things:
 * The URL needs to have a valid public suffix (ex. .ca, .com, .net, etc.)
 
 === Domain Page
-The domain page (app/views/domains/show.html.erb) shows a table of resources for that domain. This allows the user to view all articles that have been snopped about for a particular domain (ex. www.theconomist.com/)
+The domain page (link:app/views/domains/show.html.erb) shows a table of resources for that domain. This allows the user to view all articles that have been snopped about for a particular domain (ex. www.theconomist.com/)
 
 The domain page can be accessed via the domains#show route. 
 
 === Resource Page
-The resource page will show a datatable for all snops (app/views/resources/show.html.erb). Much like the User Page the user will be able to switch between list view and browse view to look through the snops.
+The resource page will show a datatable for all snops (link:app/views/resources/show.html.erb). Much like the User Page the user will be able to switch between list view and browse view to look through the snops.
 
 The resource page can be accessed via the resources#show route.
 
