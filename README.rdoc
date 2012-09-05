@@ -72,10 +72,13 @@ The resource page will show a datatable for all snops (link:app/views/resources/
 The resource page can be accessed via the resources#show route.
 
 == Categorization
-* routes
+Each User will be allowed to create a set of categories (single level). Each category will have a unique name (ex. Business, Computer, etc.). The user can create (user_categories#new, user_categories#create), delete (user_categories#destroy), and edit (user_categories#update) their categories.
 
-== Home Page
-* routes
+A User can manage his/her categories through the User Page. 
+
+The point of the categories is to allow a user to categories the snops that show up on the user page (snops the user has created and favourited). Allow them quicker access to the snops they are interested in. 
+
+A user can assign a snop to a category using a drop down in the list view (via the user_categories#set_snop route). 
 
 == Search
 One of the key functions of the website is to be able to search for snops, users, and domains.
