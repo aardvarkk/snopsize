@@ -105,12 +105,35 @@ Searching is handled through the search#search route.
 == Views
 
 === Datatables (List View)
+We are using the Datatables control to display our snops in a table like form. It's a table plug in for jQuery (http://datatables.net/). 
+
+Because we may end up dealing with large amounts of data, we are doing the processing on the server side.
+
+This means that each of: Home Page, Resource Page, Domain Page, Search Page, and User Page each have their own datatable (link:app/datatables). This defines a JSON output for the datatable that's show on each page. The tables are constructed in the respective Javascript files for each page (link:app/assets/javascripts).
+
+Each table is slightly different than the others but in general we support sorting, filtering, and pagination on most of the tables (except Home Page). The filtering currently uses a fairly primitive method (SQL LIKE clause), but it ends up having a fairly good user experience (users can see the results change in real time).
+
+The datatables can be skinned using CSS, or you can generate your own datatable themes (http://datatables.net/styling/).
 
 === Browse View
+The Browse View is the alternative to the List View on the above mentioned pages. It allows the user of the page to see all the snops in the list view in a detailed version. The detailed version shows all of the snop and allows slightly different functionality.
+
+We use AJAX to switch between the Browse View and the List View, thus making the transition seemless for the page viewer.
+
+We are using jQuery to animate the browse view when the user is searching through the snops in the browse view.
 
 === Use of AJAX
 
 == Testing
+
+Unit Tests (link:test/unit)
+  These tests make sure each individual Model is well formed and doesn't allow invalid data into the database. We check all validations in these tests.
+
+Functional Tests (link:test/functional)
+  These tests make sure that each route is valid and returns what is expected depending on the paramaters that are passed to it
+
+Integration Tests (link:test/functional)
+  We make sure the user experience of the website makes sense through these tests. We test all of the components of the site together. In order to simplify the testing process we use capybara (https://github.com/jnicklas/capybara) and capybara-email (https://github.com/dockyard/capybara-email) gems
 
 === Search and Solr
 In order to properly test with Solr, we have solr run on a different port for the test environment. In order to run Solr in a test environment you can issue the command:
