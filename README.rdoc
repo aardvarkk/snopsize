@@ -8,7 +8,7 @@ Only registered users will be able to create snops. The site will therefore have
 
 In order to avoid having to write authentication from scratch we decided to use the devise gem (https://github.com/plataformatec/devise). 
 
-The devise views are located under link:app/views/devise and can be skinned for custom UI.
+The devise views are located under link:snopsize/app/views/devise and can be skinned for custom UI.
 
 Users must be confirmed when they are created. This means that when a user signs up, they will need their email to sign-up and they will receive a confirmation email. Clicking on the confirmation email will open up the account for the user.
 
@@ -19,7 +19,7 @@ Users will be shown and identified by their username. The username will be uniqu
 In order to avoid confirmation e-mail clashes, the emails will be unique as well.
 
 === User Page
-There is only 1 way to interact with the User model, that is through the User page (link:app/views/users/show.html.erb). The route is users#show. The page will show a datatable (see Views section) with the users snops. The user will also be able to create a snop from the user page, manage their categories, as well as access their settings.
+There is only 1 way to interact with the User model, that is through the User page (link:snopsize/app/views/users/show.html.erb). The route is users#show. The page will show a datatable (see Views section) with the users snops. The user will also be able to create a snop from the user page, manage their categories, as well as access their settings.
 
 The user page will allow the user to switch between the list view and the browse view for looking through the snops using the method of their choice. See more below for the difference between the views and how they work.
 
@@ -45,13 +45,13 @@ Although not mandatory components of a snop, the domain and resource are an impo
 
 The domain and resource are meant to represent the URL of the article being snopped about (of course this doesn't apply in the case that we are snopping about a book, or non digital source). 
 
-If the URL of a article is <tt>www.theglobeandmail.com/articles/2349032</tt>
+If the URL of a article is <tt><pre>www.theglobeandmail.com/articles/2349032</pre></tt>
 
 The domain is the part up to the first "/". In this case the domain would be:
 <tt>www.theglobeandmail.com/</tt>
 
 The resource is thus:
-<tt>/articles/2349032</tt>
+<tt><pre>/articles/2349032</pre></tt>
 
 In order to preserve some resemblance to a URI (for the domain and resource combination), we validate the URL that the user provides when creating a new snop. 
 
@@ -62,7 +62,7 @@ The validation does/checks several things:
 * The URL needs to have a valid public suffix (ex. .ca, .com, .net, etc.)
 
 === Domain Page
-The domain page (link:app/views/domains/show.html.erb) shows a table of resources for that domain. This allows the user to view all articles that have been snopped about for a particular domain (ex. www.theconomist.com/)
+The domain page (link:snopsize/app/views/domains/show.html.erb) shows a table of resources for that domain. This allows the user to view all articles that have been snopped about for a particular domain (ex. www.theconomist.com/)
 
 The domain page can be accessed via the domains#show route. 
 
@@ -83,7 +83,7 @@ A user can assign a snop to a category using a drop down in the list view (via t
 == Search
 One of the key functions of the website is to be able to search for snops, users, and domains.
 
-In order to avoid building a search engine from scratch we are using solr for Ruby (http://sunspot.github.com/). 
+In order to avoid building a search engine from scratch we are using solr for Ruby (http://sunspot.github.com). 
 
 The search engine server can be started with: 
 
@@ -105,15 +105,15 @@ Searching is handled through the search#search route.
 == Views
 
 === Datatables (List View)
-We are using the Datatables control to display our snops in a table like form. It's a table plug in for jQuery (http://datatables.net/). 
+We are using the Datatables control to display our snops in a table like form. It's a table plug in for jQuery (http://datatables.net). 
 
 Because we may end up dealing with large amounts of data, we are doing the processing on the server side.
 
-This means that each of: Home Page, Resource Page, Domain Page, Search Page, and User Page each have their own datatable (link:app/datatables). This defines a JSON output for the datatable that's show on each page. The tables are constructed in the respective Javascript files for each page (link:app/assets/javascripts).
+This means that each of: Home Page, Resource Page, Domain Page, Search Page, and User Page each have their own datatable (link:app/datatables). This defines a JSON output for the datatable that's show on each page. The tables are constructed in the respective Javascript files for each page (link:snopsize/app/assets/javascripts).
 
 Each table is slightly different than the others but in general we support sorting, filtering, and pagination on most of the tables (except Home Page). The filtering currently uses a fairly primitive method (SQL LIKE clause), but it ends up having a fairly good user experience (users can see the results change in real time).
 
-The datatables can be skinned using CSS, or you can generate your own datatable themes (http://datatables.net/styling/).
+The datatables can be skinned using CSS, or you can generate your own datatable themes (http://datatables.net/styling).
 
 === Browse View
 The Browse View is the alternative to the List View on the above mentioned pages. It allows the user of the page to see all the snops in the list view in a detailed version. The detailed version shows all of the snop and allows slightly different functionality.
@@ -126,13 +126,13 @@ We are using jQuery to animate the browse view when the user is searching throug
 
 == Testing
 
-Unit Tests (link:test/unit)
+Unit Tests (link:snopsize/test/unit)
   These tests make sure each individual Model is well formed and doesn't allow invalid data into the database. We check all validations in these tests.
 
-Functional Tests (link:test/functional)
+Functional Tests (link:snopsize/test/functional)
   These tests make sure that each route is valid and returns what is expected depending on the paramaters that are passed to it
 
-Integration Tests (link:test/functional)
+Integration Tests (link:snopsize/test/functional)
   We make sure the user experience of the website makes sense through these tests. We test all of the components of the site together. In order to simplify the testing process we use capybara (https://github.com/jnicklas/capybara) and capybara-email (https://github.com/dockyard/capybara-email) gems
 
 === Search and Solr
