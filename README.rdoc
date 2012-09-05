@@ -1,9 +1,9 @@
-== Snopsize
+= Snopsize
 snopsize.com is envisioned as a web application to assist in the creation and sharing of succinct, structured information. It asks its users to distill disparate sources of data to their fundamental essence. The larger community may then examine and share this information, not only for the purpose of discovering new facts and ideas, but also to help commit existing ones to memory. Users will be drawn to snopsize.com for the ease with which it allows them to summarize various media into a standard, digestible template suitable for sharing with others.
 
 Four operations are seen as being critical to the foundation of snopsize.com: Create, Search, Save, and Browse. The Create operation is the ability to create a new snop. All registered users will have this ability. Search is the ability to sift through all submitted snops to locate ones of interest. Search may be based on keyword, user name, or source URL. Save implies the ability to mark other users' snops as being of particular interest. Saved snops will remain available to a user. Browse is the ability to peruse sets of related snops. Snops may be related because they were written by the same user, related to the same source URL, or related in some other fashion entirely.
 
-=== Users
+== Users
 Only registered users will be able to create snops. The site will therefore have the ability to create users (Sign Up), sign-in users, sign-out, etc.
 
 In order to avoid having to write authentication from scratch we decided to use the devise gem (https://github.com/plataformatec/devise). 
@@ -18,12 +18,12 @@ Users will be shown and identified by their username. The username will be uniqu
 
 In order to avoid confirmation e-mail clashes, the emails will be unique as well.
 
-==== User Page
+=== User Page
 There is only 1 way to interact with the User model, that is through the User page (app/views/users/show.html.erb). The route is users#show. The page will show a datatable (see Views section) with the users snops. The user will also be able to create a snop from the user page, manage their categories, as well as access their settings.
 
 The user page will allow the user to switch between the list view and the browse view for looking through the snops using the method of their choice. See more below for the difference between the views and how they work.
 
-=== Snops
+== Snops
 A snop can be created, viewed, deleted, and favourited (unfavourited). Only registerd users can create snops, and snops cannot be edited (so as to avoid issues with faved snops changing). 
 
 The only mandatory field for a snop will be the user (the creator of the snop) and the title of the snop, all other fields are optional. 
@@ -40,7 +40,7 @@ Snops can be favourited and unfavourited by users. These will appear on the User
 
 There is also a concept of popular snops. Popularity will be dependent on how many people favourite/unfavourite a snop, and there is a popularity "decay" associated. Favouriting is done via the fave_snops#favourite and fave_snops#unfavourite routes
 
-=== Domains and Resources
+== Domains and Resources
 Although not mandatory components of a snop, the domain and resource are an important component when used.
 
 The domain and resource are meant to represent the URL of the article being snopped about (of course this doesn't apply in the case that we are snopping about a book, or non digital source). 
@@ -61,23 +61,23 @@ The validation does/checks several things:
 * The scheme can only be either HTTP or HTTPS (not FTP, etc.)
 * The URL needs to have a valid public suffix (ex. .ca, .com, .net, etc.)
 
-==== Domain Page
+=== Domain Page
 The domain page (app/views/domains/show.html.erb) shows a table of resources for that domain. This allows the user to view all articles that have been snopped about for a particular domain (ex. www.theconomist.com/)
 
 The domain page can be accessed via the domains#show route. 
 
-==== Resource Page
+=== Resource Page
 The resource page will show a datatable for all snops (app/views/resources/show.html.erb). Much like the User Page the user will be able to switch between list view and browse view to look through the snops.
 
 The resource page can be accessed via the resources#show route.
 
-=== Categorization
+== Categorization
 * routes
 
-=== Home Page
+== Home Page
 * routes
 
-=== Search
+== Search
 One of the key functions of the website is to be able to search for snops, users, and domains.
 
 In order to avoid building a search engine from scratch we are using solr for Ruby (http://sunspot.github.com/). 
@@ -99,17 +99,17 @@ When searching for snop content, the user is presented with a datatable of snops
 
 Searching is handled through the search#search route. 
 
-=== Views
+== Views
 
-==== Datatables (List View)
+=== Datatables (List View)
 
-==== Browse View
+=== Browse View
 
-==== Use of AJAX
+=== Use of AJAX
 
-=== Testing
+== Testing
 
-==== Search and Solr
+=== Search and Solr
 In order to properly test with Solr, we have solr run on a different port for the test environment. In order to run Solr in a test environment you can issue the command:
 
 <tt>RAILS_ENV=test rake sunspot:solr:start</tt>
