@@ -57,6 +57,9 @@ gem 'sunspot_solr'
 gem 'addressable'
 gem 'public_suffix'
 
+# For generating diagrams
+gem 'railroady'
+
 # Production stuff
 group :production do
 	
