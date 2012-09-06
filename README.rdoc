@@ -120,9 +120,12 @@ The Browse View is the alternative to the List View on the above mentioned pages
 
 We use AJAX to switch between the Browse View and the List View, thus making the transition seemless for the page viewer.
 
-We are using jQuery to animate the browse view when the user is searching through the snops in the browse view.
+We are using jQuery to animate the browse view when the user is searching through the snops in the browse view. This can be found in the app/assets/javascripts/application.js file. 
 
 === Use of AJAX
+We rely heavily on the use of AJAX to speed up the experience of the site. 
+
+The Datatables use JSON to update, and the Browse Views use JS to update as well. Each of: Search (app/views/search), Home (app/views/home), User (app/views/users), and Resource (app/views/resources) have a .js file that handles the updating of the browse view, and if necessary switches between the two views.
 
 == Testing
 
