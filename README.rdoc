@@ -45,13 +45,13 @@ Although not mandatory components of a snop, the domain and resource are an impo
 
 The domain and resource are meant to represent the URL of the article being snopped about (of course this doesn't apply in the case that we are snopping about a book, or non digital source). 
 
-If the URL of a article is <tt><pre>www.theglobeandmail.com/articles/2349032</pre></tt>
+If the URL of a article is <pre>www.theglobeandmail.com/articles/2349032</pre>
 
 The domain is the part up to the first "/". In this case the domain would be:
-<tt>www.theglobeandmail.com/</tt>
+<pre>www.theglobeandmail.com/</pre>
 
 The resource is thus:
-<tt><pre>/articles/2349032</pre></tt>
+<pre>/articles/2349032</pre>
 
 In order to preserve some resemblance to a URI (for the domain and resource combination), we validate the URL that the user provides when creating a new snop. 
 
