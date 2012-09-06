@@ -17,8 +17,9 @@ Snopsize::Application.routes.draw do
     as: :user_registration
   end
 
-
-  get "about/show"
+  # general navigation
+  match 'about' => 'general#about', :as => 'about', :via => :get
+  match 'help' => 'general#help', :as => 'help', :via => :get
 
   post "fave_snops/favourite"
 
