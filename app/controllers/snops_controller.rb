@@ -36,6 +36,15 @@ class SnopsController < ApplicationController
     # only logged in users can create snops
     @snop.user = current_user
 
+    # Check if a valid category has been specified and add the snop to
+    # that category
+    if (params.has_key?(:user_category) && UserCategory.exists?(params[:user_category][:id]))
+      user_category = UserCategory.find(params[:user_category][:id])
+        
+      # add the snop to the new category
+      user_category.snops << @snop
+    end
+
     # Get the referrer so we can go back to that page
     referrer = session[:new_snop_referrer]
     session.delete(:referrer)

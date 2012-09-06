@@ -35,6 +35,11 @@
     <%= f.label :summary %><br />
     <%= f.text_field :summary %>
   </div>
+  <div class="field">
+    <%= f.label :Category %><br />
+    <%= collection_select :user_category, :id, current_user.user_categories, :id, :name, :include_blank => true %>
+    <%= link_to 'Categories', user_categories_path %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
