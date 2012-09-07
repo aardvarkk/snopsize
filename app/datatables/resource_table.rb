@@ -33,7 +33,6 @@ private
         title_link,
         domain_link,
         time_ago_in_words(snop.created_at) + " ago",
-        "",
         ""
       ]
     end

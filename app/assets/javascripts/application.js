@@ -76,6 +76,61 @@ function reloadClickHandlers()
     reloadSocialMediaButtons();  
     enableButtons();
   });
+
+  // Click handler for the Remove button on the user page
+  $("#RemoveButton").click(function() {
+    // For each selected row, we delete or unfave it
+    $(".row_selected").each(function(index) {    
+      $(this).removeClass(".row_selected");
+
+      // We currently have no way to know... if the snop
+      // is the current users snop or not... that's all
+      // stored on the server side... so...
+      // First try deleting
+      $.ajax({
+        type: "DELETE",
+        url: "/snops/" + $(this).attr("id"),
+        dataType: "script"
+      });
+
+      // Then try unfavouriting
+      $.ajax({
+        type: "POST",
+        url: "/fave_snops/unfavourite",
+        data: { snop: $(this).attr("id") },
+        dataType: "script"
+      });
+    });
+
+    // Make sure remove button is disabled now.
+    $("#RemoveButton").attr("disabled", "disabled");
+  });
+
+  // Click handler for selecting rows in a table
+  $(document).on("click", "#snops tbody tr", function () {
+    // If we clicked on a row with a valid ID,
+    // then we will 
+    if ($(this).attr("id"))
+    {
+      $(this).toggleClass('row_selected');
+    }
+
+    // Enable/Disable the Remove button
+    if($(".row_selected").size() > 0)
+    {
+      $("#RemoveButton").removeAttr("disabled");
+    }
+    else
+    {
+      $("#RemoveButton").attr("disabled", "disabled");
+    }
+  });
+
+  // Here we just want to make sure that if the categories select box
+  // is clicked that we don't also handle the row being clicked.
+  $(document).on("click", "#snops tbody tr select", function(e) {
+    e.stopPropagation();
+  });
 }
 
 $(document).ready(function() 

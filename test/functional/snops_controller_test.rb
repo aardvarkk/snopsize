@@ -89,7 +89,7 @@ class SnopsControllerTest < ActionController::TestCase
     assert_equal false, snops(:two).deleted?
 
     # Make sure we get redirected to our user page
-    assert_redirected_to @snop.user
+    assert_response 403
 
   end
 

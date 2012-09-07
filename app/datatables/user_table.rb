@@ -37,13 +37,8 @@ private
         category = collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: true, selected: selected}, { data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} }
       end
 
-      # Now lets create the delete button if the user is on their own page
-      if (user_signed_in? && current_user.snops.exists?(snop) && @user == current_user)
-        delete_btn = button_to 'Delete', snop, :data => { :confirm => 'Are you sure?' }, remote: true, method: :delete
-      end
-
       # Lets give the row an id so that we can find it later (for deletion using JS)
-      row_id = "row_" + snop.id.to_s
+      row_id = snop.id.to_s
       {
         "DT_RowId" => row_id,
         "DT_RowClass" => "rowClass",
@@ -51,8 +46,7 @@ private
         "1" => title_link,
         "2" => domain_link,
         "3" => time_ago_in_words(snop.created_at) + " ago",
-        "4" => category,
-        "5" => delete_btn
+        "4" => category
       }
     end
   end

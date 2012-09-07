@@ -6,7 +6,7 @@ class SnopsController < ApplicationController
   before_filter :verify_snop_owner, :only => [:destroy]
 
   def verify_snop_owner
-    redirect_to current_user if Snop.find(params[:id]).user != current_user
+    render status: 403 if Snop.find(params[:id]).user != current_user
   end
 
   # GET /snops/new
