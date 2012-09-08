@@ -19,6 +19,10 @@ jQuery ->
 
   # Click handler for the Remove button on the user page
   $("#RemoveButton").click(() ->
+    # Make the user confirm First
+    if (!confirm("You will permanently delete any selected snops that are yours and Unfavourite any snops that are not yours. Are you sure you want to do this?"))
+      return false
+
     # For each selected row, we delete or unfave it
     $(".row_selected").each( (index) ->    
       $(this).removeClass(".row_selected");
