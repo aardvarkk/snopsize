@@ -17,6 +17,7 @@
     <% if @user == current_user %>
       <button id="RemoveButton", type="button", disabled="disabled", title="Deletes your snops, unfaves other users snops.">Remove</button>
     <% end %>
+    View: <%= link_to "All Snops", @user, id: "all_snops_link", remote: true %> | <%= link_to "Created Snops", user_path(id: @user.id, created_only: true), id: "created_only_link", remote: true %> | <%= link_to "Favourite Snops", user_path(id: @user.id, favourites_only: true), id: "favourites_only_link", remote: true %>
   </div>
   <div id="snops_browse_view">
     <%= render partial: 'shared/snop_browse', locals: {current_snop: @snops.first, snop_list: @snops, close_path: user_path} %>

@@ -14,12 +14,24 @@ class UsersController < ApplicationController
 
     # Default values
     params[:browse_view] ||= false
+    params[:created_only] ||= false
+    params[:favourites_only] ||= false
 
     # Get the user specified
     @user = User.find(params[:id])
 
     # Get all the snops for our user
-    @snops = get_all_snops_for_user(@user)
+    if (params[:created_only])
+      @table_data_source = user_path(id: @user, created_only: true, format: "json")
+      @snops = @user.snops.where(deleted: false)
+    elsif (params[:favourites_only])
+      @table_data_source = user_path(id: @user, favourites_only: true, format: "json")
+      @snops = @user.favourites
+    else      
+      @table_data_source = user_path(format: "json")
+      @snops = get_all_snops_for_user(@user)
+    end
+
     # Get the relation 
     @snops = Snop.where("snops.id IN (?)", @snops)
 
