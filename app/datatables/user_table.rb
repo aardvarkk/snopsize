@@ -35,6 +35,8 @@ private
       if (@user == current_user)
         selected = category.nil? ? nil : category.id
         category = collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: true, selected: selected}, { data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} }
+      else
+        category = category.name unless category.nil?
       end
 
       # Lets give the row an id so that we can find it later (for deletion using JS)
