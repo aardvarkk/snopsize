@@ -65,6 +65,9 @@ group :production do
 	
   # Use MySQL database in the production environment
   gem 'mysql2'
+
+  # Use Passenger as the app server
+  gem 'passenger'
 	
 end
 
