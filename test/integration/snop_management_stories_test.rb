@@ -43,6 +43,14 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     # The user see's the new snop button, and wants to create a new snop
     click_link "New Snop"
 
+    # Try aborting -- it should return us to the path we were just at
+    assert has_link? "Back"
+    click_link "Back"
+    wait_until { current_path == user_path(user) }
+
+    # Go back to snop creation
+    click_link "New Snop"
+
     # We should now be on new snop page
     wait_until { current_path == new_snop_path }
 
