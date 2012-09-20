@@ -67,6 +67,3 @@ jQuery ->
   $(document).on("click", "#snops tbody tr select", (e) ->
     e.stopPropagation();
   );
-
-  # All Snops are shown by default, so we will just disable that link for now.
-  $("#all_snops_link").css("pointer-events", "none");  

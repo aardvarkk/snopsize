@@ -11,21 +11,6 @@
 // Reload the click handlers
 reloadClickHandlers();
 
-// Enable/Disable the View buttons appropriately
-<% if (params[:created_only]) %>
-  $("#all_snops_link").css("pointer-events", "auto"); 
-  $("#created_only_link").css("pointer-events", "none"); 
-  $("#favourites_only_link").css("pointer-events", "auto"); 
-<% elsif (params[:favourites_only]) %>
-  $("#all_snops_link").css("pointer-events", "auto"); 
-  $("#created_only_link").css("pointer-events", "auto"); 
-  $("#favourites_only_link").css("pointer-events", "none"); 
-<% else %>
-  $("#all_snops_link").css("pointer-events", "none");  
-  $("#created_only_link").css("pointer-events", "auto"); 
-  $("#favourites_only_link").css("pointer-events", "auto"); 
-<% end %>
-
 // We want to update the datatable because we may have changed data-source.
 var datatable = $("#snops").dataTable();
 datatable.fnReloadAjax("<%= @table_data_source %>");
