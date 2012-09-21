@@ -78,7 +78,13 @@ class SnopsController < ApplicationController
   end
 
   def like
+
+    # Need the snop to generate metadata
     @snop = Snop.find(params[:id])
+
+    # We don't want all the application layout stuff
+    render :layout => false
+    
   end
 
 end
