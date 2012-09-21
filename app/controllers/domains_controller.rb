@@ -1,7 +1,7 @@
 class DomainsController < ApplicationController
   def show
   	@domain = Domain.find(params[:id])
-  	@resources = @domain.resources
+  	@resources = @domain.resources.joins(:snops).where("snops.deleted = ?", false)
 
     case sort_column()
     # Sort by num_snops
