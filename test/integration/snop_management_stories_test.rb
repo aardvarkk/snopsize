@@ -31,11 +31,8 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     # We should now be back on the home page and logged in
     wait_until { current_path == root_path }
 
-    # Let's make sure that the user can see that they're logged in at the top
-    assert page.has_link? user.username
-
     # Let's now follow that link
-    click_link user.username
+    click_link "My Snops"
 
     # We should now be on the user page
     wait_until { current_path == user_path(user) }
@@ -179,16 +176,11 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     # The button should change to "Unfavourite"
     assert page.has_button?("Unfavourite")
 
-    # Now the user goes to their home page
-    click_link(user.username)
+    # Now the user goes to their favourites
+    click_link "My Favourites"
 
     # Give it some time to make it to the page
-    wait_until(5) do
-      current_path == user_path(user)
-    end
-
-    # Make sure we're on the user page now
-    assert_equal current_path, user_path(user)
+    wait_until { current_path == user_favourites_path(user) }
 
     # They should now see a link to their favourite snop in their snops
     assert page.has_link?(snops(:one).title)
@@ -239,10 +231,10 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert page.has_button?("Unfavourite")
 
     # Now the user goes to their home page
-    click_link(user.username)
+    click_link "My Favourites"
 
     # Make sure we're on the user page now
-    wait_until { current_path == user_path(user) }
+    wait_until { current_path == user_favourites_path(user) }
 
     # They should now see a link to their favourite snop in their snops
     assert page.has_link?(snops(:one).title)
@@ -259,6 +251,12 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
 
     # click it
     click_button("Unfavourite")
+
+    # Shouldn't display anymore in list view
+    click_link "Back to List View"
+
+    # Back on the user page now
+    wait_until { current_path == user_favourites_path(user) }
 
     # The page should no longer have a link to the snop
     wait_until { !page.has_link?(snops(:one).title) }

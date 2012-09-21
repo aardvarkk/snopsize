@@ -1,4 +1,4 @@
-class UserTable
+class UserFavouritesTable
   include Rails.application.routes.url_helpers
 
   delegate :params, :link_to, :time_ago_in_words, :button_to, :collection_select, :current_user, :user_signed_in?, to: :@view
@@ -29,7 +29,7 @@ private
 
       # The title will call the same path, but just the JS version, allowing us to
       # switch to the browse view
-      title_link = link_to snop.title, user_path(id: @user.id, snop: snop, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]), remote: true
+      title_link = link_to snop.title, user_favourites_path(@user, id: @user.id, snop: snop, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]), remote: true
 
       # Lets find the category for this snop and user pair
       category = snop.user_categories.where("user_id = ?", @user.id).first

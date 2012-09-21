@@ -1,11 +1,3 @@
-<%# Scripts for Facebook Button %>
-<% content_for :opengraph do %>
-<meta property=\"og:title\" content=\"#{snop.title}\" />
-<meta property=\"og:type\" content=\"article\" />
-<meta property=\"og:url\" content=\"#{request.protocol + request.host}:#{request.port.to_s + request.fullpath}\" />
-<meta property=\"og:site_name\" content=\"www.snopsize.com\" />
-<% end %>
-
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];

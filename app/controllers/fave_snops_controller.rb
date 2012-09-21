@@ -1,7 +1,6 @@
 class FaveSnopsController < ApplicationController
   include ApplicationHelper
   include FaveSnopsHelper
-  include UserHelper
 
   before_filter :authenticate_user!
 	

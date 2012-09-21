@@ -1,7 +1,6 @@
 <h1>User: <%=@user.username%> </h1>
 
-<!-- We're only going to show these buttons if the user 
-     singed in and on their own page -->
+<%# We're only going to show these buttons if the user singed in and on their own page %>
 <% if user_signed_in? && @user == current_user %>
   <div id='editing'>
     <%= link_to 'Categories', user_categories_path %> | 
@@ -15,7 +14,7 @@
   <div id="snops_list_view">
     <%= render partial: 'shared/snop_list_view', locals: {data_source: user_path(format: "json")} %>
     <% if @user == current_user %>
-      <button id="RemoveButton", type="button", disabled="disabled", title="Deletes your snops, unfaves other users snops.">Remove</button>
+      <button id="RemoveButton" type="button" disabled="disabled" title="Deletes your snops, unfaves other users snops.">Remove</button>
     <% end %>
   </div>
   <div id="snops_browse_view">

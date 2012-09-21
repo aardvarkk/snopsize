@@ -1,6 +1,5 @@
 class SnopsController < ApplicationController
   include ApplicationHelper
-  include UserHelper
 
   before_filter :authenticate_user!
   before_filter :verify_snop_owner, :only => [:destroy]

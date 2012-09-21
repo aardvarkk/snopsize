@@ -45,7 +45,8 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
     wait_until { current_path == root_path }
 
     # Let's make sure that the user can see that they're logged in at the top
-    assert page.has_link? 'tester'
+    assert has_link? "My Snops"
+
   end
 
   # Story: A user has forgotten their password when trying to login

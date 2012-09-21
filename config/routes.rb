@@ -30,6 +30,8 @@ Snopsize::Application.routes.draw do
 
   # for user pages
   match 'users/:id' => 'users#show', :as => 'user', :via => :get
+  # for user favourites
+  match 'users/:id/favourites' => 'users#favourites', :as => 'user_favourites', :via => :get
 
   # for searching snops
   match 'search' => 'search#search', :as => 'search', :via => :get
