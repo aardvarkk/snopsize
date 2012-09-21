@@ -54,5 +54,12 @@
       <%= snop.summary %>
     </p>
 
+    <%# Facebook Button %>
+    <div class="fb-like" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div> 
+
+    <%# Twitter Button %>
+    <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="snopsize" data-text="<%=h get_snop_content(snop) %>">Tweet</a>
+
   <% end %>
 <% end %>

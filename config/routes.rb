@@ -21,8 +21,8 @@ Snopsize::Application.routes.draw do
   match 'about' => 'general#about', :as => 'about', :via => :get
   match 'help' => 'general#help', :as => 'help', :via => :get
 
+  # Favouriting
   post "fave_snops/favourite"
-
   post "fave_snops/unfavourite"
 
   # for about page
@@ -43,7 +43,11 @@ Snopsize::Application.routes.draw do
   match 'domains/:domain_id/resources/:resource_id' => 'resources#show', :as => 'resource', :via => :get
 
   # all of the snop resources
-  resources :snops, :except => [:index, :edit, :show, :update]
+  resources :snops, :except => [:index, :edit, :update] do
+    member do
+      get 'like'
+    end
+  end
 
   # all of our user categories
   resources :user_categories, :except => :show

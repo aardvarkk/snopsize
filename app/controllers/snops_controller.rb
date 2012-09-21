@@ -1,7 +1,7 @@
 class SnopsController < ApplicationController
   include ApplicationHelper
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show]
   before_filter :verify_snop_owner, :only => [:destroy]
 
   def verify_snop_owner
@@ -72,4 +72,13 @@ class SnopsController < ApplicationController
     end
 
   end
+
+  def show
+    @snop = Snop.find(params[:id])
+  end
+
+  def like
+    @snop = Snop.find(params[:id])
+  end
+
 end

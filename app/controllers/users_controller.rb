@@ -63,6 +63,7 @@ class UsersController < ApplicationController
     # If we're not checking our favourites, just redirect to ours
     if current_user != User.find(params[:id])
       redirect_to user_favourites_path(current_user)
+      return
     end
 
     # Default values
