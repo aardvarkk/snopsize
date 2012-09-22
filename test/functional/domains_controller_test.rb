@@ -16,7 +16,6 @@ class DomainsControllerTest < ActionController::TestCase
 
     # Make sure the domain and resources instances are set
     assert_not_nil assigns(:domain)
-    assert_not_nil assigns(:resources)
   end
 
 end

@@ -4,12 +4,20 @@
 
 # Hide the browse view until the user request it.
 jQuery -> 
-  $('#resources').dataTable( {
+  $("#snops_browse_view").hide();
+  $('#snops').dataTable( {
     "bFilter": true, 
     "oLanguage": { "sSearch": "Filter:" }
     "bJQueryUI": true,
     "aaSorting": [],
     "bProcessing": true,
     "bServerSide": true,
-    "sAjaxSource": $("#resources").data("source")
+    "sAjaxSource": $("#snops").data("source"),
+    "aoColumns": [
+        null,
+        null,
+        null,
+        null,
+        {"bVisible": false}
+        ]
     });

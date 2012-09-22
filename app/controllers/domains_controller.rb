@@ -1,50 +1,43 @@
 class DomainsController < ApplicationController
-  def show
-  	@domain = Domain.find(params[:id])
-  	@resources = @domain.resources.joins(:snops).where("snops.deleted = ?", false)
+  include DatatableHelpers
 
+  # GET /domains/:id
+  def show
+    # Default values
+    params[:browse_view] ||= false
+    params[:snop] ||= nil
+
+    # Get the domain and all the snops for it
+    @domain = Domain.find(params[:id])
+    @snops = Snop.where("resource_id IN (?)", @domain.resources)
+    
+    # Sort by domains
     case sort_column()
-    # Sort by num_snops
-    when "num_snops"
-      @resources = @resources.joins(:snops).group("resources.id").order("COUNT(resources.id) #{sort_direction}")
-    # order by last_snopped_about
-    when "last_snopped_about"
-      @resources = @resources.joins(:snops).order("snops.created_at #{sort_direction}").uniq
-    # order by resource name
+    when "domain"
+      @snops = @snops.includes(:resource).order("resources.uri #{sort_direction()}")
+    # order by username
+    when "user"
+      @snops = @snops.joins(:user).order("users.username #{sort_direction}")
+    # order by title or date, this is straight forward
     else 
-      @resources = @resources.order("#{sort_column()} #{sort_direction()}") 
+      @snops = @snops.order("#{sort_column()} #{sort_direction()}") 
     end
 
-    # The user typed in a search so we'll try to find "like" resources
+    # The user typed in a search so we'll try to find "like" snops
     if params[:sSearch].present?
-      @resources = @resources.where("uri like :search", search: "%#{params[:sSearch]}%")
+      @snops = @snops.includes(:user, :resource).where("users.username like :search or snops.title like :search or resources.uri like :search", search: "%#{params[:sSearch]}%")
     end
 
     # Handle pagination next
-    @resources = @resources.page(page()).per_page(per_page()).to_a
+    @snops = @snops.page(page()).per_page(per_page()).to_a
+
+    # Check if a single snop has been passed in to display in browse view
+    @snop = Snop.find(params[:snop]) if params[:snop]
 
     respond_to do |format|
       format.html
-      format.json { render json: DomainTable.new(view_context, @resources) }
+      format.json { render json: DomainTable.new(view_context, @snops, params[:id]) }
       format.js 
     end
   end
-
-  private
-    def page
-      params[:iDisplayStart].to_i/per_page + 1
-    end
-
-    def per_page
-      params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
-    end
-
-    def sort_column
-      columns = %w[uri num_snops last_snopped_about]
-      columns[params[:iSortCol_0].to_i]
-    end
-
-    def sort_direction
-      params[:sSortDir_0] == "desc" ? "desc" : "asc"
-    end
 end

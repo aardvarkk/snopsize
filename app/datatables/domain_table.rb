@@ -1,18 +1,19 @@
 class DomainTable
-  include Rails.application.routes.url_helpers
+   include Rails.application.routes.url_helpers
 
   delegate :params, :time_ago_in_words, :link_to, to: :@view
 
-  def initialize(view, all_resources)
+  def initialize(view, all_snops, domain_id)
     @view = view
-    @all_resources = all_resources
+    @all_snops = all_snops
+    @domain_id = domain_id
   end
 
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
-      iTotalRecords: @all_resources.length,
-      iTotalDisplayRecords: @all_resources.length,
+      iTotalRecords: @all_snops.length,
+      iTotalDisplayRecords: @all_snops.length,
       aaData: data
     }
   end
@@ -20,16 +21,18 @@ class DomainTable
 private
 
   def data
-    @all_resources.map do |resource|
-      resource_link = link_to resource.uri, resource_path(domain_id: resource.domain_id, resource_id: resource.id)
-      num_snops = resource.snops.length
-      last_snopped_about = resource.snops.order("created_at DESC").first
-      last_snopped_about = time_ago_in_words(last_snopped_about.created_at) + " ago"
-
+    @all_snops.map do |snop|
+      user_link = link_to snop.user.username, snop.user
+      domain_link = link_to snop.domain.uri + snop.resource.uri, resource_path(domain_id: @domain_id, resource_id: snop.resource.id) unless snop.domain.nil?
+      # The title will call the same path, but just the JS version, allowing us to
+      # switch to the browse view
+      title_link = link_to snop.title, domain_path(id: @domain_id, snop: snop, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]), remote: true
       [
-        resource_link,
-        num_snops,
-        last_snopped_about
+        user_link,
+        title_link,
+        domain_link,
+        time_ago_in_words(snop.created_at) + " ago",
+        ""
       ]
     end
   end
