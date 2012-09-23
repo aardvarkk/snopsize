@@ -3,11 +3,5 @@
 <%= link_to "Snop about " + @url, new_snop_path(uri: @url)%></br></br>
 
 <%# get all snops for this domain and resource combination %>
-<% if @snops %>
-  <div id="snops_list_view">
-    <%= render partial: 'shared/snop_list_view', locals: {data_source: resource_path(format: "json")} %>
-  </div>
-  <div id="snops_browse_view">
-    <%= render partial: 'shared/snop_browse', locals: {current_snop: @snops.first, snop_list: @snops, close_path: resource_path} %>
-  </div>
-<% end %>
+<%= render partial: 'shared/snop_all_views', locals: {data_source: resource_path(format: "json"), list_view_path: resource_path, browse_view_path: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>
+

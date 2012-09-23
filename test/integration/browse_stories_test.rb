@@ -9,6 +9,9 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     visit('/')
     assert_equal current_path, root_path
 
+    # Now the user want's to click on the list view
+    click_link("List View")
+
     # On the home page they see a snop, they click on the title
     click_link snops(:one).title
     assert_equal root_path, current_path
@@ -21,6 +24,9 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     wait_until(5) do
       current_path == resource_path(domain_id: snops(:one).domain.id, resource_id: snops(:one).resource.id)
     end
+
+    # Now the user want's to click on the list view
+    click_link("List View")
 
     # make sure we see the other snop now
     assert has_link?(snops(:four).title)
@@ -49,6 +55,9 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     visit('/')
     assert_equal current_path, root_path
 
+    # Now the user want's to click on the list view
+    click_link("List View")
+
     # On the home page they see a snop, they click on the title
     click_link snops(:one).title
     assert_equal root_path, current_path
@@ -65,6 +74,9 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     # Go to home page
     visit('/')
     assert_equal root_path, current_path
+
+    # Now the user want's to click on the list view
+    click_link("List View")
 
     # On the home page they see a user who's snops they've seen before.
     # They want to see other snops from that user
