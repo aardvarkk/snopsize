@@ -90,6 +90,9 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     # We should now be back on the home page and logged in
     wait_until { current_path == root_path }
 
+    # Now the user want's to click on the list view
+    click_link("List View")
+
     # The snop should be there
     assert has_link?(snops(:one).title)
 
@@ -161,6 +164,9 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     # We should now be back on the home page and logged in
     assert_equal root_path, current_path
 
+    # Now the user want's to click on the list view
+    click_link("List View")
+
     # Now the user want's to click on a snop
     click_link(snops(:one).title)
 
@@ -214,6 +220,9 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
 
     # We should now be back on the home page and logged in
     wait_until { current_path == root_path }
+
+    # Now the user want's to click on the list view
+    click_link("List View")
 
     # Now the user want's to click on a snop
     click_link(snops(:one).title)

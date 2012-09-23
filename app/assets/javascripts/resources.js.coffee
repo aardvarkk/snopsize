@@ -4,7 +4,7 @@
 
 # Hide the browse view until the user request it.
 jQuery -> 
-  $("#snops_browse_view").hide();
+  $("#snops_list_view").hide();
   $('#snops').dataTable( {
     "bFilter": true, 
     "oLanguage": { "sSearch": "Filter:" }

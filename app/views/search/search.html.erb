@@ -10,14 +10,7 @@
 	<% else %>
 	 	<%= @results.size %> Keyword Results found</br></br>
 
-    <% if @results %>
-      <div id="snops_list_view">
-        <%= render partial: 'shared/snop_list_view', locals: {data_source: search_path(q: params[:q], format: "json")} %>
-      </div>
-      <div id="snops_browse_view">
-        <%= render partial: 'shared/snop_browse', locals: {current_snop: @results.first, snop_list: @results, close_path: search_path} %>
-      </div>
-    <% end %>
+    <%= render partial: 'shared/snop_all_views', locals: {data_source: search_path(q: params[:q], format: "json"), list_view_path: search_path, browse_view_path: search_path(q: params[:q], type: params[:type], snop: @results.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>
 	<% end %>
 <% end %>
 

@@ -1,8 +1,2 @@
 <%= render template: 'search/search' %>
-<h2>Popular Snops</h2>
-<div id="snops_list_view">
-  <%= render partial: 'shared/snop_list_view', locals: {data_source: root_path(format: "json")} %>
-</div>
-<div id="snops_browse_view">
-  <%= render partial: 'shared/snop_browse', locals: {current_snop: @snops.first, snop_list: @snops, close_path: root_path} %>
-</div>
+<%= render partial: 'shared/snop_all_views', locals: {data_source: root_path(format: "json"), list_view_path: root_path, browse_view_path: root_path(snop: @snops.first, browse_view: true)} %>
