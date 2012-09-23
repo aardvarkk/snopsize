@@ -252,16 +252,14 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     # click it
     click_button("Unfavourite")
 
-    # Shouldn't display anymore in list view
-    click_link "Back to List View"
-
     # Back on the user page now
     wait_until { current_path == user_favourites_path(user) }
 
     # The page should no longer have a link to the snop
-    wait_until { !page.has_link?(snops(:one).title) }
+    assert has_no_link?(snops(:one).title)
 
     # And the snop should no longer be showing    
-    wait_until { !page.has_content?(snops(:one).title) }
+    assert has_no_content?(snops(:one).title)
+
   end
 end
