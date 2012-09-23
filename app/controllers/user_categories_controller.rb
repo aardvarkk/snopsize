@@ -28,8 +28,10 @@ class UserCategoriesController < ApplicationController
     respond_to do |format|
       if @user_category.save
         format.html { redirect_to user_categories_path, notice: 'User category was successfully created.' }
+        format.js
       else
         format.html { render action: "new" }
+        format.js
       end
     end
   end

@@ -37,10 +37,23 @@
   </div>
   <div class="field">
     <%= f.label :Category %><br />
-    <%= collection_select :user_category, :id, current_user.user_categories, :id, :name, :include_blank => true %>
-    <%= link_to 'Categories', user_categories_path %>
+    <span id="categories"><%= collection_select :user_category, :id, current_user.user_categories, :id, :name, :include_blank => true %></span>
   </div>
   <div class="actions">
     <%= f.submit %>
+  </div>
+<% end %>
+
+<hr>
+
+<%# User Category form %>
+<% @user_category = UserCategory.new %>
+<%= form_for(@user_category, remote: true) do |f| %>
+  <div class="field">
+    <%= f.label "New Category Name:" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create New Category" %>
   </div>
 <% end %>
