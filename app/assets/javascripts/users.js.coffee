@@ -17,27 +17,41 @@ jQuery ->
     "sAjaxSource": $("#snops").data("source")
     });  
 
-  # Click handler for the Remove button on the user page
-  $("#RemoveButton").click(() ->
+  # Click handler for the Delete button on the user page
+  $("#DeleteButton").click(() ->
+    
     # Make the user confirm First
-    if (!confirm("You will permanently delete any selected snops that are yours and Unfavourite any snops that are not yours. Are you sure you want to do this?"))
+    if (!confirm("Are you sure you wish to delete these snops?"))
       return false
 
-    # For each selected row, we delete or unfave it
+    # For each selected row, we delete it
     $(".row_selected").each( (index) ->    
       $(this).removeClass(".row_selected");
 
-      # We currently have no way to know... if the snop
-      # is the current users snop or not... that is all
-      # stored on the server side... so...
-      # First try deleting
+      # Delete
       $.ajax({
         type: "DELETE",
         url: "/snops/" + $(this).attr("id"),
         dataType: "script"
         });
+    );
 
-      # Then try unfavouriting
+    # Make sure remove button is disabled now.
+    $("#DeleteButton").attr("disabled", "disabled");
+  );
+
+  # Click handler for the Unfavourite button on the user favourites page
+  $("#UnfavouriteButton").click(() ->
+    
+    # Make the user confirm First
+    if (!confirm("Are you sure you wish to unfavourite these snops?"))
+      return false
+
+    # For each selected row, we unfave it
+    $(".row_selected").each( (index) ->    
+      $(this).removeClass(".row_selected");
+
+      # Unfavourite
       $.ajax({
         type: "POST",
         url: "/fave_snops/unfavourite",
@@ -47,7 +61,7 @@ jQuery ->
     );
 
     # Make sure remove button is disabled now.
-    $("#RemoveButton").attr("disabled", "disabled");
+    $("#UnfavouriteButton").attr("disabled", "disabled");
   );
 
   # Click handler for when a row in the users table is clicked
@@ -55,11 +69,13 @@ jQuery ->
     # If the row has a valid ID, we select it (toggle)
     $(this).toggleClass('row_selected') if $(this).attr("id")
 
-    # If we have at least 1 row selected, we can enable the remove button
+    # If we have at least 1 row selected, we can enable the delete/unfavourite buttons
     if $(".row_selected").size() > 0
-      $("#RemoveButton").removeAttr("disabled");
+      $("#DeleteButton").removeAttr("disabled");
+      $("#UnfavouriteButton").removeAttr("disabled");
     else
-      $("#RemoveButton").attr("disabled", "disabled");
+      $("#DeleteButton").attr("disabled", "disabled");
+      $("#UnfavouriteButton").attr("disabled", "disabled");
   );
 
   # A click handler for when the categories drop down is clicked, 
