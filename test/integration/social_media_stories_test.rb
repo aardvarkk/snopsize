@@ -68,12 +68,8 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
     # We should now be back on the home page and logged in
     wait_until { current_path == root_path }
 
-    # Now the user want's to click on a snop
-    click_link(snops(:one).title)
-
-    # We should be on the snop page now
-    wait_until { current_path == root_path }
-
+    # We should now be looking at the top snop in browse view
+    
     # TODO: Capybara can't seem to find the like button
     # Can't figure out how to do this...
   end

@@ -11,6 +11,6 @@
   
 <%# Snop View %>
 <%= render partial: 'shared/snop_all_views', locals: {data_source: user_path(format: "json"), list_view_path: user_path, browse_view_path: user_path(id: @user.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>   
-<% if @user == current_user %>
+<% if user_signed_in? && @user == current_user %>
   <button id="RemoveButton" type="button" disabled="disabled" title="Deletes your snops, unfaves other users snops.">Remove</button>
 <% end %>
