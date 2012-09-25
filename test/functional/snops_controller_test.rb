@@ -35,7 +35,7 @@ class SnopsControllerTest < ActionController::TestCase
     end
 
     # Make sure we are redirected properly
-    assert_redirected_to user_path(snop.user)
+    assert_redirected_to user_path(id: snop.user, iSortCol_0: 3, sSortDir_0: "desc")
 
     # Make sure snop is assigned properly
     assert_not_nil assigns(:snop)

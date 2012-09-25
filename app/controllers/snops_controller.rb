@@ -11,9 +11,6 @@ class SnopsController < ApplicationController
   # GET /snops/new
   # GET /snops/new.json
   def new
-    # Store where we came from!
-    session[:new_snop_referrer] = request.referrer  
-    
     # Default parameters
     params[:uri] ||= nil
 
@@ -44,13 +41,9 @@ class SnopsController < ApplicationController
       user_category.snops << @snop
     end
 
-    # Get the referrer so we can go back to that page
-    referrer = session[:new_snop_referrer]
-    session.delete(:referrer)
-
     respond_to do |format|
       if @snop.save
-        format.html { redirect_to referrer, notice: 'Snop was successfully created.' }
+        format.html { redirect_to user_path(id: current_user.id, iSortCol_0: 3, sSortDir_0: "desc"), notice: 'Snop was successfully created.' }
       else
         format.html { render action: "new" }
       end

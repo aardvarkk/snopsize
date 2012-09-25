@@ -33,9 +33,6 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
     # Now the user want's to click on a snop
     click_link(snops(:one).title)
 
-    # We should be on the snop page now
-    wait_until { current_path == root_path }
-
     # TODO: Capybara can't seem to find the tweet button
     # Can't figure out how to do this...
   end
