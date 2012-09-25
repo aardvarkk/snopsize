@@ -45,6 +45,11 @@ class SnopsController < ApplicationController
       if @snop.save
         format.html { redirect_to user_path(id: current_user.id, iSortCol_0: 3, sSortDir_0: "desc"), notice: 'Snop was successfully created.' }
       else
+
+        # Need to set this default_uri, because the form can be pre-filled if you're snopping about a particular URI
+        # As a result, if we don't set this value and there are validation errors, the URI box will be emptied out. This way, we're able to keep the textbox filled with whatever was there previously
+        @default_uri = params[:snop][:uri]
+
         format.html { render action: "new" }
       end
     end
