@@ -38,6 +38,40 @@ jQuery ->
 
     # Make sure remove button is disabled now.
     $("#DeleteButton").attr("disabled", "disabled");
+    $("#CategoriesSelect").attr("disabled", "disabled");
+  );
+
+  # Change handler for the select box for mass categorization
+  $("#CategoriesSelect").change(() ->
+
+    # Make the user confirm First
+    if (!confirm("Are you sure you wish to categorize these snops?"))
+      return false
+
+    id = ""
+    id += $(this).val()
+
+    # For each selected row, we categorize it accordingly    
+    $(".row_selected").each( (index) ->   
+      $(this).removeClass(".row_selected"); 
+      $.ajax({
+        type: "POST",
+        url: "/user_categories/set_snop?snop=" + $(this).attr("id"),
+        data: {
+          "user_category": {"id":id}
+        },
+        dataType: "script"
+        });
+    );
+
+    # redraw the table now
+    datatable = $("#snops").dataTable();
+    datatable.fnDraw();
+
+    # disable the button
+    $("#CategoriesSelect").attr("disabled", "disabled");
+    $("#DeleteButton").attr("disabled", "disabled");
+    $("#UnfavouriteButton").attr("disabled", "disabled");
   );
 
   # Click handler for the Unfavourite button on the user favourites page
@@ -62,6 +96,7 @@ jQuery ->
 
     # Make sure remove button is disabled now.
     $("#UnfavouriteButton").attr("disabled", "disabled");
+    $("#CategoriesSelect").attr("disabled", "disabled");
   );
 
   # Click handler for when a row in the users table is clicked
@@ -73,9 +108,11 @@ jQuery ->
     if $(".row_selected").size() > 0
       $("#DeleteButton").removeAttr("disabled");
       $("#UnfavouriteButton").removeAttr("disabled");
+      $("#CategoriesSelect").removeAttr("disabled");
     else
       $("#DeleteButton").attr("disabled", "disabled");
       $("#UnfavouriteButton").attr("disabled", "disabled");
+      $("#CategoriesSelect").attr("disabled", "disabled");
   );
 
   # A click handler for when the categories drop down is clicked, 

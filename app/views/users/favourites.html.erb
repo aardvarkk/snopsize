@@ -10,6 +10,12 @@
 <%# A single snop is shown in the right column, with the ability to browse %>
 <%# Snop View %>
 <%= render partial: 'shared/snop_all_views', locals: {data_source: user_favourites_path(format: "json"), list_view_path: user_favourites_path, browse_view_path: user_favourites_path(id: @user.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>   
+
+<%# Mass snop editing %>
 <% if user_signed_in? && @user == current_user %>
   <button id="UnfavouriteButton" type="button" disabled="disabled" title="Unfavourite snops.">Unfavourite</button>
+
+  <select id="CategoriesSelect" disabled="disabled">
+    <%= options_from_collection_for_select(current_user.user_categories, :id, :name) %>
+  </select>
 <% end %>
