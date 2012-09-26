@@ -25,10 +25,14 @@ class ResourcesController < ApplicationController
       @snops = @snops.order("#{sort_column()} #{sort_direction()}") 
     end
 
+    pre_filter_count = @snops.length
+
     # The user typed in a search so we'll try to find "like" snops
     if params[:sSearch].present?
       @snops = @snops.includes(:user, :domain).where("users.username like :search or snops.title like :search or domains.uri like :search", search: "%#{params[:sSearch]}%")
     end
+
+    post_filter_count = @snops.length
 
     # Handle pagination next
     @snops = @snops.page(page()).per_page(per_page()).to_a
@@ -38,7 +42,7 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: ResourceTable.new(view_context, @snops, params[:domain_id], params[:resource_id]) }
+      format.json { render json: ResourceTable.new(view_context, @snops, pre_filter_count, post_filter_count, params[:domain_id], params[:resource_id]) }
       format.js 
     end
   end

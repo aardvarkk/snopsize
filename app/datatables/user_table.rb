@@ -3,17 +3,19 @@ class UserTable
 
   delegate :params, :link_to, :time_ago_in_words, :button_to, :collection_select, :current_user, :user_signed_in?, to: :@view
 
-  def initialize(view, all_snops, user)
+  def initialize(view, all_snops, pre_filter_count, post_filter_count, user)
     @view = view
     @all_snops = all_snops
+    @pre_filter_count = pre_filter_count
+    @post_filter_count = post_filter_count
     @user = user
   end
 
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
-      iTotalRecords: @all_snops.length,
-      iTotalDisplayRecords: @all_snops.length,
+      iTotalRecords: @pre_filter_count,
+      iTotalDisplayRecords: @post_filter_count,
       aaData: data
     }
   end

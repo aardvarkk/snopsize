@@ -39,10 +39,16 @@ class UsersController < ApplicationController
       @snops = @snops.order("#{sort_column()} #{sort_direction()}") 
     end
 
+    # Get the count before filtering for the DataTable
+    pre_filter_count = @snops.length
+
     # The user typed in a search so we'll try to find "like" snops
     if params[:sSearch].present?
       @snops = @snops.includes(:user, :domain, :user_categories).where("users.username like :search or snops.title like :search or domains.uri like :search or user_categories.name like :search", search: "%#{params[:sSearch]}%")
     end
+
+    # Get the count after filtering for the DataTable
+    post_filter_count = @snops.length
 
     # Handle pagination next
     @snops = @snops.page(page()).per_page(per_page()).to_a
@@ -52,7 +58,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: UserTable.new(view_context, @snops, @user) }
+      format.json { render json: UserTable.new(view_context, @snops, pre_filter_count, post_filter_count, @user) }
       format.js 
     end
   end
@@ -91,10 +97,16 @@ class UsersController < ApplicationController
       @snops = @snops.order("#{sort_column()} #{sort_direction()}") 
     end
 
+    # Get the count before filtering for the DataTable
+    pre_filter_count = @snops.length
+
     # The user typed in a search so we'll try to find "like" snops
     if params[:sSearch].present?
       @snops = @snops.includes(:user, :domain, :user_categories).where("users.username like :search or snops.title like :search or domains.uri like :search or user_categories.name like :search", search: "%#{params[:sSearch]}%")
     end
+
+    # Get the count after filtering for the DataTable
+    post_filter_count = @snops.length
 
     # Handle pagination next
     @snops = @snops.page(page()).per_page(per_page()).to_a
@@ -104,7 +116,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: UserFavouritesTable.new(view_context, @snops, @user) }
+      format.json { render json: UserFavouritesTable.new(view_context, @snops, pre_filter_count, post_filter_count, @user) }
       format.js 
     end
     

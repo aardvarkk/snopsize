@@ -3,9 +3,11 @@ class ResourceTable
 
   delegate :params, :time_ago_in_words, :link_to, to: :@view
 
-  def initialize(view, all_snops, domain_id, resource_id)
+  def initialize(view, all_snops, pre_filter_count, post_filter_count, domain_id, resource_id)
     @view = view
     @all_snops = all_snops
+    @pre_filter_count = pre_filter_count
+    @post_filter_count = post_filter_count
     @domain_id = domain_id
     @resource_id = resource_id
   end
@@ -13,8 +15,8 @@ class ResourceTable
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
-      iTotalRecords: @all_snops.length,
-      iTotalDisplayRecords: @all_snops.length,
+      iTotalRecords: @pre_filter_count,
+      iTotalDisplayRecords: @post_filter_count,
       aaData: data
     }
   end
