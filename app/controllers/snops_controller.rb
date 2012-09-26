@@ -32,18 +32,16 @@ class SnopsController < ApplicationController
     # only logged in users can create snops
     @snop.user = current_user
 
-    # Check if a valid category has been specified and add the snop to
-    # that category
-    if (params.has_key?(:user_category) && UserCategory.exists?(params[:user_category][:id]))
-      user_category = UserCategory.find(params[:user_category][:id])
-        
-      # add the snop to the new category
-      user_category.snops << @snop
-    end
-
     respond_to do |format|
       if @snop.save
-        format.html { redirect_to user_path(id: current_user.id, iSortCol_0: 3, sSortDir_0: "desc"), notice: 'Snop was successfully created.' }
+        # Only set the category if the snop validates correctly
+        # Check if a valid category has been specified and add the snop to
+        # that category
+        if (params.has_key?(:user_category) && UserCategory.exists?(params[:user_category][:id]))
+          UserCategory.find(params[:user_category][:id]).snops << @snop
+        end
+
+        format.html { redirect_to user_path(current_user), notice: 'Snop was successfully created.' }
       else
 
         # Need to set this default_uri, because the form can be pre-filled if you're snopping about a particular URI

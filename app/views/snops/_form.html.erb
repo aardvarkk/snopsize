@@ -37,7 +37,7 @@
   </div>
   <div class="field">
     <%= f.label :Category %><br />
-    <span id="categories"><%= collection_select :user_category, :id, current_user.user_categories, :id, :name, :include_blank => true %></span>
+    <span id="categories"><%= collection_select :user_category, :id, current_user.user_categories, :id, :name, :include_blank => (t :uncategorized) %></span>
   </div>
   <div class="actions">
     <%= f.submit %>

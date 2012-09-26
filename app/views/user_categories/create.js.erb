@@ -1,1 +1,1 @@
-$("#categories").html("<%=j collection_select :user_category, :id, current_user.user_categories, :id, :name, :include_blank => true%>")
+$("#categories").html("<%=j collection_select :user_category, :id, current_user.user_categories, :id, :name, :include_blank => (t :uncategorized) %>")
