@@ -37,8 +37,10 @@ private
       # if they're on their own page they can change categories.
       if (@user == current_user)
         selected = category.nil? ? nil : category.id
-        category = collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: true, selected: selected}, { data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} }
+        # category = collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: true, selected: selected}, { data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} }
       end
+
+      category = category.name unless category.nil?
 
       # Lets give the row an id so that we can find it later (for deletion using JS)
       row_id = snop.id.to_s
