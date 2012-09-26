@@ -32,3 +32,6 @@ datatable.fnDraw();
   // lets update the buttons again since we deleted the div
   enableButtons();
 <% end %>
+
+<%# Remove the categorization combo if you unfave %>
+$("<%= '#categorization_' + @snop.id.to_s %>").html("");

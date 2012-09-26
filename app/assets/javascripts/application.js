@@ -93,13 +93,13 @@ function enableButtons()
 
 function changeToListView()
 {
-  $("#snops_list_view").show();
+  $(".snops_list_view").show();
   $("#snops_browse_view").hide();
 }
 
 function changeToBrowseView()
 {
-  $("#snops_list_view").hide();
+  $(".snops_list_view").hide();
   $("#snops_browse_view").show();
 }
 

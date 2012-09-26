@@ -18,8 +18,8 @@
     <div id="<%= "snop_" + snop.id.to_s %>" class="<%= @class %>">
       <%= render :partial => "shared/snopfull", locals: {snop: snop} %>
 
-      <%# Fave/Unfave Button %>
       <% if user_signed_in? %>
+        <%# Fave/Unfave Button %>
         <% @fave_btn_id = "fave_" + snop.id.to_s %>
         <div id="<%= @fave_btn_id %>">
           <% if has_user_faved_snop?(snop) %>
@@ -28,6 +28,21 @@
             <%= render partial: 'fave_snops/unfavourite', locals: {snop: snop} %>
           <% end %>
         </div>
+
+        <%# Delete Button %>
+        <% if snop.user == current_user %>
+          <%= button_to "Delete", snop, method: :delete, remote: true %>
+        <% end %>
+
+        <%# Categorization %>
+        <div id="<%= 'categorization_' + snop.id.to_s %>">
+          <% if snop.user == current_user || current_user.favourites.include?(snop) %>
+            <% category = snop.user_categories.where("user_id = ?", current_user.id).first %>
+            <% selected = category.nil? ? nil : category.id %>
+            <%= collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: true, selected: selected}, { data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} } %>
+          <% end %>
+        </div>
+
       <% end %>
 
     </div>

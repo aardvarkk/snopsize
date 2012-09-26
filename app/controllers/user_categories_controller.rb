@@ -79,7 +79,9 @@ class UserCategoriesController < ApplicationController
   	  user_category.snops << snop
     end
 
-    # nothing to render
-    render nothing: true
+    # respond appropriately
+    respond_to do |format|
+      format.js
+    end
   end
 end
