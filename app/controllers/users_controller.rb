@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
     # Get the relation 
     # Do a default sort by created by date
-    @snops = Snop.where("snops.id IN (?)", @snops).order("created_at DESC")
+    @snops = Snop.where("snops.id IN (?)", @snops)
 
     # Sort by domains
     case sort_column()
@@ -73,8 +73,7 @@ class UsersController < ApplicationController
     # Get the user specified
     @user = User.find(params[:id])
 
-    # Do a default sort by created date
-    @snops = current_user.favourites.order("created_at DESC")
+    @snops = current_user.favourites
 
     # Sort by domains
     case sort_column()

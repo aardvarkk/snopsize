@@ -9,10 +9,16 @@ module DatatableHelpers
 
   def sort_column
     columns = %w[user title domain created_at category]
-    columns[params[:iSortCol_0].to_i]
+
+    # Sort by created at by default
+    return columns[params[:iSortCol_0].to_i] if params[:iSortCol_0]
+    return "created_at"
   end
 
   def sort_direction
-    params[:sSortDir_0] == "desc" ? "desc" : "asc"
+    # Sort descending by default
+    return params[:sSortDir_0] if params[:sSortDir_0]
+    return "desc"
   end
+
 end
