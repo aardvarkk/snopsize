@@ -14,7 +14,14 @@ jQuery ->
     "aaSorting": [],
     "bProcessing": true,
     "bServerSide": true,
-    "sAjaxSource": $("#snops").data("source")
+    "sAjaxSource": $("#snops").data("source"),
+    "aoColumns": [
+      {"bVisible": false},
+      null,
+      null,
+      null,
+      null
+      ]
     });  
 
   # Click handler for the Delete button on the user page
