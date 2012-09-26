@@ -8,11 +8,11 @@ module DatatableHelpers
   end
 
   def sort_column
-    columns = %w[user title domain created_at category]
+    columns = %w[user snops.title domain snops.created_at category]
 
     # Sort by created at by default
     return columns[params[:iSortCol_0].to_i] if params[:iSortCol_0]
-    return "created_at"
+    return columns[3]
   end
 
   def sort_direction
