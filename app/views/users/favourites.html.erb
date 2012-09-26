@@ -16,8 +16,6 @@
   <% if user_signed_in? && @user == current_user %>
     <button id="UnfavouriteButton" type="button" disabled="disabled" title="Unfavourite snops.">Unfavourite</button>
 
-    <select id="CategoriesSelect" disabled="disabled">
-      <%= options_from_collection_for_select(current_user.user_categories, :id, :name) %>
-    </select>
+    <%= select_tag "CategoriesSelect", "<option value=\"Select Category\">Select Category</option><option value=\"\">Uncategorized</option>".html_safe + options_from_collection_for_select(current_user.user_categories, :id, :name), disabled: true %>
   <% end %>
 </div>

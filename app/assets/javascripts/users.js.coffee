@@ -68,7 +68,10 @@ jQuery ->
     datatable = $("#snops").dataTable();
     datatable.fnDraw();
 
-    # disable the button
+    # go back to selecting the prompt
+    $("#CategoriesSelect").val("Select Category")
+
+    # disable the buttons
     $("#CategoriesSelect").attr("disabled", "disabled");
     $("#DeleteButton").attr("disabled", "disabled");
     $("#UnfavouriteButton").attr("disabled", "disabled");
