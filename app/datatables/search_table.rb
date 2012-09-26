@@ -1,27 +1,15 @@
-class SearchTable
-  include Rails.application.routes.url_helpers
+# The table on the Search results page
+class SearchTable < BaseTable
 
-  delegate :params, :time_ago_in_words, :link_to, to: :@view
-
+  # Initailize our Search Table
   def initialize(view, all_snops, pre_filter_count, post_filter_count)
-    @view = view
-    @all_snops = all_snops
-    @pre_filter_count = pre_filter_count
-    @post_filter_count = post_filter_count
+    super(view, all_snops, pre_filter_count, post_filter_count)
   end
 
-  def as_json(options = {})
-    {
-      sEcho: params[:sEcho].to_i,
-      iTotalRecords: @pre_filter_count,
-      iTotalDisplayRecords: @post_filter_count,
-      aaData: data
-    }
-  end
+protected
 
-private
-
-  def data
+  # Get the JSON for the table on the search results page
+  def get_data
     @all_snops.map do |snop|
       user_link = link_to snop.user.username, snop.user
       domain_link = link_to snop.domain.uri, snop.domain unless snop.domain.nil?

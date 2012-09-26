@@ -1,28 +1,16 @@
-class UserFavouritesTable
-  include Rails.application.routes.url_helpers
+# User Favourites Table
+class UserFavouritesTable < BaseTable
 
-  delegate :params, :link_to, :time_ago_in_words, :button_to, :collection_select, :current_user, :user_signed_in?, to: :@view
-
+  # Initialize the user favourites table
   def initialize(view, all_snops, pre_filter_count, post_filter_count, user)
-    @view = view
-    @all_snops = all_snops
-    @pre_filter_count = pre_filter_count
-    @post_filter_count = post_filter_count
+    super(view, all_snops, pre_filter_count, post_filter_count)
     @user = user
   end
 
-  def as_json(options = {})
-    {
-      sEcho: params[:sEcho].to_i,
-      iTotalRecords: @pre_filter_count,
-      iTotalDisplayRecords: @post_filter_count,
-      aaData: data
-    }
-  end
+protected
 
-private
-
-  def data
+  # Get the JSON for the table on the favourites page
+  def get_data
     @all_snops.map do |snop|
 
       user_link = link_to snop.user.username, snop.user

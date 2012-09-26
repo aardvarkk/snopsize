@@ -1,29 +1,17 @@
-class ResourceTable
-  include Rails.application.routes.url_helpers
+# The table on the Resource page
+class ResourceTable < BaseTable
 
-  delegate :params, :time_ago_in_words, :link_to, to: :@view
-
+  # Initailize our Resource Table
   def initialize(view, all_snops, pre_filter_count, post_filter_count, domain_id, resource_id)
-    @view = view
-    @all_snops = all_snops
-    @pre_filter_count = pre_filter_count
-    @post_filter_count = post_filter_count
+    super(view, all_snops, pre_filter_count, post_filter_count)
     @domain_id = domain_id
     @resource_id = resource_id
   end
 
-  def as_json(options = {})
-    {
-      sEcho: params[:sEcho].to_i,
-      iTotalRecords: @pre_filter_count,
-      iTotalDisplayRecords: @post_filter_count,
-      aaData: data
-    }
-  end
+protected
 
-private
-
-  def data
+  # Get the JSON for the table on the resources page
+  def get_data
     @all_snops.map do |snop|
       user_link = link_to snop.user.username, snop.user
       domain_link = link_to snop.domain.uri, snop.domain unless snop.domain.nil?
