@@ -19,7 +19,7 @@ Snopsize::Application.routes.draw do
 
   # general navigation
   match 'about' => 'general#about', :as => 'about', :via => :get
-  match 'help' => 'general#help', :as => 'help', :via => :get
+  # match 'help' => 'general#help', :as => 'help', :via => :get
 
   # Favouriting
   post "fave_snops/favourite"

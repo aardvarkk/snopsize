@@ -62,7 +62,7 @@
   <center>
     <%= link_to_unless_current "Home", root_path %> | 
     <%= link_to_unless_current "About", about_path %> | 
-    <%= link_to_unless_current "Help", help_path %> | 
+    <%#= link_to_unless_current "Help", help_path %><!-- | -->
     <%= mail_to('support@snopsize.com', 'Contact', subject: 'Support Question', encode: 'javascript') %>
   </center>
 </div>
