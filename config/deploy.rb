@@ -30,15 +30,18 @@ set :bundle_flags, "--quiet"
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   
-  # Set up the password protection
-  task :htaccess do 
-    run "cp ~/htaccess_backup ~/snopsize/current/.htaccess"
-    run "cp ~/htpasswd_backup ~/snopsize/current/.htpasswd"
-  end
-
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+
+# Set up the password protection
+desc "Limiting site access"
+task :htaccess do 
+  run "cp ~/htaccess_backup ~/snopsize/current/.htaccess"
+  run "cp ~/htpasswd_backup ~/snopsize/current/.htpasswd"
+end
+
+after "deploy", "htaccess"
