@@ -4,10 +4,11 @@ module ApplicationHelper
     # Create a tweetable string by combining title, all points, and summary
     # For now, we'll just put a space in between them all.
     snopcontent = snop.title
-    snopcontent += ' ' + snop.point1 if snop.point1
-    snopcontent += ' ' + snop.point2 if snop.point2
-    snopcontent += ' ' + snop.point3 if snop.point3
-    snopcontent += ' ' + snop.summary if snop.summary
+    snopcontent += ' ' + snop.point1 unless snop.point1.blank?
+    snopcontent += ' ' + snop.point2 unless snop.point2.blank?
+    snopcontent += ' ' + snop.point3 unless snop.point3.blank?
+    snopcontent += ' ' + snop.summary unless snop.summary.blank?
+    #snopcontent += ' ' + snop.domain.uri + snop.resource.uri
     snopcontent.truncate(140)
   end
 
