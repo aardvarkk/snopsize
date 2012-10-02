@@ -8,9 +8,10 @@ class GeneralControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get help" do
-    get :help
-    assert_response :success
-  end
+  # No more help page...
+  # test "should get help" do
+  #   get :help
+  #   assert_response :success
+  # end
 
 end

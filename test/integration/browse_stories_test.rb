@@ -10,7 +10,7 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     assert_equal current_path, root_path
 
     # Now the user want's to click on the list view
-    click_link("List View")
+    click_link(I18n.t :list_view)
 
     # On the home page they see a snop, they click on the title
     click_link snops(:one).title
@@ -26,7 +26,7 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     end
 
     # Now the user want's to click on the list view
-    click_link("List View")
+    click_link(I18n.t :list_view)
 
     # make sure we see the other snop now
     assert has_link?(snops(:four).title)
@@ -56,7 +56,7 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     assert_equal current_path, root_path
 
     # Now the user want's to click on the list view
-    click_link("List View")
+    click_link(I18n.t :list_view)
 
     # On the home page they see a snop, they click on the title
     click_link snops(:one).title
@@ -76,7 +76,7 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     assert_equal root_path, current_path
 
     # Now the user want's to click on the list view
-    click_link("List View")
+    click_link(I18n.t :list_view)
 
     # On the home page they see a user who's snops they've seen before.
     # They want to see other snops from that user

@@ -1,6 +1,6 @@
 <h2>Viewing snops for <%= @url %></h2>
 
-<%= link_to "Snop about this article", new_snop_path(uri: @url)%></br></br>
+<%= link_to (t :snop_about_this), new_snop_path(uri: @url)%></br></br>
 
 <%# get all snops for this domain and resource combination %>
 <%= render partial: 'shared/snop_all_views', locals: {data_source: resource_path(format: "json"), list_view_path: resource_path, browse_view_path: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>

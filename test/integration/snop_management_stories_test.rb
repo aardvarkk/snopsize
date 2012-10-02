@@ -91,7 +91,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     wait_until { current_path == root_path }
 
     # Now the user want's to click on the list view
-    click_link("List View")
+    click_link(I18n.t :list_view)
 
     # The snop should be there
     assert has_link?(snops(:one).title)
@@ -110,7 +110,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     wait_until { current_path == resource_path(domain_id: snops(:one).domain.id, resource_id: snops(:one).resource.id) }
 
     # Click to snop about that URL
-    click_link("Snop about " + url)
+    click_link(I18n.t :snop_about_this)
 
     # The URI field should be filled in with
     assert_equal find_field('Uri').value, url
@@ -165,7 +165,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert_equal root_path, current_path
 
     # Now the user want's to click on the list view
-    click_link("List View")
+    click_link(I18n.t :list_view)
 
     # Now the user want's to click on a snop
     click_link(snops(:one).title)
@@ -222,7 +222,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
 #    wait_until { current_path == root_path }
 #
 #    # Now the user want's to click on the list view
-#    click_link("List View")
+#    click_link(I18n.t :list_view)
 #
 #    # Now the user want's to click on a snop
 #    click_link(snops(:one).title)
