@@ -59,7 +59,7 @@
 
     <%# Twitter Button %>
     <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="<%=t :snopsize_hashtag %>" data-text="<%=h get_snop_tweet_content(snop) %>" data-url="<%= url_for(snop) %>">Tweet</a>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="<%=t :snopsize_hashtag %>" data-text="<%=h get_snop_tweet_content(snop) %>" data-url="<%= snop_url(snop) %>">Tweet</a>
 
   <% end %>
 <% end %>
