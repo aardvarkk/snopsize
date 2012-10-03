@@ -1,15 +1,32 @@
 module ApplicationHelper
-  # Get the snop content in single string for passed in snop.
-  def get_snop_content(snop)
+
+  # Get tweet content in single string for passed in snop.
+  def get_snop_tweet_content(snop)
+    
+    # get the allowable length for the title, which will be:
+    # 140 - length of hashtag - length of link - length of spaces (2)
+    # the link length of 19 comes from twitter's auto-shortening
+
+    # Assuming only a hashtag -- the hashtag itself minus a space and a # char
+    title_len = 140 - I18n.t(:snopsize_hashtag).length - 2
+
+    # If there's a link...
+    # Subtract another 20 for the link length and 1 for the space before
+    if snop.domain and snop.resource
+      title_len -= 21;
+    end
+
     # Create a tweetable string by combining title, all points, and summary
     # For now, we'll just put a space in between them all.
-    snopcontent = snop.title
-    snopcontent += ' ' + snop.point1 unless snop.point1.blank?
-    snopcontent += ' ' + snop.point2 unless snop.point2.blank?
-    snopcontent += ' ' + snop.point3 unless snop.point3.blank?
-    snopcontent += ' ' + snop.summary unless snop.summary.blank?
-    #snopcontent += ' ' + snop.domain.uri + snop.resource.uri
-    snopcontent.truncate(140)
+    snopcontent = snop.title.truncate(title_len);
+
+    # Add a URL if there is one
+    if snop.domain and snop.resource
+      snopcontent += " " + snop.domain.uri + snop.resource.uri
+    end
+
+    return snopcontent
+    
   end
 
   # Has the current user favourited the passed in snop?
