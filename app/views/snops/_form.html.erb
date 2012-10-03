@@ -1,3 +1,6 @@
+<% fieldsize = 30  %>
+<% maxlen    = 256 %>
+
 <%= form_for(@snop) do |f| %>
   <% if @snop.errors.any? %>
     <div id="error_explanation">
@@ -13,27 +16,27 @@
   
   <div class="field">
     <%= f.label :uri %><br />
-    <%= f.text_field :uri, value: @default_uri %>
+    <%= f.text_field :uri, size: fieldsize, value: @default_uri %>
   </div>
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, size: fieldsize, maxlength: maxlen %>
   </div>
   <div class="field">
     <%= f.label :point1 %><br />
-    <%= f.text_field :point1 %>
+    <%= f.text_field :point1, size: fieldsize, maxlength: maxlen %>
   </div>
   <div class="field">
     <%= f.label :point2 %><br />
-    <%= f.text_field :point2 %>
+    <%= f.text_field :point2, size: fieldsize, maxlength: maxlen %>
   </div>
   <div class="field">
     <%= f.label :point3 %><br />
-    <%= f.text_field :point3 %>
+    <%= f.text_field :point3, size: fieldsize, maxlength: maxlen %>
   </div>
   <div class="field">
     <%= f.label :summary %><br />
-    <%= f.text_field :summary %>
+    <%= f.text_field :summary, size: fieldsize, maxlength: maxlen %>
   </div>
   <div class="field">
     <%= f.label :Category %><br />

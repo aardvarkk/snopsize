@@ -7,25 +7,13 @@ module ApplicationHelper
     # 140 - length of hashtag - length of link - length of spaces (2)
     # the link length of 19 comes from twitter's auto-shortening
 
-    # Assuming only a hashtag -- the hashtag itself minus a space and a # char
-    title_len = 140 - I18n.t(:snopsize_hashtag).length - 2
-
-    # If there's a link...
-    # Subtract another 20 for the link length and 1 for the space before
-    if snop.domain and snop.resource
-      title_len -= 21;
-    end
+    # Title length is 140 max minus hashtag length minus link shortened length
+    # Also subtract 3 for the 2 spaces and the hashtag character itself
+    title_len = 140 - I18n.t(:snopsize_hashtag).length - 20 - 3
 
     # Create a tweetable string by combining title, all points, and summary
     # For now, we'll just put a space in between them all.
-    snopcontent = snop.title.truncate(title_len);
-
-    # Add a URL if there is one
-    if snop.domain and snop.resource
-      snopcontent += " " + snop.domain.uri + snop.resource.uri
-    end
-
-    return snopcontent
+    snopcontent = snop.title.truncate(title_len) + " " + snop_url(snop)
     
   end
 
