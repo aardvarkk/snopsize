@@ -3,17 +3,10 @@ module ApplicationHelper
   # Get tweet content in single string for passed in snop.
   def get_snop_tweet_content(snop)
     
-    # get the allowable length for the title, which will be:
-    # 140 - length of hashtag - length of link - length of spaces (2)
-    # the link length of 19 comes from twitter's auto-shortening
-
     # Title length is 140 max minus hashtag length minus link shortened length
     # Also subtract 3 for the 2 spaces and the hashtag character itself
     title_len = 140 - I18n.t(:snopsize_hashtag).length - 20 - 3
-
-    # Create a tweetable string by combining title, all points, and summary
-    # For now, we'll just put a space in between them all.
-    snopcontent = snop.title.truncate(title_len) + " " + snop_url(snop)
+    snopcontent = snop.title.truncate(title_len)
     
   end
 
