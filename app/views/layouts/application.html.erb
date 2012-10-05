@@ -31,15 +31,15 @@
 
   <%# User navigation at the top of the page %>
   <div id="user_nav">
-  <%= link_to_unless_current 'Create a Snop', new_snop_path %> |
+  <%= link_to 'Create a Snop', new_snop_path %> |
   <% if user_signed_in? %>
-    <%= link_to_unless_current "My Snops", current_user %> | 
-    <%= link_to_unless_current "My Favourites", user_favourites_path(current_user) %> | 
+    <%= link_to "My Snops", current_user %> | 
+    <%= link_to "My Favourites", user_favourites_path(current_user) %> | 
     Signed in as <%= current_user.username %> | 
-    <%= link_to_unless_current "Sign Out", destroy_user_session_path, :method => :delete %>
+    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
   <% else %>
-    <%= link_to_unless_current "Sign In", new_user_session_path %> | 
-    <%= link_to_unless_current "Sign Up", new_user_registration_path %>
+    <%= link_to "Sign In", new_user_session_path %> | 
+    <%= link_to "Sign Up", new_user_registration_path %>
   <% end %>
   </div>
 
@@ -60,9 +60,9 @@
 <div id="bottom_nav">
 <br/>
   <center>
-    <%= link_to_unless_current "Home", root_path %> | 
-    <%= link_to_unless_current "About", about_path %> | 
-    <%#= link_to_unless_current "Help", help_path %><!-- | -->
+    <%= link_to "Home", root_path %> | 
+    <%= link_to "About", about_path %> | 
+    <%#= link_to "Help", help_path %><!-- | -->
     <%= mail_to('support@snopsize.com', 'Contact', subject: 'Support Question', encode: 'javascript') %>
   </center>
 </div>
