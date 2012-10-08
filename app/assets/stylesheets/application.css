@@ -42,3 +42,13 @@
 {
   border-top: thin solid #000000;
 }
+
+/* For word wrapping in the table */
+#snops
+{
+  table-layout: fixed;
+}
+
+#snops td {
+  word-wrap: break-word;
+}
