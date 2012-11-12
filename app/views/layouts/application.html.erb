@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Snopsize</title>
+  <meta name="description" content="Snopsize ..." />
+  <meta name="keywords" content="Snopsize">
+
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="image_src" href="snopsize.jpg" />
+
+  <link rel="stylesheet" type="text/css" href="css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="css/snopsize.css" />
+  <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application", controller_name if Snopsize::Application.assets.find_asset("#{controller.controller_name}.js")%>
   <%= csrf_meta_tags %>
