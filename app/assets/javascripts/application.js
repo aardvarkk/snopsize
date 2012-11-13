@@ -95,12 +95,22 @@ function changeToListView()
 {
   $(".snops_list_view").show();
   $("#snops_browse_view").hide();
+
+  $(".snopflow").addClass(".snopflow off");
+  $(".snopflow off").removeClass(".snopflow");
+  $(".listview off").addClass(".listview");
+  $(".listview").removeClass(".listview off");
 }
 
 function changeToBrowseView()
 {
   $(".snops_list_view").hide();
   $("#snops_browse_view").show();
+
+  $(".listview").addClass(".listview off");
+  $(".listview off").removeClass(".listview");
+  $(".snopflow off").addClass(".snopflow");
+  $(".snopflow").removeClass(".snopflow off");
 }
 
 function reloadClickHandlers()

@@ -76,8 +76,7 @@
           <%= submit_tag("", name: nil, class: "submit") %>
         <% end %>        
         <ul id="toggle">
-          <li class="snopflow"><a href="#">Snop Flow</a></li>
-          <li class="listview off"><a href="#">List View</a></li>
+          <%= yield :list_flow_buttons %>
         </ul>
       </div><!--close tools-->
   
