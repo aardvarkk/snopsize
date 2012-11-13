@@ -38,11 +38,6 @@
   display: none;
 }
 
-#bottom_nav
-{
-  border-top: thin solid #000000;
-}
-
 /* For word wrapping in the table */
 #snops
 {

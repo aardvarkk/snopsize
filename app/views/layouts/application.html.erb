@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>Snopsize</title>
@@ -18,8 +19,8 @@
   <%= javascript_include_tag "application", controller_name if Snopsize::Application.assets.find_asset("#{controller.controller_name}.js")%>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
+<body>
   <%# Scripts for Facebook Like Button %>
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
@@ -35,49 +36,64 @@
   <br>
 
   <%# This was recommended by devise %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <!-- <p class="notice"><%= notice %></p> -->
+  <!-- <p class="alert"><%= alert %></p> -->
 
-  <%# Title %>
-  <h1><%= link_to "Snopsize", root_path %></h1>
+  <div class="left">
+    <header>
+      <div id="menu">
+        <%= link_to image_tag("snopsize.png"), root_path %>
+        <nav>
+          <ul id="navigation">
+            <li><%= link_to 'Create a Snop', new_snop_path, class: "create" %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "My Snops", current_user, class: "mysnops" %></li>
+              <li><%= link_to "Favourite Snops", user_favourites_path(current_user), class: "favourite" %></li>
+              <li><%= link_to "Sign Out, " + current_user.username, destroy_user_session_path, method: :delete, class: "signin" %></li>
+            <% else %>
+              <li><%= link_to "Sign In", new_user_session_path, class: "signin" %> </li>
+            <% end %>
+          </ul>
 
-  <%# User navigation at the top of the page %>
-  <div id="user_nav">
-  <%= link_to 'Create a Snop', new_snop_path %> |
-  <% if user_signed_in? %>
-    <%= link_to "My Snops", current_user %> | 
-    <%= link_to "My Favourites", user_favourites_path(current_user) %> | 
-    Signed in as <%= current_user.username %> | 
-    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign In", new_user_session_path %> | 
-    <%= link_to "Sign Up", new_user_registration_path %>
-  <% end %>
-  </div>
+          <% unless user_signed_in? %>
+            <div class="undernav">          
+              <%= link_to "Sign Up Now!", new_user_registration_path, class: "largebutton" %>
+            </div><!--close undernav; this box is required to push the button over to line up correctly-->
+          <% end %>
 
-  <%# Search form %>
-  <%= form_tag("/search", :method => "get") do %>
-    <%= label_tag(:q, "Search for:") %>
-    <%= select_tag(:type, options_for_select([['Keyword', 'keyword'], ['URL', 'url'], ['User', 'user']], params[:type])) %>
-    <%= text_field_tag(:q) %>
-    <%# set the name to 'nil' to avoid the commit = Search parameter from being passed %>
-    <%= submit_tag("Search", :name => nil) %>
-  <% end %>
+        </nav>
+      </div><!--close menu-->
+    </header>
+  </div><!--close left-->
 
-  <%# Content %>
-  <%= yield %>
+  <section>
+    <div class="main">
+      <div class="tools">
+        <%# Search form %>
+        <%= form_tag("/search", method: "get") do %>
+          <%= label_tag(:q, "Search:") %>
+          <%= select_tag(:type, options_for_select([['Keyword', 'keyword'], ['URL', 'url'], ['User', 'user']], params[:type]), class: "drop", id: "type", name: "type") %>
+          <%= text_field_tag(:q, "Enter words to search...", class: "search") %>
+          <%# set the name to 'nil' to avoid the commit = Search parameter from being passed %>
+          <%= submit_tag("", name: nil, class: "submit") %>
+        <% end %>
+      </div><!--close tools-->
+  
+      <%# Content %>
+      <%= yield %>
 
-<%# General Site Navigation %>
-<br/>
-<div id="bottom_nav">
-<br/>
-  <center>
-    <%= link_to "Home", root_path %> | 
-    <%= link_to "About", about_path %> | 
-    <%#= link_to "Help", help_path %><!-- | -->
-    <%= mail_to('support@snopsize.com', 'Contact', subject: 'Support Question', encode: 'javascript') %>
-  </center>
-</div>
+    <%# Footer %>
+    <footer>
+      <div id="footer">
+        <%= link_to "About Snopsize", about_path %>
+        <%= mail_to('support@snopsize.com', 'Contact', subject: 'Support Question', encode: 'javascript') %>
+        <a href="http://twitter.com/snopsize" target="_blank">Twitter</a>
+        <a href="#">Dev by Taulabs</a>
+      </div><!--close footer-->
+    </footer>
+
+    </div><!--close main-->
+  </section>
 
 </body>
 </html>
