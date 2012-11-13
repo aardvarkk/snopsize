@@ -284,6 +284,27 @@ input.button.fav {
 input.button.fav:hover { background-color: #FACF1C}	
 
 
+input.buttons {
+background-color: #F9DA3A;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+padding: 6px 10px;
+color: #4d4d4d;
+border: none;
+font: bold 18px/55px 'Bitter', 'Helvetica Neue', Helvetica,Arial,sans-serif; 
+cursor: pointer;
+-webkit-transition: all .25s ease;
+-moz-transition: all .25s ease;
+-o-transition: all .25s ease;
+transition: all .25s ease;
+}
+
+input.buttons:hover {
+background-color: #FACF1C;
+text-decoration: none;
+}
+
+
 select.drop {
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
@@ -494,7 +515,7 @@ img.twitteravatar {
 label.above {display: block; margin-bottom: 3px;}
 .form, .text {width: 440px; float: left;}
 .form input {width: 100%; margin-bottom: 30px;}	
-
+.form input.buttons {width: auto}
 	
 .callout {
 	background-color: #4d4d4d;
