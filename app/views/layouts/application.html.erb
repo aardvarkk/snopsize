@@ -51,16 +51,11 @@
               <li><%= link_to "Favourite Snops", user_favourites_path(current_user), class: "favourite" %></li>
               <li><%= link_to "Sign Out, " + current_user.username, destroy_user_session_path, method: :delete, class: "signin" %></li>
             <% else %>
-              <li><%= link_to "Sign In", new_user_session_path, class: "signin" %> </li>
+              <li><%= link_to "Sign In", new_user_session_path, class: "signin" %></li>
             <% end %>
           </ul>
 
-          <% unless user_signed_in? %>
-            <div class="undernav">          
-              <%= link_to "Sign Up Now!", new_user_registration_path, class: "largebutton" %>
-            </div><!--close undernav; this box is required to push the button over to line up correctly-->
-          <% end %>
-
+          <%= yield :sign_up_button %>
         </nav>
       </div><!--close menu-->
     </header>
