@@ -7,29 +7,6 @@
   <% else %>
 
     <p>
-      <b>User:</b>
-      <%= link_to snop.user.username, snop.user %>
-    </p>
-
-    <p>
-      <b>Domain:</b>
-      <% unless snop.domain.nil? %>
-        <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
-      <%# External link %>
-      <%= link_to image_tag("Icon_External_Link.png"), snop.domain.uri + '/', target: '_blank' %>
-      <% end %>
-    </p>
-
-    <p>
-      <b>Resource:</b>
-      <% unless snop.domain.nil? || snop.resource.nil? %>
-        <%= link_to "See all snops for article " + snop.domain.uri + snop.resource.uri, resource_path(domain_id: snop.domain.id, resource_id: snop.resource.id) %>
-      <%# External link %>
-      <%= link_to image_tag("Icon_External_Link.png"), snop.domain.uri + snop.resource.uri, target: '_blank' %>
-      <% end %>
-    </p>
-
-    <p>
       <b>Title:</b>
       <%= snop.title %>
     </p>
@@ -53,13 +30,6 @@
       <b>Summary:</b>
       <%= snop.summary %>
     </p>
-
-    <%# Facebook Button %>
-    <div class="fb-like" data-href="<%= like_snop_url(snop) %>" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div> 
-
-    <%# Twitter Button %>
-    <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="<%=t :snopsize_hashtag %>" data-text="<%=h get_snop_tweet_content(snop) %>" data-url="<%= snop_url(snop) %>">Tweet</a>
 
   <% end %>
 <% end %>
