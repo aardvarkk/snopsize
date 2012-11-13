@@ -532,3 +532,7 @@ label.above {display: block; margin-bottom: 3px;}
 #footer a {
 	margin-right: 35px;
 }
+
+.search_form {
+	display: inline;
+}

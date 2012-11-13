@@ -69,13 +69,17 @@
     <div class="main">
       <div class="tools">
         <%# Search form %>
-        <%= form_tag("/search", method: "get") do %>
+        <%= form_tag("/search", method: "get", class: "search_form") do %>
           <%= label_tag(:q, "Search:") %>
           <%= select_tag(:type, options_for_select([['Keyword', 'keyword'], ['URL', 'url'], ['User', 'user']], params[:type]), class: "drop", id: "type", name: "type") %>
           <%= text_field_tag(:q, nil, placeholder: "Enter words to search...", class: "search") %>
           <%# set the name to 'nil' to avoid the commit = Search parameter from being passed %>
           <%= submit_tag("", name: nil, class: "submit") %>
-        <% end %>
+        <% end %>        
+        <ul id="toggle">
+          <li class="snopflow"><a href="#">Snop Flow</a></li>
+          <li class="listview off"><a href="#">List View</a></li>
+        </ul>
       </div><!--close tools-->
   
       <%# Content %>
