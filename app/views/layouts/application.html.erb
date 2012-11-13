@@ -73,7 +73,7 @@
         <%= form_tag("/search", method: "get") do %>
           <%= label_tag(:q, "Search:") %>
           <%= select_tag(:type, options_for_select([['Keyword', 'keyword'], ['URL', 'url'], ['User', 'user']], params[:type]), class: "drop", id: "type", name: "type") %>
-          <%= text_field_tag(:q, "Enter words to search...", class: "search") %>
+          <%= text_field_tag(:q, nil, placeholder: "Enter words to search...", class: "search") %>
           <%# set the name to 'nil' to avoid the commit = Search parameter from being passed %>
           <%= submit_tag("", name: nil, class: "submit") %>
         <% end %>
