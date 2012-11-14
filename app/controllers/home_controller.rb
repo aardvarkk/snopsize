@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
 
     # Provide some default values
-    params[:browse_view] ||= false
+    params[:browse_view] ||= true
     params[:snop] ||= nil
 
     # Set variables

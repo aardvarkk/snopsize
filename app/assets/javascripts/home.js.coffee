@@ -2,9 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-# Hide the browse view until the user request it.
 jQuery -> 
-  $("#snops_list_view").hide();
+  
   $('#snops').dataTable( {
     "bJQueryUI": true,
     "bFilter": false, 
@@ -23,4 +22,13 @@ jQuery ->
         {"bVisible": false}
         ]
     });
+
+  if browseView
+    changeToBrowseView()
+    alert 'Browse View'
+  else
+    changeToListView()
+    alert 'List View'
+  end
+
   
