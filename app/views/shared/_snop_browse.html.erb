@@ -1,7 +1,7 @@
 <%# A snop browse view shows a full snop view along with buttons to switch between them %>
 <%# current_snop = The snop to show %>
 <%# snop_list = The snops to switch between %>
-<div id="buttons">
+<%#<div id="buttons">
   <div id="prev_button">
     <button id="prev" type="button">&lt</button>
   </div>
@@ -9,7 +9,7 @@
   <div id="next_button">
     <button id="next" type="button">&gt</button>
   </div>  
-</div>
+</div> %>
 
 <div id="snop_container">
   <% snop_list.each do |snop| %>
@@ -17,7 +17,7 @@
 
     <div id="<%= "snop_" + snop.id.to_s %>" class="<%= @class %>">
       <%= render :partial => "shared/snopfull", locals: {snop: snop} %>
-
+<!--
       <% if user_signed_in? %>
         <%# Fave/Unfave Button %>
         <% @fave_btn_id = "fave_" + snop.id.to_s %>
@@ -43,7 +43,7 @@
           <% end %>
         </div>
 
-      <% end %>
+      <% end %> -->
 
     </div>
   <% end %>
