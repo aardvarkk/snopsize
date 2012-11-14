@@ -18,8 +18,8 @@ protected
       # switch to the browse view
       title_link = link_to snop.title, domain_path(id: @domain_id, snop: snop, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]), remote: true
       [
-        user_link,
         title_link,
+        user_link,
         domain_link,
         time_ago_in_words(snop.created_at) + " ago",
         ""

@@ -15,10 +15,10 @@ jQuery ->
     "sAjaxSource": $("#snops").data("source")
     "aoColumns": [
         null,
+        { "sWidth": "75px" },
         null,
-        null,
-        null,
-        {"bVisible": false}
+        { "sWidth": "100px" },
+        { "bVisible": false }
         ]
     });
 

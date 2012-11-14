@@ -462,6 +462,7 @@ ul#toggle li:hover {
 	margin-bottom: 25px;
 }
 
+/* Only the browse view has padding. The list view table goes to the edge */
 #snops_browse_view {
 	padding: 25px;
 }
@@ -559,4 +560,23 @@ label.remember {margin-bottom: 30px; vertical-align: top}
 
 .search_form {
 	display: inline;
+}
+
+th {
+	background: #4d4d4d;
+	color: #fff;
+	font: bold 14px/18px 'Bitter', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+	padding: 18px;
+}
+
+td {
+	padding: 18px;
+	font: 11px/14px Helvetica,Arial,sans-serif; 
+	color: #4D4D4D;	
+}
+
+.snop_title {
+	color: #4D4D4D; 
+	font: bold 14px/20px Helvetica, Arial, sans-serif; 
+	margin-bottom: 5px;
 }

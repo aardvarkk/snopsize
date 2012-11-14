@@ -11,18 +11,21 @@ protected
   # Get the JSON for the table on the home page
   def get_data
     @all_snops.map do |snop|
-      user_link = link_to snop.user.username, snop.user
-      domain_link = link_to snop.domain.uri, snop.domain unless snop.domain.nil?
+      
       # The title will call the same path, but just the JS version, allowing us to
       # switch to the browse view
-      title_link = link_to snop.title, root_path(snop: snop, browse_view: true), remote: true
+      title_link = '<div class="snop_title">' + link_to(snop.title, root_path(snop: snop, browse_view: true), remote: true) + '</div>'
+      user = snop.user.username
+      domain = snop.domain.uri unless snop.domain.nil?      
+
       [
-        user_link,
         title_link,
-        domain_link,
+        user,
+        domain,
         time_ago_in_words(snop.created_at) + " ago",
         ""
       ]
+
     end
   end
 end
