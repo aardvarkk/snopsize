@@ -25,10 +25,8 @@ jQuery ->
 
   if browseView
     changeToBrowseView()
-    alert 'Browse View'
   else
     changeToListView()
-    alert 'List View'
   end
 
   

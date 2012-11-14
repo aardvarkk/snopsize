@@ -12,10 +12,10 @@
 <%= render partial: 'shared/snop_all_views', locals: {data_source: user_favourites_path(format: "json"), list_view_path: user_favourites_path, browse_view_path: user_favourites_path(id: @user.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>   
 
 <%# Mass snop editing %>
-<div class="snops_list_view">
-  <% if user_signed_in? && @user == current_user %>
+<% if user_signed_in? && @user == current_user %>
+  <div class="snops_list_view">
     <button id="UnfavouriteButton" type="button" disabled="disabled" title="Unfavourite snops.">Unfavourite</button>
 
     <%= select_tag "CategoriesSelect", "<option value=\"Select Category\">Select Category</option><option value=\"\">Uncategorized</option>".html_safe + options_from_collection_for_select(current_user.user_categories, :id, :name), disabled: true %>
-  <% end %>
-</div>
+  </div>
+<% end %>
