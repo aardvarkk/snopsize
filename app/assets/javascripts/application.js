@@ -82,28 +82,6 @@ function reloadSocialMediaButtons()
   twttr.widgets.load();
 }
 
-function enableButtons()
-{
-  var next = $(".current_snop").next();
-  var prev = $(".current_snop").prev();
-
-  // Should this button be disabled?
-  if (next.attr("id") === undefined) {
-    alert('Disabling next')
-    $('#next').click(function(e) {
-      e.preventDefault();
-    });
-  }
-  
-  // Should this button be disabled?
-  if (prev.attr("id") === undefined) {
-    alert('Disabling prev')
-    $('#prev').click(function(e) {
-      e.preventDefault();
-    });
-  }
-}
-
 function changeToListView()
 {
   $(".snops_list_view").show();
@@ -128,34 +106,45 @@ function changeToBrowseView()
 
 function reloadClickHandlers()
 {
-  enableButtons();
+  // Assume nothing is clickable
+  $('#prev').off('click')
+  $('#next').off('click')
 
-  // Click handler for the previous button in browse view
-  $("#prev").click(function() 
-  {
-    var prev_snop = $(".current_snop").prev();
-    var current_snop = $(".current_snop");
-    current_snop.removeClass("current_snop");
-    current_snop.addClass("hidden_snops");
-    prev_snop.removeClass("hidden_snops");
-    prev_snop.addClass("current_snop");
-    $(prev_snop).css({'margin-left':'-200%'}).animate({'margin-left':'0'});
-    reloadSocialMediaButtons();  
-    enableButtons();
-  });
+  // Check if there's somewhere to go, and if so,
+  // then enable a click handler
+  var prev = $(".current_snop").prev();
+  var next = $(".current_snop").next();
 
-  // Click handler for the next button in browse view
-  $("#next").click(function() {
-    var next_snop = $(".current_snop").next();
-    var current_snop = $(".current_snop");
-    current_snop.removeClass("current_snop");
-    current_snop.addClass("hidden_snops");
-    next_snop.removeClass("hidden_snops");
-    next_snop.addClass("current_snop");
-    $(next_snop).css({'margin-left':'100%'}).animate({'margin-left':'0'});  
-    reloadSocialMediaButtons();  
-    enableButtons();
-  });
+  // Should this button be disabled?
+  if (prev.attr("id") !== undefined) {
+    $("#prev").on('click', function() 
+    {
+      var prev_snop = $(".current_snop").prev();
+      var current_snop = $(".current_snop");
+      current_snop.removeClass("current_snop");
+      current_snop.addClass("hidden_snops");
+      prev_snop.removeClass("hidden_snops");
+      prev_snop.addClass("current_snop");
+      $(prev_snop).css({'margin-left':'-200%'}).animate({'margin-left':'0'});
+      reloadSocialMediaButtons();  
+      reloadClickHandlers();
+    });    
+  }
+  
+  // Should this button be disabled?
+  if (next.attr("id") !== undefined) {
+      $("#next").on('click', function() {
+      var next_snop = $(".current_snop").next();
+      var current_snop = $(".current_snop");
+      current_snop.removeClass("current_snop");
+      current_snop.addClass("hidden_snops");
+      next_snop.removeClass("hidden_snops");
+      next_snop.addClass("current_snop");
+      $(next_snop).css({'margin-left':'100%'}).animate({'margin-left':'0'});  
+      reloadSocialMediaButtons();  
+      reloadClickHandlers();
+    });
+  }
 }
 
 $(document).ready(function() 
