@@ -87,8 +87,21 @@ function enableButtons()
   var next = $(".current_snop").next();
   var prev = $(".current_snop").prev();
 
-  $('#next').attr("disabled", next.attr("id") === undefined);
-  $('#prev').attr("disabled", prev.attr("id") === undefined);
+  // Should this button be disabled?
+  if (next.attr("id") === undefined) {
+    alert('Disabling next')
+    $('#next').click(function(e) {
+      e.preventDefault();
+    });
+  }
+  
+  // Should this button be disabled?
+  if (prev.attr("id") === undefined) {
+    alert('Disabling prev')
+    $('#prev').click(function(e) {
+      e.preventDefault();
+    });
+  }
 }
 
 function changeToListView()
