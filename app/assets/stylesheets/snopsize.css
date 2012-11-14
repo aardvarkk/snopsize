@@ -215,6 +215,18 @@ ul#navigation li a.signin {background-position: 25px -225px; }
 	padding: 15px 0px 35px 0px;
 }
 
+.tools2 {
+	padding: 15px 0px 35px 0px;
+	position: relative;
+	top: 100px;
+}
+
+.tools3 {
+	padding: 15px 0px 35px 0px;
+	position: relative;
+	top: -87px;
+}
+
 .main {
 	float: right;
 	width: 800px;
@@ -263,7 +275,6 @@ input.button {
 	color: #000;
 	font: bold 14px/20px 'Helvetica Neue', Helvetica,Arial,sans-serif;
 	cursor: pointer;
-	margin-top: 10px;
 	}
 	
 input.button:hover { background-color: #F9DA3A}	
@@ -511,6 +522,12 @@ img.twitteravatar {
 .divider {border-bottom: 1px solid #ccc;
 	margin-bottom: 20px;}	
 	
+.divider2 {
+	position: relative;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
+	top: -90px;
+}
 	
 label.above {display: block; margin-bottom: 3px;}
 label.remember {margin-bottom: 30px; vertical-align: top}
@@ -556,5 +573,9 @@ label.remember {margin-bottom: 30px; vertical-align: top}
 }
 
 .search_form {
+	display: inline;
+}
+
+.new_user_category {
 	display: inline;
 }

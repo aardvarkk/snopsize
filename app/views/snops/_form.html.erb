@@ -14,49 +14,29 @@
     </div>
   <% end %>
   
-  <div class="field">
-    <%= f.label :uri %><br />
-    <%= f.text_field :uri, size: fieldsize, value: @default_uri %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title, size: fieldsize, maxlength: maxlen %>
-  </div>
-  <div class="field">
-    <%= f.label :point1 %><br />
-    <%= f.text_field :point1, size: fieldsize, maxlength: maxlen %>
-  </div>
-  <div class="field">
-    <%= f.label :point2 %><br />
-    <%= f.text_field :point2, size: fieldsize, maxlength: maxlen %>
-  </div>
-  <div class="field">
-    <%= f.label :point3 %><br />
-    <%= f.text_field :point3, size: fieldsize, maxlength: maxlen %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br />
-    <%= f.text_field :summary, size: fieldsize, maxlength: maxlen %>
-  </div>
-  <div class="field">
-    <%= f.label :Category %><br />
-    <span id="categories"><%= collection_select :user_category, :id, current_user.user_categories, :id, :name, :include_blank => (t :uncategorized) %></span>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.text_field :uri, size: fieldsize, value: @default_uri, class: "url", placeholder:"Source URL – http://" %>
+    <%= f.text_field :title, size: fieldsize, maxlength: maxlen, class: "snoptitle", placeholder:"Enter Snop title..." %>
+    <%= f.text_area :point1, size: fieldsize, maxlength: maxlen, class: "field one", rows: "3", placeholder: "Add your first point or note of interest... (256 character limit)" %>
+    <%= f.text_area :point2, size: fieldsize, maxlength: maxlen, class: "field two", rows: "3", placeholder: "Add your second point... (256 character limit)" %>
+    <%= f.text_area :point3, size: fieldsize, maxlength: maxlen, class: "field three", rows: "3", placeholder: "Add your third point... (256 character limit)" %>
+    <%= f.text_area :summary, size: fieldsize, maxlength: maxlen, class: "field summary", rows: "3", placeholder: "Write a concise summary of the article... (256 character limit)" %>
+        
+    <div class="tools2">
+      <%= f.submit nil, class: "buttons" %>
+    </div>
 <% end %>
 
-<hr>
+<div class="tools3">
+  <label>File under:</label>
+  <span id="categories"><%= collection_select :user_category, :id, current_user.user_categories, :id, :name, {:include_blank => (t :uncategorized)}, {class: "drop push", id: "type", name: "type"} %></span>
 
-<%# User Category form %>
-<% @user_category = UserCategory.new %>
-<%= form_for(@user_category, remote: true) do |f| %>
-  <div class="field">
-    <%= f.label "New Category Name:" %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Create New Category" %>
-  </div>
-<% end %>
+  <%# User Category form %>
+  <% @user_category = UserCategory.new %>
+  <%= form_for(@user_category, remote: true) do |f| %>
+    <%= f.label "New Category:" %> 
+    <%= f.text_field :name, placeholder: "Enter category name...", size: 0 %>
+    <%= f.submit "Create Category", class: "button"%>
+  <% end %>
+</div><!--close tools-->
+
+<div class="divider2"></div>
