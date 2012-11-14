@@ -462,10 +462,8 @@ ul#toggle li:hover {
 	
 }	
 		
-
 .container {
 	background-color: #fff;
-	padding: 25px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	-webkit-box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, .3);
@@ -473,6 +471,11 @@ ul#toggle li:hover {
 	overflow: hidden;
 	clear: both;
 	margin-bottom: 25px;
+}
+
+/* Only the browse view has padding. The list view table goes to the edge */
+#snops_browse_view {
+	padding: 25px;
 }
 
 .resource {
@@ -578,4 +581,23 @@ label.remember {margin-bottom: 30px; vertical-align: top}
 
 .new_user_category {
 	display: inline;
+}
+
+th {
+	background: #4d4d4d;
+	color: #fff;
+	font: bold 14px/18px 'Bitter', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+	padding: 18px;
+}
+
+td {
+	padding: 18px;
+	font: 11px/14px Helvetica,Arial,sans-serif; 
+	color: #4D4D4D;	
+}
+
+.snop_title {
+	color: #4D4D4D; 
+	font: bold 14px/20px Helvetica, Arial, sans-serif; 
+	margin-bottom: 5px;
 }

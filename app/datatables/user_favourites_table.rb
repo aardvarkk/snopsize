@@ -37,8 +37,8 @@ protected
       {
         "DT_RowId" => row_id,
         "DT_RowClass" => "rowClass",
-        "0" => user_link,
-        "1" => title_link,
+        "0" => title_link,
+        "1" => user_link,
         "2" => domain_link,
         "3" => time_ago_in_words(snop.created_at) + " ago",
         "4" => category
