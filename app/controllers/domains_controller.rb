@@ -3,9 +3,9 @@ class DomainsController < ApplicationController
 
   # GET /domains/:id
   def show
+    
     # Default values
-    params[:browse_view] ||= false
-    params[:snop] ||= nil
+    params[:browse_view] ||= "true"
 
     # Get the domain and all the snops for it
     @domain = Domain.find(params[:id])

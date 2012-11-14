@@ -5,8 +5,7 @@ class ResourcesController < ApplicationController
   def show
 
     # Default values
-    params[:browse_view] ||= false
-    params[:snop] ||= nil
+    params[:browse_view] ||= "true"
 
     # Get the resrouce and all the snops for it
     @resource = Resource.find(params[:resource_id])

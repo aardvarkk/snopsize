@@ -11,9 +11,6 @@ class SnopsController < ApplicationController
   # GET /snops/new
   # GET /snops/new.json
   def new
-    # Default parameters
-    params[:uri] ||= nil
-
     # Set variables
     @snop = Snop.new
     @default_uri = params[:uri]

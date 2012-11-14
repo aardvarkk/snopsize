@@ -2,8 +2,7 @@ class HomeController < ApplicationController
   def index
 
     # Provide some default values
-    params[:browse_view] ||= true
-    params[:snop] ||= nil
+    params[:browse_view] ||= "true"
 
     # Set variables
     @snops = Snop.where(deleted: false, is_ad: false).order("popularity DESC").limit(5).to_a

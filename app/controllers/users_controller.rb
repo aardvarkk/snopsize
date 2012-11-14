@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def show
 
     # Default values
-    params[:browse_view] ||= false
+    params[:browse_view] ||= "false"
 
     # Get the user specified
     @user = User.find(params[:id])
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     end
 
     # Default values
-    params[:browse_view] ||= false
+    params[:browse_view] ||= "false"
 
     # Get the user specified
     @user = User.find(params[:id])

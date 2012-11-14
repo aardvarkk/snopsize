@@ -1,5 +1,4 @@
-
-<% if params[:browse_view] %>
+<% if params[:browse_view] == "true" %>
   $("#snops_browse_view").html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop, snop_list: @snops, close_path: resource_path} %>");
   changeToBrowseView();
   reloadClickHandlers();

@@ -7,9 +7,7 @@ class SearchController < ApplicationController
   def search
   	
     # Default params
-    params[:browse_view] ||= false
-    params[:snop] ||= nil
-    @results = nil
+    params[:browse_view] ||= "false"
 
   	# We're done if they didn't pass a search query
   	return if params[:q].blank?
