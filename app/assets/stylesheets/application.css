@@ -15,24 +15,6 @@
  *= require_tree .
  */
 
-#buttons
-{
-  width: 65px;
-  margin: 0 auto;
-}
-
-#prev_button
-{
-  float: left;
-}
-
-#snop_container
-{
-  white-space: nowrap;
-  text-align: center;
-  clear: both;
-}
-
 .hidden_snops
 {
   display: none;

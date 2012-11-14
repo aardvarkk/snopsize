@@ -5,31 +5,20 @@
   <% if snop.deleted? %>
     This snop has been deleted
   <% else %>
-
-    <p>
-      <b>Title:</b>
-      <%= snop.title %>
-    </p>
-
-    <p>
-      <b>Point1:</b>
-      <%= snop.point1 %>
-    </p>
-
-    <p>
-      <b>Point2:</b>
-      <%= snop.point2 %>
-    </p>
-
-    <p>
-      <b>Point3:</b>
-      <%= snop.point3 %>
-    </p>
-
-    <p>
-      <b>Summary:</b>
-      <%= snop.summary %>
-    </p>
-
+    <div class="title">
+      <h1><%= snop.title %></h1>
+    </div>
+    <div class="point one">
+      <p><%= snop.point1 %></p>
+    </div><!--close point-->
+    <div class="point two">
+      <p><%= snop.point2 %></p>
+    </div><!--close point-->
+    <div class="point three">
+      <p><%= snop.point3 %></p>
+    </div><!--close point-->
+    <div class="summary">
+      <p><%= snop.summary %></p>
+    </div>
   <% end %>
 <% end %>
