@@ -513,9 +513,10 @@ img.twitteravatar {
 	
 	
 label.above {display: block; margin-bottom: 3px;}
+label.remember {margin-bottom: 30px; vertical-align: top}
 .form, .text {width: 440px; float: left;}
 .form input {width: 100%; margin-bottom: 30px;}	
-.form input.buttons {width: auto}
+.form input.buttons {width: auto; margin-bottom: 5px;}
 	
 .callout {
 	background-color: #4d4d4d;
