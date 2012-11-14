@@ -1,29 +1,28 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="form">
+  <h1>Edit your Settings</h1>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+    <%= f.label :email, class: "above" %>
+    <%= f.email_field :email, placeholder: "Enter your email address..." %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+    <%= f.label "New Password (leave blank if you don't want to change it)", class: "above" %>
+    <%= f.password_field :password, :autocomplete => "off", placeholder: "Enter a new password..." %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <%= f.label "New Password confirmation", class: "above" %>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm your new password..." %>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+    <%= f.label "Current password (to confirm your changes)", class: "above" %> 
+    <%= f.password_field :current_password, placeholder: "Enter your current password..." %>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+    <%= f.submit "Update", class: "buttons" %>
+  <% end %>
 
-<%# Don't want to allow users to cancel accounts %>
-<%
-=begin %> <h3>Cancel my account</h3> %>
+  <%= link_to "Back", :back %>
+</div><!--close form-->       
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-<%
-=end %>
-
-<%= link_to "Back", :back %>
+<div class="callout">
+  <h2>Have a Question?<br />
+  <%= mail_to('info@snopsize.com', 'Email Us', subject: 'Email us', encode: 'javascript') %></h2>
+</div><!--close callout-->  
