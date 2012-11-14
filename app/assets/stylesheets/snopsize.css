@@ -451,10 +451,8 @@ ul#toggle li:hover {
 	
 }	
 		
-
 .container {
 	background-color: #fff;
-	padding: 25px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	-webkit-box-shadow:  0px 0px 5px 0px rgba(0, 0, 0, .3);
@@ -462,6 +460,10 @@ ul#toggle li:hover {
 	overflow: hidden;
 	clear: both;
 	margin-bottom: 25px;
+}
+
+#snops_browse_view {
+	padding: 25px;
 }
 
 .resource {
@@ -557,8 +559,4 @@ label.remember {margin-bottom: 30px; vertical-align: top}
 
 .search_form {
 	display: inline;
-}
-
-th {
-	background: #f00;
 }

@@ -5,7 +5,6 @@
 jQuery -> 
   
   $('#snops').dataTable( {
-    "bJQueryUI": true,
     "bFilter": false, 
     "bLengthChange": false,
     "bPaginate": false,

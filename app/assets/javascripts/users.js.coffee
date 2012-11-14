@@ -10,7 +10,6 @@ jQuery ->
   $('#snops').dataTable( {
     "bFilter": true, 
     "oLanguage": { "sSearch": "Filter:" }
-    "bJQueryUI": true,
     "aaSorting": [],
     "bProcessing": true,
     "bServerSide": true,
