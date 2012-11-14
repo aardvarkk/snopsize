@@ -84,24 +84,36 @@ function reloadSocialMediaButtons()
 
 function changeToListView()
 {
+  // Show the corresponding view
   $(".snops_list_view").show();
   $("#snops_browse_view").hide();
 
+  // Switch the flow/list button states
   $(".snopflow").addClass(".snopflow off");
   $(".snopflow off").removeClass(".snopflow");
   $(".listview off").addClass(".listview");
   $(".listview").removeClass(".listview off");
+
+  // Set visibility of next/prev buttons
+  $('#prev').css("visibility", "hidden");
+  $("#next").css("visibility", "hidden");
 }
 
 function changeToBrowseView()
 {
+  // Show the corresponding view
   $(".snops_list_view").hide();
   $("#snops_browse_view").show();
 
+  // Switch the flow/list button states
   $(".listview").addClass(".listview off");
   $(".listview off").removeClass(".listview");
   $(".snopflow off").addClass(".snopflow");
   $(".snopflow").removeClass(".snopflow off");
+
+  // Set visibility of next/prev buttons
+  $('#prev').css("visibility", "visible");
+  $("#next").css("visibility", "visible");
 }
 
 function reloadClickHandlers()

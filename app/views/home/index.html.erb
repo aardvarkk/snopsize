@@ -20,11 +20,12 @@
 
 <%= render template: 'search/search' %>
 
+<%# Only show the next/prev buttons if we're in browse view %>
 <% content_for :tools_short do %>
   <div class="tools short">
     <div class="nav-arrows">
-      <div class="arrow prev" id="prev"><a href="#"></a></div>
-      <div class="arrow next" id="next"><a href="#"></a></div>
+      <%= content_tag :div, nil, { class: "arrow prev", id: "prev", style: "visibility:" + (params[:browse_view] == "true" ? "visible;" : "hidden;") } %>
+      <%= content_tag :div, nil, { class: "arrow next", id: "next", style: "visibility:" + (params[:browse_view] == "true" ? "visible;" : "hidden;") } %>
     </div><!--close arrows-->
   </div><!--close tools short-->
 <% end %>
