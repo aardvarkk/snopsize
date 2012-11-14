@@ -558,3 +558,7 @@ label.remember {margin-bottom: 30px; vertical-align: top}
 .search_form {
 	display: inline;
 }
+
+th {
+	background: #f00;
+}
