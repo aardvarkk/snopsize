@@ -146,10 +146,15 @@ function reloadClickHandlers()
       var prev_snop = $(".current_snop").prev();
       var current_snop = $(".current_snop");
       current_snop.removeClass("current_snop");
+      //current_snop.addClass("last_snop");
       current_snop.addClass("hidden_snops");
       prev_snop.removeClass("hidden_snops");
       prev_snop.addClass("current_snop");
-      $(prev_snop).css({'margin-left':'-200%'}).animate({'margin-left':'0'});
+      //$(current_snop).animate({left: '1000px'}, function() {
+        //current_snop.addClass("hidden_snops");
+        //current_snop.removeClass("last_snop");
+      //})
+      $(prev_snop).css("left", "-1000px").animate({left: '0px'});
       reloadSocialMediaButtons();  
       reloadClickHandlers();
     });    
@@ -161,10 +166,15 @@ function reloadClickHandlers()
       var next_snop = $(".current_snop").next();
       var current_snop = $(".current_snop");
       current_snop.removeClass("current_snop");
+      //current_snop.addClass("last_snop");
       current_snop.addClass("hidden_snops");
       next_snop.removeClass("hidden_snops");
       next_snop.addClass("current_snop");
-      $(next_snop).css({'margin-left':'100%'}).animate({'margin-left':'0'});  
+      //$(current_snop).animate({left: '-1000px'}, function() {
+        //current_snop.addClass("hidden_snops");
+        //current_snop.removeClass("last_snop");
+      //})
+      $(next_snop).css("left", "1000px").animate({left: '0px'}); 
       reloadSocialMediaButtons();  
       reloadClickHandlers();
     });

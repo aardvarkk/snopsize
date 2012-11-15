@@ -15,6 +15,12 @@
  *= require_tree .
  */
 
+/* We set the snop container to be relatively position so we can animate */
+.current_snop 
+{
+  position: relative;
+}
+
 .hidden_snops
 {
   display: none;
