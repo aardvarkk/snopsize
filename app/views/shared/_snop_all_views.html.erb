@@ -1,11 +1,6 @@
-<%#= link_to (t :browse_view), browse_view_path, remote: true %>
-<%#= link_to (t :list_view), list_view_path, remote: true %>
-
-<% if @snops %>
-  <div id="snops_list_view" class="snops_list_view">
-    <%= render partial: 'shared/snop_list_view', locals: {data_source: data_source} %>
-  </div>
-  <div id="snops_browse_view">
-    <%= render partial: 'shared/snop_browse', locals: {current_snop: @snops.first, snop_list: @snops} %>
-  </div>
-<% end %>
+<div id="snops_list_view" class="snops_list_view">
+  <%= render partial: 'shared/snop_list_view', locals: {data_source: data_source} %>
+</div>
+<div id="snops_browse_view">
+  <%= render partial: 'shared/snop_browse', locals: {current_snop: snops.first, snop_list: snops} %>
+</div>

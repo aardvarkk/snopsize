@@ -1,3 +1,5 @@
 <h2>Snopped pages from <%= @domain.uri %></h2>
 
-<%= render partial: 'shared/snop_all_views', locals: {data_source: domain_path(id: @domain.id, format: "json"), list_view_path: domain_path, browse_view_path: domain_path(id: @domain.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>
+<%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: domain_path(id: @domain.id, format: "json")} %>
+
+<%# list_view_path: domain_path, browse_view_path: domain_path(id: @domain.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]) %>

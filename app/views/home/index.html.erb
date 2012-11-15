@@ -24,8 +24,8 @@
 <% content_for :tools_short do %>
   <div class="tools short">
     <div class="nav-arrows">
-      <%= content_tag :div, nil, { class: "arrow prev", id: "prev", style: "visibility:" + (params[:browse_view] == "true" ? "visible;" : "hidden;") } %>
-      <%= content_tag :div, nil, { class: "arrow next", id: "next", style: "visibility:" + (params[:browse_view] == "true" ? "visible;" : "hidden;") } %>
+      <%= content_tag :div, nil, { class: "arrow prev", id: "prev" } %>
+      <%= content_tag :div, nil, { class: "arrow next", id: "next" } %>
     </div><!--close arrows-->
   </div><!--close tools short-->
 <% end %>
@@ -34,4 +34,4 @@
   <%= render partial: 'shared/sidenav_snop_browse', locals: { snop: @snops.first } %>
 <% end %>
 
-<%= render partial: 'shared/snop_all_views', locals: {data_source: root_path(format: "json"), list_view_path: root_path, browse_view_path: root_path(snop: @snops.first, browse_view: true)} %>
+<%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: root_path(format: "json")} %>

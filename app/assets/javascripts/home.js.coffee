@@ -4,7 +4,7 @@
 
 jQuery -> 
   
-  $('#snops').dataTable( {
+    $('#snops').dataTable( {
     "bFilter": false, 
     "bLengthChange": false,
     "bPaginate": false,
@@ -20,12 +20,15 @@ jQuery ->
         { "sWidth": "100px" },
         { "bVisible": false }
         ]
-    });
+    })
 
-  if browseView
-    changeToBrowseView()
-  else
-    changeToListView()
-  end
-
-  
+    # Initial setup of the page
+    # Occurs after everything has loaded to set up active buttons, etc.
+    # alert 'Setting up the page...'
+    if browseView
+        # alert 'Calling changeToBrowseView...'
+        changeToBrowseView()
+    else
+        # alert 'Calling changeToListView...'
+        changeToListView()
+    end

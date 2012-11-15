@@ -84,6 +84,8 @@ function reloadSocialMediaButtons()
 
 function changeToListView()
 {
+  // alert('Changing to list view...')
+
   // Show anything in the snops list view class
   $(".snops_list_view").show();
 
@@ -107,6 +109,8 @@ function changeToListView()
 
 function changeToBrowseView()
 {
+  // alert('Changing to browse view...')
+
   // Hide anything in the snops list view class
   $(".snops_list_view").hide();
 

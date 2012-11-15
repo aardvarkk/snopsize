@@ -10,7 +10,7 @@
 <% end %>
   
 <%# Snop View %>
-<%= render partial: 'shared/snop_all_views', locals: {data_source: user_path(format: "json", iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]), list_view_path: user_path, browse_view_path: user_path(id: @user.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>   
+<%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: user_path(format: "json", iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>   
 
 <%# Mass snop editing %>
 <% if user_signed_in? && @user == current_user %>
@@ -21,3 +21,4 @@
   </div>
 <% end %>
 
+<%# list_view_path: user_path, browse_view_path: user_path(id: @user.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]) %>
