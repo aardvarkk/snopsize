@@ -110,6 +110,10 @@ function changeToListView()
 
   // set container to have no padding
   $(".container").css("padding", "0px");
+
+  // hide everything in the side nav
+  // alert('Hiding all sidenavs...')
+  $(".sidenav").hide();
 }
 
 function changeToBrowseView()
@@ -135,6 +139,51 @@ function changeToBrowseView()
 
   // change container to have a padding
   $(".container").css("padding", "25px");
+
+  // show the current snop in the side nav
+  // alert('Showing only current sidenav...')
+  $(".sidenav").hide();
+  $(".sidenav#current").show();
+}
+
+function prevSnop()
+{
+  var prev_snop = $(".current_snop").prev();
+  var current_snop = $(".current_snop");
+  current_snop.removeClass("current_snop");
+  //current_snop.addClass("last_snop");
+  current_snop.addClass("hidden_snops");
+  prev_snop.removeClass("hidden_snops");
+  prev_snop.addClass("current_snop");
+  //$(current_snop).animate({left: '1000px'}, function() {
+    //current_snop.addClass("hidden_snops");
+    //current_snop.removeClass("last_snop");
+  //})
+  //$(prev_snop).css("left", "-1000px").animate({left: '0px'});
+  $("#snop_container").animate({left: '+=' + snop_width});
+
+  reloadSocialMediaButtons();  
+  reloadClickHandlers();
+}
+
+function nextSnop()
+{
+  var next_snop = $(".current_snop").next();
+  var current_snop = $(".current_snop");
+  current_snop.removeClass("current_snop");
+  //current_snop.addClass("last_snop");
+  current_snop.addClass("hidden_snops");
+  next_snop.removeClass("hidden_snops");
+  next_snop.addClass("current_snop");
+  //$(current_snop).animate({left: '-1000px'}, function() {
+    //current_snop.addClass("hidden_snops");
+    //current_snop.removeClass("last_snop");
+  //})
+  //$(next_snop).css("left", "1000px").animate({left: '0px'}); 
+  $("#snop_container").animate({left: '-=' + snop_width});
+
+  reloadSocialMediaButtons();  
+  reloadClickHandlers();
 }
 
 function reloadClickHandlers()
@@ -150,47 +199,12 @@ function reloadClickHandlers()
 
   // Should this button be disabled?
   if (prev.attr("id") !== undefined) {
-    $("#prev").on('click', function() 
-    {
-      var prev_snop = $(".current_snop").prev();
-      var current_snop = $(".current_snop");
-      current_snop.removeClass("current_snop");
-      //current_snop.addClass("last_snop");
-      current_snop.addClass("hidden_snops");
-      prev_snop.removeClass("hidden_snops");
-      prev_snop.addClass("current_snop");
-      //$(current_snop).animate({left: '1000px'}, function() {
-        //current_snop.addClass("hidden_snops");
-        //current_snop.removeClass("last_snop");
-      //})
-      //$(prev_snop).css("left", "-1000px").animate({left: '0px'});
-      $("#snop_container").animate({left: '+=' + snop_width});
-
-      reloadSocialMediaButtons();  
-      reloadClickHandlers();
-    });    
+    $("#prev").on('click', prevSnop)
   }
   
   // Should this button be disabled?
   if (next.attr("id") !== undefined) {
-      $("#next").on('click', function() {
-      var next_snop = $(".current_snop").next();
-      var current_snop = $(".current_snop");
-      current_snop.removeClass("current_snop");
-      //current_snop.addClass("last_snop");
-      current_snop.addClass("hidden_snops");
-      next_snop.removeClass("hidden_snops");
-      next_snop.addClass("current_snop");
-      //$(current_snop).animate({left: '-1000px'}, function() {
-        //current_snop.addClass("hidden_snops");
-        //current_snop.removeClass("last_snop");
-      //})
-      //$(next_snop).css("left", "1000px").animate({left: '0px'}); 
-      $("#snop_container").animate({left: '-=' + snop_width});
-
-      reloadSocialMediaButtons();  
-      reloadClickHandlers();
-    });
+      $("#next").on('click', nextSnop)
   }
 }
 

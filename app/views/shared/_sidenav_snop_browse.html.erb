@@ -1,56 +1,63 @@
-<div class="sidenav">
-  
-  <div class="info">
-    <h4>Snop created by:</h4>
-    <%= link_to snop.user.username, snop.user %>
-  </div><!--close info-->
-  
-  <% unless snop.domain.nil? || snop.resource.nil? %>
-  <div class="info">
-    <h4>Resource:</h4>
-    <%# External link %>
-    <%= link_to "Read the article", snop.domain.uri + snop.resource.uri, target: '_blank' %><br/>
-    <%= link_to "See all Snops for article", resource_path(domain_id: snop.domain.id, resource_id: snop.resource.id) %>
-  </div><!--close info-->
-  <% end %>
+<%# Generate a side naw for each snop in the list %>
+<% snop_list.each do |snop| %>
 
-  <% unless snop.domain.nil? %>
-  <div class="info">
-    <h4>See more Snops from:</h4>
-    <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
-  </div><!--close info-->
-  <% end %>
+  <% @id = (snop == current_snop) ? "current" : "hidden" %>
 
-  <div class="info last">
-
-    <%# Twitter Button %>
-    <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="<%=t :snopsize_hashtag %>" data-text="<%=h get_snop_tweet_content(snop) %>" data-url="<%= snop_url(snop) %>">Tweet</a>
+  <div class="sidenav" id="<%= @id %>">
     
-    <%# Facebook Button %>
-    <div class="fb-like" data-href="<%= like_snop_url(snop) %>" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div> 
-
-<%#     <h4>File under:</h4>
-    <select class="drop" data-method="post" data-remote="true" data-url="/user_categories/set_snop?snop=2" id="user_category_id" name="user_category[id]">
-      <option value="">Uncategorized</option>
-      <option value="1">Economy</option>
-      <option value="2">Finance</option>
-      <option value="3">Important</option>
-      <option value="4">Legal</option>
-      <option value="5" selected="selected">Politics</option>
-    </select>
-
-    <form action=""><input class="button unfav" type="submit" value="Unfavourite" /><input name="authenticity_token" type="hidden" value="GFEPatY4aQaVm9q0UzK9bTzuXtgk3YHm8ANOJN3NjAE=" /></form>
-
-    <!--some extra styling for elements you'll need on other pages-->
-    <form action=""><input class="button fav" type="submit" value="Favourite" /><input name="authenticity_token" type="hidden" value="GFEPatY4aQaVm9q0UzK9bTzuXtgk3YHm8ANOJN3NjAE=" /></form>
-          
-    <br /><br />
-    <a href="#" class="textbutton">Add a Category</a>
-    <br /><br /><br /><br />
+    <div class="info">
+      <h4>Snop created by:</h4>
+      <%= link_to snop.user.username, snop.user %>
+    </div><!--close info-->
     
-    <a href="#" class="greybutton">Rename</a><a href="#" class="greybutton">Delete</a>
- %>    
+    <% unless snop.domain.nil? || snop.resource.nil? %>
+    <div class="info">
+      <h4>Resource:</h4>
+      <%# External link %>
+      <%= link_to "Read the article", snop.domain.uri + snop.resource.uri, target: '_blank' %><br/>
+      <%= link_to "See all Snops for article", resource_path(domain_id: snop.domain.id, resource_id: snop.resource.id) %>
+    </div><!--close info-->
+    <% end %>
 
-  </div><!--close info-->   
-</div><!--close sidenav-->  
+    <% unless snop.domain.nil? %>
+    <div class="info">
+      <h4>See more Snops from:</h4>
+      <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
+    </div><!--close info-->
+    <% end %>
+
+    <div class="info last">
+
+      <%# Twitter Button %>
+      <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="<%=t :snopsize_hashtag %>" data-text="<%=h get_snop_tweet_content(snop) %>" data-url="<%= snop_url(snop) %>">Tweet</a>
+      
+      <%# Facebook Button %>
+      <div class="fb-like" data-href="<%= like_snop_url(snop) %>" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div> 
+
+  <%#     <h4>File under:</h4>
+      <select class="drop" data-method="post" data-remote="true" data-url="/user_categories/set_snop?snop=2" id="user_category_id" name="user_category[id]">
+        <option value="">Uncategorized</option>
+        <option value="1">Economy</option>
+        <option value="2">Finance</option>
+        <option value="3">Important</option>
+        <option value="4">Legal</option>
+        <option value="5" selected="selected">Politics</option>
+      </select>
+
+      <form action=""><input class="button unfav" type="submit" value="Unfavourite" /><input name="authenticity_token" type="hidden" value="GFEPatY4aQaVm9q0UzK9bTzuXtgk3YHm8ANOJN3NjAE=" /></form>
+
+      <!--some extra styling for elements you'll need on other pages-->
+      <form action=""><input class="button fav" type="submit" value="Favourite" /><input name="authenticity_token" type="hidden" value="GFEPatY4aQaVm9q0UzK9bTzuXtgk3YHm8ANOJN3NjAE=" /></form>
+            
+      <br /><br />
+      <a href="#" class="textbutton">Add a Category</a>
+      <br /><br /><br /><br />
+      
+      <a href="#" class="greybutton">Rename</a><a href="#" class="greybutton">Delete</a>
+   %>    
+
+    </div><!--close info-->   
+  </div><!--close sidenav-->  
+
+<% end %>
