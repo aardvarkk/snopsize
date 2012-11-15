@@ -19,9 +19,9 @@
 
 <div id="snop_container">
   <% snop_list.each do |snop| %>
-    <% @class = (snop == current_snop) ? "current_snop" : "hidden_snops" %>
+    <% @class = (snop == current_snop) ? "current" : "hidden" %>
 
-    <div id="<%= "snop_" + snop.id.to_s %>" class="<%= @class %>">
+    <div id="<%= "snop_" + snop.id.to_s %>" class="snop <%= @class %>">
       <%= render :partial => "shared/snopfull", locals: {snop: snop} %>
 <!--
       <% if user_signed_in? %>

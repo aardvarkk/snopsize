@@ -1,9 +1,9 @@
 <%# Generate a side naw for each snop in the list %>
 <% snop_list.each do |snop| %>
 
-  <% @id = (snop == current_snop) ? "current" : "hidden" %>
+  <% @class = (snop == current_snop) ? "current" : "hidden" %>
 
-  <div class="sidenav" id="<%= @id %>">
+  <div class="sidenav <%= @class %>" id="<%= snop.id %>">
     
     <div class="info">
       <h4>Snop created by:</h4>

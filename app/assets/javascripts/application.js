@@ -116,7 +116,7 @@ function changeToListView()
   $(".sidenav").hide();
 }
 
-function changeToBrowseView()
+function changeToBrowseView(id)
 {
   // alert('Changing to browse view...')
 
@@ -143,62 +143,104 @@ function changeToBrowseView()
   // show the current snop in the side nav
   // alert('Showing only current sidenav...')
   $(".sidenav").hide();
-  $(".sidenav#current").show();
+  $(".sidenav.current").show();
 
   // we need to recalculate snop container width in brose view
   reloadRecalculateSnopContainerWidth();
+
+  // if they passed in an id
+  if (id != undefined)
+  {
+    setCurrentSnop(id);
+  }
+}
+
+function setCurrentSnop(id)
+{
+  //alert(id);
+
+  // show the right side nav
+  var curr_sidenav = $(".sidenav.current");
+  curr_sidenav.removeClass('current');
+  curr_sidenav.addClass('hidden');
+  var new_sidenav = $("#" + id);
+  new_sidenav.removeClass("hidden");
+  new_sidenav.addClass("current");  
+  curr_sidenav.hide();
+  new_sidenav.show();
+
+  // show the right snop
+  var curr_snopflow = $(".snop.current");
+  curr_snopflow.removeClass("current");
+  curr_snopflow.addClass("hidden");
+  var to_show = $("#snop_" + id);
+  to_show.removeClass("hidden");
+  to_show.addClass("current");
+
+  // we need to calculate the index of the snop in
+  // the list of divs
+  var idx = to_show.prevAll().length;
+
+  // now we need to find the left offset so we can pan
+  // correctly
+  var offset = idx * -snop_width;
+  $("#snop_container").css("left", offset);
 }
 
 function prevSnop()
 {
   // Deal with the side nav
-  var curr_sidenav = $(".sidenav#current");
+  var curr_sidenav = $(".sidenav.current");
   var prev_sidenav = curr_sidenav.prev();
-  curr_sidenav.removeAttr('id');
-  prev_sidenav.attr('id', 'current');
+  curr_sidenav.removeClass('current');
+  curr_sidenav.addClass('hidden');
+  prev_sidenav.addClass('current');
+  prev_sidenav.removeClass('hidden');
   curr_sidenav.hide();
   prev_sidenav.show();
 
   // Get the previous snop and make it the current.
   // The current will now be hidden.
-  var prev_snop = $(".current_snop").prev();
-  var current_snop = $(".current_snop");
-  current_snop.removeClass("current_snop");
-  current_snop.addClass("hidden_snops");
-  prev_snop.removeClass("hidden_snops");
-  prev_snop.addClass("current_snop");
+  var prev_snop = $(".snop.current").prev();
+  var current_snop = $(".snop.current");
+  current_snop.removeClass("current");
+  current_snop.addClass("hidden");
+  prev_snop.removeClass("hidden");
+  prev_snop.addClass("current");
 
   // pan the snop container to the previous snop
   $("#snop_container").animate({left: '+=' + snop_width});
 
-  reloadSocialMediaButtons();  
   reloadClickHandlers();
+  reloadSocialMediaButtons();  
 }
 
 function nextSnop()
 {
   // Deal with the side nav
-  var curr_sidenav = $(".sidenav#current");
+  var curr_sidenav = $(".sidenav.current");
   var next_sidenav = curr_sidenav.next();
-  curr_sidenav.removeAttr('id');
-  next_sidenav.attr('id', 'current');
+  curr_sidenav.removeClass('current');
+  curr_sidenav.addClass('hidden');
+  next_sidenav.addClass('current');
+  next_sidenav.removeClass('hidden');
   curr_sidenav.hide();
   next_sidenav.show();
 
   // Get the next snop and make it the current.
   // The current will now be hidden.
-  var next_snop = $(".current_snop").next();
-  var current_snop = $(".current_snop");
-  current_snop.removeClass("current_snop");
-  current_snop.addClass("hidden_snops");
-  next_snop.removeClass("hidden_snops");
-  next_snop.addClass("current_snop");
+  var next_snop = $(".snop.current").next();
+  var current_snop = $(".snop.current");
+  current_snop.removeClass("current");
+  current_snop.addClass("hidden");
+  next_snop.removeClass("hidden");
+  next_snop.addClass("current");
 
   // pan the snop container to the next snop
   $("#snop_container").animate({left: '-=' + snop_width});
 
-  reloadSocialMediaButtons();  
   reloadClickHandlers();
+  reloadSocialMediaButtons();  
 }
 
 function reloadRecalculateSnopContainerWidth()
@@ -219,8 +261,8 @@ function reloadClickHandlers()
 
   // Check if there's somewhere to go, and if so,
   // then enable a click handler
-  var prev = $(".current_snop").prev();
-  var next = $(".current_snop").next();
+  var prev = $(".snop.current").prev();
+  var next = $(".snop.current").next();
 
   // Should the prev button be disabled?
   if (prev.attr("id") !== undefined) {
@@ -229,7 +271,7 @@ function reloadClickHandlers()
   
   // Should the next button be disabled?
   if (next.attr("id") !== undefined) {
-      $("#next").on('click', nextSnop)
+    $("#next").on('click', nextSnop)
   }
 }
 

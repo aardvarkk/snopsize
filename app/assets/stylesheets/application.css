@@ -21,14 +21,15 @@
   position: relative;
 }
 
-.current_snop 
+.snop.current
 {
   float: left;
   padding-right: 25px;
   width: 750px;
+  height: auto;
 }
 
-.hidden_snops
+.snop.hidden
 {
   float: left;
   padding-right: 25px;
