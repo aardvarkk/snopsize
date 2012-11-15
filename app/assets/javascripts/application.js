@@ -148,6 +148,14 @@ function changeToBrowseView()
 
 function prevSnop()
 {
+  // Deal with the side nav
+  var curr_sidenav = $(".sidenav#current");
+  var prev_sidenav = curr_sidenav.prev();
+  curr_sidenav.removeAttr('id');
+  prev_sidenav.attr('id', 'current');
+  curr_sidenav.hide();
+  prev_sidenav.show();
+
   var prev_snop = $(".current_snop").prev();
   var current_snop = $(".current_snop");
   current_snop.removeClass("current_snop");
@@ -168,6 +176,14 @@ function prevSnop()
 
 function nextSnop()
 {
+  // Deal with the side nav
+  var curr_sidenav = $(".sidenav#current");
+  var next_sidenav = curr_sidenav.next();
+  curr_sidenav.removeAttr('id');
+  next_sidenav.attr('id', 'current');
+  curr_sidenav.hide();
+  next_sidenav.show();
+
   var next_snop = $(".current_snop").next();
   var current_snop = $(".current_snop");
   current_snop.removeClass("current_snop");
