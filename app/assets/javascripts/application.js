@@ -149,7 +149,7 @@ function changeToBrowseView(id)
   reloadRecalculateSnopContainerWidth();
 
   // if they passed in an id
-  if (id != undefined)
+  if (id != undefined && id != "")
   {
     setCurrentSnop(id);
   }
