@@ -14,8 +14,8 @@
 
 <%# The home page also allows us to switch between the Snop flow and list view %>
 <% content_for :list_flow_buttons do %>
-  <li class="snopflow"><%= link_to "Snop Flow", root_path(browse_view: true), remote: true %></li>
-  <li class="listview off"><%= link_to "List View", root_path(browse_view: false), remote: true %></li>
+  <li class="snopflow"><%= link_to_function "Snop Flow", 'changeToBrowseView()' %></li>
+  <li class="listview off"><%= link_to_function "List View", 'changeToListView()' %></li>
 <% end %>
 
 <%= render template: 'search/search' %>
