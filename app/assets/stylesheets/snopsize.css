@@ -586,6 +586,10 @@ th {
 	padding: 18px;
 }
 
+tr.odd {
+  background-color: #E6E6E6;
+}
+
 td {
 	padding: 18px;
 	font: 11px/14px Helvetica,Arial,sans-serif; 
