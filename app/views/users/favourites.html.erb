@@ -1,11 +1,15 @@
 <h1>User: <%= current_user.username %> </h1>
 
 <%# We know the user is signed in %>
+<%
+=begin %>
 <div id='editing'>
   <%= link_to 'Categories', user_categories_path %> | 
   <%= link_to 'New Snop', new_snop_path %> | 
   <%= link_to 'Settings', edit_user_registration_path(@user) %>
 </div>
+<%
+=end %>
   
 <%# A single snop is shown in the right column, with the ability to browse %>
 <%# Snop View %>

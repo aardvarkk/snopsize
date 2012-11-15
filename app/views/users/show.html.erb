@@ -1,6 +1,8 @@
 <h1>User: <%=@user.username%> </h1>
 
 <%# We're only going to show these buttons if the user singed in and on their own page %>
+<%
+=begin %>
 <% if user_signed_in? && @user == current_user %>
   <div id='editing'>
     <%= link_to 'Categories', user_categories_path %> | 
@@ -8,6 +10,9 @@
     <%= link_to 'Settings', edit_user_registration_path(@user) %>
   </div>
 <% end %>
+<%
+=end %>
+
   
 <%# Snop View %>
 <%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: user_path(format: "json", iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>   
