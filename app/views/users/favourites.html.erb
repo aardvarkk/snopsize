@@ -9,7 +9,7 @@
   
 <%# A single snop is shown in the right column, with the ability to browse %>
 <%# Snop View %>
-<%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: user_favourites_path(format: "json"))} %>   
+<%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: user_favourites_path(format: "json")} %>   
 
 <%# Mass snop editing %>
 <% if user_signed_in? && @user == current_user %>
