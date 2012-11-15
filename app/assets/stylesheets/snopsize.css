@@ -282,6 +282,7 @@ input.button:hover { background-color: #F9DA3A}
 input.button.unfav {
 	background: #ccc url('icon-button-fav.png') no-repeat 5px 5px ;
 	padding-left: 30px;
+	margin-top: 10px;
 }	
 
 input.button.unfav:hover { background-color: #F9DA3A}	
