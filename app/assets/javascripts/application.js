@@ -14,6 +14,11 @@
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
 
+// The size of the "container" div is 800px, but it has 25 px padding, therefore the width of a 
+// snop in browse view is 750px. We add a 25px padding to the right side so that the snops aren't
+// touching each other. That's how we come up with 775px
+var snop_width = 775;
+
 // Function to reload the AJAX source for the datatable, useful for when you want to switch the 
 // data source. 
 // See documentation here: http://datatables.net/plug-ins/api
@@ -154,7 +159,9 @@ function reloadClickHandlers()
         //current_snop.addClass("hidden_snops");
         //current_snop.removeClass("last_snop");
       //})
-      $(prev_snop).css("left", "-1000px").animate({left: '0px'});
+      //$(prev_snop).css("left", "-1000px").animate({left: '0px'});
+      $("#snop_container").animate({left: '+=' + snop_width});
+
       reloadSocialMediaButtons();  
       reloadClickHandlers();
     });    
@@ -174,7 +181,9 @@ function reloadClickHandlers()
         //current_snop.addClass("hidden_snops");
         //current_snop.removeClass("last_snop");
       //})
-      $(next_snop).css("left", "1000px").animate({left: '0px'}); 
+      //$(next_snop).css("left", "1000px").animate({left: '0px'}); 
+      $("#snop_container").animate({left: '-=' + snop_width});
+
       reloadSocialMediaButtons();  
       reloadClickHandlers();
     });
@@ -184,4 +193,11 @@ function reloadClickHandlers()
 $(document).ready(function() 
 {
   reloadClickHandlers();
+
+  // here we will just make sure we set the width of the snop container
+  // properly based on the number of snops that are displayed on the page
+  if (num_snops)
+  {
+    $("#snop_container").css("width", snop_width * num_snops);
+  }
 });

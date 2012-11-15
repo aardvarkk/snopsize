@@ -16,14 +16,24 @@
  */
 
 /* We set the snop container to be relatively position so we can animate */
-.current_snop 
+#snop_container
 {
   position: relative;
 }
 
+.current_snop 
+{
+  float: left;
+  padding-right: 25px;
+  width: 750px;
+}
+
 .hidden_snops
 {
-  display: none;
+  float: left;
+  padding-right: 25px;
+  width: 750px;
+  height: 1px; /* This is so the height resizes properly */
 }
 
 /* For word wrapping in the table */

@@ -2,6 +2,11 @@
 <%# current_snop = The snop to show %>
 <%# snop_list = The snops to switch between %>
 
+<%# Store the number of sonps we are going to display %>
+<%= javascript_tag do %>
+  num_snops = <%= snop_list.size %>
+<% end %>
+
 <%#<div id="buttons">
   <div id="prev_button">
     <button id="prev" type="button">&lt</button>
