@@ -1,4 +1,4 @@
-$("<%= '#fave_' + @snop.id.to_s %>").html("<%=j render partial: 'fave_snops/unfavourite', locals: {snop: @snop} %>");
+$("<%= '#fave_' + @snop.id.to_s %>").html("<%=j render partial: 'shared/unfavourite', locals: {snop: @snop} %>");
 
 <%# Append the categorization %>
 <% category = @snop.user_categories.where("user_id = ?", current_user.id).first %>

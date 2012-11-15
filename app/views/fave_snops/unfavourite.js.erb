@@ -1,5 +1,5 @@
 // udate the fave button first
-$("<%= '#fave_' + @snop.id.to_s %>").html("<%=j render partial: 'fave_snops/favourite', locals: {snop: @snop} %>");
+$("<%= '#fave_' + @snop.id.to_s %>").html("<%=j render partial: 'shared/favourite', locals: {snop: @snop} %>");
 
 // We want to update the datatable
 var datatable = $("#snops").dataTable();

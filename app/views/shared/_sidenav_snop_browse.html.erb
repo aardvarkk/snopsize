@@ -20,10 +20,53 @@
     <% end %>
 
     <% unless snop.domain.nil? %>
-    <div class="info">
-      <h4>See more Snops from:</h4>
-      <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
-    </div><!--close info-->
+      <div class="info">
+        <h4>See more Snops from:</h4>
+        <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
+      </div><!--close info-->
+    <% end %>
+
+    <%# These only show if the user is signed in... 
+    Categorize, Favourite/Unfavourite, Delete %>
+    <% if user_signed_in? %>
+  
+      <div class="info">
+
+        <%# Categorization %>
+        <% if snop.user == current_user || current_user.favourites.include?(snop) %>
+          <h4>File under:</h4>
+          <div id="<%= 'categorization_' + snop.id.to_s %>">
+            <% category = snop.user_categories.where("user_id = ?", current_user.id).first %>
+            <% selected = category.nil? ? nil : category.id %>
+            <%= collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: (t :uncategorized), selected: selected}, { class: "drop", data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} } %>
+          </div>
+        <% end %>
+
+        <%# Favourite/Unfavourite %>
+        <% @fave_btn_id = "fave_" + snop.id.to_s %>
+        <div id="<%= @fave_btn_id %>">
+          <% if has_user_faved_snop?(snop) %>
+            <%= render partial: 'shared/favourite', locals: {snop: snop} %>
+          <% else %>
+            <%= render partial: 'shared/unfavourite', locals: {snop: snop} %>
+          <% end %>
+        </div>
+
+        <%# Delete button %>
+        <%# if snop.user == current_user %>
+          <%#= button_to "Delete", snop, method: :delete, remote: true %>
+        <%# end %>
+
+        <!--
+        <br /><br />
+        <a href="#" class="textbutton">Add a Category</a>
+        <br /><br /><br /><br />
+      
+        <a href="#" class="greybutton">Rename</a>
+        <a href="#" class="greybutton">Delete</a>-->
+
+      </div>
+
     <% end %>
 
     <div class="info last">
@@ -35,29 +78,8 @@
       <%# Facebook Button %>
       <div class="fb-like" data-href="<%= like_snop_url(snop) %>" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div> 
 
-  <%#     <h4>File under:</h4>
-      <select class="drop" data-method="post" data-remote="true" data-url="/user_categories/set_snop?snop=2" id="user_category_id" name="user_category[id]">
-        <option value="">Uncategorized</option>
-        <option value="1">Economy</option>
-        <option value="2">Finance</option>
-        <option value="3">Important</option>
-        <option value="4">Legal</option>
-        <option value="5" selected="selected">Politics</option>
-      </select>
+    </div><!--close info last-->   
 
-      <form action=""><input class="button unfav" type="submit" value="Unfavourite" /><input name="authenticity_token" type="hidden" value="GFEPatY4aQaVm9q0UzK9bTzuXtgk3YHm8ANOJN3NjAE=" /></form>
-
-      <!--some extra styling for elements you'll need on other pages-->
-      <form action=""><input class="button fav" type="submit" value="Favourite" /><input name="authenticity_token" type="hidden" value="GFEPatY4aQaVm9q0UzK9bTzuXtgk3YHm8ANOJN3NjAE=" /></form>
-            
-      <br /><br />
-      <a href="#" class="textbutton">Add a Category</a>
-      <br /><br /><br /><br />
-      
-      <a href="#" class="greybutton">Rename</a><a href="#" class="greybutton">Delete</a>
-   %>    
-
-    </div><!--close info-->   
   </div><!--close sidenav-->  
 
 <% end %>
