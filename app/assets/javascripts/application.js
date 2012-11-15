@@ -144,6 +144,9 @@ function changeToBrowseView()
   // alert('Showing only current sidenav...')
   $(".sidenav").hide();
   $(".sidenav#current").show();
+
+  // we need to recalculate snop container width in brose view
+  reloadRecalculateSnopContainerWidth();
 }
 
 function prevSnop()
@@ -156,18 +159,16 @@ function prevSnop()
   curr_sidenav.hide();
   prev_sidenav.show();
 
+  // Get the previous snop and make it the current.
+  // The current will now be hidden.
   var prev_snop = $(".current_snop").prev();
   var current_snop = $(".current_snop");
   current_snop.removeClass("current_snop");
-  //current_snop.addClass("last_snop");
   current_snop.addClass("hidden_snops");
   prev_snop.removeClass("hidden_snops");
   prev_snop.addClass("current_snop");
-  //$(current_snop).animate({left: '1000px'}, function() {
-    //current_snop.addClass("hidden_snops");
-    //current_snop.removeClass("last_snop");
-  //})
-  //$(prev_snop).css("left", "-1000px").animate({left: '0px'});
+
+  // pan the snop container to the previous snop
   $("#snop_container").animate({left: '+=' + snop_width});
 
   reloadSocialMediaButtons();  
@@ -184,22 +185,30 @@ function nextSnop()
   curr_sidenav.hide();
   next_sidenav.show();
 
+  // Get the next snop and make it the current.
+  // The current will now be hidden.
   var next_snop = $(".current_snop").next();
   var current_snop = $(".current_snop");
   current_snop.removeClass("current_snop");
-  //current_snop.addClass("last_snop");
   current_snop.addClass("hidden_snops");
   next_snop.removeClass("hidden_snops");
   next_snop.addClass("current_snop");
-  //$(current_snop).animate({left: '-1000px'}, function() {
-    //current_snop.addClass("hidden_snops");
-    //current_snop.removeClass("last_snop");
-  //})
-  //$(next_snop).css("left", "1000px").animate({left: '0px'}); 
+
+  // pan the snop container to the next snop
   $("#snop_container").animate({left: '-=' + snop_width});
 
   reloadSocialMediaButtons();  
   reloadClickHandlers();
+}
+
+function reloadRecalculateSnopContainerWidth()
+{
+  // here we will just make sure we set the width of the snop container
+  // properly based on the number of snops that are displayed on the page
+  if (num_snops)
+  {
+    $("#snop_container").css("width", snop_width * num_snops);
+  }
 }
 
 function reloadClickHandlers()
@@ -213,25 +222,20 @@ function reloadClickHandlers()
   var prev = $(".current_snop").prev();
   var next = $(".current_snop").next();
 
-  // Should this button be disabled?
+  // Should the prev button be disabled?
   if (prev.attr("id") !== undefined) {
     $("#prev").on('click', prevSnop)
   }
   
-  // Should this button be disabled?
+  // Should the next button be disabled?
   if (next.attr("id") !== undefined) {
       $("#next").on('click', nextSnop)
   }
 }
 
+// Called when the document loads
 $(document).ready(function() 
 {
   reloadClickHandlers();
-
-  // here we will just make sure we set the width of the snop container
-  // properly based on the number of snops that are displayed on the page
-  if (num_snops)
-  {
-    $("#snop_container").css("width", snop_width * num_snops);
-  }
+  reloadRecalculateSnopContainerWidth();
 });
