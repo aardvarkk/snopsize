@@ -84,24 +84,48 @@ function reloadSocialMediaButtons()
 
 function changeToListView()
 {
+  // Show anything in the snops list view class
   $(".snops_list_view").show();
+
+  // Hide our browse view
   $("#snops_browse_view").hide();
 
+  // show the snop flow button as not highlighted anymore (not selected)
   $(".snopflow").addClass(".snopflow off");
-  $(".snopflow off").removeClass(".snopflow");
-  $(".listview off").addClass(".listview");
+  $(".snopflow.off").removeClass(".snopflow");
+
+  // show the list view button as highlighted (selected)
+  $(".listview.off").addClass(".listview");
   $(".listview").removeClass(".listview off");
+
+  // hide the nav buttons in list view
+  $(".tools.short").hide();
+
+  // set container to have no padding
+  $(".container").css("padding", "0px");
 }
 
 function changeToBrowseView()
 {
+  // Hide anything in the snops list view class
   $(".snops_list_view").hide();
+
+  // Show our browse view
   $("#snops_browse_view").show();
 
+  // show the list view button as not highlighted anymore (not selected)
   $(".listview").addClass(".listview off");
-  $(".listview off").removeClass(".listview");
-  $(".snopflow off").addClass(".snopflow");
+  $(".listview.off").removeClass(".listview");
+
+  // show the snop flow button as highlighted (selected)
+  $(".snopflow.off").addClass(".snopflow");
   $(".snopflow").removeClass(".snopflow off");
+
+  // Show the nav buttons
+  $(".tools.short").show();
+
+  // change container to have a padding
+  $(".container").css("padding", "25px");
 }
 
 function reloadClickHandlers()
