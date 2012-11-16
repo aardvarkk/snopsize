@@ -203,6 +203,9 @@ ul#navigation li a.signin {background-position: 25px -225px; }
 	width: 220px;
 }
 
+.sidenav.hidden {
+	display: none;
+}
 
 .tools {
 	padding: 15px 25px 35px 25px;

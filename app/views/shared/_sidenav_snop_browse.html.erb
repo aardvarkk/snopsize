@@ -2,9 +2,8 @@
 <% snop_list.each do |snop| %>
 
   <% cls = (snop == current_snop) ? 'current' : 'hidden' %>
-  <% display = (snop == current_snop) ? 'block;' : 'none;' %>
 
-  <%= content_tag :div, { class: 'sidenav ' + cls, id: snop.id, style: 'display: ' + display } do %>
+  <%= content_tag :div, { class: 'sidenav ' + cls, id: snop.id } do %>
     
     <div class="info">
       <h4>Snop created by:</h4>
