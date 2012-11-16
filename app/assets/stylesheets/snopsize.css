@@ -215,9 +215,10 @@ ul#navigation li a.signin {background-position: 25px -225px; }
 }
 
 .tools.short { 
-	display: inline;
+	display: inline-block;
+	margin-left: 25px;
+	margin-bottom: 20px;
 	padding: 0px;
-	padding-bottom: 30px;
 }
 
 .container .tools {
@@ -445,7 +446,7 @@ ul#toggle li:hover {
 }
 
 .arrow {
-	float: left;
+	display: inline-block;
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
