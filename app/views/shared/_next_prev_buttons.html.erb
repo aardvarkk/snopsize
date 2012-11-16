@@ -1,5 +1,9 @@
+<%# Don't show these if we're not in browse view %>
+<% display = params[:browse_view] == 'true' ? 'inline-block;' : 'none;' %>
+
 <% content_for :tools_short do %>
-  <div class="tools short">
+  <%= content_tag :div, { class: "tools short", style: 'display: ' + display } do %>
+  	<%# These are spans: don't remove the whitespace or it'll affect layout %>
   	<%= content_tag :span, nil, { class: "arrow prev", id: "prev" } %><%= content_tag :span, nil, { class: "arrow next", id: "next" } %>
-  </div><!--close tools short-->
+  <% end %>
 <% end %>

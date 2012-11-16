@@ -20,5 +20,4 @@ jQuery ->
       ]
   });
 
-  changeToBrowseView();
   reloadClickHandlers();

@@ -1,4 +1,8 @@
+<%# Choose a class based on the browse view param %>
+<% cls_snopflow = params[:browse_view] == 'true' ? 'snopflow' : 'snopflow off' %>
+<% cls_listview = params[:browse_view] == 'false' ? 'listview' : 'listview off' %>
+
 <% content_for :list_flow_buttons do %>
-  <li class="snopflow"><%= link_to_function "Snop Flow", 'changeToBrowseView()' %></li>
-  <li class="listview off"><%= link_to_function "List View", 'changeToListView()' %></li>
+	<%= content_tag :li, link_to_function("Snop Flow", 'changeToBrowseView()'), class: cls_snopflow %>
+	<%= content_tag :li, link_to_function("List View", 'changeToListView()'), class: cls_listview %>
 <% end %>

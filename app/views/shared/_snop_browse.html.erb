@@ -2,15 +2,14 @@
 <%# current_snop = The snop to show %>
 <%# snop_list = The snops to switch between %>
 
-<%# Store the number of sonps we are going to display %>
-<%= javascript_tag do %>
-  num_snops = <%= snop_list.size %>
-<% end %>
+<%# The size of the "container" div is 800px, but it has 25 px padding, therefore the width of a snop in browse view is 750px. We add a 25px padding to the right side so that the snops aren't touching each other. That's how we come up with 775px %>
+<% snop_width = 775 %>
 
 <%# A variable deciding whether to show this item %>
 <% display = params[:browse_view] == 'false' ? 'none;' : 'block;' %>
+
 <%= content_tag :div, id: 'snops_browse_view' do %>
-	<%= content_tag :div, { id: 'snop_container', style: 'display: ' + display } do %>
+	<%= content_tag :div, { id: 'snop_container', style: 'display: ' + display + '; width: ' + (snop_list.length * snop_width).to_s + 'px;' } do %>
 	  <% snop_list.each do |snop| %>
 			<% cls = (snop == current_snop) ? 'current' : 'hidden' %>
 			<%= content_tag :div, { class: 'snop ' + cls, id: 'snop_' + snop.id.to_s } do %>

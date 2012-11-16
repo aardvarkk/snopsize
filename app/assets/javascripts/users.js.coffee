@@ -120,5 +120,4 @@ jQuery ->
     e.stopPropagation();
   );
 
-  changeToListView();
   reloadClickHandlers();

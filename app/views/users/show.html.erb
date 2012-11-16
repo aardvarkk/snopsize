@@ -13,6 +13,12 @@
 <%
 =end %>
   
+<%# Partial to switch between the Snop flow and list view %>
+<%= render partial: 'shared/list_flow_buttons' %>
+
+<%# The next/prev buttons %>
+<%= render partial: 'shared/next_prev_buttons' %>
+
 <%# Snop View %>
 <%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: user_path(format: "json", iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>   
 
