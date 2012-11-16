@@ -8,11 +8,14 @@ module DatatableHelpers
   end
 
   def sort_column
-    columns = %w[user snops.title domain snops.created_at category]
 
-    # Sort by created at by default
+    # These must match the column ordering in the list view shared partial!
+    columns = %w[snops.title user domain snops.created_at category]
+
+    # Sort by a given column by default -- in this case created_at
     return columns[params[:iSortCol_0].to_i] if params[:iSortCol_0]
     return columns[3]
+
   end
 
   def sort_direction
