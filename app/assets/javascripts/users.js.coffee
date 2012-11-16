@@ -119,3 +119,6 @@ jQuery ->
   $(document).on("click", "#snops tbody tr select", (e) ->
     e.stopPropagation();
   );
+
+  changeToListView();
+  reloadClickHandlers();
