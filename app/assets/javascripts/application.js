@@ -35,7 +35,7 @@ function changeToListView()
   // alert('Changing to list view...')
 
   // Show anything in the snops list view class
-  $(".snops_list_view").show();
+  $("#snops_list_view").show();
 
   // Hide our browse view
   $("#snops_browse_view").hide();
@@ -64,7 +64,7 @@ function changeToBrowseView(id)
   // alert('Changing to browse view...')
 
   // Hide anything in the snops list view class
-  $(".snops_list_view").hide();
+  $("#snops_list_view").hide();
 
   // Show our browse view
   $("#snops_browse_view").show();
@@ -188,10 +188,10 @@ function nextSnop()
 
 function reloadRecalculateSnopContainerWidth()
 {
-  // here we will just make sure we set the width of the snop container
+  // Here we will just make sure we set the width of the snop container
   // properly based on the number of snops that are displayed on the page
-  if (num_snops)
-  {
+  if (num_snops) {
+    // alert('Setting snop container width')
     $("#snop_container").css("width", snop_width * num_snops);
   }
 }
@@ -221,6 +221,17 @@ function reloadClickHandlers()
 // Called when the document loads
 $(document).ready(function() 
 {
+  // Initial setup of the page
+  // Occurs after everything has loaded to set up active buttons, etc.
+  // alert('Setting up the page...')
+  if (browseView) {
+    // alert('Calling changeToBrowseView...')
+    changeToBrowseView()
+  }
+  else {
+    // alert('Calling changeToListView...')
+    changeToListView()
+  }
+
   reloadClickHandlers();
-  reloadRecalculateSnopContainerWidth();
 });

@@ -7,13 +7,15 @@
   num_snops = <%= snop_list.size %>
 <% end %>
 
-<div id="snop_container">
-  <% snop_list.each do |snop| %>
-    <% @class = (snop == current_snop) ? "current" : "hidden" %>
-
-    <div id="<%= "snop_" + snop.id.to_s %>" class="snop <%= @class %>">
-      <%= render :partial => "shared/snopfull", locals: {snop: snop} %>
-    </div>
-    
-  <% end %>
-</div>
+<%# A variable deciding whether to show this item %>
+<% display = params[:browse_view] == 'false' ? 'none;' : 'block;' %>
+<%= content_tag :div, id: 'snops_browse_view' do %>
+	<%= content_tag :div, { id: 'snop_container', style: 'display: ' + display } do %>
+	  <% snop_list.each do |snop| %>
+			<% cls = (snop == current_snop) ? 'current' : 'hidden' %>
+			<%= content_tag :div, { class: 'snop ' + cls, id: 'snop_' + snop.id.to_s } do %>
+		      <%= render :partial => "shared/snopfull", locals: {snop: snop} %>
+	    <% end %>
+	  <% end %>
+	<% end %>
+<% end %>

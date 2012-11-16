@@ -2,8 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+# Set up the dataTable
 jQuery -> 
-  
     $('#snops').dataTable( {
     "bFilter": false, 
     "bLengthChange": false,
@@ -21,14 +21,3 @@ jQuery ->
         { "bVisible": false }
         ]
     })
-
-    # Initial setup of the page
-    # Occurs after everything has loaded to set up active buttons, etc.
-    # alert 'Setting up the page...'
-    if browseView
-        # alert 'Calling changeToBrowseView...'
-        changeToBrowseView()
-    else
-        # alert 'Calling changeToListView...'
-        changeToListView()
-    end

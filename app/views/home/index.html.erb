@@ -30,9 +30,9 @@
   </div><!--close tools short-->
 <% end %>
 
-<%# Render ALL side navs -- we'll then use CoffeeScript/AJAX to select between them %>
 <% content_for :sidenav do %>
   <%= render partial: 'shared/sidenav_snop_browse', locals: { current_snop: @snops.first, snop_list: @snops } %>
 <% end %>
 
+<%# Render both views. The partial will choose which one to show based on params[:browse_view] %>
 <%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: root_path(format: "json")} %>

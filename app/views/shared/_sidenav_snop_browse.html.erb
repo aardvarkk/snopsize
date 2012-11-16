@@ -1,9 +1,10 @@
 <%# Generate a side naw for each snop in the list %>
 <% snop_list.each do |snop| %>
 
-  <% @class = (snop == current_snop) ? "current" : "hidden" %>
+  <% cls = (snop == current_snop) ? 'current' : 'hidden' %>
+  <% display = (snop == current_snop) ? 'block;' : 'none;' %>
 
-  <div class="sidenav <%= @class %>" id="<%= snop.id %>">
+  <%= content_tag :div, { class: 'sidenav ' + cls, id: snop.id, style: 'display: ' + display } do %>
     
     <div class="info">
       <h4>Snop created by:</h4>
@@ -80,6 +81,6 @@
 
     </div><!--close info last-->   
 
-  </div><!--close sidenav-->  
+  <% end %>
 
 <% end %>

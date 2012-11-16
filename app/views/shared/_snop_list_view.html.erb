@@ -1,13 +1,18 @@
-<table id="snops" cellpadding="0" cellspacing="0" border="0" width="100%" data-source=<%= data_source %>>
-  <thead>
-    <tr>
-      <th>Snop Title</th>
-      <th>User</th>
-      <th>Domain</th>
-      <th>Created</th>
-      <th>Category</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+<%# A variable deciding whether to show this item %>
+<% display = params[:browse_view] == "true" ? 'none;' : 'block;' %>
+
+<%= content_tag :div, { id: "snops_list_view", style: 'display: ' + display  } do %>
+  <%= content_tag :table, { data: { 'source' => data_source }, id: "snops" } do %>
+    <thead>
+      <tr>
+        <th>Snop Title</th>
+        <th>User</th>
+        <th>Domain</th>
+        <th>Created</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  <% end %>
+<% end %>

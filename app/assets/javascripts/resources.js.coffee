@@ -2,9 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-# Hide the browse view until the user request it.
+# Set up the dataTable
 jQuery -> 
-  $("#snops_list_view").hide();
   $('#snops').dataTable( {
     "bFilter": true, 
     "oLanguage": { "sSearch": "Filter:" }
