@@ -4,20 +4,23 @@
 
 # Set up the dataTable
 jQuery -> 
-    $('#snops').dataTable( {
-    "bFilter": false, 
-    "bLengthChange": false,
-    "bPaginate": false,
-    "bInfo": false,
-    "bSort": false,
-    "bProcessing": true,
-    "bServerSide": true,
-    "sAjaxSource": $("#snops").data("source")
-    "aoColumns": [
-        null,
-        { "sWidth": "75px" },
-        null,
-        { "sWidth": "100px" },
-        { "bVisible": false }
-        ]
-    })
+  $('#snops').dataTable( {
+  "bFilter": false, 
+  "bLengthChange": false,
+  "bPaginate": false,
+  "bInfo": false,
+  "bSort": false,
+  "bProcessing": true,
+  "bServerSide": true,
+  "sAjaxSource": $("#snops").data("source")
+  "aoColumns": [
+      { "sClass": "snop_title" },
+      { "sWidth": "75px" },
+      { "sWidth": "200px" },
+      { "sWidth": "100px" },
+      { "bVisible": false }
+      ]
+  })
+
+  changeToBrowseView();
+  reloadClickHandlers();

@@ -631,8 +631,6 @@ table.dataTable tr.even td.sorting_1 {
   background-color: #fff;
 }
 
-.snop_title {
-	color: #4D4D4D; 
+.snop_title a {
 	font: bold 14px/20px Helvetica, Arial, sans-serif; 
-	margin-bottom: 5px;
 }

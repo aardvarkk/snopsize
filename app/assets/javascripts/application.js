@@ -217,9 +217,3 @@ function reloadClickHandlers()
     $("#next").on('click', nextSnop).removeClass('disabled')
   }
 }
-
-// Called when the document loads
-$(document).ready(function() 
-{
-  reloadClickHandlers();
-});

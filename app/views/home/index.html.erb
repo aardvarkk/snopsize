@@ -12,13 +12,10 @@
   <% end %>
 <% end %>
 
-<%# The home page also allows us to switch between the Snop flow and list view %>
-<% content_for :list_flow_buttons do %>
-  <li class="snopflow"><%= link_to_function "Snop Flow", 'changeToBrowseView()' %></li>
-  <li class="listview off"><%= link_to_function "List View", 'changeToListView()' %></li>
-<% end %>
-
 <%= render template: 'search/search' %>
+
+<%# Partial to switch between the Snop flow and list view %>
+<%= render partial: 'shared/list_flow_buttons' %>
 
 <%# Only show the next/prev buttons if we're in browse view %>
 <% content_for :tools_short do %>
