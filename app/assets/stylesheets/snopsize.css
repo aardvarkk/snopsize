@@ -580,28 +580,29 @@ label.remember {margin-bottom: 30px; vertical-align: top}
 	display: inline;
 }
 
-th {
+table.dataTable thead th {
+	background-color: #4d4d4d;
+	border-style: none;
+	color: #fff;
+	font: bold 14px/18px 'Bitter', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+	padding: 18px;
+}
+
+table.dataTable thead th.sorting {
 	background-color: #4d4d4d;
 	color: #fff;
 	font: bold 14px/18px 'Bitter', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
 	padding: 18px;
 }
 
-th.sorting {
+table.dataTable thead th.sorting_asc {
 	background-color: #4d4d4d;
 	color: #fff;
 	font: bold 14px/18px 'Bitter', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
 	padding: 18px;
 }
 
-th.sorting_asc {
-	background-color: #4d4d4d;
-	color: #fff;
-	font: bold 14px/18px 'Bitter', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-	padding: 18px;
-}
-
-th.sorting_desc {
+table.dataTable thead th.sorting_desc {
 	background-color: #4d4d4d;
 	color: #fff;
 	font: bold 14px/18px 'Bitter', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
@@ -609,21 +610,22 @@ th.sorting_desc {
 }
 
 /* Odd rows of the table have this background */
-tr.odd {
+table.dataTable tr.odd {
   background-color: #E6E6E6;
 }
 
-td {
+table.dataTable td {
 	padding: 18px;
 	font: 11px/14px Helvetica,Arial,sans-serif; 
 	color: #4D4D4D;	
 }
 
 /* When cells are in a sorted column */
-tr.odd td.sorting_1 {
+table.dataTable tr.odd td.sorting_1 {
   background-color: #e6e6e6;
 }
-tr.even td.sorting_1 {
+
+table.dataTable tr.even td.sorting_1 {
   background-color: #fff;
 }
 

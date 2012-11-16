@@ -12,6 +12,7 @@
   <link rel="image_src" href="snopsize.jpg" />
 
   <%= javascript_include_tag "application", controller_name if Snopsize::Application.assets.find_asset("#{controller.controller_name}.js")%>
+  
   <%= csrf_meta_tags %>
 
   <%# Reset all styles before applying other stuff %>
@@ -69,42 +70,40 @@
 
   </div><!--close left-->
 
-  <section>
-    <div class="main">
-      <div class="tools">
-        <%# Search form %>
-        <%= form_tag("/search", method: "get", class: "search_form") do %>
-          <%= label_tag(:q, "Search:") %>
-          <%= select_tag(:type, options_for_select([['Keyword', 'keyword'], ['URL', 'url'], ['User', 'user']], params[:type]), class: "drop", id: "type", name: "type") %>
-          <%= text_field_tag(:q, nil, placeholder: "Enter words to search...", class: "search") %>
-          <%# set the name to 'nil' to avoid the commit = Search parameter from being passed %>
-          <%= submit_tag("", name: nil, class: "submit") %>
-        <% end %>        
-        <ul id="toggle">
-          <%= yield :list_flow_buttons %>
-        </ul>
-      </div><!--close tools-->
-  
-      <%# Tools Short are the next/prev buttons for browse view %>
-      <%= yield :tools_short %>
-      
-      <%# Main Content %>
-      <div class="container">
-        <%= yield %>
-      </div><!--close container-->
+  <div class="main">
+    <div class="tools">
+      <%# Search form %>
+      <%= form_tag("/search", method: "get", class: "search_form") do %>
+        <%= label_tag(:q, "Search:") %>
+        <%= select_tag(:type, options_for_select([['Keyword', 'keyword'], ['URL', 'url'], ['User', 'user']], params[:type]), class: "drop", id: "type", name: "type") %>
+        <%= text_field_tag(:q, nil, placeholder: "Enter words to search...", class: "search") %>
+        <%# set the name to 'nil' to avoid the commit = Search parameter from being passed %>
+        <%= submit_tag("", name: nil, class: "submit") %>
+      <% end %>        
+      <ul id="toggle">
+        <%= yield :list_flow_buttons %>
+      </ul>
+    </div><!--close tools-->
 
-    <%# Footer %>
-    <footer>
-      <div id="footer">
-        <%= link_to "About Snopsize", about_path %>
-        <%= mail_to('support@snopsize.com', 'Contact', subject: 'Support Question', encode: 'javascript') %>
-        <a href="http://twitter.com/snopsize" target="_blank">Twitter</a>
-        <a href="#">Dev by Tau Labs</a>
-      </div><!--close footer-->
-    </footer>
+    <%# Tools Short are the next/prev buttons for browse view %>
+    <%= yield :tools_short %>
+    
+    <%# Main Content %>
+    <div class="container">
+      <%= yield %>
+    </div><!--close container-->
 
-    </div><!--close main-->
-  </section>
+  <%# Footer %>
+  <footer>
+    <div id="footer">
+      <%= link_to "About Snopsize", about_path %>
+      <%= mail_to('support@snopsize.com', 'Contact', subject: 'Support Question', encode: 'javascript') %>
+      <a href="http://twitter.com/snopsize" target="_blank">Twitter</a>
+      <a href="#">Dev by Tau Labs</a>
+    </div><!--close footer-->
+  </footer>
+
+  </div><!--close main-->
 
 </body>
 </html>

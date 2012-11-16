@@ -24,6 +24,8 @@ var snop_width = 775;
 // See documentation here: http://datatables.net/plug-ins/api
 $.fn.dataTableExt.oApi.fnReloadAjax = function ( oSettings, sNewSource, fnCallback, bStandingRedraw )
 {
+  alert('fnReloadAjax')
+  
     if ( typeof sNewSource != 'undefined' && sNewSource != null ) {
         oSettings.sAjaxSource = sNewSource;
     }
