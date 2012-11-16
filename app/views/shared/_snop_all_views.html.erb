@@ -1,5 +1,8 @@
 <%# These partials will chose to be visible or not based on params[:browse_view] %>
+<div class="container">
 
 <%= render partial: 'shared/snop_list_view', locals: {data_source: data_source} %>
 
 <%= render partial: 'shared/snop_browse', locals: {current_snop: snops.first, snop_list: snops} %>
+
+</div>

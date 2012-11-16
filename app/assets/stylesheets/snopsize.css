@@ -38,6 +38,11 @@ h2 {
 	margin-bottom: 15px;
 	}
 
+h2.subtitle {
+	margin-bottom: 25px;
+	text-align: right;
+}
+
 h3 {
 	font: bold 14px/18px 'Bitter', 'Helvetica Neue', Helvetica,Arial,sans-serif; 
 	color: #4D4D4D; 
@@ -64,7 +69,6 @@ p {
 label {
 	color: #000;
 	font: bold 14px/20px 'Helvetica Neue', Helvetica,Arial,sans-serif; 
-	margin-right: 10px;
 }
 
 p.small {
@@ -194,8 +198,6 @@ ul#navigation li a.signin {background-position: 25px -225px; }
 	margin-top: 40px;
 }
 
-
-
 .sidenav {
 	position: absolute;
 	top: 370px;
@@ -212,7 +214,11 @@ ul#navigation li a.signin {background-position: 25px -225px; }
 	overflow: hidden;
 }
 
-.tools.short { padding-bottom: 20px}
+.tools.short { 
+	display: inline;
+	padding: 0px;
+	padding-bottom: 30px;
+}
 
 .container .tools {
 	padding: 15px 0px 35px 0px;
@@ -438,20 +444,17 @@ ul#toggle li:hover {
 	-ms-filter: "Alpha(Opacity=100)";
 }
 
-.nav-arrows {
+.arrow {
 	float: left;
-}
-
-.arrow {display: block;
 	width: 40px;
 	height: 40px;
-	float: left;
 	cursor: pointer;
 	-webkit-transition: all 0 ease 0;
 	-moz-transition: all 0 ease 0;
 	-o-transition: all 0 ease 0;
 	transition: all 0 ease 0;
-	margin-right: 5px;}
+	margin-right: 5px;
+}
 	
 .arrow.next { background: url('arrow-next.png') no-repeat 0 0;}
 .arrow.prev { background: url('arrow-prev.png') no-repeat 0 0;}	
@@ -594,6 +597,7 @@ table.dataTable thead th {
 }
 
 table.dataTable thead th.sorting {
+	border: solid white 0.5px;
 	background-color: #4d4d4d;
 	color: #fff;
 	font: bold 14px/18px 'Bitter', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
@@ -632,6 +636,22 @@ table.dataTable tr.odd td.sorting_1 {
 
 table.dataTable tr.even td.sorting_1 {
   background-color: #fff;
+}
+
+.dataTables_length {
+	padding: 10px;
+}
+
+.dataTables_filter {
+	padding: 10px;
+}
+
+.dataTables_info {
+	padding: 10px;
+}
+
+.dataTables_paginate {
+	padding: 10px;
 }
 
 .snop_title a {
