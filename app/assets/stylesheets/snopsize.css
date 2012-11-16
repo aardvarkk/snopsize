@@ -452,6 +452,8 @@ ul#toggle li:hover {
 	
 .arrow.next { background: url('arrow-next.png') no-repeat 0 0;}
 .arrow.prev { background: url('arrow-prev.png') no-repeat 0 0;}	
+.arrow.next.disabled { background: url('arrow_disabled_right-grey.png') no-repeat 0 0;}
+.arrow.prev.disabled { background: url('arrow_disabled_left-grey.png') no-repeat 0 0;}	
 
 .arrow:hover {
 	background-position: 0 -40px;}

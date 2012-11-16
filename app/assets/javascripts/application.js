@@ -199,8 +199,8 @@ function reloadRecalculateSnopContainerWidth()
 function reloadClickHandlers()
 {
   // Assume nothing is clickable
-  $('#prev').off('click')
-  $('#next').off('click')
+  $('#prev').off('click').addClass('disabled')
+  $('#next').off('click').addClass('disabled')
 
   // Check if there's somewhere to go, and if so,
   // then enable a click handler
@@ -209,12 +209,12 @@ function reloadClickHandlers()
 
   // Should the prev button be disabled?
   if (prev.attr("id") !== undefined) {
-    $("#prev").on('click', prevSnop)
+    $("#prev").on('click', prevSnop).removeClass('disabled')
   }
   
   // Should the next button be disabled?
   if (next.attr("id") !== undefined) {
-    $("#next").on('click', nextSnop)
+    $("#next").on('click', nextSnop).removeClass('disabled')
   }
 }
 
