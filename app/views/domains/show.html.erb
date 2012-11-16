@@ -3,6 +3,9 @@
 <%# Partial to switch between the Snop flow and list view %>
 <%= render partial: 'shared/list_flow_buttons' %>
 
+<%# The next/prev buttons %>
+<%= render partial: 'shared/next_prev_buttons', locals: { browse_view: params[:browse_view] == "true" } %>
+
 <%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: domain_path(id: @domain.id, format: "json")} %>
 
 <%# list_view_path: domain_path, browse_view_path: domain_path(id: @domain.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]) %>

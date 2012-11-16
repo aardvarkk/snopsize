@@ -5,18 +5,20 @@
 # Set up the dataTable
 jQuery -> 
   $('#snops').dataTable( {
-    "bFilter": true, 
-    "oLanguage": { "sSearch": "Filter:" }
-    "bJQueryUI": true,
-    "aaSorting": [],
-    "bProcessing": true,
-    "bServerSide": true,
-    "sAjaxSource": $("#snops").data("source"),
-    "aoColumns": [
-        null,
-        null,
-        null,
-        null,
-        {"bVisible": false}
-        ]
-    });
+  "bFilter": true, 
+  "oLanguage": { "sSearch": "Filter:" }
+  "aaSorting": [],
+  "bProcessing": true,
+  "bServerSide": true,
+  "sAjaxSource": $("#snops").data("source"),
+  "aoColumns": [
+      { "sClass": "snop_title" },
+      { "sWidth": "75px" },
+      { "sWidth": "200px" },
+      { "sWidth": "100px" },
+      { "bVisible": false }
+      ]
+  });
+
+  changeToBrowseView();
+  reloadClickHandlers();

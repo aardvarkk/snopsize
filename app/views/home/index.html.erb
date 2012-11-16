@@ -1,8 +1,3 @@
-<%# We set this variable for home.js.coffee to check %>
-<%= javascript_tag do %>
-  browseView = <%= params[:browse_view] %>
-<% end %>
-
 <%# The home page contains a sign-up button %>
 <% content_for :sign_up_button do %>
   <% unless user_signed_in? %>
@@ -17,15 +12,8 @@
 <%# Partial to switch between the Snop flow and list view %>
 <%= render partial: 'shared/list_flow_buttons' %>
 
-<%# Only show the next/prev buttons if we're in browse view %>
-<% content_for :tools_short do %>
-  <div class="tools short">
-    <div class="nav-arrows">
-      <%= content_tag :div, nil, { class: "arrow prev", id: "prev" } %>
-      <%= content_tag :div, nil, { class: "arrow next", id: "next" } %>
-    </div><!--close arrows-->
-  </div><!--close tools short-->
-<% end %>
+<%# The next/prev buttons %>
+<%= render partial: 'shared/next_prev_buttons', locals: { browse_view: params[:browse_view] == "true" } %>
 
 <% content_for :sidenav do %>
   <%= render partial: 'shared/sidenav_snop_browse', locals: { current_snop: @snops.first, snop_list: @snops } %>
