@@ -1,28 +1,30 @@
-<div class="form">
-  <h1>Edit your Settings</h1>
+<div class="container">
+  <div class="form">
+    <h1>Edit your Settings</h1>
 
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-    <%= devise_error_messages! %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
 
-    <%= f.label :email, class: "above" %>
-    <%= f.email_field :email, placeholder: "Enter your email address..." %>
+      <%= f.label :email, class: "above" %>
+      <%= f.email_field :email, placeholder: "Enter your email address..." %>
 
-    <%= f.label "New Password (leave blank if you don't want to change it)", class: "above" %>
-    <%= f.password_field :password, :autocomplete => "off", placeholder: "Enter a new password..." %>
+      <%= f.label "New Password (leave blank if you don't want to change it)", class: "above" %>
+      <%= f.password_field :password, :autocomplete => "off", placeholder: "Enter a new password..." %>
 
-    <%= f.label "New Password confirmation", class: "above" %>
-    <%= f.password_field :password_confirmation, placeholder: "Confirm your new password..." %>
+      <%= f.label "New Password confirmation", class: "above" %>
+      <%= f.password_field :password_confirmation, placeholder: "Confirm your new password..." %>
 
-    <%= f.label "Current password (to confirm your changes)", class: "above" %> 
-    <%= f.password_field :current_password, placeholder: "Enter your current password..." %>
+      <%= f.label "Current password (to confirm your changes)", class: "above" %> 
+      <%= f.password_field :current_password, placeholder: "Enter your current password..." %>
 
-    <%= f.submit "Update", class: "buttons" %>
-  <% end %>
+      <%= f.submit "Update", class: "buttons" %>
+    <% end %>
 
-  <%= link_to "Back", :back %>
-</div><!--close form-->       
+    <%= link_to "Back", :back %>
+  </div><!--close form-->       
 
-<div class="callout">
-  <h2>Have a Question?<br />
-  <%= mail_to('info@snopsize.com', 'Email Us', subject: 'Email us', encode: 'javascript') %></h2>
-</div><!--close callout-->  
+  <div class="callout">
+    <h2>Have a Question?<br />
+    <%= mail_to('info@snopsize.com', 'Email Us', subject: 'Email us', encode: 'javascript') %></h2>
+  </div><!--close callout-->  
+</div>
