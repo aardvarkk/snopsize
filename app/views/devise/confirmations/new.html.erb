@@ -1,24 +1,26 @@
-<div class="form">
-  <h1>Resend confirmation instructions</h1>
+<div class="container">
+  <div class="form">
+    <h1>Resend confirmation instructions</h1>
 
-  <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-    <%= devise_error_messages! %>
+    <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+      <%= devise_error_messages! %>
 
-    <%= f.label :email, class: "above" %>
-    <%= f.email_field :email, placeholder: "Enter your email address..." %>
+      <%= f.label :email, class: "above" %>
+      <%= f.email_field :email, placeholder: "Enter your email address..." %>
 
-    <%= f.submit "Resend Instructions email", class: "buttons" %><br/>
+      <%= f.submit "Resend Instructions email", class: "buttons" %><br/>
 
-    <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-      <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-    <% end -%>
-  <% end %>        
-</div><!--close form-->   
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+        <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+      <% end -%>
+    <% end %>        
+  </div><!--close form-->   
 
-<% content_for :sign_up_button do %>
-  <% unless user_signed_in? %>
-    <div class="undernav">          
-      <%= link_to "Sign Up Now!", new_user_registration_path, class: "largebutton" %>
-    </div><!--close undernav; this box is required to push the button over to line up correctly-->
+  <% content_for :sign_up_button do %>
+    <% unless user_signed_in? %>
+      <div class="undernav">          
+        <%= link_to "Sign Up Now!", new_user_registration_path, class: "largebutton" %>
+      </div><!--close undernav; this box is required to push the button over to line up correctly-->
+    <% end %>
   <% end %>
-<% end %>
+</div>

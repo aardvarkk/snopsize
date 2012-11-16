@@ -1,6 +1,5 @@
 <% content_for :tools_short do %>
-  <span class="tools short">
-	  <%= content_tag :span, nil, { class: "arrow prev", id: "prev" } %>
-    <%= content_tag :span, nil, { class: "arrow next", id: "next" } %>
-  </span><!--close tools short-->
+  <div class="tools short">
+  	<%= content_tag :span, nil, { class: "arrow prev", id: "prev" } %><%= content_tag :span, nil, { class: "arrow next", id: "next" } %>
+  </div><!--close tools short-->
 <% end %>

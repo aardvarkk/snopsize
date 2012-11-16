@@ -17,8 +17,9 @@
   <%= csrf_meta_tags %>
 
   <%# Reset all styles before applying other stuff %>
-  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.7.3/build/cssreset/cssreset-min.css">
+  <%= stylesheet_link_tag "cssreset-min" %>
 
+  <%# Our internal style sheets %>
   <%= stylesheet_link_tag "application", :media => "all" %>
 
   <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
@@ -38,10 +39,6 @@
 
   <%# Scripts for Twitter Button %>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-  <%# This was recommended by devise %>
-  <!-- <p class="notice"><%= notice %></p> -->
-  <!-- <p class="alert"><%= alert %></p> -->
 
   <div class="left">
     <header>
@@ -83,6 +80,13 @@
         <%= yield :list_flow_buttons %>
       </ul>
     </div><!--close tools-->
+
+    <%# Show our flash messages %>
+    <% if notice %>
+      <p id="notice"><%= notice %></p>
+    <% end %>
+
+    <!--<p class="alert"><%= alert %></p>%>-->
 
     <%# Tools Short are the next/prev buttons for browse view %>
     <%= yield :tools_short %>

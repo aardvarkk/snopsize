@@ -36,11 +36,19 @@ h2 {
 	font: bold 20px/24px 'Bitter', 'Helvetica Neue', Helvetica,Arial,sans-serif; 
 	color: #4D4D4D; 
 	margin-bottom: 15px;
-	}
+}
 
 h2.subtitle {
 	margin-bottom: 25px;
 	text-align: right;
+}
+
+/* Our notice that shows messages */
+#notice {
+	font: bold 20px/24px 'Bitter', 'Helvetica Neue', Helvetica,Arial,sans-serif; 
+	color: #4D4D4D; 
+	margin-left: 25px;
+	margin-bottom: 10px;
 }
 
 h3 {
@@ -215,7 +223,7 @@ ul#navigation li a.signin {background-position: 25px -225px; }
 }
 
 .tools.short { 
-	display: inline-block;
+	float: left;
 	margin-left: 25px;
 	margin-bottom: 20px;
 	padding: 0px;
