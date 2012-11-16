@@ -221,17 +221,5 @@ function reloadClickHandlers()
 // Called when the document loads
 $(document).ready(function() 
 {
-  // Initial setup of the page
-  // Occurs after everything has loaded to set up active buttons, etc.
-  // alert('Setting up the page...')
-  if (browseView) {
-    // alert('Calling changeToBrowseView...')
-    changeToBrowseView()
-  }
-  else {
-    // alert('Calling changeToListView...')
-    changeToListView()
-  }
-
   reloadClickHandlers();
 });
