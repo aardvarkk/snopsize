@@ -8,11 +8,6 @@
 	  <%= @results.size %> User Results found</br></br>
 	  <%= render :partial => 'shared/userquick', :collection => @results %>
 	<% else %>
-	 	<%= @results.size %> Keyword Results found</br></br>
-
-    <%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: search_path(q: params[:q], format: "json")} %>
+    <%= render partial: 'shared/common', locals: { snop_list: @snops, current_snop: @snops.first, data_source: search_path(q: params[:q], type: params[:type]), title: @results.size.to_s + ' Keyword Results found' } %>
 	<% end %>
 <% end %>
-
-<%#= debug params %>
-<%# , list_view_path: search_path, browse_view_path: search_path(q: params[:q], type: params[:type], snop: @results.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch] %>

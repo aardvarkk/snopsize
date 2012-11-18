@@ -56,7 +56,13 @@
             <% end %>
           </ul>
 
-          <%= yield :sign_up_button %>
+          <%# Our sign up button should be on every page if the user isn't signed in %>
+          <% unless user_signed_in? %>
+            <div class="undernav">          
+              <%= link_to "Sign Up Now!", new_user_registration_path, class: "largebutton" %>
+            </div><!--close undernav; this box is required to push the button over to line up correctly-->
+          <% end %>
+
         </nav>
       </div><!--close menu-->
     </header>

@@ -1,0 +1,27 @@
+<%# Locals:  %>
+<%# snop_list: a list of snops to show in list/flow view %>
+<%# current_snop: the single snop to show in the browse view -- must be one of the snops in the list above! %>
+<%# data_source: the data source to use to fill the table %>
+<%# title: an optional title to show above the snops container in list and browse view %>
+
+<%# A default value for the title %>
+<% title ||= nil %>
+
+<%# Partial to switch between the Snop flow and list view %>
+<%= render partial: 'shared/list_flow_buttons' %>
+
+<%# The next/prev buttons -- need to know which snop we're on so we can disable/enable buttons %>
+<%= render partial: 'shared/next_prev_buttons', locals: { snop_list: snop_list, current_snop: current_snop } %>
+
+<%# The snop sidenav %>
+<% content_for :sidenav do %>
+  <%= render partial: 'shared/sidenav_snop_browse', locals: { snop_list: snop_list, current_snop: current_snop } %>
+<% end %>
+
+<%# Render a title if there is one... %>
+<% if title %>
+  <%= content_tag :h2, title, class: 'subtitle' %>
+<% end %>
+
+<%# Render both views. The partial will choose which one to show based on params[:browse_view] %>
+<%= render partial: 'shared/snop_all_views', locals: { snops: snop_list, current_snop: current_snop, data_source: data_source } %>

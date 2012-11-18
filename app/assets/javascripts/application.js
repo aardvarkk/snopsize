@@ -101,7 +101,7 @@ function changeToBrowseView(id)
 
 function setCurrentSnop(id)
 {
-  //alert(id);
+  // alert(new Error().stack);
 
   // show the right side nav
   var curr_sidenav = $(".sidenav.current");

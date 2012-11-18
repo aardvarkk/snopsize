@@ -1,16 +1,1 @@
-<%# Partial to switch between the Snop flow and list view %>
-<%= render partial: 'shared/list_flow_buttons' %>
-
-<%# The next/prev buttons -- need to know which snop we're on so we can disable/enable buttons %>
-<%= render partial: 'shared/next_prev_buttons', locals: { current_snop: @snops.first, snop_list: @snops } %>
-
-<%# The snop sidenav %>
-<% content_for :sidenav do %>
-  <%= render partial: 'shared/sidenav_snop_browse', locals: { current_snop: @snops.first, snop_list: @snops } %>
-<% end %>
-
-<h2 class="subtitle">Snops from <%= @domain.uri %></h2>
-
-<%= render partial: 'shared/snop_all_views', locals: { snops: @snops, data_source: domain_path(id: @domain.id, format: "json") } %>
-
-<%# list_view_path: domain_path, browse_view_path: domain_path(id: @domain.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]) %>
+<%= render partial: 'shared/common', locals: { snop_list: @snops, current_snop: @snops.first, data_source: domain_path(id: @domain.id), title: 'Snops from ' + @domain.uri } %>

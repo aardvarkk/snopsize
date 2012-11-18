@@ -1,31 +1,8 @@
-<%# We're only going to show these buttons if the user singed in and on their own page %>
+<%= render partial: 'shared/common', locals: { snop_list: @snops, current_snop: @snops.first, data_source: user_path(id: @user.id), title: 'Snops from ' + @user.username } %>
+
 <%
 =begin %>
 <% if user_signed_in? && @user == current_user %>
-  <div id='editing'>
-    <%= link_to 'Categories', user_categories_path %> | 
-    <%= link_to 'New Snop', new_snop_path %> | 
-    <%= link_to 'Settings', edit_user_registration_path(@user) %>
-  </div>
-<% end %>
-<%
-=end %>
-  
-<%# Partial to switch between the Snop flow and list view %>
-<%= render partial: 'shared/list_flow_buttons' %>
-
-<%# The next/prev buttons -- need to know which snop we're on so we can disable/enable buttons %>
-<%= render partial: 'shared/next_prev_buttons', locals: { current_snop: @snops.first, snop_list: @snops } %>
-
-<%# The snop sidenav %>
-<% content_for :sidenav do %>
-  <%= render partial: 'shared/sidenav_snop_browse', locals: { current_snop: @snops.first, snop_list: @snops } %>
-<% end %>
-
-<h2 class="subtitle">Snops from <%=@user.username%></h2>
-
-<%# Snop View %>
-<%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: user_path(format: "json", iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>   
 
 <%# Mass snop editing %>
 <% if user_signed_in? && @user == current_user %>
@@ -36,4 +13,12 @@
   </div>
 <% end %>
 
-<%# list_view_path: user_path, browse_view_path: user_path(id: @user.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]) %>
+  <div id='editing'>
+    <%= link_to 'Categories', user_categories_path %> | 
+    <%= link_to 'New Snop', new_snop_path %> | 
+    <%= link_to 'Settings', edit_user_registration_path(@user) %>
+  </div>
+<% end %>
+<%
+=end %>
+  

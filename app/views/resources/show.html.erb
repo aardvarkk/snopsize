@@ -1,21 +1,4 @@
-<%# Partial to switch between the Snop flow and list view %>
-<%= render partial: 'shared/list_flow_buttons' %>
+<%= render partial: 'shared/common', locals: { snop_list: @snops, current_snop: @snops.first, data_source: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id), title: 'Snops from ' + @url } %>
 
-<%# The next/prev buttons -- need to know which snop we're on so we can disable/enable buttons %>
-<%= render partial: 'shared/next_prev_buttons', locals: { current_snop: @snops.first, snop_list: @snops } %>
-
-<%# The snop sidenav %>
-<% content_for :sidenav do %>
-  <%= render partial: 'shared/sidenav_snop_browse', locals: { current_snop: @snops.first, snop_list: @snops } %>
-<% end %>
-
-<%# TODO: This should go into the side nav %>
-<%#= link_to (t :snop_about_this), new_snop_path(uri: @url)%>
-
-<h2 class="subtitle">Snops from <%= @url %></h2>
-
-<%# get all snops for this domain and resource combination %>
-<%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: resource_path(format: "json")} %>
-
-<%# list_view_path: resource_path, browse_view_path: resource_path(domain_id: @resource.domain.id, resource_id: @resource.id, snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]) %>
+<%# list_view_path: resource_path, browse_view_path: , snop: @snops.first, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]) %>
 

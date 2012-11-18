@@ -12,11 +12,11 @@ jQuery ->
     "bServerSide": true,
     "sAjaxSource": $("#snops").data("source"),
     "aoColumns": [
-        null,
-        null,
-        null,
-        null,
-        {"bVisible": false}
+        { "sClass": "snop_title" },
+        { "sWidth": "75px" },
+        { "sWidth": "200px" },
+        { "sWidth": "100px" },
+        { "bVisible": false }
         ]
     });
 

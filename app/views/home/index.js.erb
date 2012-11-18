@@ -1,16 +1,7 @@
 <% if params[:browse_view] == "true" %>
-  
-  // alert('index.js.erb in browse view')
-
-  //$("#snops_browse_view").html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop, snop_list: @snops, close_path: root_path} %>");
   changeToBrowseView("<%=j @snop.id.to_s unless @snop.nil? %>");
   reloadClickHandlers();
   reloadSocialMediaButtons();
-
 <% else %>
-
-  // alert('index.js.erb in list view')
-
   changeToListView();
-
 <% end %>

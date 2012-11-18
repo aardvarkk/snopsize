@@ -1,12 +1,7 @@
 <% if params[:browse_view] == "true" %>
-  $("#snops_browse_view").html("<%=j render partial: 'shared/snop_browse', locals: {current_snop: @snop, snop_list: @snops, close_path: user_path} %>");
-  changeToBrowseView();
-
-  // Reload the social media buttons
-  reloadSocialMediaButtons();  
+  changeToBrowseView("<%=j @snop.id.to_s unless @snop.nil? %>");
+  reloadClickHandlers();
+  reloadSocialMediaButtons();
 <% else %>
   changeToListView();
 <% end %>
-
-// Reload the click handlers
-reloadClickHandlers();
