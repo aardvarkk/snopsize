@@ -1,9 +1,13 @@
 require "bundler/capistrano" # runs bundler install on the server
 require "rvm/capistrano"
 
-before 'deploy', 'rvm:install_rvm'
-set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
-before 'deploy', 'rvm:install_ruby'
+# Fixes error no tty present and no askpass program specified
+default_run_options[:pty] = true
+
+#before 'deploy', 'rvm:install_rvm'
+#local_ruby_ver = ENV['GEM_HOME'].gsub(/.*\//,"")
+#set :rvm_ruby_string, local_ruby_ver
+#before 'deploy', 'rvm:install_ruby'
 
 set :user, 				'sysadmin'
 set :application, 'snopsize'
