@@ -43,4 +43,12 @@ task :htaccess do
   run "cp ~/htpasswd_backup ~/snopsize/current/.htpasswd"
 end
 
+# Set up the sunspot search
+desc "Restart sunspot server"
+task :sunspot do
+  run "bundle exec rake sunspot:solr:stop"
+  run "bundle exec rake sunspot:solr:start"
+end
+
 after "deploy", "htaccess"
+after "deploy", "sunspot"
