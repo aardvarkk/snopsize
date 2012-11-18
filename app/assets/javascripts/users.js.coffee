@@ -6,7 +6,7 @@
 jQuery -> 
   $('#snops').dataTable( {
     "bFilter": true, 
-    "oLanguage": { "sSearch": "Filter:" }
+    "oLanguage": { "sSearch": "Filter:", "oPaginate" : { "sNext": "", "sPrevious": "" } },
     "aaSorting": [],
     "bProcessing": true,
     "bServerSide": true,
