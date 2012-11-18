@@ -661,6 +661,8 @@ table.dataTable tr.even td.sorting_1 {
 
 .dataTables_length {
 	padding: 10px;
+	padding-left: 18px;
+	padding-bottom: 30px;
 }
 
 .dataTables_filter {
