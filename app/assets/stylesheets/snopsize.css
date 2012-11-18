@@ -492,6 +492,11 @@ ul#toggle li:hover {
 	margin-bottom: 25px;
 }
 
+/* We don't want any padding in the list view */
+.container.list_view {
+	padding: 0px;
+}
+
 .resource {
 	overflow: hidden;
 }
@@ -660,21 +665,34 @@ table.dataTable tr.even td.sorting_1 {
 }
 
 .dataTables_length {
-	padding: 10px;
-	padding-left: 18px;
-	padding-bottom: 30px;
+	padding: 30px 10px 30px 18px;
 }
 
 .dataTables_filter {
-	padding: 10px;
+	padding: 30px 10px 30px 18px;
 }
 
 .dataTables_info {
-	padding: 10px;
+	padding: 30px 10px 30px 18px;
 }
 
 .dataTables_paginate {
-	padding: 10px;
+	padding: 30px 10px 30px 18px;
+}
+
+.paginate_disabled_previous {
+    background: url("arrow-prev-grey.png") no-repeat scroll left top transparent;
+    padding: 0px;
+    width: 25px;
+    height: 25px;
+}
+
+.paginate_disabled_next {
+    background: url("arrow-next-grey.png") no-repeat scroll left top transparent;
+    margin-left: 2px;
+    padding: 0px;
+    width: 25px;
+    height: 25px;
 }
 
 .snop_title a {

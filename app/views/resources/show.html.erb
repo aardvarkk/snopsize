@@ -1,10 +1,15 @@
-<h2 class="subtitle">Viewing Snops for <%= @url %></h2>
+<h2 class="subtitle">Snops from <%= @url %></h2>
 
 <%# Partial to switch between the Snop flow and list view %>
 <%= render partial: 'shared/list_flow_buttons' %>
 
 <%# The next/prev buttons %>
 <%= render partial: 'shared/next_prev_buttons', locals: { browse_view: params[:browse_view] == "true" } %>
+
+<%# The snop sidenav %>
+<% content_for :sidenav do %>
+  <%= render partial: 'shared/sidenav_snop_browse', locals: { current_snop: @snops.first, snop_list: @snops } %>
+<% end %>
 
 <%# TODO: This should go into the side nav %>
 <%#= link_to (t :snop_about_this), new_snop_path(uri: @url)%>

@@ -15,6 +15,7 @@
 <%# The next/prev buttons %>
 <%= render partial: 'shared/next_prev_buttons', locals: { browse_view: params[:browse_view] == "true" } %>
 
+<%# The snop sidenav %>
 <% content_for :sidenav do %>
   <%= render partial: 'shared/sidenav_snop_browse', locals: { current_snop: @snops.first, snop_list: @snops } %>
 <% end %>

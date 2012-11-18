@@ -1,85 +1,90 @@
-<%# Generate a side naw for each snop in the list %>
-<% snop_list.each do |snop| %>
+<% display = (params[:browse_view] == 'true' ? 'block;' : 'none;') %>
 
-  <% cls = (snop == current_snop) ? 'current' : 'hidden' %>
-
-  <%= content_tag :div, { class: 'sidenav ' + cls, id: snop.id } do %>
-    
-    <div class="info">
-      <h4>Snop created by:</h4>
-      <%= link_to snop.user.username, snop.user %>
-    </div><!--close info-->
-    
-    <% unless snop.domain.nil? || snop.resource.nil? %>
-    <div class="info">
-      <h4>Resource:</h4>
-      <%# External link %>
-      <%= link_to "Read the article", snop.domain.uri + snop.resource.uri, target: '_blank' %><br/>
-      <%= link_to "See all Snops for article", resource_path(domain_id: snop.domain.id, resource_id: snop.resource.id) %>
-    </div><!--close info-->
-    <% end %>
-
-    <% unless snop.domain.nil? %>
-      <div class="info">
-        <h4>See more Snops from:</h4>
-        <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
-      </div><!--close info-->
-    <% end %>
-
-    <%# These only show if the user is signed in... 
-    Categorize, Favourite/Unfavourite, Delete %>
-    <% if user_signed_in? %>
+<%# Only display if we're in browse view %>
+<%= content_tag :div, { class: "sidenav_container", style: 'display: ' + display } do %>
   
+  <%# Generate a side naw for each snop in the list %>
+  <% snop_list.each do |snop| %>
+
+    <% cls = (snop == current_snop) ? 'current' : 'hidden' %>
+
+    <%= content_tag :div, { class: 'sidenav ' + cls, id: snop.id } do %>
+      
       <div class="info">
+        <h4>Snop created by:</h4>
+        <%= link_to snop.user.username, snop.user %>
+      </div><!--close info-->
+      
+      <% unless snop.domain.nil? || snop.resource.nil? %>
+      <div class="info">
+        <h4>Resource:</h4>
+        <%# External link %>
+        <%= link_to "Read the article", snop.domain.uri + snop.resource.uri, target: '_blank' %><br/>
+        <%= link_to "See all Snops for article", resource_path(domain_id: snop.domain.id, resource_id: snop.resource.id) %>
+      </div><!--close info-->
+      <% end %>
 
-        <%# Categorization %>
-        <% if snop.user == current_user || current_user.favourites.include?(snop) %>
-          <h4>File under:</h4>
-          <div id="<%= 'categorization_' + snop.id.to_s %>">
-            <% category = snop.user_categories.where("user_id = ?", current_user.id).first %>
-            <% selected = category.nil? ? nil : category.id %>
-            <%= collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: (t :uncategorized), selected: selected}, { class: "drop", data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} } %>
-          </div>
-        <% end %>
+      <% unless snop.domain.nil? %>
+        <div class="info">
+          <h4>See more Snops from:</h4>
+          <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
+        </div><!--close info-->
+      <% end %>
 
-        <%# Favourite/Unfavourite %>
-        <% @fave_btn_id = "fave_" + snop.id.to_s %>
-        <div id="<%= @fave_btn_id %>">
-          <% if has_user_faved_snop?(snop) %>
-            <%= render partial: 'shared/favourite', locals: {snop: snop} %>
-          <% else %>
-            <%= render partial: 'shared/unfavourite', locals: {snop: snop} %>
+      <%# These only show if the user is signed in... 
+      Categorize, Favourite/Unfavourite, Delete %>
+      <% if user_signed_in? %>
+    
+        <div class="info">
+
+          <%# Categorization %>
+          <% if snop.user == current_user || current_user.favourites.include?(snop) %>
+            <h4>File under:</h4>
+            <div id="<%= 'categorization_' + snop.id.to_s %>">
+              <% category = snop.user_categories.where("user_id = ?", current_user.id).first %>
+              <% selected = category.nil? ? nil : category.id %>
+              <%= collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: (t :uncategorized), selected: selected}, { class: "drop", data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} } %>
+            </div>
           <% end %>
+
+          <%# Favourite/Unfavourite %>
+          <% @fave_btn_id = "fave_" + snop.id.to_s %>
+          <div id="<%= @fave_btn_id %>">
+            <% if has_user_faved_snop?(snop) %>
+              <%= render partial: 'shared/favourite', locals: {snop: snop} %>
+            <% else %>
+              <%= render partial: 'shared/unfavourite', locals: {snop: snop} %>
+            <% end %>
+          </div>
+
+          <%# Delete button %>
+          <%# if snop.user == current_user %>
+            <%#= button_to "Delete", snop, method: :delete, remote: true %>
+          <%# end %>
+
+          <!--
+          <br /><br />
+          <a href="#" class="textbutton">Add a Category</a>
+          <br /><br /><br /><br />
+        
+          <a href="#" class="greybutton">Rename</a>
+          <a href="#" class="greybutton">Delete</a>-->
+
         </div>
 
-        <%# Delete button %>
-        <%# if snop.user == current_user %>
-          <%#= button_to "Delete", snop, method: :delete, remote: true %>
-        <%# end %>
+      <% end %>
 
-        <!--
-        <br /><br />
-        <a href="#" class="textbutton">Add a Category</a>
-        <br /><br /><br /><br />
-      
-        <a href="#" class="greybutton">Rename</a>
-        <a href="#" class="greybutton">Delete</a>-->
+      <div class="info last">
 
-      </div>
+        <%# Twitter Button %>
+        <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="<%=t :snopsize_hashtag %>" data-text="<%=h get_snop_tweet_content(snop) %>" data-url="<%= snop_url(snop) %>">Tweet</a>
+        
+        <%# Facebook Button %>
+        <div class="fb-like" data-href="<%= like_snop_url(snop) %>" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div> 
+
+      </div><!--close info last-->   
 
     <% end %>
-
-    <div class="info last">
-
-      <%# Twitter Button %>
-      <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="<%=t :snopsize_hashtag %>" data-text="<%=h get_snop_tweet_content(snop) %>" data-url="<%= snop_url(snop) %>">Tweet</a>
-      
-      <%# Facebook Button %>
-      <div class="fb-like" data-href="<%= like_snop_url(snop) %>" data-send="false" data-width="450" data-show-faces="false" data-font="arial"></div> 
-
-    </div><!--close info last-->   
-
   <% end %>
-
 <% end %>

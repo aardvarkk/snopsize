@@ -1,4 +1,4 @@
-<h1>User: <%= current_user.username %> </h1>
+<h2 class="subtitle">Favourite Snops from <%= current_user.username %> </h2>
 
 <%# We know the user is signed in %>
 <%
@@ -11,6 +11,17 @@
 <%
 =end %>
   
+<%# Partial to switch between the Snop flow and list view %>
+<%= render partial: 'shared/list_flow_buttons' %>
+
+<%# The next/prev buttons %>
+<%= render partial: 'shared/next_prev_buttons' %>
+
+<%# The snop sidenav %>
+<% content_for :sidenav do %>
+  <%= render partial: 'shared/sidenav_snop_browse', locals: { current_snop: @snops.first, snop_list: @snops } %>
+<% end %>
+
 <%# A single snop is shown in the right column, with the ability to browse %>
 <%# Snop View %>
 <%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: user_favourites_path(format: "json")} %>   

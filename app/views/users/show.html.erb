@@ -1,4 +1,4 @@
-<h1>User: <%=@user.username%> </h1>
+<h2 class="subtitle">Snops from <%=@user.username%></h2>
 
 <%# We're only going to show these buttons if the user singed in and on their own page %>
 <%
@@ -18,6 +18,11 @@
 
 <%# The next/prev buttons %>
 <%= render partial: 'shared/next_prev_buttons' %>
+
+<%# The snop sidenav %>
+<% content_for :sidenav do %>
+  <%= render partial: 'shared/sidenav_snop_browse', locals: { current_snop: @snops.first, snop_list: @snops } %>
+<% end %>
 
 <%# Snop View %>
 <%= render partial: 'shared/snop_all_views', locals: {snops: @snops, data_source: user_path(format: "json", iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch])} %>   
