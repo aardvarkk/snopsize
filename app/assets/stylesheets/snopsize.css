@@ -596,7 +596,11 @@ label.remember {margin-bottom: 30px; vertical-align: top}
 .category.top {margin-top: 20px;}
 .category h2 {float: left; line-height: 30px;}
 .category h2 a {color: #4d4d4d; }
-.actions {	float: right; margin-top: 8px; outline: }
+
+.actions {	
+	float: right;
+	margin-top: 8px;
+}
 
 #footer {
 	clear: right;
