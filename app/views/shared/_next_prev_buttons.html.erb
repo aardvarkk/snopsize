@@ -1,9 +1,9 @@
 <%# Don't show these if we're not in browse view %>
 <% display = params[:browse_view] == 'true' ? 'inline-block;' : 'none;' %>
 
-<% content_for :tools_short do %>
-  <%= content_tag :div, { class: "tools short", style: 'display: ' + display } do %>
-  	<%# These are spans: don't remove the whitespace or it'll affect layout %>
-  	<%= content_tag :span, nil, { class: "arrow prev", id: "prev" } %><%= content_tag :span, nil, { class: "arrow next", id: "next" } %>
-  <% end %>
+<%= content_tag :div, { class: "tools short", style: 'display: ' + display } do %>
+	<%# These are spans: don't remove the whitespace or it'll affect layout %>
+  <% prev_dis = current_snop == snop_list.first ? " disabled" : ""; %>
+  <% next_dis = current_snop == snop_list.last ? " disabled" : ""; %>
+	<%= content_tag :span, nil, { class: "arrow prev" + prev_dis, id: "prev" } %><%= content_tag :span, nil, { class: "arrow next" + next_dis, id: "next" } %>
 <% end %>

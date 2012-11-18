@@ -19,3 +19,5 @@ jQuery ->
         { "bVisible": false }
         ]
     });
+
+  reloadClickHandlers();

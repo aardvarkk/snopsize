@@ -5,21 +5,21 @@
 # Set up the dataTable
 jQuery -> 
   $('#snops').dataTable( {
-  "bFilter": false, 
-  "bLengthChange": false,
-  "bPaginate": false,
-  "bInfo": false,
-  "bSort": false,
-  "bProcessing": true,
-  "bServerSide": true,
-  "sAjaxSource": $("#snops").data("source")
-  "aoColumns": [
-      { "sClass": "snop_title" },
-      { "sWidth": "75px" },
-      { "sWidth": "200px" },
-      { "sWidth": "100px" },
-      { "bVisible": false }
-      ]
-  })
+    "bFilter": false, 
+    "bLengthChange": false,
+    "bPaginate": false,
+    "bInfo": false,
+    "bSort": false,
+    "bProcessing": true,
+    "bServerSide": true,
+    "sAjaxSource": $("#snops").data("source")
+    "aoColumns": [
+        { "sClass": "snop_title" },
+        { "sWidth": "75px" },
+        { "sWidth": "200px" },
+        { "sWidth": "100px" },
+        { "bVisible": false }
+        ]
+    })
 
   reloadClickHandlers();

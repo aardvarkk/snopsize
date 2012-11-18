@@ -20,6 +20,8 @@ jQuery ->
         ]
     });  
 
+  reloadClickHandlers();
+
   # Click handler for the Delete button on the user page
   $("#DeleteButton").click(() ->
     
@@ -126,5 +128,3 @@ jQuery ->
   $(document).on("click", "#snops tbody tr select", (e) ->
     e.stopPropagation();
   );
-
-  reloadClickHandlers();

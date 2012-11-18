@@ -67,6 +67,7 @@
   </div><!--close left-->
 
   <div class="main">
+
     <div class="tools">
       <%# Search form %>
       <%= form_tag("/search", method: "get", class: "search_form") do %>
@@ -88,9 +89,6 @@
 
     <!--<p class="alert"><%= alert %></p>%>-->
 
-    <%# Tools Short are the next/prev buttons for browse view %>
-    <%= yield :tools_short %>
-    
     <%# Main Content %>
     <%= yield %>
 

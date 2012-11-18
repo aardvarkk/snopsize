@@ -7,13 +7,14 @@
   <% end %>
 <% end %>
 
+<%# The search bar %>
 <%= render template: 'search/search' %>
 
 <%# Partial to switch between the Snop flow and list view %>
 <%= render partial: 'shared/list_flow_buttons' %>
 
-<%# The next/prev buttons %>
-<%= render partial: 'shared/next_prev_buttons', locals: { browse_view: params[:browse_view] == "true" } %>
+<%# The next/prev buttons -- need to know which snop we're on so we can disable/enable buttons %>
+<%= render partial: 'shared/next_prev_buttons', locals: { current_snop: @snops.first, snop_list: @snops } %>
 
 <%# The snop sidenav %>
 <% content_for :sidenav do %>
