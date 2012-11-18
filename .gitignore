@@ -29,9 +29,6 @@ log/*
 solr/data/*
 solr/pids/*
 
-# Since we may want to deploy from Windows to Linux, we can't check in the Gemfile.lock, because that screws up when it tries to install platform-specific gems (MySQL for instance)
-Gemfile.lock
-
 # Ignore Sublime projects and workspaces
 # The folders don't cross over between Windows and Linux so there's no use checking them in
 *.sublime-workspace
