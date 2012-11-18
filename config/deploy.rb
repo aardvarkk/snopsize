@@ -46,8 +46,8 @@ end
 # Set up the sunspot search
 desc "Restart sunspot server"
 task :sunspot do
-  run "bundle exec rake sunspot:solr:stop"
-  run "bundle exec rake sunspot:solr:start"
+  run "cd ~/snopsize/current && bundle exec rake sunspot:solr:stop"
+  run "cd ~/snopsize/current && bundle exec rake sunspot:solr:start"
 end
 
 after "deploy", "htaccess"
