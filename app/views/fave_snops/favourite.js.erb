@@ -1,8 +1,5 @@
-// Update the button showing on screen
+<%# Update the button showing on screen %>
 $("<%= '#fave_' + @snop.id.to_s %>").html("<%=j render partial: 'shared/unfavourite', locals: {snop: @snop} %>");
 
-<%# Append the categorization %>
-<%# category = @snop.user_categories.where("user_id = ?", current_user.id).first %>
-<%# selected = category.nil? ? nil : category.id %>
-
-//$("<%= '#categorization_' + @snop.id.to_s %>").html("<%#=j collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: (t :uncategorized), selected: selected}, { data: { remote: true, method: :post, url: url_for(:controller => 'user_categories', action: 'set_snop', snop: @snop, only_path: true)} } %>");
+<%# Show the categorization drop-down %>
+$("<%= '#categorization_' + @snop.id.to_s %>").show();

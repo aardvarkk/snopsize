@@ -38,13 +38,11 @@
         <div class="info">
 
           <%# Categorization %>
-          <% if snop.user == current_user || current_user.favourites.include?(snop) %>
+          <%= content_tag :div, { id: 'categorization_' + snop.id.to_s, style: 'display: hidden' } do %>
             <h4>File under:</h4>
-            <div id="<%= 'categorization_' + snop.id.to_s %>">
-              <% category = snop.user_categories.where("user_id = ?", current_user.id).first %>
-              <% selected = category.nil? ? nil : category.id %>
-              <%= collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: (t :uncategorized), selected: selected}, { class: "drop", data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} } %>
-            </div>
+            <% category = snop.user_categories.where("user_id = ?", current_user.id).first %>
+            <% selected = category.nil? ? nil : category.id %>
+            <%= collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: (t :uncategorized), selected: selected}, { class: "drop", data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} } %>
           <% end %>
 
           <%# Favourite/Unfavourite %>
