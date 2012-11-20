@@ -8,11 +8,13 @@
 	<%= content_tag :span, nil, { class: "arrow prev" + prev_dis, id: "prev" } %><%= content_tag :span, nil, { class: "arrow next" + next_dis, id: "next" } %>
 
   <%# Show our flash messages %>
-  <div class="flash">
-    <% if alert %>
-      <p id="notice"><%= alert %></p>
-    <% elsif notice %>
-      <p id="notice"><%= notice %></p>
-    <% end %>
-  </div>
+  <% if alert || notice %>
+    <div class="flash">
+      <% if alert %>
+        <p id="notice"><%= alert %></p>
+      <% elsif notice %>
+        <p id="notice"><%= notice %></p>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
