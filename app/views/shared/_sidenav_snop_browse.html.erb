@@ -38,7 +38,8 @@
         <div class="info">
 
           <%# Categorization %>
-          <%= content_tag :div, { id: 'categorization_' + snop.id.to_s, style: 'display: hidden' } do %>
+          <% display = (snop.user == current_user || current_user.favourites.include?(snop)) ? 'inline-block;' : 'none;' %>
+          <%= content_tag :div, { id: 'categorization_' + snop.id.to_s, style: 'display: ' + display } do %>
             <h4>File under:</h4>
             <% category = snop.user_categories.where("user_id = ?", current_user.id).first %>
             <% selected = category.nil? ? nil : category.id %>
