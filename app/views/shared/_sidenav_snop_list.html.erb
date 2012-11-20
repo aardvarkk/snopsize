@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+  <% display = (params[:browse_view] == 'false' ? 'block;' : 'none;') %>
+
+  <%# Only display if we're in browse view %>
+  <%= content_tag :div, { class: "sidenav_container list", style: 'display: ' + display } do %>
+    <%= content_tag :div, { class: 'sidenav' } do %>
+      <%= link_to "Categories", user_categories_path %> <br/>
+      <%= link_to "New Snop", new_snop_path %> <br/>
+      <%= link_to "Settings", edit_user_registration_path(current_user) %>
+    <% end %>
+  <% end %>
+<% end %>

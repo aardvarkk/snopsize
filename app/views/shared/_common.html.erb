@@ -13,9 +13,12 @@
 <%# The next/prev buttons -- need to know which snop we're on so we can disable/enable buttons %>
 <%= render partial: 'shared/next_prev_buttons', locals: { snop_list: snop_list, current_snop: current_snop } %>
 
-<%# The snop sidenav %>
+<%# sidenav %>
 <% content_for :sidenav do %>
+  <%# side nav for the snop %>
   <%= render partial: 'shared/sidenav_snop_browse', locals: { snop_list: snop_list, current_snop: current_snop } %>
+  <%# side nav for the list view %>
+  <%= render partial: 'shared/sidenav_snop_list' %>
 <% end %>
 
 <%# Render a title if there is one... %>

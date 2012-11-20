@@ -57,9 +57,10 @@ function changeToListView()
   // set container to be list view style -- no padding for the table
   $(".container").addClass("list_view");
 
-  // hide the side nav
-  // alert('Hiding all sidenavs...')
+  // hide the browse view side nav, show the
+  // list view sidenav
   $(".sidenav_container").hide();
+  $(".sidenav_container.list").show();
 }
 
 function changeToBrowseView(id)
@@ -90,8 +91,8 @@ function changeToBrowseView(id)
   $(".container").removeClass("list_view");
 
   // show the current snop in the side nav
-  // alert('Showing only current sidenav...')
-  $(".sidenav_container").show();
+  $(".sidenav_container").hide();
+  $(".sidenav_container.flow").show();
 
   // if they passed in an id
   if (id != undefined && id != "") {

@@ -1,7 +1,7 @@
 <% display = (params[:browse_view] == 'true' ? 'block;' : 'none;') %>
 
 <%# Only display if we're in browse view %>
-<%= content_tag :div, { class: "sidenav_container", style: 'display: ' + display } do %>
+<%= content_tag :div, { class: "sidenav_container flow", style: 'display: ' + display } do %>
   
   <%# Generate a side naw for each snop in the list %>
   <% snop_list.each do |snop| %>
