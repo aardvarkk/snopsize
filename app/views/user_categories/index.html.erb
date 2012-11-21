@@ -7,7 +7,7 @@
     <%= content_tag :div, class: cls do %>
       <%= content_tag :h2, c.name %>
       <%# Controls %>
-      <div class="actions">
+      <div class="actions right">
       <%= link_to 'Rename', edit_user_category_path(c), class: 'greybutton' %>
       <%= link_to 'Delete', c, { class: 'greybutton', :data => { :confirm => 'Are you sure?' }, method: :delete } %>
       </div>
