@@ -44,11 +44,16 @@ task :htaccess do
 end
 
 # Set up the sunspot search
-desc "Restart sunspot server"
-task :sunspot do
-  run "cd ~/snopsize/current && bundle exec rake sunspot:solr:stop"
-  run "cd ~/snopsize/current && bundle exec rake sunspot:solr:start"
+desc "Stop sunspot server"
+task :sunspot_stop do
+  run "cd ~/snopsize/current && bundle exec rake sunspot:solr:stop RAILS_ENV=production"
 end
 
+desc "Start sunspot server"
+task :sunspot_start do
+  run "cd ~/snopsize/current && bundle exec rake sunspot:solr:start RAILS_ENV=production"
+end
+  
+before "deploy", "sunspot_stop"
 after "deploy", "htaccess"
-after "deploy", "sunspot"
+after "deploy", "sunspot_start"
