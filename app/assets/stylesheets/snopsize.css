@@ -108,7 +108,7 @@ a.textbutton {
 	border-radius: 5px;
 	padding: 6px 15px 8px 15px;
 	color: #4d4d4d;
-	font: bold 18px/55px 'Bitter', 'Helvetica Neue', Helvetica,Arial,sans-serif; 
+	font: bold 18px/24px 'Bitter', 'Helvetica Neue', Helvetica,Arial,sans-serif; 
 	-webkit-transition: all .25s ease;
 	-moz-transition: all .25s ease;
 	-o-transition: all .25s ease;
@@ -321,7 +321,7 @@ border-radius: 5px;
 padding: 6px 10px;
 color: #4d4d4d;
 border: none;
-font: bold 18px/55px 'Bitter', 'Helvetica Neue', Helvetica,Arial,sans-serif; 
+font: bold 18px/24px 'Bitter', 'Helvetica Neue', Helvetica,Arial,sans-serif; 
 cursor: pointer;
 -webkit-transition: all .25s ease;
 -moz-transition: all .25s ease;
@@ -563,11 +563,15 @@ label.remember {margin-bottom: 30px; vertical-align: top}
 .form input {
 	width: 100%;
 	margin-bottom: 30px;
-}	
+}
 
 .form input.buttons {
 	width: auto;
 	margin-bottom: 15px;
+}
+
+.form input.check {
+	width: auto;
 }
 	
 .callout {
