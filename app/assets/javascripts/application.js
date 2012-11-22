@@ -196,24 +196,45 @@ function reloadRecalculateSnopContainerWidth(num_snops)
   $("#snop_container").css("width", snop_width * num_snops);
 }
 
+function hasPrev()
+{
+  var prev = $(".snop.current").prev();
+  if (prev.attr("id") == undefined)
+  {
+    return false;
+  }
+  else
+  {
+    return true;
+  }
+}
+
+function hasNext()
+{
+  var next = $(".snop.current").next();
+  if (next.attr("id") == undefined)
+  {
+    return false;
+  }
+  else
+  {
+    return true;
+  }
+}
+
 function reloadClickHandlers()
 {
   // Assume nothing is clickable
   $('#prev').off('click').addClass('disabled')
   $('#next').off('click').addClass('disabled')
 
-  // Check if there's somewhere to go, and if so,
-  // then enable a click handler
-  var prev = $(".snop.current").prev();
-  var next = $(".snop.current").next();
-
   // Should the prev button be disabled?
-  if (prev.attr("id") !== undefined) {
+  if (hasPrev()) {
     $("#prev").on('click', prevSnop).removeClass('disabled')
   }
   
   // Should the next button be disabled?
-  if (next.attr("id") !== undefined) {
+  if (hasNext()) {
     $("#next").on('click', nextSnop).removeClass('disabled')
   }
 }
