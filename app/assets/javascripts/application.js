@@ -133,7 +133,7 @@ function setCurrentSnop(id)
   $("#snop_container").css("left", offset);
 
   // do a quick highlight effect to show the change!?
-  $("container").effect("highlight", {}, 1000);
+  $(".container").effect("highlight", {}, 1000);
   to_show.effect("highlight", {}, 1000);
 }
 
