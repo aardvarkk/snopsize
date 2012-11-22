@@ -1,1 +1,11 @@
 <%= render partial: 'shared/common', locals: { snop_list: @snops, current_snop: @snops.first, data_source: root_path } %>
+
+<%# Only the home page shows the Sign Up button on the left side under the nav, other
+ pages show it in the main container as a right floated box. %>
+<% content_for :sign_up_button do %>
+  <% unless user_signed_in? %>
+    <div class="undernav">          
+      <%= link_to "Sign Up Now!", new_user_registration_path, class: "largebutton" %>
+    </div><!--close undernav; this box is required to push the button over to line up correctly-->
+  <% end %>
+<% end %>

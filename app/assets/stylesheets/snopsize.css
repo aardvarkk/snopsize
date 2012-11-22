@@ -608,6 +608,12 @@ label.remember {margin-bottom: 30px; vertical-align: top}
 	transition: all .25s ease;}
 .callout a:hover {color: #fff}	
 
+.SignUpCallout
+{
+	float: right;
+	padding: 20px 10px 10px 20px;
+}
+
 .category {
 	border-top: 1px solid #ccc;
 	padding: 8px 0 0 0;
