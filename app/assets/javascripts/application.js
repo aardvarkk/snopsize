@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.effects.highlight
 //= require dataTables/jquery.dataTables
 
 // The size of the "container" div is 800px, but it has 25 px padding, therefore the width of a 
@@ -130,6 +131,10 @@ function setCurrentSnop(id)
   // correctly
   var offset = idx * -snop_width;
   $("#snop_container").css("left", offset);
+
+  // do a quick highlight effect to show the change!?
+  $("container").effect("highlight", {}, 1000);
+  to_show.effect("highlight", {}, 1000);
 }
 
 function prevSnop()
