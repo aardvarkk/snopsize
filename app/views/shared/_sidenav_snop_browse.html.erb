@@ -57,9 +57,10 @@
           </div>
 
           <%# Delete button %>
-          <%# if snop.user == current_user %>
-            <%#= button_to "Delete", snop, method: :delete, remote: true %>
-          <%# end %>
+          <% if current_page?(user_path(current_user.id)) %>
+            <br />
+            <%= link_to "Delete", snop, method: :delete, remote: true, class: "greybutton", confirm: "Are you sure you want to delete this snop?" %>
+          <% end %>
 
           <!--
           <br /><br />

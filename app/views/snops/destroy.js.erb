@@ -2,28 +2,40 @@
 var datatable = $("#snops").dataTable();
 datatable.fnDraw();
 
-// if the next button isn't disabled, let's press it!
-if (!$("#next").attr("disabled"))
+// some vars for new snops that need to be shown
+var new_snop = null;
+var new_sidenav = null;
+
+if (hasNext())
 {
-  $("#next").click();
+  // set current snop as the next one
+  new_snop = $(".snop.current").next();
+  new_sidenav = $(".sidenav.current").next();
 }
-// if the prev button isn't disabled, let's press it!
-else if (!$("#prev").attr("disabled"))
+else if (hasPrev())
 {
-  $("#prev").click();
+  // set current snop as the prev one
+  new_snop = $(".snop.current").prev();
+  new_sidenav = $(".sidenav.current").prev();
 }
-// both buttons are disabled, it means this is the last snop,
-// lets return to the list view
 else
 {
   changeToListView();
 }
 
-// delete the div
-<% unless @snop.nil? %>
-  var div_to_delete = "<%= '#snop_' + @snop.id.to_s %>"
-  $(div_to_delete).remove();
-<% end %>
+// remove the snop view
+var div_to_delete = "<%= '#snop_' + @snop.id.to_s %>";
+$(div_to_delete).remove();
 
-// lets update the buttons again since we deleted the div
-enableButtons();
+// remove the side nav
+div_to_delete = "<%= '#' + @snop.id.to_s %>";
+$(div_to_delete).remove();
+
+// set the current snop
+if (new_snop)
+{
+  setCurrentSnop(new_sidenav.attr("id"));
+}
+
+reloadClickHandlers();
+reloadSocialMediaButtons();
