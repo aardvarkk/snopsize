@@ -1,1 +1,7 @@
-<%= render :partial => "shared/snopfull", locals: {snop: @snop} %>
+<% content_for :sidenav do %>
+<%= render partial: 'shared/sidenav_snop_browse', locals: {snop_list: [@snop], current_snop: @snop} %>
+<% end %>
+
+<div class="container">
+<%= render partial: 'shared/snopfull', locals: {snop: @snop} %>
+</div>

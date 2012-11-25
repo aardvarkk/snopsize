@@ -67,6 +67,7 @@ class SnopsController < ApplicationController
   end
 
   def show
+    params[:browse_view] ||= 'true'
     @snop = Snop.find(params[:id])
   end
 
