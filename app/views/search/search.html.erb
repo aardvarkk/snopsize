@@ -3,7 +3,7 @@
 <% case params[:type] %>
 <%# URI %>
 <% when 'url' %>
-	<%= content_tag :h2, @results ? @results.size : '0' + ' URL Results found', class: 'subtitle' %>
+	<%= content_tag :h2, (@results ? @results.size.to_s : '0') + ' URL Results found', class: 'subtitle' %>
 	<%# If they put in a crazy URI that didn't parse, we don't want to give them to option to snop about it %>
   <div class="container">
 	<% if @uri %>
@@ -13,8 +13,10 @@
 	<% end %>
   </div>
 <% when 'user' %>
-  <%= @results.size %> User Results found</br></br>
- 	<%= render :partial => 'shared/userquick', :collection => @results %>
+	<%= content_tag :h2, (@results ? @results.size.to_s : '0') + ' User Results found', class: 'subtitle' %>
+	<div class="container">
+ 		<%= render :partial => 'shared/userquick', :collection => @results %>
+ 	</div>
 <% else %>
   <%= render partial: 'shared/common', locals: { snop_list: @snops, current_snop: @snops.first, data_source: search_path(q: params[:q], type: params[:type]), title: @results.size.to_s + ' Keyword Results found' } %>
 <% end %>
