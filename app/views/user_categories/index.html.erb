@@ -1,3 +1,8 @@
+<% content_for :sidenav do %>
+  <%# Have to pass a local to force the showing because we don't have control over params for devise controllers %>
+  <%= render partial: 'shared/sidenav_tools', locals: { show: 'true' } %>
+<% end %>
+
 <div class="container">
   <h1>Manage your Categories</h1>
   <%= link_to 'Add a Category', new_user_category_path, class: 'textbutton' %>

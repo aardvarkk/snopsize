@@ -17,8 +17,8 @@
 <% content_for :sidenav do %>
   <%# side nav for the snop %>
   <%= render partial: 'shared/sidenav_snop_browse', locals: { snop_list: snop_list, current_snop: current_snop } %>
-  <%# side nav for the list view %>
-  <%= render partial: 'shared/sidenav_snop_list' %>
+  <%# side nav for tools (settings, categories, new snop) %>
+  <%= render partial: 'shared/sidenav_tools', locals: { show: params[:browse_view] == 'false' } %>
 <% end %>
 
 <%# Render a title if there is one... %>

@@ -59,9 +59,9 @@ function changeToListView()
   $(".container").addClass("list_view");
 
   // hide the browse view side nav, show the
-  // list view sidenav
+  // tools sidenav
   $(".sidenav_container").hide();
-  $(".sidenav_container.list").show();
+  $(".sidenav_container.tools").show();
 }
 
 function changeToBrowseView(id)
