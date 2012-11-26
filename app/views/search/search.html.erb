@@ -1,13 +1,20 @@
-<%# show any keyword results... %>
-<% if @results %>
-	<% case params[:type] %>
-	<% when 'url' %>
-	  <%= @results.size %> URL Results found</br></br>
-    <%= link_to "Be the first to snop about " + @uri.to_s, new_snop_path(uri: @uri) %>
-	<% when 'user' %>
-	  <%= @results.size %> User Results found</br></br>
-	  <%= render :partial => 'shared/userquick', :collection => @results %>
-	<% else %>
-    <%= render partial: 'shared/common', locals: { snop_list: @snops, current_snop: @snops.first, data_source: search_path(q: params[:q], type: params[:type]), title: @results.size.to_s + ' Keyword Results found' } %>
+<%# Show results for various searches... %>
+<%# NOTE: They should have been redirected before getting here for URL searches, so there should never be any results here %>
+<% case params[:type] %>
+<%# URI %>
+<% when 'url' %>
+	<%= content_tag :h2, @results ? @results.size : '0' + ' URL Results found', class: 'subtitle' %>
+	<%# If they put in a crazy URI that didn't parse, we don't want to give them to option to snop about it %>
+  <div class="container">
+	<% if @uri %>
+	  	<%= content_tag :h2 do %>
+				<%= link_to "Be the first to snop about " + @uri, new_snop_path(uri: @uri) %>
+			<% end %>
 	<% end %>
+  </div>
+<% when 'user' %>
+  <%= @results.size %> User Results found</br></br>
+ 	<%= render :partial => 'shared/userquick', :collection => @results %>
+<% else %>
+  <%= render partial: 'shared/common', locals: { snop_list: @snops, current_snop: @snops.first, data_source: search_path(q: params[:q], type: params[:type]), title: @results.size.to_s + ' Keyword Results found' } %>
 <% end %>

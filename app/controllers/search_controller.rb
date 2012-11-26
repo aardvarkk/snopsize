@@ -23,8 +23,11 @@ class SearchController < ApplicationController
       # Otherwise, do nothing and the search page will take care of saying it didn't find anything
       @uri = Addressable::URI.heuristic_parse(params[:q]) rescue nil
 
-      # Can't do anything with a bad uri
-      return if @uri.nil? || @uri.host.nil?
+      # Can't do anything with a bad uri -- just return nil
+      if @uri.nil? || @uri.host.nil? || !PublicSuffix.valid?(@uri.host)
+        @uri = nil
+        return
+      end
 
       # Assume an http scheme if none is given
       @uri.scheme = 'http' if @uri.scheme.nil?
@@ -43,8 +46,12 @@ class SearchController < ApplicationController
         return
       end
 
-      # We couldn't find anything, return empty results
-      @results = Array.new
+      # Prepend www. -- redirect if we find anything
+      d = Domain.where('uri = ?', @uri.scheme + '://www.' + @uri.host).limit(1)
+      if d[0]
+        redirect_to domain_path(d[0]) 
+        return
+      end
 
     when 'user'
 
