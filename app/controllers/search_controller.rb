@@ -9,9 +9,6 @@ class SearchController < ApplicationController
     # Default params
     params[:browse_view] ||= "false"
 
-  	# We're done if they didn't pass a search query
-  	return if params[:q].blank?
-
     # By default, perform a keyword search
     case params[:type]
     when 'url'
@@ -63,10 +60,14 @@ class SearchController < ApplicationController
 
     else 
 
-      # Perform keyword search using the full text
-      @results = Snop.search do
-        fulltext params[:q]
-      end.results
+      # Perform keyword search (if we were sent anything) using the full text
+      unless params[:q].blank?
+        @results = Snop.search do
+          fulltext params[:q]
+        end.results
+      else
+        @results = nil
+      end
 
       # Get the relation 
       @snops = Snop.where(deleted: false, is_ad: false).where("snops.id IN (?)", @results)
@@ -103,6 +104,7 @@ class SearchController < ApplicationController
         format.json { render json: SearchTable.new(view_context, @snops, pre_filter_count, post_filter_count) }
         format.js 
       end
+
     end
   end
 end

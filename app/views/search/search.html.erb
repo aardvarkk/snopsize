@@ -18,5 +18,5 @@
  		<%= render :partial => 'shared/userquick', :collection => @results %>
  	</div>
 <% else %>
-  <%= render partial: 'shared/common', locals: { snop_list: @snops, current_snop: @snops.first, data_source: search_path(q: params[:q], type: params[:type]), title: @results.size.to_s + ' Keyword Results found' } %>
+  <%= render partial: 'shared/common', locals: { snop_list: @snops, current_snop: @snops.first, data_source: search_path(q: params[:q], type: params[:type]), title: @snops.size.to_s + ' Keyword Results found' } %>
 <% end %>
