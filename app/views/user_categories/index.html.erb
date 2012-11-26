@@ -6,16 +6,25 @@
 <div class="container">
   <h1>Manage your Categories</h1>
   <%= link_to 'Add a Category', new_user_category_path, class: 'textbutton' %>
-  <%# List all of the user categories, then have a link to delete %>
-  <% current_user.user_categories.each do |c| %>
-    <% cls = c == current_user.user_categories.first ? 'category top' : 'category' %>
-    <%= content_tag :div, class: cls do %>
-      <%= content_tag :h2, c.name %>
-      <%# Controls %>
-      <div class="actions right">
-      <%= link_to 'Rename', edit_user_category_path(c), class: 'greybutton' %>
-      <%= link_to 'Delete', c, { class: 'greybutton', :data => { :confirm => 'Are you sure?' }, method: :delete } %>
-      </div>
+  
+  <%# If we're empty, show a message %>
+  <% if current_user.user_categories.empty? %>
+    <%= content_tag :div, class: 'category top' do %>
+      <%= content_tag :h2, 'You have not created any categories yet' %>
+    <% end %>
+  <% else %>
+    <%# List all of the user categories, then have a link to delete %>
+    <% current_user.user_categories.each do |c| %>
+      <% cls = c == current_user.user_categories.first ? 'category top' : 'category' %>
+      <%= content_tag :div, class: cls do %>
+        <%= content_tag :h2, c.name %>
+        <%# Controls %>
+        <div class="actions right">
+        <%= link_to 'Rename', edit_user_category_path(c), class: 'greybutton' %>
+        <%= link_to 'Delete', c, { class: 'greybutton', :data => { :confirm => 'Are you sure?' }, method: :delete } %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
+
 </div><!--close container-->
