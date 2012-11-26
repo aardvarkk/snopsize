@@ -12,25 +12,25 @@
     </div>
 
     <%# But these points and summary aren't required, so only do the div if they exist %>
-    <% unless snop.point1.empty? %>
+    <% unless snop.point1.nil? || snop.point1.empty? %>
       <div class="point one">
         <p><%= snop.point1 %></p>
       </div><!--close point-->
     <% end %>
 
-    <% unless snop.point2.empty? %>
+    <% unless snop.point2.nil? || snop.point2.empty? %>
       <div class="point two">
         <p><%= snop.point2 %></p>
       </div><!--close point-->
     <% end %>
 
-    <% unless snop.point3.empty? %>
+    <% unless snop.point3.nil? || snop.point3.empty? %>
       <div class="point three">
         <p><%= snop.point3 %></p>
       </div><!--close point-->
     <% end %>
 
-    <% unless snop.summary.empty? %>
+    <% unless snop.summary.nil? || snop.summary.empty? %>
       <div class="summary">
         <p><%= snop.summary %></p>
       </div>
