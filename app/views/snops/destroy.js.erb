@@ -1,3 +1,7 @@
+<%# Make sure we actually deleted something before doing all this work... %>
+<%# You may not successfully delete if you try to delete somebody else's snop! %>
+<% return unless @snop %>
+
 // We want to update the datatable
 var datatable = $("#snops").dataTable();
 datatable.fnDraw();
