@@ -46,13 +46,10 @@ class SearchControllerTest < ActionController::TestCase
     assert_nil assigns(:results)
 
     # Now lets try with some data
-    get :search, type: "url", q: "www.test.com/query"
+    get :search, type: "url", q: domains(:one).uri
 
-    # Should be a successful query
-    assert_response :success
-
-    # Make sure the results are set
-    assert_not_nil assigns(:results)
+    # We should be redirected to the domain page for this domain
+    assert_redirected_to domain_path(domains(:one))
 
     # Now lets try with an invalid uri
     get :search, type: "url", q: "somegibberish"
