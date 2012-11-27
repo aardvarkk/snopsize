@@ -52,11 +52,15 @@ class SearchController < ApplicationController
 
     when 'user'
 
-      # Perform user search using the full text
+      # Perform user search (if we were sent anything) using the full text
       # TODO: Should probably change this to doing a "LIKE" search so that we can get more results
-      @results = User.search do
-        fulltext params[:q]
-      end.results
+      unless params[:q].blank?
+        @results = User.search do
+          fulltext params[:q]
+        end.results
+      else
+        @results = nil
+      end
 
     else 
 
