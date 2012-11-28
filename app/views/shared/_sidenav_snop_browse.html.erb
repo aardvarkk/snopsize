@@ -20,14 +20,14 @@
         <h4>Resource:</h4>
         <%# External link %>
         <%= link_to "Read the article", snop.domain.uri + snop.resource.uri, target: '_blank' %><br/>
-        <%= link_to "See all Snops for article", resource_path(domain_id: snop.domain.id, resource_id: snop.resource.id) %>
+        <%= link_to t(:see_all_for_article), resource_path(domain_id: snop.domain.id, resource_id: snop.resource.id) %>
       </div><!--close info-->
       <% end %>
 
       <% unless snop.domain.nil? %>
         <div class="info">
           <h4>See more Snops from:</h4>
-          <%= link_to "Other posts from " + snop.domain.uri, snop.domain %>
+          <%= link_to snop.domain.uri, snop.domain %>
         </div><!--close info-->
       <% end %>
 

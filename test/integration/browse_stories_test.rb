@@ -18,7 +18,7 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
 
     # They now see the snop, but what they really want is to see
     # All the snops for that article, so they click on the link
-    click_link ("See all snops for article " + snops(:one).domain.uri + snops(:one).resource.uri)
+    click_link(I18n.t :see_all_for_article)
 
     # Wait until we get to the resource page
     assert_equal resource_path(domain_id: snops(:one).domain.id, resource_id: snops(:one).resource.id), current_path
@@ -31,15 +31,13 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     click_link(snops(:four).title)
 
     # Let's switch between some snops, let's go to the next snop
-    assert has_button?(">")
-    click_button(">")
+    find('.arrow.next').click
 
     # make sure we see the other snop now
     assert has_content?(snops(:one).title)
 
     # now lets go back
-    assert has_button?("<")
-    click_button("<")
+    find('.arrow.prev').click
 
     # we should now be back to snop 1 being shown
     assert has_content?(snops(:four).title)
@@ -62,11 +60,11 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
 
     # They now see the snop, but what they really want is to see
     # All the articles for that particular website, so they click on a domain
-    click_link ("Other posts from " + snops(:one).domain.uri)
+    click_link snops(:one).domain.uri
     assert_equal domain_path(snops(:one).domain), current_path
   end
 
-  # Story: A user seems a few snops from a user they like, they want to see all the
+  # Story: A user sees a few snops from a user they like, they want to see all the
   # snops from that user
   test "browsing user snops" do
     # Go to home page
@@ -75,6 +73,9 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
 
     # Now the user want's to click on the list view
     click_link(I18n.t :list_view)
+
+    # Click on the snop name in the list view to transfer back to browse view
+    click_link snops(:one).title
 
     # On the home page they see a user who's snops they've seen before.
     # They want to see other snops from that user
