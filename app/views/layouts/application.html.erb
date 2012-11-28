@@ -79,6 +79,16 @@
       </ul>
     </div><!--close tools-->
 
+    <% if alert || notice %>
+      <div class="flash">
+        <% if alert %>
+          <p id="notice"><%= alert %></p>
+        <% elsif notice %>
+          <p id="notice"><%= notice %></p>
+        <% end %>
+      </div>
+    <% end %>
+
     <!--<p class="alert"><%= alert %></p>%>-->
 
     <%# Main Content %>
