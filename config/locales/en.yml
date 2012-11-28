@@ -2,8 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  browse_view: "Snop View"
-  list_view: "Snop List"
+  browse_view: "Snop Flow"
+  list_view: "List View"
   snop_about_this: "Snop about this article"
   snopsize_hashtag: "snopsize"
   uncategorized: "Uncategorized"

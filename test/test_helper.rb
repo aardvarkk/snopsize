@@ -30,6 +30,9 @@ class ActionDispatch::IntegrationTest
   # Switch to selenium as the default driver for JS support
   Capybara.default_driver = :selenium
 
+  # Only click on visible links!
+  Capybara.ignore_hidden_elements = true
+
   teardown do
     DatabaseCleaner.clean       # Truncate the database
     Capybara.reset_sessions!    # Forget the (simulated) browser state

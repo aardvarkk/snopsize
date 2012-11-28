@@ -21,9 +21,7 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     click_link ("See all snops for article " + snops(:one).domain.uri + snops(:one).resource.uri)
 
     # Wait until we get to the resource page
-    wait_until(5) do
-      current_path == resource_path(domain_id: snops(:one).domain.id, resource_id: snops(:one).resource.id)
-    end
+    assert_equal resource_path(domain_id: snops(:one).domain.id, resource_id: snops(:one).resource.id), current_path
 
     # Now the user want's to click on the list view
     click_link(I18n.t :list_view)
@@ -65,7 +63,7 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     # They now see the snop, but what they really want is to see
     # All the articles for that particular website, so they click on a domain
     click_link ("Other posts from " + snops(:one).domain.uri)
-    wait_until { current_path == domain_path(snops(:one).domain) }
+    assert_equal domain_path(snops(:one).domain), current_path
   end
 
   # Story: A user seems a few snops from a user they like, they want to see all the
@@ -81,7 +79,7 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     # On the home page they see a user who's snops they've seen before.
     # They want to see other snops from that user
     click_link snops(:one).user.username
-    wait_until { current_path == user_path(snops(:one).user) }
+    assert_equal user_path(snops(:one).user), current_path
 
     # TODO: Once we add some AJAX here, we should probably test that you can
     # switch between snops for a user, click on categories, etc.

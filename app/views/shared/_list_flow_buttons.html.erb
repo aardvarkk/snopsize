@@ -3,6 +3,6 @@
 <% cls_listview = params[:browse_view] == 'false' ? 'listview' : 'listview off' %>
 
 <% content_for :list_flow_buttons do %>
-	<%= content_tag :li, link_to_function("Snop Flow", 'changeToBrowseView()'), class: cls_snopflow %>
-	<%= content_tag :li, link_to_function("List View", 'changeToListView()'), class: cls_listview %>
+	<%= content_tag :li, link_to_function(t(:browse_view), 'changeToBrowseView()'), class: cls_snopflow %>
+	<%= content_tag :li, link_to_function(t(:list_view), 'changeToListView()'), class: cls_listview %>
 <% end %>
