@@ -22,11 +22,11 @@ class SearchStoriesTest < ActionDispatch::IntegrationTest
     # First they select user from the drop down
     select("User", from: "type")
     # Then they type in the username
-    fill_in("Search for:", with: users(:one).username)
-    click_button "Search"
+    fill_in('q', with: users(:one).username)
+    click_button 'searchbutton'
 
     # We should now be on the search page
-    wait_until { current_path == search_path }
+    assert_equal search_path, current_path
 
     # There should be a result with the username
     assert has_link?(users(:one).username)
@@ -36,7 +36,7 @@ class SearchStoriesTest < ActionDispatch::IntegrationTest
 
     # And they are now on the user page where they can browse all the
     # users snops
-    wait_until { current_path == user_path(users(:one)) }
+    assert_equal user_path(users(:one)), current_path
   end
 
   # Story: The user has found a snop from a website that they think
@@ -52,14 +52,14 @@ class SearchStoriesTest < ActionDispatch::IntegrationTest
     # First they select URL from the drop down
     select("URL", from: "type")
     # Then they type in the URL
-    fill_in("Search for:", with: domains(:one).uri)
-    click_button "Search"
+    fill_in('q', with: domains(:one).uri)
+    click_button 'searchbutton'
 
     # We should now be on the domain page. The search is smart enough
     # to take us there directly.
     # The user can now see all the articles that have been snopped about
     # from that domain.
-    wait_until { current_path == domain_path(domains(:one)) }
+    assert_equal domain_path(domains(:one)), current_path
   end
 
   # Story: The user has found a snop that points to an article they are
@@ -74,12 +74,12 @@ class SearchStoriesTest < ActionDispatch::IntegrationTest
     # First they select URL from the drop down
     select("URL", from: "type")
     # Then they type in the article url
-    fill_in("Search for:", with: snops(:one).uri)
-    click_button "Search"
+    fill_in('q', with: snops(:one).uri)
+    click_button 'searchbutton'
 
     # And they are now on the resource page where they can see all the snops
     # for the article they searched for.
-    wait_until { current_path == resource_path(domain_id: resources(:one).domain.id, resource_id: resources(:one).id) }
+    assert_equal resource_path(domain_id: resources(:one).domain.id, resource_id: resources(:one).id), current_path
   end
 
   # Story: The user remembers that once before they read a snop about
@@ -97,11 +97,11 @@ class SearchStoriesTest < ActionDispatch::IntegrationTest
     # Keyword should already be selected
     select("Keyword", from: "type")
     # Then they type in the text they remember
-    fill_in("Search for:", with: snops(:one).title)
-    click_button "Search"
+    fill_in('q', with: snops(:one).title)
+    click_button 'searchbutton'
 
     # We should now be on the search page
-    wait_until { current_path == search_path }
+    assert_equal search_path, current_path
 
     # We should make sure that there is a link on the page to the snop we were searching for
     assert has_link?(snops(:one).title)
@@ -110,6 +110,6 @@ class SearchStoriesTest < ActionDispatch::IntegrationTest
     click_link(snops(:one).title)
 
     # We should now be on the snop page
-    wait_until { current_path == search_path }
+    assert_equal search_path, current_path
   end
 end
