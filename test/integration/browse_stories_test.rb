@@ -64,7 +64,7 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
     assert_equal domain_path(snops(:one).domain), current_path
   end
 
-  # Story: A user seems a few snops from a user they like, they want to see all the
+  # Story: A user sees a few snops from a user they like, they want to see all the
   # snops from that user
   test "browsing user snops" do
     # Go to home page
@@ -73,6 +73,9 @@ class BrowseStoriesTest < ActionDispatch::IntegrationTest
 
     # Now the user want's to click on the list view
     click_link(I18n.t :list_view)
+
+    # Click on the snop name in the list view to transfer back to browse view
+    click_link snops(:one).title
 
     # On the home page they see a user who's snops they've seen before.
     # They want to see other snops from that user
