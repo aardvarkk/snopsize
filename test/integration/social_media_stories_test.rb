@@ -16,7 +16,7 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    wait_until { current_path == new_user_session_path }
+    assert_equal new_user_session_path, current_path
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
@@ -28,7 +28,7 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
     click_button "Sign in"
 
     # We should now be back on the home page and logged in
-    wait_until { current_path == root_path }
+    assert_equal root_path, current_path
 
     # Now the user want's to click on a snop
     click_link(snops(:one).title)
@@ -51,7 +51,7 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    wait_until { current_path == new_user_session_path }
+    assert_equal new_user_session_path, current_path
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
@@ -63,7 +63,7 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
     click_button "Sign in"
 
     # We should now be back on the home page and logged in
-    wait_until { current_path == root_path }
+    assert_equal root_path, current_path
 
     # We should now be looking at the top snop in browse view
     

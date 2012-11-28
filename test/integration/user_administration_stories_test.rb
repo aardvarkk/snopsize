@@ -19,7 +19,7 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
     click_link "Sign Up"
 
     # Make sure we're on the sign up page
-    wait_until { current_path == new_user_registration_path }
+    assert_equal new_user_registration_path, current_path
 
     # Fill out the sign up form
     fill_in('Username', with: 'tester')
@@ -42,7 +42,7 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
     current_email.click_link "Confirm my account"
 
     # We should now be back on the home page and logged in
-    wait_until { current_path == root_path }
+    assert_equal root_path, current_path
 
     # Let's make sure that the user can see that they're logged in at the top
     assert has_link? "My Snops"
@@ -67,7 +67,7 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    wait_until { current_path == new_user_session_path }
+    assert_equal new_user_session_path, current_path
 
     # Make sure there is a forgot password link
     assert page.has_link? "Forgot your password?", href: new_user_password_path
@@ -76,14 +76,14 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
     click_link "Forgot your password?"
 
     # Make sure we're on the forgot password page
-    wait_until { current_path == new_user_password_path }
+    assert_equal new_user_password_path, current_path
 
     # Fill in the email field
     fill_in('Email', with: user.email)
     click_button "Send me reset password instructions"
 
     # We are now taken back to the sign in page
-    wait_until { current_path == new_user_session_path }
+    assert_equal new_user_session_path, current_path
 
     # Lets confirm that an email was actually sent!
     assert !ActionMailer::Base.deliveries.empty?
@@ -100,7 +100,7 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
 
     # Now let's actually go the page where the email would send us to
     # reset our password
-    wait_until { current_path == edit_user_password_path }
+    assert_equal edit_user_password_path, current_path
 
     # Let's fill in with a new password
     fill_in('New password', with: "anotherpassword")
@@ -108,7 +108,7 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
     click_button "Change my password"
 
     # We should now be back on the home page and logged in
-    wait_until { current_path == root_path }
+    assert_equal root_path, current_path
 
     # Let's make sure that the user can see that they're logged in at the top
     assert page.has_link? user.username

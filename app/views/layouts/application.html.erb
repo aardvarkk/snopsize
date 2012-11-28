@@ -45,11 +45,11 @@
           <ul id="navigation">
             <li><%= link_to 'Create a Snop', new_snop_path, class: "create" %></li>
             <% if user_signed_in? %>
-              <li><%= link_to "My Snops", current_user, class: "mysnops" %></li>
-              <li><%= link_to "Favourite Snops", user_favourites_path(current_user), class: "favourite" %></li>
-              <li><%= link_to "Sign Out, " + current_user.username, destroy_user_session_path, method: :delete, class: "signin" %></li>
+              <li><%= link_to t(:my_snops), current_user, class: "mysnops" %></li>
+              <li><%= link_to t(:favourite_snops), user_favourites_path(current_user), class: "favourite" %></li>
+              <li><%= link_to t(:sign_out) + ", " + current_user.username, destroy_user_session_path, method: :delete, class: "signin" %></li>
             <% else %>
-              <li><%= link_to "Sign In", new_user_session_path, class: "signin" %></li>
+              <li><%= link_to t(:sign_in), new_user_session_path, class: "signin" %></li>
             <% end %>
           </ul>
 

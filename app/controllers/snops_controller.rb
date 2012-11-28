@@ -23,6 +23,8 @@ class SnopsController < ApplicationController
   # POST /snops
   # POST /snops.json
   def create
+
+    # Create a snop from the params
     @snop = Snop.new(params[:snop])
 
     # Set the user_id to the logged in user, since
@@ -30,22 +32,26 @@ class SnopsController < ApplicationController
     @snop.user = current_user
 
     respond_to do |format|
+
+      # Only set the category if the snop validates correctly
+      # Check if a valid category has been specified and add the snop to
+      # that category
       if @snop.save
-        # Only set the category if the snop validates correctly
-        # Check if a valid category has been specified and add the snop to
-        # that category
+
         if (params.has_key?(:user_category) && UserCategory.exists?(params[:user_category][:id]))
           UserCategory.find(params[:user_category][:id]).snops << @snop
         end
 
         format.html { redirect_to user_path(current_user), notice: 'Snop was successfully created.' }
+
       else
 
         # Need to set this default_uri, because the form can be pre-filled if you're snopping about a particular URI
         # As a result, if we don't set this value and there are validation errors, the URI box will be emptied out. This way, we're able to keep the textbox filled with whatever was there previously
-        @default_uri = params[:snop][:uri]
+        @default_uri = params[:snop][:uri] if params[:snop]
 
         format.html { render action: "new" }
+
       end
     end
   end

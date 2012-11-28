@@ -2,7 +2,7 @@
 
 one:
   user: one
-  title: My Snop
+  title: Nutty Snop # Note: Don't name it My Snop because that will match also with My Snops link!
   uri: http://www.testuri.com/test/resource
   domain: one
   resource: one

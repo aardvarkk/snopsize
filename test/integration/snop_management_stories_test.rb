@@ -17,7 +17,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    wait_until { current_path == new_user_session_path }
+    assert_equal new_user_session_path, current_path
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
@@ -29,39 +29,38 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_button "Sign in"
 
     # We should now be back on the home page and logged in
-    wait_until { current_path == root_path }
+    assert_equal root_path, current_path
 
     # Let's now follow that link
     click_link "My Snops"
 
     # We should now be on the user page
-    wait_until { current_path == user_path(user) }
+    assert_equal user_path(user), current_path
 
     # The user see's the new snop button, and wants to create a new snop
     click_link "New Snop"
 
     # Try aborting -- it should return us to the path we were just at
-    assert has_link? "Back"
-    click_link "Back"
-    wait_until { current_path == user_path(user) }
+    click_link(I18n.t :my_snops)
+    assert_equal user_path(user), current_path
 
     # Go back to snop creation
     click_link "New Snop"
 
     # We should now be on new snop page
-    wait_until { current_path == new_snop_path }
+    assert_equal new_snop_path, current_path
 
     # Let's fill in some fields for a user to create a snop
-    fill_in('Title', with: "My Snop Title")
-    fill_in('Uri', with: "www.myfakeuri.com/article/2103")
-    fill_in('Point1', with: "My First Point")
-    fill_in('Point2', with: "My Second Point")
-    fill_in('Point3', with: "My Third Point")
-    fill_in('Summary', with: "My Summary")
+    fill_in('snop_title', with: "My Snop Title")
+    fill_in('snop_uri', with: "www.myfakeuri.com/article/2103")
+    fill_in('snop_point1', with: "My First Point")
+    fill_in('snop_point2', with: "My Second Point")
+    fill_in('snop_point3', with: "My Third Point")
+    fill_in('snop_summary', with: "My Summary")
     click_button "Create Snop"
 
     # The user should now be shown the snop they just created
-    wait_until { current_path == user_path(user) }
+    assert_equal user_path(user), current_path
   end
 
   test "create a snop from a resource page" do
@@ -76,7 +75,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    wait_until { current_path == new_user_session_path }
+    assert_equal new_user_session_path, current_path
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
@@ -88,7 +87,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_button "Sign in"
 
     # We should now be back on the home page and logged in
-    wait_until { current_path == root_path }
+    assert_equal root_path, current_path
 
     # Now the user want's to click on the list view
     click_link(I18n.t :list_view)
@@ -100,27 +99,27 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_link(snops(:one).title)
 
     # We should now be on snop page
-    wait_until { current_path == root_path }
+    assert_equal root_path, current_path
 
     # Click to see all the other snops for that resource
     url = snops(:one).domain.uri + snops(:one).resource.uri
-    click_link("See all snops for article " + url)
+    click_link(I18n.t :see_all_for_article)
 
     # We should now be on a resource page
-    wait_until { current_path == resource_path(domain_id: snops(:one).domain.id, resource_id: snops(:one).resource.id) }
+    assert_equal resource_path(domain_id: snops(:one).domain.id, resource_id: snops(:one).resource.id), current_path
 
     # Click to snop about that URL
-    click_link(I18n.t :snop_about_this)
+    click_link("TODO: Should have a link to also snop about this URL")
 
     # The URI field should be filled in with
-    assert_equal find_field('Uri').value, url
+    assert_equal find_field('snop_uri').value, url
 
     # Let's fill in some fields for a user to create a snop
-    fill_in('Title', with: "My Snop Title")
-    fill_in('Point1', with: "My First Point")
-    fill_in('Point2', with: "My Second Point")
-    fill_in('Point3', with: "My Third Point")
-    fill_in('Summary', with: "My Summary")
+    fill_in('snop_title', with: "My Snop Title")
+    fill_in('snop_point1', with: "My First Point")
+    fill_in('snop_point2', with: "My Second Point")
+    fill_in('snop_point3', with: "My Third Point")
+    fill_in('snop_summary', with: "My Summary")
     click_button "Create Snop"
 
     # The user should now be shown the snop they just created
@@ -150,7 +149,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     click_link "Sign In"
 
     # Make sure we're on the sign in page
-    wait_until { current_path == new_user_session_path }
+    assert_equal new_user_session_path, current_path
 
     # Sign in
     user = User.create(username: "user1", password: "pass1234", email: "test@email.com")
@@ -183,10 +182,10 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert page.has_button?("Unfavourite")
 
     # Now the user goes to their favourites
-    click_link "My Favourites"
+    click_link(I18n.t :favourite_snops)
 
     # Give it some time to make it to the page
-    wait_until { current_path == user_favourites_path(user) }
+    assert_equal user_favourites_path(user), current_path
 
     # They should now see a link to their favourite snop in their snops
     assert page.has_link?(snops(:one).title)
