@@ -13,20 +13,20 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
     assert_equal root_path, current_path
 
     # There should be a link to sign-up
-    assert page.has_link? "Sign Up", href: new_user_registration_path
+    assert page.has_link?(I18n.t(:sign_up), href: new_user_registration_path)
 
     # Now lets follow that sign in link
-    click_link "Sign Up"
+    click_link I18n.t(:sign_up)
 
     # Make sure we're on the sign up page
     assert_equal new_user_registration_path, current_path
 
     # Fill out the sign up form
-    fill_in('Username', with: 'tester')
-    fill_in('Email', with: 'tester@tester.com')
-    fill_in('Password', with: 'tester')
-    fill_in('Password confirmation', with: 'tester')
-    click_button "Sign up"
+    fill_in('user_username', with: 'tester')
+    fill_in('user_email', with: 'tester@tester.com')
+    fill_in('user_password', with: 'tester')
+    fill_in('user_password_confirmation', with: 'tester')
+    click_button(I18n.t :sign_up)
 
     # Lets confirm that an email was actually sent!
     assert !ActionMailer::Base.deliveries.empty?
@@ -80,7 +80,7 @@ class UserAdministrationStoriesTest < ActionDispatch::IntegrationTest
 
     # Fill in the email field
     fill_in('Email', with: user.email)
-    click_button "Send me reset password instructions"
+    click_button I18n.t :send_reset
 
     # We are now taken back to the sign in page
     assert_equal new_user_session_path, current_path

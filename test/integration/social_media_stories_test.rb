@@ -23,12 +23,16 @@ class SocialMediaStoriesTest < ActionDispatch::IntegrationTest
     user.confirm!
     user.save!
 
-    fill_in "Username", :with => user.username
-    fill_in "Password", :with => user.password
+    fill_in 'user_username', :with => user.username
+    fill_in 'user_password', :with => user.password
     click_button "Sign in"
 
     # We should now be back on the home page and logged in
     assert_equal root_path, current_path
+
+    # Need to go to list view to click on a snop
+    # Only one will be visible on the browse page...
+    click_link(I18n.t :list_view)
 
     # Now the user want's to click on a snop
     click_link(snops(:one).title)

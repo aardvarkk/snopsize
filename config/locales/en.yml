@@ -11,5 +11,7 @@ en:
   enter_words_to_search: "Enter words to search..."
   my_snops: "My Snops"
   favourite_snops: "Favourite Snops"
+  sign_up: "Sign Up"
   sign_out: "Sign Out"
   sign_in: "Sign In"
+  send_reset: "Send Reset Password email"
