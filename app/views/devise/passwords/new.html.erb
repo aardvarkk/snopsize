@@ -8,7 +8,7 @@
       <%= f.label :email, class: "above"  %>
       <%= f.email_field :email, placeholder: "Enter your email address..." %>
 
-      <%= f.submit t :send_reset, class: "buttons" %><br/>
+      <%= f.submit (t :send_reset), class: "buttons" %><br/>
 
       <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
         <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
