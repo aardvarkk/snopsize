@@ -109,7 +109,7 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert_equal resource_path(domain_id: snops(:one).domain.id, resource_id: snops(:one).resource.id), current_path
 
     # Click to snop about that URL
-    click_link("TODO: Should have a link to also snop about this URL")
+    click_link(I18n.t(:snop_about_article))
 
     # The URI field should be filled in with
     assert_equal find_field('snop_uri').value, url
