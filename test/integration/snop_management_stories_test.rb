@@ -38,14 +38,14 @@ class SnopManagementStoriesTest < ActionDispatch::IntegrationTest
     assert_equal user_path(user), current_path
 
     # The user see's the new snop button, and wants to create a new snop
-    click_link "New Snop"
+    click_link(I18n.t :create_a_snop)
 
     # Try aborting -- it should return us to the path we were just at
     click_link(I18n.t :my_snops)
     assert_equal user_path(user), current_path
 
     # Go back to snop creation
-    click_link "New Snop"
+    click_link(I18n.t :create_a_snop)
 
     # We should now be on new snop page
     assert_equal new_snop_path, current_path

@@ -6,7 +6,6 @@
   <%= content_tag :div, { class: "sidenav_container tools", style: 'display: ' + display } do %>
     <%= content_tag :div, { class: 'sidenav' } do %>
       <%= link_to "Categories", user_categories_path %> <br/>
-      <%= link_to "New Snop", new_snop_path %> <br/>
       <%= link_to "Settings", edit_user_registration_path(current_user) %>
     <% end %>
   <% end %>

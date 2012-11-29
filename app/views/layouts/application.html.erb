@@ -43,7 +43,7 @@
         <%= link_to image_tag("snopsize.png", class: "logo"), root_path %>
         <nav>
           <ul id="navigation">
-            <li><%= link_to 'Create a Snop', new_snop_path, class: "create" %></li>
+            <li><%= link_to t(:create_a_snop), new_snop_path, class: "create" %></li>
             <% if user_signed_in? %>
               <li><%= link_to t(:my_snops), current_user, class: "mysnops" %></li>
               <li><%= link_to t(:favourite_snops), user_favourites_path(current_user), class: "favourite" %></li>

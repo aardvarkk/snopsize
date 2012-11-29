@@ -2,6 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  create_a_snop: "Create a Snop"
   browse_view: "Snop Flow"
   list_view: "List View"
   snop_about_this: "Snop about this article"
