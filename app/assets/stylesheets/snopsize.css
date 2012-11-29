@@ -666,6 +666,7 @@ table.dataTable thead th.sorting {
 }
 
 table.dataTable thead th.sorting_asc {
+	background: url("sort_asc.png") no-repeat scroll right center transparent;
 	background-color: #4d4d4d;
 	color: #fff;
 	font: bold 14px/18px 'Bitter', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
@@ -673,6 +674,7 @@ table.dataTable thead th.sorting_asc {
 }
 
 table.dataTable thead th.sorting_desc {
+	background: url("sort_desc.png") no-repeat scroll right center transparent;
 	background-color: #4d4d4d;
 	color: #fff;
 	font: bold 14px/18px 'Bitter', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
