@@ -28,6 +28,10 @@ Snopsize::Application.routes.draw do
   # for about page
   match 'about' => 'about#show', :as => 'about', :via => :get
 
+  # for confirming from devise -- it puts you to /users, so instead of changing that
+  # we'll just redirect
+  match '/users' => redirect('/')
+
   # for user pages
   match 'users/:id' => 'users#show', :as => 'user', :via => :get
   # for user favourites
