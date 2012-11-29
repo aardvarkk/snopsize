@@ -30,14 +30,29 @@ div {
 #notice {
   color: green; } */
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table; }
+.field_with_errors 
+{
+  width: 100%;
+}
+
+.field_with_errors label
+{
+  color: #1482C6;
+}
+
+.field_with_errors input
+{
+  color: #1482C6;
+}
+
+.field_with_errors input.snoptitle
+{
+  color: #1482C6;  
+}
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: 2px solid #1482C6;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
@@ -49,7 +64,7 @@ div {
     font-size: 12px;
     margin: -7px;
     margin-bottom: 0px;
-    background-color: #c00;
+    background-color: #1482C6;;
     color: #fff; }
   ul li {
     font-size: 12px;
