@@ -13,19 +13,12 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
-# Transactional fixtures do not work with Selenium tests, because Capybara
-# uses a separate server thread, which the transactions would be hidden
-# from. We hence use DatabaseCleaner to truncate our test database.
-DatabaseCleaner.strategy = :truncation
-
 class ActionDispatch::IntegrationTest
+
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
   # Make the Capybara Email DSL available in all integration tests
   include Capybara::Email::DSL
-
-  # Stop ActiveRecord from wrapping tests in transactions
-  self.use_transactional_fixtures = false
 
   # Switch to selenium as the default driver for JS support
   Capybara.default_driver = :selenium
@@ -33,9 +26,19 @@ class ActionDispatch::IntegrationTest
   # Only click on visible links!
   Capybara.ignore_hidden_elements = true
 
-  teardown do
-    DatabaseCleaner.clean       # Truncate the database
-    Capybara.reset_sessions!    # Forget the (simulated) browser state
-    Capybara.use_default_driver # Revert Capybara.current_driver to Capybara.default_driver
+end
+
+# BELOW IS ALL BASED ON http://blog.plataformatec.com.br/2011/12/three-tips-to-improve-the-performance-of-your-test-suite/
+# If we don't do this, the Capybara/Selenium thread can't see anything we do inside the database!
+class ActiveRecord::Base
+  mattr_accessor :shared_connection
+  @@shared_connection = nil
+ 
+  def self.connection
+    @@shared_connection || retrieve_connection
   end
 end
+ 
+# Forces all threads to share the same connection. This works on
+# Capybara because it starts the web server in a thread.
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
