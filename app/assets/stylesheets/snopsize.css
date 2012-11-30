@@ -492,10 +492,7 @@ ul#toggle li:hover {
 }
 
 .flash {
-	float: right;
-	text-align: right;
-	width: 620px;
-	
+	text-align: left;
 }	
 		
 .container {
