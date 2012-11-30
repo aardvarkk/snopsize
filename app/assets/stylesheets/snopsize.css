@@ -46,9 +46,7 @@ h2.subtitle {
 /* Our notice that shows messages */
 #notice {
 	font: bold 20px/24px 'Bitter', 'Helvetica Neue', Helvetica,Arial,sans-serif; 
-	color: #4D4D4D; 
-	margin-left: 25px;
-	margin-bottom: 20px;
+	color: #4D4D4D;
 }
 
 h3 {
@@ -266,7 +264,7 @@ ul#navigation li a.signin {background-position: 25px -225px; }
 	float: right;
 	width: 800px;
 	margin-right: 20px;
-	padding-top: 65px;
+	/*padding-top: 65px;*/
 }
 
 .info {
@@ -492,7 +490,11 @@ ul#toggle li:hover {
 }
 
 .flash {
-	text-align: left;
+	text-align: right;
+	margin-top: 25px;
+	margin-bottom: 20px;
+	margin-right: 50px;
+	height: 25px;
 }	
 		
 .container {
