@@ -807,9 +807,10 @@ span.select{
 	background:url(dropdown.png) no-repeat 0 0;
 	cursor:default;
 	z-index:1;
+	overflow:hidden;
 }
 
-div.searchholder{
+div.dropdownholder{
 	position:relative;
 	display:inline-block;
 }

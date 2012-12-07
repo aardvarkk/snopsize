@@ -46,7 +46,9 @@
             <h4>File under:</h4>
             <% category = snop.user_categories.where("user_id = ?", current_user.id).first %>
             <% selected = category.nil? ? nil : category.id %>
-            <%= collection_select :user_category, :id, current_user.user_categories, :id, :name, { include_blank: (t :uncategorized), selected: selected}, { class: "drop", data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true)} } %>
+            <div class="dropdownholder">
+              <%= collection_select :user_category, :id, current_user.user_categories, :id, :short_name, { include_blank: (t :uncategorized), selected: selected }, { class: "drop", data: { remote: true, method: :post, url: url_for(:controller => "user_categories", action: "set_snop", snop: snop, only_path: true) } } %>
+            </div>
           <% end %>
 
           <%# Favourite/Unfavourite %>

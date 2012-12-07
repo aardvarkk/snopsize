@@ -250,6 +250,8 @@ $(document).ready(function(){
         $('select.drop').each(function(){
             var title = $(this).attr('title');
             if( $('option:selected', this).val() != ''  ) title = $('option:selected',this).text();
+            // Hack to give a title to Uncategorized category which has nil value
+            if (title == undefined) { title = 'Uncategorized' }
             $(this)
                 .css({'z-index':10,'opacity':0,'-khtml-appearance':'none'})
                 .after('<span class="select">' + title + '</span>')
