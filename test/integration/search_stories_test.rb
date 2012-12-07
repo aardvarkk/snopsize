@@ -9,6 +9,15 @@ class SearchStoriesTest < ActionDispatch::IntegrationTest
     #User.reindex
     #Resource.reindex
     #Domain.reindex
+
+    # We change this here, because the search dropdown is technically hidden
+    # It's hidden to support the special down arrow that we want showing
+    Capybara.ignore_hidden_elements = false
+  end
+
+  teardown do
+    # Reset to the proper value
+    Capybara.ignore_hidden_elements = true
   end
 
   # Story: The user remembers a user that they think has really good
@@ -21,6 +30,7 @@ class SearchStoriesTest < ActionDispatch::IntegrationTest
     # On the home page they see a user, so they search for the username
     # First they select user from the drop down
     select("User", from: "type")
+
     # Then they type in the username
     fill_in('q', with: users(:one).username)
     click_button 'searchbutton'

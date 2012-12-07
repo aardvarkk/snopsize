@@ -784,3 +784,32 @@ table.dataTable tr.even td.sorting_1 {
 .snop_title a {
 	font: bold 14px/20px Helvetica, Arial, sans-serif; 
 }
+
+/* setting the width and height of the SELECT element to match the replacing graphics */
+select.drop{
+	position:relative;
+	z-index:10;
+	width:132px !important;
+	height:31px !important;
+	line-height:31px;
+}
+
+/* dynamically created SPAN, placed below the SELECT */
+span.select{
+	position:absolute;
+	bottom:0;
+	float:left;
+	left:0;
+	width:132px;
+	height:31px;
+	line-height:31px;
+	text-indent:10px;
+	background:url(dropdown.png) no-repeat 0 0;
+	cursor:default;
+	z-index:1;
+}
+
+div.searchholder{
+	position:relative;
+	display:inline-block;
+}
