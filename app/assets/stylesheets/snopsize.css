@@ -350,6 +350,7 @@ text-decoration: none;
 }
 
 
+/* setting the width and height of the SELECT element to match the replacing graphics */
 select.drop {
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
@@ -358,11 +359,13 @@ select.drop {
 	background-color: transparent;
 	font: 14px/20px Helvetica,Arial,sans-serif; 
 	color: #4D4D4D;
+	position:relative;
+	z-index:10;
+	width:132px !important;
+	height:31px !important;
 }
 
 select.drop.push {margin-right: 20px;}
-
-
 
 input.url {width: 440px}
 
@@ -783,15 +786,6 @@ table.dataTable tr.even td.sorting_1 {
 
 .snop_title a {
 	font: bold 14px/20px Helvetica, Arial, sans-serif; 
-}
-
-/* setting the width and height of the SELECT element to match the replacing graphics */
-select.drop{
-	position:relative;
-	z-index:10;
-	width:132px !important;
-	height:31px !important;
-	line-height:31px;
 }
 
 /* dynamically created SPAN, placed below the SELECT */
