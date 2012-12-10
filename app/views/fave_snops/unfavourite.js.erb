@@ -47,5 +47,8 @@ datatable.fnDraw();
   reloadSocialMediaButtons();
 <% end %>
 
-// hide the categorization drop down
-$("<%= '#categorization_' + @snop.id.to_s %>").hide();
+// hide the categorization drop down if the snop doesn't belong
+// to the current user
+<% if current_user != @snop.user %>
+  $("<%= '#categorization_' + @snop.id.to_s %>").hide();
+<% end %>
