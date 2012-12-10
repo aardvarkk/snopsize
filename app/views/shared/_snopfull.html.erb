@@ -5,7 +5,15 @@
   <% if snop.deleted? %>
     This snop has been deleted
   <% else %>
-    
+    <%# A link to the resouce... although 1 doesn't have to exist %>
+    <% unless snop.domain.nil? %>
+      <% link_text = snop.domain.uri %>
+      <% link_text = link_text.sub('http://', '') %>
+      <div class="resource">
+        <h2><%= link_to link_text, snop.domain.uri %></h2>
+      </div>
+    <% end %>
+
     <%# A title is guaranteed... %>
     <div class="title">
       <h1><%= snop.title %></h1>
