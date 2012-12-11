@@ -10,7 +10,7 @@
       <% link_text = snop.domain.uri %>
       <% link_text = link_text.sub('http://', '') %>
       <div class="resource">
-        <h2><%= link_to link_text, snop.domain.uri %></h2>
+        <h2><%= link_to link_text, snop.domain.uri, target: '_blank' %></h2>
       </div>
     <% end %>
 
