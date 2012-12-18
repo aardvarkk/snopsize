@@ -1,6 +1,9 @@
 <%# Choose a class based on the browse view param %>
-<% cls_snopflow = params[:browse_view] == 'true' ? 'snopflow' : 'snopflow off' %>
-<% cls_listview = params[:browse_view] == 'false' ? 'listview' : 'listview off' %>
+<%# Eoin has requested that the links never be greyed out %>
+<%# cls_snopflow = params[:browse_view] == 'true' ? 'snopflow' : 'snopflow off' %>
+<%# cls_listview = params[:browse_view] == 'false' ? 'listview' : 'listview off' %>
+<% cls_snopflow = 'snopflow' %>
+<% cls_listview = 'listview' %>
 
 <% content_for :list_flow_buttons do %>
 	<%= content_tag :li, link_to_function(t(:browse_view), 'changeToBrowseView()'), class: cls_snopflow %>

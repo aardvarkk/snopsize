@@ -45,12 +45,12 @@ function changeToListView()
   $("#snops_browse_view").hide();
 
   // show the snop flow button as not highlighted anymore (not selected)
-  $(".snopflow").addClass(".snopflow off");
-  $(".snopflow.off").removeClass(".snopflow");
+  //(".snopflow").addClass(".snopflow off");
+  //$(".snopflow.off").removeClass(".snopflow");
 
   // show the list view button as highlighted (selected)
-  $(".listview.off").addClass(".listview");
-  $(".listview").removeClass(".listview off");
+  //$(".listview.off").addClass(".listview");
+  //$(".listview").removeClass(".listview off");
 
   // hide the nav buttons in list view
   $(".tools.short").hide();
@@ -78,12 +78,12 @@ function changeToBrowseView(id)
   $("#snops_browse_view").show();
 
   // show the list view button as not highlighted anymore (not selected)
-  $(".listview").addClass(".listview off");
-  $(".listview.off").removeClass(".listview");
+  //$(".listview").addClass(".listview off");
+  //$(".listview.off").removeClass(".listview");
 
   // show the snop flow button as highlighted (selected)
-  $(".snopflow.off").addClass(".snopflow");
-  $(".snopflow").removeClass(".snopflow off");
+  //$(".snopflow.off").addClass(".snopflow");
+  //$(".snopflow").removeClass(".snopflow off");
 
   // Show the nav buttons
   $(".tools.short").show();
