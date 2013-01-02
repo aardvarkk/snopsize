@@ -1,5 +1,8 @@
 class Snop < ActiveRecord::Base
 
+  # Set up a default scope to not show deleted snops
+  default_scope where(deleted: false, is_ad: false)
+
   # Associations
   belongs_to :user
   belongs_to :domain

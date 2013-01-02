@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     params[:browse_view] ||= "true"
 
     # Set variables
-    @snops = Snop.where(deleted: false, is_ad: false).order("popularity DESC").limit(5).to_a
+    @snops = Snop.order("popularity DESC").limit(5).to_a
     @snop = Snop.find(params[:snop]) if params[:snop]
 
     # The list view shouldn't show the ads
@@ -14,9 +14,10 @@ class HomeController < ApplicationController
     # If we're the adviewer, plop some ads into the snops
     # They'll get shown in the browse view
     if user_signed_in? && current_user.username == 'adviewer'
+      
       # Get all of the ad snops... limiting to some number
       # This doesn't have to work like this, but it's easy to start with
-      @ads = Snop.where(deleted: false, is_ad: true).to_a
+      @ads = Snop.unscoped.where(deleted: false, is_ad: true).to_a
 
       # Insert the ads
       (1..@snops.length).step(5).each { |i| @snops.insert(i, @ads[rand(@ads.length)]) }

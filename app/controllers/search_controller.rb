@@ -74,7 +74,7 @@ class SearchController < ApplicationController
       end
 
       # Get the relation 
-      @snops = Snop.where(deleted: false, is_ad: false).where("snops.id IN (?)", @results)
+      @snops = Snop.where("snops.id IN (?)", @results)
 
       # Sort by domains
       case sort_column()
