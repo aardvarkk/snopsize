@@ -28,7 +28,9 @@
 
   <div class="tools3">
     <label>File under:</label>
-    <span id="categories"><%= collection_select :user_category, :id, current_user.user_categories, :id, :name, {:include_blank => (t :uncategorized)}, {class: "drop push", id: "type", name: "type"} %></span>
+    <div class="dropdownholder" id="categories">
+      <%= collection_select :user_category, :id, current_user.user_categories, :id, :name, {:include_blank => (t :uncategorized)}, {class: "drop push", id: "type", name: "type"} %>
+    </div>
 
     <%# User Category form %>
     <% @user_category = UserCategory.new %>
