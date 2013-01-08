@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.effects.highlight
 //= require dataTables/jquery.dataTables
 
 // The size of the "container" div is 800px, but it has 25 px padding, therefore the width of a 
