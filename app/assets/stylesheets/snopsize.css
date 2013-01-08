@@ -249,6 +249,9 @@ ul#navigation li a.signin {background-position: 25px -225px; }
 	margin-left: 25px;
 	margin-bottom: 20px;
 	padding: 0px;
+
+	/* Trying to stop selection upon double-click in Safari/Chrome */
+	-webkit-user-select: none;  /* Chrome all / Safari all */
 }
 
 .container .tools {
