@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     params[:browse_view] ||= "true"
 
     # Set variables
-    @snops = Snop.order("popularity DESC").limit(5).to_a
+    @snops = Snop.order("created_at DESC").limit(20).to_a
     @snop = Snop.find(params[:snop]) if params[:snop]
 
     # The list view shouldn't show the ads
