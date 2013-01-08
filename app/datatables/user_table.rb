@@ -13,11 +13,14 @@ protected
   def get_data
     @all_snops.map do |snop|
 
+      user_link = link_to snop.user.username, snop.user
+
+      domain_link = link_to snop.domain.uri, snop.domain unless snop.domain.nil?
+
       # The title will call the same path, but just the JS version, allowing us to
       # switch to the browse view
       title = link_to snop.title, user_path(id: @user.id, snop: snop, browse_view: true, iSortCol_0: params[:iSortCol_0], sSortDir_0: params[:sSortDir_0], sSearch: params[:sSearch]), remote: true
-      user = snop.user.username
-      domain = snop.domain.uri unless snop.domain.nil?
+
       created = time_ago_in_words(snop.created_at) + " ago"
 
       # Lets find the category for this snop and user pair
@@ -37,8 +40,8 @@ protected
         "DT_RowId" => row_id,
         "DT_RowClass" => "rowClass",
         "0" => title,
-        "1" => user,
-        "2" => domain,
+        "1" => user_link,
+        "2" => domain_link,
         "3" => created,
         "4" => category
       }
