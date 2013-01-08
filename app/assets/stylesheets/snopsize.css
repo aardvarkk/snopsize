@@ -165,6 +165,13 @@ a.greybutton:hover {
 	transition: all .25s ease;
 	}
 	
+#footer span {
+	font: bold 14px/20px 'Helvetica Neue', Helvetica,Arial,sans-serif; 
+	color: #B3B3B3;
+	text-decoration: none;
+	background-color: transparent;
+	}
+	
 #footer a:hover {
 	color: #4D4D4D;
 }
