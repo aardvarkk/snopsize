@@ -77,8 +77,8 @@ Snopsize::Application.configure do
     :port => 465,
     :domain => "snopsize.com",  
     :authentication => :plain,
-    :user_name => "support@snopsize.com",  
-    :password => "QBpR9yt4Ym"
+    :user_name => "info@snopsize.com",  
+    :password => "0LTbOXPezuke"
   }  
 
 end
