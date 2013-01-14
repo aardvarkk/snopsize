@@ -40,15 +40,14 @@ Snopsize::Application.configure do
 
   # Set up the mailer
   config.action_mailer.delivery_method = :file
-  # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {  
-  #   :tls => true,
-  #   :address => "secure.emailsrvr.com",
-  #   :port => 465,
-  #   :domain => "snopsize.com",  
-  #   :authentication => :plain,
-  #   :user_name => "support@snopsize.com",  
-  #   :password => "QBpR9yt4Ym"
+  # :tls => true,
+  # :address => "secure.emailsrvr.com",
+  # :port => 465,
+  # :domain => "snopsize.com",  
+  # :authentication => :plain,
+  # :user_name => "info@snopsize.com",  
+  # :password => "0LTbOXPezuke"
   # }  
 
 end
