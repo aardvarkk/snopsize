@@ -12,13 +12,16 @@ protected
   def get_data
     @all_snops.map do |snop|
       title = link_to(snop.title, root_path(snop: snop), remote: true)
-      user = snop.user.username
-      domain = snop.domain.uri unless snop.domain.nil?
+
+      user_link = link_to snop.user.username, snop.user
+
+      domain_link = link_to snop.domain.uri, snop.domain unless snop.domain.nil?
+
       created = time_ago_in_words(snop.created_at) + " ago"
       [
         title,
-        user,
-        domain,
+        user_link,
+        domain_link,
         created,
         ""
       ]
