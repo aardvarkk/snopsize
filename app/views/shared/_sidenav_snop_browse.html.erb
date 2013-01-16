@@ -81,12 +81,16 @@
 
       <div class="info last">
 
-        <%# Twitter Button %>
-        <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="<%=t :snopsize_hashtag %>" data-text="<%=h get_snop_tweet_content(snop) %>" data-url="<%= snop_url(snop) %>">Tweet</a>
-        
-        <%# Facebook Button %>
-        <div class="fb-like" data-href="<%= snop_url(snop) %>" data-send="false" data-width="220" data-show-faces="false" data-font="arial"></div> 
+        <%# DO NOT show these buttons on snops/:id (snop show) %>
+        <%# If we do show them, we get a redirect loop through Facebook because it finds the Like button and follows it to itself %>
+        <% unless current_page?(controller: 'snops', action: 'show') %>
+          <%# Twitter Button %>
+          <%# Note the h method for the snop content, which should escape the content to make sure it doesn't bone anything %>
+          <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="<%=t :snopsize_hashtag %>" data-text="<%=h get_snop_tweet_content(snop) %>" data-url="<%= snop_url(snop) %>">Tweet</a>
+          
+          <%# Facebook Button %>
+          <div class="fb-like" data-href="<%= snop_url(snop) %>" data-send="false" data-width="220" data-show-faces="false" data-font="arial"></div>
+        <% end %>
 
       </div><!--close info last-->   
 
