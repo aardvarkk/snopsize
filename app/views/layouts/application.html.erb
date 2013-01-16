@@ -8,7 +8,15 @@
   <meta name="keywords" content="Snopsize">
   
   <%# For Facebook Like stuff %>
-  <%= yield :open_graph %>
+  <% if content_for?(:open_graph) %>
+    <%= yield :open_graph %>
+  <% else %>
+    <%# We put default information in here. This is what shows when you go to "Like" the snop. The correct information will show on Facebook, but not during the Like procedure, because it's not the current page %>
+    <meta property="og:title" content="snopsize.com" />
+    <meta property="og:description" content="Like this Snop!" />
+    <meta property="og:url" content="snopsize.com" />
+    <meta property="og:image" content="<%= "#{request.protocol}#{request.host_with_port}#{image_path("logo.png")}" %>" />
+  <% end %>
 
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

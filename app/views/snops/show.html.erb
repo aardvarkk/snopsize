@@ -4,6 +4,7 @@
 <meta property="og:url" content="<%= snop_url(@snop) %>" />
 <meta property="og:image" content="<%= "#{request.protocol}#{request.host_with_port}#{image_path("logo.png")}" %>" />
 <meta property="og:site_name" content="snopsize.com" />
+<meta property="og:description" content="<%= @snop.point1.to_s + " " + @snop.point2.to_s + " " + @snop.point3.to_s + " " + @snop.summary.to_s %>" />
 <% end %>
 
 <% content_for :sidenav do %>
