@@ -47,11 +47,7 @@ Snopsize::Application.routes.draw do
   match 'domains/:domain_id/resources/:resource_id' => 'resources#show', :as => 'resource', :via => :get
 
   # all of the snop resources
-  resources :snops, :except => [:index, :edit, :update] do
-    member do
-      get 'like'
-    end
-  end
+  resources :snops, :except => [:index, :edit, :update]
 
   # all of our user categories
   resources :user_categories, :except => :show

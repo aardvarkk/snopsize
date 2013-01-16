@@ -1,3 +1,11 @@
+<% content_for :open_graph do %>
+<meta property="og:title" content="<%= @snop.title %>" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="<%= snop_url(@snop) %>" />
+<meta property="og:image" content="<%= "#{request.protocol}#{request.host_with_port}#{image_path("logo.png")}" %>" />
+<meta property="og:site_name" content="snopsize.com" />
+<% end %>
+
 <% content_for :sidenav do %>
 <%= render partial: 'shared/sidenav_snop_browse', locals: {snop_list: [@snop], current_snop: @snop} %>
 <% end %>
