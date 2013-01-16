@@ -53,9 +53,10 @@ desc "Start sunspot server"
 task :sunspot_start do
   run "cd ~/snopsize/current && bundle exec rake sunspot:solr:start RAILS_ENV=production"
 end
-  
-before "deploy", "sunspot_stop"
-after "deploy", "sunspot_start"
+ 
+# These still seem to start multiple instances of the server... 
+#before "deploy", "sunspot_stop"
+#after "deploy", "sunspot_start"
 
 # Removing the automatic Apache authentication setup because it appears to interfere with Facebook "Like" functionality
 # after "deploy", "htaccess"
