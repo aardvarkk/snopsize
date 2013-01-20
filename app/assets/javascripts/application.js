@@ -161,7 +161,7 @@ function prevSnop()
   $("#snop_container").animate({left: '+=' + snop_width});
 
   reloadClickHandlers();
-  reloadSocialMediaButtons();  
+  //reloadSocialMediaButtons();  
 }
 
 function nextSnop()
@@ -189,7 +189,7 @@ function nextSnop()
   $("#snop_container").animate({left: '-=' + snop_width});
 
   reloadClickHandlers();
-  reloadSocialMediaButtons();  
+  //reloadSocialMediaButtons();  
 }
 
 function reloadRecalculateSnopContainerWidth(num_snops)
