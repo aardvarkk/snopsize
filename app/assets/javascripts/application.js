@@ -132,8 +132,10 @@ function setCurrentSnop(id)
   $("#snop_container").css("left", offset);
 
   // do a quick highlight effect to show the change!?
-  $(".container").effect("highlight", {}, 1000);
-  to_show.effect("highlight", {}, 1000);
+  //$(".container").effect("highlight", {}, 1000);
+  //to_show.effect("highlight", {}, 1000);
+
+  reloadClickHandlers();
 }
 
 function prevSnop()
@@ -157,8 +159,13 @@ function prevSnop()
   prev_snop.removeClass("hidden");
   prev_snop.addClass("current");
 
+  // rather than animating relatively, try animating absolutely
+  // Eoin had a problem in Chrome with animations being weird
+  var idx = prev_snop.prevAll().length;
+  var offset = idx * -snop_width;
+
   // pan the snop container to the previous snop
-  $("#snop_container").animate({left: '+=' + snop_width});
+  $("#snop_container").animate({left: offset});
 
   reloadClickHandlers();
   //reloadSocialMediaButtons();  
@@ -185,8 +192,13 @@ function nextSnop()
   next_snop.removeClass("hidden");
   next_snop.addClass("current");
 
+  // rather than animating relatively, try animating absolutely
+  // Eoin had a problem in Chrome with animations being weird
+  var idx = next_snop.prevAll().length;
+  var offset = idx * -snop_width;
+
   // pan the snop container to the next snop
-  $("#snop_container").animate({left: '-=' + snop_width});
+  $("#snop_container").animate({left : offset});
 
   reloadClickHandlers();
   //reloadSocialMediaButtons();  
