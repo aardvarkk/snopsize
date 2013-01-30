@@ -14,6 +14,11 @@
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
 
+// Set the framerate to a lower value
+// Animation ticks will take place using this many ms
+// Default is 13, which may be overpowered for some machines
+jQuery.fx.interval = 25;
+
 // The size of the "container" div is 800px, but it has 25 px padding, therefore the width of a 
 // snop in browse view is 750px. We add a 25px padding to the right side so that the snops aren't
 // touching each other. That's how we come up with 775px
@@ -165,7 +170,7 @@ function prevSnop()
   var offset = idx * -snop_width;
 
   // pan the snop container to the previous snop
-  $("#snop_container").animate({left: offset});
+  $("#snop_container").stop(true, true).animate({left: offset});
 
   reloadClickHandlers();
   //reloadSocialMediaButtons();  
@@ -198,7 +203,7 @@ function nextSnop()
   var offset = idx * -snop_width;
 
   // pan the snop container to the next snop
-  $("#snop_container").animate({left : offset});
+  $("#snop_container").stop(true, true).animate({left : offset});
 
   reloadClickHandlers();
   //reloadSocialMediaButtons();  
