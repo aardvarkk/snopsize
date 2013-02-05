@@ -164,13 +164,8 @@ function prevSnop()
   prev_snop.removeClass("hidden");
   prev_snop.addClass("current");
 
-  // rather than animating relatively, try animating absolutely
-  // Eoin had a problem in Chrome with animations being weird
-  var idx = prev_snop.prevAll().length;
-  var offset = idx * -snop_width;
-
   // pan the snop container to the previous snop
-  $("#snop_container").stop(true, true).animate({left: offset});
+  $("#snop_container").stop(true, true).animate({left: '+=' + snop_width});
 
   reloadClickHandlers();
   //reloadSocialMediaButtons();  
@@ -197,13 +192,8 @@ function nextSnop()
   next_snop.removeClass("hidden");
   next_snop.addClass("current");
 
-  // rather than animating relatively, try animating absolutely
-  // Eoin had a problem in Chrome with animations being weird
-  var idx = next_snop.prevAll().length;
-  var offset = idx * -snop_width;
-
   // pan the snop container to the next snop
-  $("#snop_container").stop(true, true).animate({left : offset});
+  $("#snop_container").stop(true, true).animate({left: '-=' + snop_width});
 
   reloadClickHandlers();
   //reloadSocialMediaButtons();  
