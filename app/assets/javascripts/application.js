@@ -35,6 +35,22 @@ function reloadSocialMediaButtons()
   twttr.widgets.load();
 }
 
+// Returns the version of Internet Explorer or a -1
+// (indicating the use of another browser).
+// See: http://msdn.microsoft.com/en-us/library/ms537509(v=vs.85).aspx
+function getInternetExplorerVersion()
+{
+  var rv = -1; // Return value assumes failure.
+  if (navigator.appName == 'Microsoft Internet Explorer')
+  {
+    var ua = navigator.userAgent;
+    var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+    if (re.exec(ua) != null)
+      rv = parseFloat( RegExp.$1 );
+  }
+  return rv;
+}
+
 function changeToListView()
 {
   // alert('Changing to list view...')
@@ -134,7 +150,8 @@ function setCurrentSnop(id)
   // now we need to find the left offset so we can pan
   // correctly
   var offset = idx * -snop_width;
-  $("#snop_container").css("left", offset);
+  //$("#snop_container").css("left", offset);
+  $("#snop_container").css("transform","translateX("+offset+"px)");
 
   // do a quick highlight effect to show the change!?
   //$(".container").effect("highlight", {}, 1000);
@@ -164,8 +181,27 @@ function prevSnop()
   prev_snop.removeClass("hidden");
   prev_snop.addClass("current");
 
-  // pan the snop container to the previous snop
-  $("#snop_container").stop(true, true).animate({left: '+=' + snop_width});
+  // we need to calculate the index of the snop in
+  // the list of divs
+  var idx = prev_snop.prevAll().length;
+
+  // now we need to find the left offset so we can pan
+  // correctly
+  var offset = idx * -snop_width;
+
+  // IF we are on IE10 or any other browser we can use transition and
+  // transform CSS properties to do our animation, otherwise we will
+  // use the "left" property.
+  // pan the snop container to the next snop
+  var ieVersion = getInternetExplorerVersion();
+  if (ieVersion == -1 || ieVersion == 10) 
+  {
+    $("#snop_container").stop(true, true).css("transform","translateX("+offset+"px)");
+  } 
+  else 
+  {
+    $("#snop_container").stop(true, true).animate({left: '+=' + snop_width});
+  }
 
   reloadClickHandlers();
   //reloadSocialMediaButtons();  
@@ -192,8 +228,27 @@ function nextSnop()
   next_snop.removeClass("hidden");
   next_snop.addClass("current");
 
+  // we need to calculate the index of the snop in
+  // the list of divs
+  var idx = next_snop.prevAll().length;
+
+  // now we need to find the left offset so we can pan
+  // correctly
+  var offset = idx * -snop_width;
+
+  // IF we are on IE10 or any other browser we can use transition and
+  // transform CSS properties to do our animation, otherwise we will
+  // use the "left" property.
   // pan the snop container to the next snop
-  $("#snop_container").stop(true, true).animate({left: '-=' + snop_width});
+  var ieVersion = getInternetExplorerVersion();
+  if (ieVersion == -1 || ieVersion == 10) 
+  {
+    $("#snop_container").stop(true, true).css("transform","translateX("+offset+"px)");
+  } 
+  else 
+  {
+    $("#snop_container").stop(true, true).animate({left: '-=' + snop_width}); 
+  }
 
   reloadClickHandlers();
   //reloadSocialMediaButtons();  
