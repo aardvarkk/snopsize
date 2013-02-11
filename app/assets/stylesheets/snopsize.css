@@ -294,6 +294,7 @@ input {
 	border-top: 1px solid #111;
 	background-color: #F2F2F2;
 	font: 14px/20px Helvetica,Arial,sans-serif; 
+	vertical-align: middle;
 }
 
 input:focus {
