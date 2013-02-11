@@ -150,8 +150,17 @@ function setCurrentSnop(id)
   // now we need to find the left offset so we can pan
   // correctly
   var offset = idx * -snop_width;
-  $("#snop_container").css("left", offset);
-  //$("#snop_container").css("transform","translateX("+offset+"px)");
+  
+  // IF we are on IE10 or any other browser we can use transition and
+  // transform CSS properties to do our animation, otherwise we will
+  // use the "left" property.
+  // pan the snop container to the next snop
+  var ieVersion = getInternetExplorerVersion();
+  if (ieVersion == -1 || ieVersion == 10) {
+    $("#snop_container").css("transform","translateX("+offset+"px)");
+  } else {
+    $("#snop_container").css({left: offset});
+  }
 
   // do a quick highlight effect to show the change!?
   //$(".container").effect("highlight", {}, 1000);
@@ -194,12 +203,9 @@ function prevSnop()
   // use the "left" property.
   // pan the snop container to the next snop
   var ieVersion = getInternetExplorerVersion();
-  if (ieVersion == -1 || ieVersion == 10) 
-  {
-    $("#snop_container").stop(true, true).css("transform","translateX("+offset+"px)");
-  } 
-  else 
-  {
+  if (ieVersion == -1 || ieVersion == 10) {
+    $("#snop_container").css("transform","translateX("+offset+"px)");
+  } else {
     $("#snop_container").stop(true, true).animate({left: '+=' + snop_width});
   }
 
@@ -241,12 +247,9 @@ function nextSnop()
   // use the "left" property.
   // pan the snop container to the next snop
   var ieVersion = getInternetExplorerVersion();
-  if (ieVersion == -1 || ieVersion == 10) 
-  {
-    $("#snop_container").stop(true, true).css("transform","translateX("+offset+"px)");
-  } 
-  else 
-  {
+  if (ieVersion == -1 || ieVersion == 10) {
+    $("#snop_container").css("transform","translateX("+offset+"px)");
+  } else {
     $("#snop_container").stop(true, true).animate({left: '-=' + snop_width}); 
   }
 
