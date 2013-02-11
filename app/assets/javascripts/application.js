@@ -150,8 +150,8 @@ function setCurrentSnop(id)
   // now we need to find the left offset so we can pan
   // correctly
   var offset = idx * -snop_width;
-  //$("#snop_container").css("left", offset);
-  $("#snop_container").css("transform","translateX("+offset+"px)");
+  $("#snop_container").css("left", offset);
+  //$("#snop_container").css("transform","translateX("+offset+"px)");
 
   // do a quick highlight effect to show the change!?
   //$(".container").effect("highlight", {}, 1000);
